@@ -1,9 +1,3 @@
----
-layout: default
-mathjax: true
-title:  ""
----
-
 # Mathematics for Machine Learning
 
 What I hope to accomplish with this set of notes is a complete crash course on the various areas of mathematics essential to understanding machine learning. To do this, I will use the [Mathematics for Machine Learning Specialization](https://www.coursera.org/learn/linear-algebra-machine-learning) on [Coursera](https://www.coursera.org) as my guide, but also pull from other resources, such as [Khan Academy](https://www.khanacademy.org/math/linear-algebra) and [3blue1brown](http://www.3blue1brown.com) various video playlists on Youtube.
@@ -18,9 +12,9 @@ Full credit to the team behind the [Mathematics for Machine Learning Specializat
 
 1. [Linear Algebra](#linear-algebra)
     1. [Course Resources](#course-resources-linear-algebra)
-    2. [Week 1: Introduction to Linear Algebra and to Mathematics for Machine Learning](#week-1:-introduction-to-linear-algebra-and-to-mathematics-for-machine-learning)
+    2. [Week 1: Introduction to Linear Algebra and to Mathematics for Machine Learning](#week-1-introduction-to-linear-algebra-and-to-mathematics-for-machine-learning)
+    3. [Week 2: Vectors are objects that move around space](#week-2-vectors-are-objects-that-move-around-space)
 2.
-
 
 # Linear Algebra
 
