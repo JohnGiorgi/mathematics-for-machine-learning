@@ -2,7 +2,7 @@
 
 What I hope to accomplish with this set of notes is a complete crash course on the various areas of mathematics essential to understanding machine learning. To do this, I will use the [Mathematics for Machine Learning Specialization](https://www.coursera.org/learn/linear-algebra-machine-learning) on [Coursera](https://www.coursera.org) as my guide, but also pull from other resources, such as [Khan Academy](https://www.khanacademy.org/math/linear-algebra) and [3blue1brown](http://www.3blue1brown.com) various video playlists on Youtube.
 
-The end goal will be to produce a single resource that someone (including myself) could use to quickly bring themselves up to speed on the fundamental mathematical concepts necessary for machine learning. The target audience are those who have at least some highschool math, but should really have taken introductory courses on Linear Algebra and Calculus in college.
+The end goal will be to produce a [single resource](https://johngiorgi.github.io/mathematics-for-machine-learning/) (in the form of a simple website built with Github Pages) that someone (including myself) could use to quickly bring themselves up to speed on the fundamental mathematical concepts necessary for machine learning. The target audience are those who have at least some highschool math, but who should really have taken introductory courses on Linear Algebra and Calculus in college.
 
 I will do my best to include hyperlinks to Wikipedia for every concept/definition introduced, which should allow a reader quick access to more information should they need it.
 
