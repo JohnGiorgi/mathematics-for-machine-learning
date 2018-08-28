@@ -31,6 +31,16 @@ There are lots of useful web resources on **linear algebra**. Typically they go 
 
 ## Week 1: Introduction to Linear Algebra
 
+In this first module we look at how linear algebra is relevant to machine learning and data science. Then we'll wind up the module with an initial introduction to vectors. Throughout, we're focussing on developing your mathematical intuition, not of crunching through algebra or doing long pen-and-paper examples. For many of these operations, there are callable functions in Python that can do the adding up - the point is to appreciate what they do and how they work so that, when things go wrong or there are special cases, you can understand why and what to do.
+
+_Learning Objectives_
+
+- Recall how machine learning and vectors and matrices are related
+- Interpret how changes in the model parameters affect the quality of the fit to the training data
+- Recognize that variations in the model parameters are vectors on the response surface - that vectors are a generic concept not limited to a physical real space
+- Use substitution / elimination to solve a fairly easy linear algebra problem
+- Understand how to add vectors and multiply by a scalar number
+
 ### The relationship between machine learning, linear algebra, vectors and matrices
 
 #### Motivations for linear algebra
@@ -181,7 +191,7 @@ This also nicely illustrates that vectors are **associative**, meaning, the sum 
 
 We've defined _two_ fundamental operations that vectors satisfy: **addition**, (e.g. \\(r + s\\)), and **multiplication** by a _scalar_, (e.g. \\(2r\\)). We've noted that it can be useful to define a coordinate system in which to do our **addition** and **scaling**, e.g.,
 
-\\[\vec r = \begin{bmatrix}3 \\\ 2 \end{bmatrix} = 3 \hat i + 2 \hat{j}\\]
+\\[  r = \begin{bmatrix}3 \\\ 2 \end{bmatrix} = 3 \hat i + 2 \hat{j}\\]
 
 using these fundamental **basis** vectors, \\(\hat i\\) and \\(\hat{j}\\), and explored the properties that this implies, like **associativity** of addition and subtraction.
 
@@ -189,7 +199,7 @@ We've also seen that although, perhaps, it's _easiest_ to think of vector operat
 
 ## Week 2: Vectors are objects that move around space
 
-In this module, we look at operations we can do with vectors - finding the modulus or magnitude (size), angle between vectors (dot or inner product) and projections of one vector onto another. We can then examine how the entries describing a vector will depend on what vectors we use to define the axes - the basis. That will then let us determine whether a proposed set of basis vectors are what's called [**linearly independent**](http://www.wikiwand.com/en/Linear_independence). This will complete our examination of vectors, allowing us to move on to matrices and then start to solve linear algebra problems.
+In this module, we will look at the types operations we can do with vectors - finding the modulus or magnitude (size), angle between vectors (dot or inner product) and projections of one vector onto another. We can then examine how the entries describing a vector will depend on what vectors we use to define the axes - the basis. That will then let us determine whether a proposed set of basis vectors are what's called [**linearly independent**](http://www.wikiwand.com/en/Linear_independence). This will complete our examination of vectors, allowing us to move on to matrices and then start to solve linear algebra problems.
 
 _Learning Objectives_
 
@@ -208,17 +218,17 @@ Now, we can move on to define two new ideas: the **length of a vector**, also ca
 
 #### Length of a vector
 
-Lets define a vector \\(\vec r\\) using the basis vectors we introduced earlier, \\(\vec i\\) and \\(\vec j\\),
+Lets define a vector \\(  r\\) using the basis vectors we introduced earlier, \\(  i\\) and \\(  j\\),
 
-\\[\vec r = a \vec i + b \vec j = \begin{bmatrix} a \\\ b \end{bmatrix}\\]
+\\[  r = a   i + b   j = \begin{bmatrix} a \\\ b \end{bmatrix}\\]
 
-To calculate the length of \\(\vec r\\), also called the [**norm**](http://www.wikiwand.com/en/Norm_(mathematics)) \\(\vert \vec r\vert\\) (or \\(\Vert \vec r\Vert\\)), we could imagine drawing a triangle, with our vector \\(\vec r\\) as the hypotenuse:
+To calculate the length of \\(  r\\), also called the [**norm**](http://www.wikiwand.com/en/Norm_(mathematics)) \\(\vert   r\vert\\) (or \\(\Vert   r\Vert\\)), we could imagine drawing a triangle, with our vector \\(  r\\) as the hypotenuse:
 
 ![vector_length](img/vector_length.png)
 
 > The length, magnitude, modulus and norm of a vector are all the same thing, and just represent a difference in terminology. If we are thinking of a vector as representing the line segment from the origin to a given point (i.e., the geometric interpretation), we may interpret the **norm** as the _length_ of this line segment. If we are thinking of a vector as representing a physical quantity like acceleration or velocity, we may interpret the norm as the **magnitude** of this quantity (how "_large_" it is, regardless of its direction).
 
-By [**Pythagorus's Theorem**](http://www.wikiwand.com/en/Pythagorean_theorem), \\(\vert \vec r \vert = \sqrt{a^2 + b^2}\\)
+By [**Pythagorus's Theorem**](http://www.wikiwand.com/en/Pythagorean_theorem), \\(\vert   r \vert = \sqrt{a^2 + b^2}\\)
 
 #### Vector dot product
 
@@ -228,20 +238,20 @@ The dot product has an **algebraic** and **geometric** interpretation. **Algebra
 
 ##### Algebraic definition of the dot product
 
-To illustrate the algebraic definition of the dot product, lets define two vectors \\(\vec r\\) and \\(\vec{s}\\):
+To illustrate the algebraic definition of the dot product, lets define two vectors \\(  r\\) and \\( {s}\\):
 
-\\[\vec r = \begin{bmatrix} r_i \\\ r_j\end{bmatrix}\\]
-\\[\vec{s} = \begin{bmatrix} s_i \\\ s_j\end{bmatrix}\\]
+\\[  r = \begin{bmatrix} r_i \\\ r_j\end{bmatrix}\\]
+\\[ {s} = \begin{bmatrix} s_i \\\ s_j\end{bmatrix}\\]
 
 ![dot_product](img/dot_product.png)
 
 The dot product is then:
 
-\\[\vec r \cdot \vec{s} = r_is_i + r_j s_j = (3)(-1) + (2)(2) = 1\\]
+\\[  r \cdot  {s} = r_is_i + r_j s_j = (3)(-1) + (2)(2) = 1\\]
 
 More formally, the algebraic definition of the dot product is:
 
-\\[\vec r \cdot \vec{s} = \sum^n_{i=1}a_ib_i = a_1b_1 + a_2b_2 + ... + a_nb_n\\]
+\\[  r \cdot  {s} = \sum^n_{i=1}a_ib_i = a_1b_1 + a_2b_2 + ... + a_nb_n\\]
 
 > The definition of the dot product is a simple multiplication of each component from the both vectors added together.
 
@@ -249,29 +259,29 @@ More formally, the algebraic definition of the dot product is:
 
 The dot product is,
 
-- [**commutative**](http://www.wikiwand.com/en/Commutative_property), e.g., \\(\vec r \cdot \vec{s} = \vec{s} \cdot \vec r\\)
-- [**distributive**](http://www.wikiwand.com/en/Distributive_property), e.g., \\(\vec r \cdot (\vec{s} + \vec{t}) = \vec r \cdot \vec{s} + \vec r \cdot \vec{t}\\)
-- [**associative**](http://www.wikiwand.com/en/Associative_property) over scalar multiplication, e.g., \\(\vec r \cdot (a \vec{s}) = a ( \vec r \cdot \vec{s})\\)
+- [**commutative**](http://www.wikiwand.com/en/Commutative_property), e.g., \\(  r \cdot  {s} =  {s} \cdot   r\\)
+- [**distributive**](http://www.wikiwand.com/en/Distributive_property), e.g., \\(  r \cdot ( {s} +  {t}) =   r \cdot  {s} +   r \cdot  {t}\\)
+- [**associative**](http://www.wikiwand.com/en/Associative_property) over scalar multiplication, e.g., \\(  r \cdot (a  {s}) = a (   r \cdot  {s})\\)
 
 Lets prove the **distributive** property in the general case. Let:
 
-\\[\vec r = \begin{bmatrix} r_1 \\\ r_2 \\\ . \\\ . \\\ . \\\ r_n \end{bmatrix}, \; \vec{s} = \begin{bmatrix} s_1 \\\ s_2 \\\ . \\\ . \\\ . \\\ s_n \end{bmatrix}, \; \vec{t} = \begin{bmatrix} t_1 \\\ t_2 \\\ . \\\ . \\\ . \\\ t_n \end{bmatrix}\\]
+\\[  r = \begin{bmatrix} r_1 \\\ r_2 \\\ . \\\ . \\\ . \\\ r_n \end{bmatrix}, \;  {s} = \begin{bmatrix} s_1 \\\ s_2 \\\ . \\\ . \\\ . \\\ s_n \end{bmatrix}, \;  {t} = \begin{bmatrix} t_1 \\\ t_2 \\\ . \\\ . \\\ . \\\ t_n \end{bmatrix}\\]
 
 Then,
 
-\\[r \cdot (\vec{s} + \vec{t}) = r_1 (s_1 + t_1) + r_2 (s_2 + t_2) + ... + r_n (s_n + t_n)\\]
+\\[r \cdot ( {s} +  {t}) = r_1 (s_1 + t_1) + r_2 (s_2 + t_2) + ... + r_n (s_n + t_n)\\]
 \\[= r_1 s_1 + r_1t_1 + r_2s_2 + r_2t_2 + ... + r_ns_n + r_nt_n\\]
-\\[= \vec r \cdot \vec{s} + \vec r \cdot \vec{t}\\]
+\\[=   r \cdot  {s} +   r \cdot  {t}\\]
 
 > Proofs for the remaining properties are left to an exercise.
 
 ##### Link between the dot product and the size of the vector
 
-If we take \\(\vec r\\) and dot it with itself, we get:
+If we take \\(  r\\) and dot it with itself, we get:
 
 \\[r_i r_i + r_j r_j + ... + r_nr_n = r_i^2 + r_j^2 + ... + r_n^2 = \vert r^2 \vert\\]
 
-So, the size of the vector is just given by \\(\vec r\\) dotted with itself and squared.
+So, the size of the vector is just given by \\(  r\\) dotted with itself and squared.
 
 ### Cosine & dot product
 
@@ -290,27 +300,27 @@ Now, we can translate this into our vector notation:
 
 ![cosine_rule](img/cosine_rule.png)
 
-\\[\vert \vec r - \vec{s}\vert ^2 = \vert \vec r\vert ^2 + \vert \vec{s}\vert ^2 - 2\vert \vec r\vert \vec{s}\vert \cos \theta\\]
+\\[\vert   r -  {s}\vert ^2 = \vert   r\vert ^2 + \vert  {s}\vert ^2 - 2\vert   r\vert  {s}\vert \cos \theta\\]
 
 **LHS**
 
-\\[\Rightarrow (\vec r-s) \cdot (\vec r-\vec{s}) = \vec r \cdot \vec r - \vec{s} \cdot \vec r - \vec{s} \cdot \vec r - \vec{s} \cdot s\\]
-\\[= \vert \vec r\vert ^2 - 2 \vec{s} \cdot \vec r + \vert \vec{s}\vert ^2\\]
+\\[\Rightarrow (  r-s) \cdot (  r- {s}) =   r \cdot   r -  {s} \cdot   r -  {s} \cdot   r -  {s} \cdot s\\]
+\\[= \vert   r\vert ^2 - 2  {s} \cdot   r + \vert  {s}\vert ^2\\]
 
 **LHS = RHS**
 
-\\[\Rightarrow \vert \vec r\vert ^2 - 2 \vec{s} \cdot \vec r + \vert \vec{s}\vert ^2 = \vert \vec r\vert ^2 + \vert \vec{s}\vert ^2 - 2\vert \vec r\vert \vec{s}\vert \cos \theta\\]
-\\[\Rightarrow \vec r \cdot s = \vert \vec r\vert \vec{s}\vert  \cos \theta\\]
+\\[\Rightarrow \vert   r\vert ^2 - 2  {s} \cdot   r + \vert  {s}\vert ^2 = \vert   r\vert ^2 + \vert  {s}\vert ^2 - 2\vert   r\vert  {s}\vert \cos \theta\\]
+\\[\Rightarrow   r \cdot s = \vert   r\vert  {s}\vert  \cos \theta\\]
 
-So what we notice is that the dot product does something quite _profound_. It takes the size of the two vectors (\\(\vert \vec r\vert , \vert \vec{s} \vert\\)) and multiplies them by \\(\cos\\) of the angle between them. It tells us _something_ about the extent to which the two vectors go in the same direction.
+So what we notice is that the dot product does something quite _profound_. It takes the size of the two vectors (\\(\vert   r\vert , \vert  {s} \vert\\)) and multiplies them by \\(\cos\\) of the angle between them. It tells us _something_ about the extent to which the two vectors go in the same direction.
 
 - If \\(\theta\\) is zero, then \\(\cos \theta\\) is one and \\(r \cdot s\\) would just be the size of the two vectors multiplied together.
-- If \\(\theta\\) is \\(90\\) degrees (_i.e._ \\(\vec r\\) and \\(\vec{s}\\) are orthogonal), then \\(\cos 90\\), is \\(0\\) and \\(r \cdot s\\) is \\(0\\) .
+- If \\(\theta\\) is \\(90\\) degrees (_i.e._ \\(  r\\) and \\( {s}\\) are orthogonal), then \\(\cos 90\\), is \\(0\\) and \\(r \cdot s\\) is \\(0\\) .
 
 More generally,
 
-- if \\(0 \lt \theta \lt 180\\) the \\(\vec r \cdot \vec{s}\\) is positive,
-- if \\(180 \lt \theta \lt 360\\) the \\(\vec r \cdot \vec{s}\\) is negative
+- if \\(0 \lt \theta \lt 180\\) the \\(  r \cdot  {s}\\) is positive,
+- if \\(180 \lt \theta \lt 360\\) the \\(  r \cdot  {s}\\) is negative
 
 In this way, the dot product captures whether the two vectors are pointing in similar directions (positive) or opposite directions (negative).
 
@@ -318,7 +328,7 @@ In this way, the dot product captures whether the two vectors are pointing in si
 
 ### Projection
 
-The **vector projection** of a vector \\(\vec{s}\\) on (or onto) a nonzero vector \\(\vec r\\) (also known as the **vector component** or **vector resolution** of \\(\vec{s}\\) in the direction of \\(\vec r\\)) is the orthogonal projection of \\(\vec{s}\\) onto a straight line parallel to \\(\vec r\\) .
+The **vector projection** of a vector \\( {s}\\) on (or onto) a nonzero vector \\(  r\\) (also known as the **vector component** or **vector resolution** of \\( {s}\\) in the direction of \\(  r\\)) is the orthogonal projection of \\( {s}\\) onto a straight line parallel to \\(  r\\) .
 
 For the following triangle,
 
@@ -326,21 +336,21 @@ For the following triangle,
 
 Recall the geometric definition of the dot product:
 
-\\[\vec r \cdot \vec{s} = \vert \vec r\vert  \vert \vec r\vert  \cos \theta\\]
+\\[  r \cdot  {s} = \vert   r\vert  \vert   r\vert  \cos \theta\\]
 
-Notice that \\(\vert \vec{s}\vert  \cos \theta\\) is the _length_ of the **adjacent** side (adjacent to the angle shown). This term is the projection of the vector \\(\vec{s}\\) into (or onto) the vector \\(\vec r\\) . And that's why the dot product _is also called_ the **projection product**, because it takes the projection of one vector (\\(\vec{s}\\)) onto another (\\(\vec r\\)) times the magnitude or length of the other (\\(\vert \vec r \vert\\)).
+Notice that \\(\vert  {s}\vert  \cos \theta\\) is the _length_ of the **adjacent** side (adjacent to the angle shown). This term is the projection of the vector \\( {s}\\) into (or onto) the vector \\(  r\\) . And that's why the dot product _is also called_ the **projection product**, because it takes the projection of one vector (\\( {s}\\)) onto another (\\(  r\\)) times the magnitude or length of the other (\\(\vert   r \vert\\)).
 
-> Note again that if \\(\vec{s}\\) was orthogonal to \\(\vec r\\) then \\(\vert s\vert  \cos \theta = \vert s\vert  \cos 90 = 0 = r \cdot s\\) . This provides a convenient way to check for orthogonality.
+> Note again that if \\( {s}\\) was orthogonal to \\(  r\\) then \\(\vert s\vert  \cos \theta = \vert s\vert  \cos 90 = 0 = r \cdot s\\) . This provides a convenient way to check for orthogonality.
 
-Rearranging, we can compute the [**scalar projection**](http://www.wikiwand.com/en/Scalar_projection) of \\(\vec{s}\\) on \\(\vec r\\):
+Rearranging, we can compute the [**scalar projection**](http://www.wikiwand.com/en/Scalar_projection) of \\( {s}\\) on \\(  r\\):
 
-\\[\frac{\vec r \cdot \vec{s}}{\vert \vec r\vert } = \vert \vec{s}\vert  \cos \theta\\]
+\\[\frac{  r \cdot  {s}}{\vert   r\vert } = \vert  {s}\vert  \cos \theta\\]
 
-The scalar projection is a _scalar_, equal to the length of the orthogonal projection of \\(\vec{s}\\) on \\(\vec r\\), with a negative sign if the projection has an opposite direction with respect to \\(\vec r\\) .
+The scalar projection is a _scalar_, equal to the length of the orthogonal projection of \\( {s}\\) on \\(  r\\), with a negative sign if the projection has an opposite direction with respect to \\(  r\\) .
 
 We can also define the [**vector projection**](http://www.wikiwand.com/en/Vector_projection)
 
-\\[\vert \vec r\vert \frac{\vec r \cdot \vec{s}}{\vert \vec r\vert \vert \vec r\vert } = \vert \vec{s}\vert  \cos \theta\\]
+\\[\vert   r\vert \frac{  r \cdot  {s}}{\vert   r\vert \vert   r\vert } = \vert  {s}\vert  \cos \theta\\]
 
 I didn't get this ... might have to re-watch.
 
@@ -358,7 +368,7 @@ We then found that it captures the _angle_ between two vectors, the extent to wh
 
 So far we haven't really talked about the [**coordinate system**](http://www.wikiwand.com/en/Coordinate_system) of our vector space, the coordinates in which all of our vectors exist. In this section we'll look at what we mean by coordinate systems and we'll do a few cases of changing from one coordinate system to another.
 
-Remember that a vector, e.g. \\(\vec r\\) is just an object that takes us from the _origin_ to _some point in space_. This could be some _physical_ space or it could be some _data_ space, like the attributes of a house (bedrooms, price, etc.).
+Remember that a vector, e.g. \\(  r\\) is just an object that takes us from the _origin_ to _some point in space_. This could be some _physical_ space or it could be some _data_ space, like the attributes of a house (bedrooms, price, etc.).
 
  We could use a coordinate system defined itself by vectors, such as the vectors \\(\hat{i}\\) and \\(\hat{j}\\) that we defined before. Lets give them names \\(\hat{e_1}\\) and \\(\hat{e_2}\\) instead. We will define them to be of unit lengths, meaning they're of length 1.
 
@@ -372,15 +382,15 @@ So,
 
 We can then define any other vector in our space in terms of \\(\hat{e_1}\\) and \\(\hat{e_2}\\) . For example,
 
-\\[\vec{r_e} = 3\hat{e_1} + 3 \hat{e_2} = \begin{bmatrix} 3 \\\ 4 \end{bmatrix}\\]
+\\[ {r_e} = 3\hat{e_1} + 3 \hat{e_2} = \begin{bmatrix} 3 \\\ 4 \end{bmatrix}\\]
 
- Here the instruction then is that \\(\vec{r_e}\\) is going to be equal to doing a vector sum of \\(3 \hat{e_1}\\) and \\(4 \hat{e_2}\\) .
+ Here the instruction then is that \\( {r_e}\\) is going to be equal to doing a vector sum of \\(3 \hat{e_1}\\) and \\(4 \hat{e_2}\\) .
 
-If you think about it, our choice of \\(\hat{e_1}\\) and \\(\hat{e_2}\\) is kind of arbitrary. There's no reason we couldn't have used different vectors to define our coordinate system (these vectors don't even need to be at 90 degrees to each other or of the same length). In any case, I could still have described \\(\vec r\\) as being some sum of some vectors I used to define the space. We call the vectors we use to define our vector space (e.g. \\(\hat{e_1}\\) and \\(\hat{e_2}\\)) **[basis](http://www.wikiwand.com/en/Basis_(linear_algebra)) vectors**.
+If you think about it, our choice of \\(\hat{e_1}\\) and \\(\hat{e_2}\\) is kind of arbitrary. There's no reason we couldn't have used different vectors to define our coordinate system (these vectors don't even need to be at 90 degrees to each other or of the same length). In any case, I could still have described \\(  r\\) as being some sum of some vectors I used to define the space. We call the vectors we use to define our vector space (e.g. \\(\hat{e_1}\\) and \\(\hat{e_2}\\)) **[basis](http://www.wikiwand.com/en/Basis_(linear_algebra)) vectors**.
 
-What we realize here, is that our vector \\(\vec r\\) exists _independently_ of the coordinate system we use. The vector still takes us from the origin to some point in space, even when we change the coordinate system, more specifically, even when we change the **basis vectors** used to describe our [**vector space**](http://www.wikiwand.com/en/Vector_space).
+What we realize here, is that our vector \\(  r\\) exists _independently_ of the coordinate system we use. The vector still takes us from the origin to some point in space, even when we change the coordinate system, more specifically, even when we change the **basis vectors** used to describe our [**vector space**](http://www.wikiwand.com/en/Vector_space).
 
-It turns out, we can actually change the basis of the vector \\(\vec r\\) (call this \\(\vec{r_e}\\)) to a new set of basis vectors, i.e. \\(\hat{b_1}\\) and \\(\hat{b_2}\\), which we will denote \\(\vec{r_b}\\) . Furthermore, we can do this using the dot product so long as
+It turns out, we can actually change the basis of the vector \\(  r\\) (call this \\( {r_e}\\)) to a new set of basis vectors, i.e. \\(\hat{b_1}\\) and \\(\hat{b_2}\\), which we will denote \\( {r_b}\\) . Furthermore, we can do this using the dot product so long as
 
 1. The new basis vectors are orthogonal to each other, i.e. \\(\hat{b_1} \cdot \hat{b_2} = 0\\)
 2. We know the position of \\(\hat{b_1}\\) and \\(\hat{b_2}\\) in the space defined by \\(\hat{e_1}\\) and \\(\hat{e_2}\\).
@@ -391,27 +401,27 @@ Lets define \\(\hat{b_1}\\) and \\(\hat{b_2}\\) in the space defined by \\(\hat{
 
 \\[\hat{b_1} = \begin{bmatrix} -2 \\\ 4 \end{bmatrix}, \; \hat{b_2} = \begin{bmatrix} 2 \\\ 1 \end{bmatrix}\\]
 
-In order to determine \\(\vec{r_b}\\), i.e. the vector \\(\vec r\\) defined in terms of the basis vectors \\(\hat{b_1}\\) and \\(\hat{b_2}\\), we need to take _sum_ the **vector projection** of \\(\vec{r_e}\\) onto \\(\hat{b_1}\\) and the **vector projection** of \\(\vec{r_e}\\) onto \\(\hat{b_2}\\)
+In order to determine \\( {r_b}\\), i.e. the vector \\(  r\\) defined in terms of the basis vectors \\(\hat{b_1}\\) and \\(\hat{b_2}\\), we need to take _sum_ the **vector projection** of \\( {r_e}\\) onto \\(\hat{b_1}\\) and the **vector projection** of \\( {r_e}\\) onto \\(\hat{b_2}\\)
 
 ![changing_basis](img/changing_basis.png)
 
 So, lets do it:
 
-**Vector projection of \\(\vec{r_e}\\) onto \\(\hat{b_1}\\)**
+**Vector projection of \\( {r_e}\\) onto \\(\hat{b_1}\\)**
 
-\\[\hat{b_1}\frac{\vec{r_e} \cdot \hat{b_1}}{\vert \hat{b_1}\vert ^2} = \frac{3 \times 2 + 4 \times 1}{2^2 + 1^2} = \frac{10}{5} = 2\vert \hat{b_1}\vert  = 2 \begin{bmatrix} 2 \\\ 1\end{bmatrix} = \begin{bmatrix} 4 \\\ 2\end{bmatrix}\\]
+\\[\hat{b_1}\frac{ {r_e} \cdot \hat{b_1}}{\vert \hat{b_1}\vert ^2} = \frac{3 \times 2 + 4 \times 1}{2^2 + 1^2} = \frac{10}{5} = 2\vert \hat{b_1}\vert  = 2 \begin{bmatrix} 2 \\\ 1\end{bmatrix} = \begin{bmatrix} 4 \\\ 2\end{bmatrix}\\]
 
-**Vector projection of \\(\vec{r_e}\\) onto \\(\hat{b_2}\\)**
+**Vector projection of \\( {r_e}\\) onto \\(\hat{b_2}\\)**
 
-\\[\hat{b_2}\frac{\vec{r_e} \cdot \hat{b_2}}{\vert \hat{b_2}\vert ^2} = \frac{3 \times -2 + 4 \times 4}{-2^2 + 4^2} = \frac{10}{20} = \frac{1}{2}\vert \hat{b_2}\vert  = \frac{1}{2} \begin{bmatrix} -2 \\\ 4\end{bmatrix} = \begin{bmatrix} -1 \\\ 2\end{bmatrix}\\]
+\\[\hat{b_2}\frac{ {r_e} \cdot \hat{b_2}}{\vert \hat{b_2}\vert ^2} = \frac{3 \times -2 + 4 \times 4}{-2^2 + 4^2} = \frac{10}{20} = \frac{1}{2}\vert \hat{b_2}\vert  = \frac{1}{2} \begin{bmatrix} -2 \\\ 4\end{bmatrix} = \begin{bmatrix} -1 \\\ 2\end{bmatrix}\\]
 
 Thus,
 
-\\[\vec{r_b} =\vert \hat{b_1}\vert \frac{\vec{r_e} \cdot \hat{b_1}}{\vert \hat{b_1}\vert ^2} + \vert \hat{b_2}\vert \frac{\vec{r_e} \cdot \hat{b_2}}{\vert \hat{b_2}\vert ^2} = 2 \hat{b_1} + \frac{1}{2} \hat{b_2}\\]
+\\[ {r_b} =\vert \hat{b_1}\vert \frac{ {r_e} \cdot \hat{b_1}}{\vert \hat{b_1}\vert ^2} + \vert \hat{b_2}\vert \frac{ {r_e} \cdot \hat{b_2}}{\vert \hat{b_2}\vert ^2} = 2 \hat{b_1} + \frac{1}{2} \hat{b_2}\\]
 
 Finally, notice that
 
-\\[\vec{r_b} = 2 \hat{b_1} + \frac{1}{2} \hat{b_2} = 2 \begin{bmatrix} 2 \\\ 1\end{bmatrix} + \frac{1}{2} \begin{bmatrix} -2 \\\ 4\end{bmatrix} = \begin{bmatrix} 3 \\\ 4\end{bmatrix} = \vec{r_e}\\]
+\\[ {r_b} = 2 \hat{b_1} + \frac{1}{2} \hat{b_2} = 2 \begin{bmatrix} 2 \\\ 1\end{bmatrix} + \frac{1}{2} \begin{bmatrix} -2 \\\ 4\end{bmatrix} = \begin{bmatrix} 3 \\\ 4\end{bmatrix} =  {r_e}\\]
 
 #### Conclusions
 
@@ -444,22 +454,22 @@ If these two qualities are fulfilled, then the space defined by the basis is \\(
 
 A set of vectors is said to be [**linearly dependent**](http://www.wikiwand.com/en/Linear_independence) if one of the vectors in the set can be defined as a linear combination of the others; if no vector in the set can be written in this way, then the vectors are said to be **linearly independent**.
 
-For example, imagine we had some candidate vector \\(\vec{b_3}\\) . If we could write \\(\vec{b_3}\\) as a linear combination of, say, \\(\vec{b_1}\\) and \\(\vec{b_2}\\):
+For example, imagine we had some candidate vector \\( {b_3}\\) . If we could write \\( {b_3}\\) as a linear combination of, say, \\( {b_1}\\) and \\( {b_2}\\):
 
-\\[\vec{b_3} = c_1 \vec{b_1} + c_2 \vec{b_2}\\]
+\\[ {b_3} = c_1  {b_1} + c_2  {b_2}\\]
 
-where \\(c_1\\) and \\(c_2\\) were constants, then we would say that \\(\vec{b_3}\\) is _linearly dependent_ on \\(\vec{b_1}\\) and \\(\vec{b_2}\\) .
+where \\(c_1\\) and \\(c_2\\) were constants, then we would say that \\( {b_3}\\) is _linearly dependent_ on \\( {b_1}\\) and \\( {b_2}\\) .
 
 ![changing_basis](img/linear_dependence.png)
 
-To drive the point home, we note that the following are true if \\(\vec{b_3}\\) is linearly dependent to the vectors \\(\vec{b_1}\\) and \\(\vec{b_2}\\):
+To drive the point home, we note that the following are true if \\( {b_3}\\) is linearly dependent to the vectors \\( {b_1}\\) and \\( {b_2}\\):
 
-- \\(\vec{b_3}\\) does __not__ lie in the plane spanned by \\(\vec{b_1}\\) and \\(\vec{b_2}\\)
-- \\(\vec{b_3} \ne c_1 \vec{b_1} + c_2 \vec{b_2}\\) for any \\(c_1\\), \\(c_2 \in \mathbb R\\)
+- \\( {b_3}\\) does __not__ lie in the plane spanned by \\( {b_1}\\) and \\( {b_2}\\)
+- \\( {b_3} \ne c_1  {b_1} + c_2  {b_2}\\) for any \\(c_1\\), \\(c_2 \in \mathbb R\\)
 
 These concepts are central to the definition of **dimension**. As stated previously, if we have a set of \\(n\\) basis vectors, then these vectors describe an \\(n\\)-dimensional space, as we can express any \\(n\\)-dimensional vector as a linear combination of our \\(n\\) basis vectors.
 
-Now, notice what our basis vectors \\(\vec{b_n}\\) _don't_ have to be.
+Now, notice what our basis vectors \\( {b_n}\\) _don't_ have to be.
 
 - they _don't_ have to be unit vectors, by which we mean vectors of length 1 and
 - they _don't_ have to be _orthogonal_ (or _normal_) to each other.
@@ -558,19 +568,19 @@ This means that the result of any _linear_ transformation is just going to be so
 
 > This is confusing. See if the 3Blue1Brown videos help.
 
- If we write down the matrix as capital \\(A\\) and the vector it is transforming as \\(\vec r\\), we can represent our apples and bananas problem introduced earlier as:
+ If we write down the matrix as capital \\(A\\) and the vector it is transforming as \\(  r\\), we can represent our apples and bananas problem introduced earlier as:
 
 
 \\[\begin{pmatrix}2 & 3 \\\ 10 & 1\end{pmatrix} \begin{bmatrix}a \\\ b\end{bmatrix} = \begin{bmatrix}8 \\\ 13\end{bmatrix}\\]
-\\[A \vec r =  \vec r' \\]
+\\[A   r =    r' \\]
 
-Where \\(\vec r'\\) is our _transformed_ vector. We can generalize further, and add a scalar, \\(n\\):
+Where \\(  r'\\) is our _transformed_ vector. We can generalize further, and add a scalar, \\(n\\):
 
-\\[A (n\vec r) =  n\vec r' \\]
+\\[A (n  r) =  n  r' \\]
 
 We notice that:
 
-\\[A (\vec r + \vec s) =  A \vec r + A \vec s \\]
+\\[A (  r +   s) =  A   r + A   s \\]
 
 Putting it together, we can represent any vector in 2D space as:
 
@@ -580,16 +590,16 @@ Putting it together, we can represent any vector in 2D space as:
 Now let's try an example. Let,
 
 \\[A = \begin{pmatrix}2 & 3 \\\ 10 & 1\end{pmatrix}\\]
-\\[\vec r = \begin{bmatrix}3 \\\ 2\end{bmatrix}\\]
+\\[  r = \begin{bmatrix}3 \\\ 2\end{bmatrix}\\]
 
 Then,
 
-\\[A \vec r =  \vec r' \\]
+\\[A   r =    r' \\]
 \\[\Rightarrow \begin{pmatrix}2 & 3 \\\ 10 & 1\end{pmatrix} \begin{bmatrix}3 \\\ 2\end{bmatrix} = \begin{bmatrix}12 \\\ 32\end{bmatrix}\\]
 
 Which is no different than how we might have multiplied matrices and vectors in school. But, we can think of this another way:
 
-\\[A (n \hat e_1 + m \hat e_2) = \vec r'\\]
+\\[A (n \hat e_1 + m \hat e_2) =   r'\\]
 \\[\Rightarrow \begin{pmatrix}2 & 3 \\\ 10 & 1\end{pmatrix} \Biggl (3 \begin{bmatrix}1 \\\ 0\end{bmatrix} + 2 \begin{bmatrix}0 \\\ 1\end{bmatrix} \Biggl) = 3 \begin{pmatrix}2 & 3 \\\ 10 & 1\end{pmatrix} \begin{bmatrix}1 \\\ 0\end{bmatrix} + 2 \begin{pmatrix}2 & 3 \\\ 10 & 1\end{pmatrix} \begin{bmatrix}0 \\\ 1\end{bmatrix} =  \\]
 \\[= 3 \begin{bmatrix}2 \\\ 10\end{bmatrix} + 2 \begin{bmatrix}3 \\\ 1\end{bmatrix} = \begin{bmatrix}12 \\\ 32\end{bmatrix}\\]
 
@@ -709,9 +719,9 @@ Which is equal to \\(A_2 \cdot A_1\\). Geometrically, this looks like:
 
 ##### Conclusions
 
-The take home message here is that the transformation \\(A_2 \cdot (A_1 \cdot \vec r)\\) for some transformation matrices \\(A_1\\) and \\(A_2\\) and some vector \\(\vec r\\), is equivalent to the transformation \\((A_2A_1) \cdot \vec r\\)
+The take home message here is that the transformation \\(A_2 \cdot (A_1 \cdot   r)\\) for some transformation matrices \\(A_1\\) and \\(A_2\\) and some vector \\(  r\\), is equivalent to the transformation \\((A_2A_1) \cdot   r\\)
 
-> Note that \\(A_2 \cdot (A_1 \cdot \vec r) \ne A_1 \cdot (A_2 \cdot \vec r)\\), that is, the order in which we apply our transformations _matters_.
+> Note that \\(A_2 \cdot (A_1 \cdot   r) \ne A_1 \cdot (A_2 \cdot   r)\\), that is, the order in which we apply our transformations _matters_.
 
 As it turns out, the key to solving simultaneous equation problems is appreciating how vectors are _transformed_ by matrices, which is at the the heart of linear algebra.
 
@@ -727,9 +737,9 @@ We're finally going to present a way to solve the _apples and bananas_ problem. 
 
 Where we want to find the price of individual apples (\\(a\\)) and bananas (\\(b\\)). Simplifying, lets say that:
 
-\\[A\cdot \vec r = \vec s\\]
+\\[A\cdot   r =   s\\]
 
-> \\(A\\) _operates_ on vector \\(\vec r\\) to give us \\(\vec s\\).
+> \\(A\\) _operates_ on vector \\(  r\\) to give us \\(  s\\).
 
 Lets take a detour and ask the following: can we find a matrix \\(A^{-1}\\) (known as the __inverse__ of \\(A\\)) such that
 
@@ -737,9 +747,9 @@ Lets take a detour and ask the following: can we find a matrix \\(A^{-1}\\) (kno
 
 where \\(I\\) is the [identity matrix](http://www.wikiwand.com/en/Identity_matrix)? We call \\(A^{-1}\\) the __inverse__ of \\(A\\) because is it _reverses whatever transformation_ \\(A\\) does, giving us back \\(I\\). We note that:
 
-\\[A^{-1}A\cdot \vec r = A^{-1} \vec s\\]
-\\[\Rightarrow\ I \cdot \vec r = A^{-1} \vec s\\]
-\\[\Rightarrow\ \vec r = A^{-1} \vec s\\]
+\\[A^{-1}A\cdot   r = A^{-1}   s\\]
+\\[\Rightarrow\ I \cdot   r = A^{-1}   s\\]
+\\[\Rightarrow\   r = A^{-1}   s\\]
 
 So, if we could find the inverse of \\(A\\) (i.e. find \\(A^{-1}\\)), we can solve our problem (i.e. find \\(a\\) and \\(b\\)). We can solve for \\(A^{-1}\\) with a series of _row operations_ or _substitutions_. Let's look at a slightly more complicated problem and see how this is done:
 
@@ -759,7 +769,7 @@ We can then read the solution right from the matrices \\(a = 5\\), \\(b = 4\\), 
 
 ##### Conclusions
 
-As it turns out, we didn't really have to compute the inverse at all. Although we showed the process for some vectors \\(\vec r\\) and \\(\vec s\\), we can use it in the general case to solve for any linear equation of the form \\(A\cdot \vec r = \vec s\\). This actually one of the most computationally efficient ways to solve this problem, and it's going to work every time.
+As it turns out, we didn't really have to compute the inverse at all. Although we showed the process for some vectors \\(  r\\) and \\(  s\\), we can use it in the general case to solve for any linear equation of the form \\(A\cdot   r =   s\\). This actually one of the most computationally efficient ways to solve this problem, and it's going to work every time.
 
 #### Going from Gaussian elimination to finding the inverse matrix
 
@@ -970,13 +980,13 @@ This is useful when we are implementing matrix multiplication in code. Trivially
 
 > Now, we haven't talked about this so far but now we can see it clearly. There's no reason, so long as the matrices have the same number of entries in \\(k\\), that we need to multiply matrices of the same shape.
 
-Let's revisit the **dot product** in light of the Einstein Summation Convention. If we've got two vectors, let's call them \\(\vec u\\) and \\(\vec v\\), where \\(\vec u\\) is a column vector having elements \\(u_i\\) and \\(v\\) is another column vector having elements \\(v_i\\).
+Let's revisit the **dot product** in light of the Einstein Summation Convention. If we've got two vectors, let's call them \\(  u\\) and \\(  v\\), where \\(  u\\) is a column vector having elements \\(u_i\\) and \\(v\\) is another column vector having elements \\(v_i\\).
 
 \\[\begin{pmatrix}u_i \\\ \vdots \\\ u_{n}\end{pmatrix} \cdot \begin{pmatrix}v_i \\\ \vdots \\\ v_n \end{pmatrix}\\]
 
 When we dot them together, we are computing the following:
 
-\\[\vec u \cdot \vec v = \sum^n_{i=1}u_iv_i = u_1v_1 + u_2v_2 + ... + u_nv_n\\]
+\\[  u \cdot   v = \sum^n_{i=1}u_iv_i = u_1v_1 + u_2v_2 + ... + u_nv_n\\]
 
 
 > Go over what _exactly_ Einstein's Summation Convention is. There was an in-video quiz question which asked us to write the above in ESC, and this: \\(\sum^n_{i=1}u_iv_i\\) was wrong by \\(u_iv_i\\) was correct?
@@ -1051,7 +1061,7 @@ Lets discuss the process of applying a transformation in a changed basis. Say ag
 
 Lets say we have a vector in \\(\text{CS}_2\\) that we want to transform:
 
-\\[\vec{c_2} = \begin{bmatrix}x \\\ y\end{bmatrix}\\]
+\\[ {c_2} = \begin{bmatrix}x \\\ y\end{bmatrix}\\]
 
 And the tranformation we want to apply is:
 
@@ -1061,25 +1071,25 @@ And the tranformation we want to apply is:
 
 Say that we want to apply the tranformation \\(R\\) relative to \\(\text{CS}_1\\). So how do we apply this transformation?
 
-The first thing to do is take the vector \\(\vec{c_2}\\) and multiply it by \\(\text{CS}_{21}\\), that is, change the basis of the vector \\(\vec{c_2}\\) from \\(\text{CS}_2\\) to \\(\text{CS}_1\\):
+The first thing to do is take the vector \\( {c_2}\\) and multiply it by \\(\text{CS}_{21}\\), that is, change the basis of the vector \\( {c_2}\\) from \\(\text{CS}_2\\) to \\(\text{CS}_1\\):
 
-\\[\vec{c_1} = \begin{bmatrix}3 & 1 \\\ 1 & 1\end{bmatrix} \begin{bmatrix}x \\\ y\end{bmatrix}\\]
+\\[ {c_1} = \begin{bmatrix}3 & 1 \\\ 1 & 1\end{bmatrix} \begin{bmatrix}x \\\ y\end{bmatrix}\\]
 
 Then, we can apply the transformation:
 
-\\[\vec{c_1}' = R \cdot \text{CS}_{21} \cdot \vec{c_2}\\]
-\\[\vec{c_1}' = \frac{1}{\sqrt{2}}\begin{bmatrix}1 & -1 \\\ 1 & 1\end{bmatrix} \begin{bmatrix}3 & 1 \\\ 1 & 1\end{bmatrix} \begin{bmatrix}x \\\ y\end{bmatrix}\\]
+\\[ {c_1}' = R \cdot \text{CS}_{21} \cdot  {c_2}\\]
+\\[ {c_1}' = \frac{1}{\sqrt{2}}\begin{bmatrix}1 & -1 \\\ 1 & 1\end{bmatrix} \begin{bmatrix}3 & 1 \\\ 1 & 1\end{bmatrix} \begin{bmatrix}x \\\ y\end{bmatrix}\\]
 \\[= \frac{1}{\sqrt{2}}\begin{bmatrix}2 & 0 \\\ 4 & 2\end{bmatrix} \begin{bmatrix}x \\\ y\end{bmatrix}\\]
 
 So, this operation could be used to first change the basis of a vector in \\(\text{CS}_2\\) to \\(\text{CS}_1\\) and then apply some transformation to that vector to give us an output vector. What if, once we obtained this output vector, we wanted to change its basis _back_ to \\(\text{CS}_2\\)?
 
 
-\\[\vec{c_2}' = \text{CS}_{21}^{-1} \cdot R \cdot \text{CS}_{21} \cdot \vec{c_2}\\]
-\\[\vec{c_2}' = \frac{1}{2} \begin{bmatrix}1 & -1 \\\ -1 & 3\end{bmatrix} \frac{1}{\sqrt{2}}\begin{bmatrix}1 & -1 \\\ 1 & 1\end{bmatrix} \begin{bmatrix}3 & 1 \\\ 1 & 1\end{bmatrix} \begin{bmatrix}x \\\ y\end{bmatrix}\\]
+\\[ {c_2}' = \text{CS}_{21}^{-1} \cdot R \cdot \text{CS}_{21} \cdot  {c_2}\\]
+\\[ {c_2}' = \frac{1}{2} \begin{bmatrix}1 & -1 \\\ -1 & 3\end{bmatrix} \frac{1}{\sqrt{2}}\begin{bmatrix}1 & -1 \\\ 1 & 1\end{bmatrix} \begin{bmatrix}3 & 1 \\\ 1 & 1\end{bmatrix} \begin{bmatrix}x \\\ y\end{bmatrix}\\]
 \\[= \frac{1}{2} \begin{bmatrix}1 & -1 \\\ -1 & 3\end{bmatrix}\frac{1}{\sqrt{2}}\begin{bmatrix}2 & 0 \\\ 4 & 2\end{bmatrix} \begin{bmatrix}x \\\ y\end{bmatrix}\\]
 \\[= \frac{1}{\sqrt{2}}\begin{bmatrix}-1 & -1 \\\ 5 & 3\end{bmatrix} \begin{bmatrix}x \\\ y\end{bmatrix}\\]
 
-This operation essentially builds on the previous operation to return the transformed output vector, \\(\vec{c_1}'\\) to \\(\text{CS}_2\\), that is it returns \\(\vec{c_2}'\\), where \\(\vec{c_2}'\\).
+This operation essentially builds on the previous operation to return the transformed output vector, \\( {c_1}'\\) to \\(\text{CS}_2\\), that is it returns \\( {c_2}'\\), where \\( {c_2}'\\).
 
 ### Making multiple mapping, deciding if these are reversible
 
@@ -1132,7 +1142,7 @@ Where the minus one arises if the new basis vector set _flip space around_ (from
 
 So, we could pre- or post- multiply and still get the identity. This means that the rows of the orthogonal matrix are also orthonormal to each other! So, the transpose matrix of an orthogonal basis set, is itself another orthogonal basis set.
 
-Now, remember that in the last module on vectors, we said that transforming a vector onto a new coordinate system, was just taking the projection or dot product of that vector onto each of the new bases vectors, _as long as they were orthogonal to each other_. So, if we have a vector \\(\vec r\\) and we want to project \\(\vec r\\) into a new set of axes, let's call them \\(\hat e_1\\) and  \\(\hat e_2\\), as long as these vectors are orthogonal to each other, then we  can project into the new vector space just by taking the dot product of \\(\vec r\\) with \\(\hat e_2\\), and the dot product of \\(\vec r\\) with \\(\hat e_1\\), and then we'd have its components in the new set of axis.
+Now, remember that in the last module on vectors, we said that transforming a vector onto a new coordinate system, was just taking the projection or dot product of that vector onto each of the new bases vectors, _as long as they were orthogonal to each other_. So, if we have a vector \\(  r\\) and we want to project \\(  r\\) into a new set of axes, let's call them \\(\hat e_1\\) and  \\(\hat e_2\\), as long as these vectors are orthogonal to each other, then we  can project into the new vector space just by taking the dot product of \\(  r\\) with \\(\hat e_2\\), and the dot product of \\(  r\\) with \\(\hat e_1\\), and then we'd have its components in the new set of axis.
 
 > Add link back up to the fleshed out example of this.
 
