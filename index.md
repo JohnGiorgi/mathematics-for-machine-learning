@@ -22,8 +22,11 @@ Just like the [Mathematics for Machine Learning Specialization](https://www.cour
 
 1. [Linear Algebra](#linear-algebra)
     1. [Course Resources](#course-resources-linear-algebra)
-    2. [Week 1: Introduction to Linear Algebra and to Mathematics for Machine Learning](#week-1-introduction-to-linear-algebra-and-to-mathematics-for-machine-learning)
+    2. [Week 1: Introduction to Linear Algebra and to Mathematics for Machine Learning](#week-1-introduction-to-linear-algebra)
     3. [Week 2: Vectors are objects that move around space](#week-2-vectors-are-objects-that-move-around-space)
+    4. [Week 3: Matrices as objects that operate on vectors](#week-3-matrices-as-objects-that-operate-on-vectors)
+    5. [Week 4: Matrices Make Linear Mappings](#week-4-matrices-make-linear-mappings)
+    6. [Week 5: Eigenvalues and Eigenvectors](#week-5-eigenvalues-and-eigenvectors)
 2. [Multivariate Calculus](#multivariate-calculus)
 
 # Linear Algebra
@@ -103,6 +106,8 @@ With linear algebra (much like trigonometry, for example), there are a handful o
 > Full credit for this section goes to [3Blue1Brown](https://www.youtube.com/channel/UCYO_jab_esuFRV4b17AJtAw). Video [here](https://youtu.be/kjBOesZCoqc).
 
 ### Vectors
+
+> This section maps most closely the the set of Khan Academy courses [here](https://www.khanacademy.org/math/linear-algebra/vectors-and-spaces/vectors/v/vector-introduction-linear-algebra). Take these for more practice.
 
 #### Getting a handle on vectors
 
@@ -206,7 +211,7 @@ We've also seen that although, perhaps, it's _easiest_ to think of vector operat
 
 ## Week 2: Vectors are objects that move around space
 
-In this module, we will look at the types operations we can do with vectors - finding the modulus or magnitude (size), angle between vectors (dot or inner product) and projections of one vector onto another. We can then examine how the entries describing a vector will depend on what vectors we use to define the axes - the basis. That will then let us determine whether a proposed set of basis vectors are what's called [**linearly independent**](http://www.wikiwand.com/en/Linear_independence). This will complete our examination of vectors, allowing us to move on to matrices and then start to solve linear algebra problems.
+In this module, we will look at the types operations we can do with vectors - finding the modulus or magnitude (size), finding the angle between vectors (dot or inner product) and projecting one vector onto another. We can then examine how the entries describing a vector will depend on what vectors we use to define the axes - the basis. That will then let us determine whether a proposed set of basis vectors are what's called [**linearly independent**](http://www.wikiwand.com/en/Linear_independence). This will complete our examination of vectors, allowing us to move on to matrices and then start to solve linear algebra problems.
 
 _Learning Objectives_
 
@@ -215,7 +220,11 @@ _Learning Objectives_
 - Recall linear independence
 - Identify a linearly independent basis and relate this to the dimensionality of the space
 
-### Modulus & inner product
+### Finding the size of a vector, its angle, and projection
+
+> It is probably worth it to watch [this](https://youtu.be/LyGKycYT2v0) 3Blue1Brown video first before reading through this section. However be warned, its the most confusing one in the series. If you want even more practice, check out [this](https://www.khanacademy.org/math/linear-algebra/vectors-and-spaces/dot-cross-products/v/vector-dot-product-and-vector-length) Khan Academy track.
+
+#### Modulus & inner product
 
 Previously we looked at the two main vector operations of **addition** and **scaling** by a number (multiplication by a **scalar**). As it turns out, those are really the only operations we need to be able to do in order define something as a vector.
 
@@ -223,13 +232,13 @@ Now, we can move on to define two new ideas: the **length of a vector**, also ca
 
 > The dot product is a huge and amazing concept in linear algebra with a huge number of implications, and we'll only be able to touch on a few parts of it here, but enjoy. It's one of the most beautiful parts of linear algebra
 
-#### Length of a vector
+__Length of a vector__
 
 Lets define a vector \\(r\\) using the basis vectors we introduced earlier, \\(i\\) and \\(j\\),
 
 \\[  r = a   i + b   j = \begin{bmatrix} a \\\ b \end{bmatrix}\\]
 
-To calculate the length of \\(r\\), also called the [**norm**](http://www.wikiwand.com/en/Norm_(mathematics)) \\(\vert r\vert\\) (or \\(\vert r\Vert\\)), we could imagine drawing a triangle, with our vector \\(r\\) as the hypotenuse:
+To calculate the length of \\(r\\), also called the [**norm**](http://www.wikiwand.com/en/Norm_(mathematics)) \\(\vert r\vert\\) (or \\(\Vert r\Vert\\)), we could imagine drawing a triangle, with our vector \\(r\\) as the hypotenuse:
 
 ![vector_length](img/vector_length.png)
 
@@ -237,7 +246,7 @@ To calculate the length of \\(r\\), also called the [**norm**](http://www.wikiwa
 
 By [**Pythagorus's Theorem**](http://www.wikiwand.com/en/Pythagorean_theorem), \\(\vert r \vert = \sqrt{a^2 + b^2}\\)
 
-#### Vector dot product
+__Vector dot product__
 
 The [**dot product**](http://www.wikiwand.com/en/Dot_product) is one of several ways of multiplying two vectors together, specifically, it is an _algebraic operation that takes two equal-length sequences of numbers (usually coordinate vectors) and returns a single number_.
 
@@ -286,11 +295,11 @@ __Link between the dot product and the size of the vector__
 
 If we take \\(r\\) and dot it with itself, we get:
 
-\\[r_i r_i + r_j r_j + ... + r_nr_n = r_i^2 + r_j^2 + ... + r_n^2 = \vert r^2 \vert\\]
+\\[r_i r_i + r_j r_j + ... + r_nr_n = r_i^2 + r_j^2 + ... + r_n^2 = \vert r \vert^2\\]
 
 So, the size of the vector is just given by \\(r\\) dotted with itself and squared.
 
-### Cosine & dot product
+#### Cosine & dot product
 
 Lets take the time to derive the **geometric** definition of the dot product.
 
@@ -306,17 +315,19 @@ Now, we can translate this into our vector notation:
 
 ![cosine_rule](img/cosine_rule.png)
 
-\\[\vert r - s\vert ^2 = \vert r\vert ^2 + \vert s\vert ^2 - 2\vert r\vert s\vert \cos \theta\\]
+\\[\vert r - s\vert ^2 = \vert r\vert ^2 + \vert s\vert ^2 - 2\vert r\vert \vert s\vert \cos \theta\\]
 
 **LHS**
 
 \\[\Rightarrow (r-s) \cdot (r-s) = r \cdot r - s \cdot r - s \cdot r - s \cdot s\\]
-\\[= \vert r\vert ^2 - 2 s \cdot r + \vert s\vert ^2\\]
+\\[= \vert r\vert ^2 - 2 s \cdot r + \vert \vert s\vert ^2\\]
+
+> \\(\vert r - s\vert ^2 = (r-s) \cdot (r-s)\\) comes straight from the definition of the dot product.
 
 **LHS = RHS**
 
-\\[\Rightarrow \vert r\vert ^2 - 2 s \cdot r + \vert s\vert ^2 = \vert r\vert ^2 + \vert s\vert ^2 - 2\vert r\vert s\vert \cos \theta\\]
-\\[\Rightarrow   r \cdot s = \vert r\vert s\vert  \cos \theta\\]
+\\[\Rightarrow \vert r\vert ^2 - 2 s \cdot r + \vert s\vert ^2 = \vert r\vert ^2 + \vert s\vert ^2 - 2\vert r\vert \vert s\vert \cos \theta\\]
+\\[\Rightarrow   r \cdot s = \vert r\vert \vert s\vert  \cos \theta\\]
 
 So what we notice is that the dot product does something quite _profound_. It takes the size of the two vectors (\\(\vert r\vert , \vert s \vert\\)) and multiplies them by \\(\cos\\) of the angle between them. It tells us _something_ about the extent to which the two vectors go in the same direction.
 
@@ -325,14 +336,15 @@ So what we notice is that the dot product does something quite _profound_. It ta
 
 More generally,
 
-- if \\(0 \lt \theta \lt 180\\) the \\(r \cdot s\\) is positive,
-- if \\(180 \lt \theta \lt 360\\) the \\(r \cdot s\\) is negative
+![cosine_similarity](img/cosine_similarity.png)
+
+> Ignore the word "score" here, this image was taken from a [blog post](http://blog.christianperone.com/2013/09/machine-learning-cosine-similarity-for-vector-space-models-part-iii/) about machine learning. The blog post is worth checking out though. Full credit to [Christian S. Perone](http://blog.christianperone.com) for the image.
 
 In this way, the dot product captures whether the two vectors are pointing in similar directions (positive) or opposite directions (negative).
 
-> Intuitive interpretation of the dot product [here](http://blog.christianperone.com/2013/09/machine-learning-cosine-similarity-for-vector-space-models-part-iii/).
+#### Projection
 
-### Projection
+> Understanding projection can be a little tricky. If you want even more practice, check out [this](https://www.khanacademy.org/math/linear-algebra/alternate-bases#orthogonal-projections) Khan Academy series.
 
 The **vector projection** of a vector \\(s\\) on (or onto) a nonzero vector \\(r\\) (also known as the **vector component** or **vector resolution** of \\(s\\) in the direction of \\(r\\)) is the orthogonal projection of \\(s\\) onto a straight line parallel to \\(r\\) .
 
@@ -342,39 +354,46 @@ For the following triangle,
 
 Recall the geometric definition of the dot product:
 
-\\[  r \cdot s = \vert r\vert  \vert r\vert  \cos \theta\\]
+\\[  r \cdot s = \vert r\vert  \vert s\vert  \cos \theta\\]
 
-Notice that \\(\vert s\vert  \cos \theta\\) is the _length_ of the **adjacent** side (adjacent to the angle shown). This term is the projection of the vector \\(s\\) into (or onto) the vector \\(r\\) . And that's why the dot product _is also called_ the **projection product**, because it takes the projection of one vector (\\(s\\)) onto another (\\(r\\)) times the magnitude or length of the other (\\(\vert r \vert\\)).
+Notice that \\(\vert s\vert  \cos \theta\\) is the _length_ of the **adjacent** side (adjacent to the angle shown). This term is the projection of the vector \\(s\\) into (or onto) the vector \\(r\\) . This is why the dot product _is also called_ the **projection product**, because it takes the projection of one vector (\\(s\\)) onto another (\\(r\\)) times the magnitude or length of the other (\\(\vert r \vert\\)).
 
 > Note again that if \\(s\\) was orthogonal to \\(r\\) then \\(\vert s\vert  \cos \theta = \vert s\vert  \cos 90 = 0 = r \cdot s\\) . This provides a convenient way to check for orthogonality.
 
 Rearranging, we can compute the [**scalar projection**](http://www.wikiwand.com/en/Scalar_projection) of \\(s\\) on \\(r\\):
 
-\\[\frac{  r \cdot s}{\vert r\vert } = \vert s\vert  \cos \theta\\]
+\\[r \cdot s = \vert r\vert\vert s\vert  \cos \theta\\]
+\\[\Rightarrow \frac{  r \cdot s}{\vert r\vert } = \vert s\vert  \cos \theta\\]
 
 The scalar projection is a _scalar_, equal to the length of the orthogonal projection of \\(s\\) on \\(r\\), with a negative sign if the projection has an opposite direction with respect to \\(r\\) .
 
 We can also define the [**vector projection**](http://www.wikiwand.com/en/Vector_projection)
 
-\\[\vert r\vert \frac{  r \cdot s}{\vert r\vert \vert r\vert } = \vert s\vert  \cos \theta\\]
+\\[r \cdot s = \vert r\vert\vert s\vert  \cos \theta\\]
+\\[\Rightarrow \frac{  r \cdot s}{\vert r\vert } = \vert s\vert  \cos \theta\\]
+\\[\Rightarrow \frac{r}{\vert r \vert} \cdot \frac{r \cdot s}{\vert r\vert } = \vert s\vert  \cos \theta \cdot \frac{r}{\vert r \vert}\\]
 
-I didn't get this ... might have to re-watch.
+which is the orthogonal projection of \\(s\\) onto a straight line parallel to \\(r\\). Notice that this formula is intuitive, we take the __scaler projection__ of \\(s\\) onto \\(r\\) (the length of the orthogonal projection of \\(s\\) on \\(r\\)) and multiply it by a unit vector in the direction of \\(r\\), \\(\frac{r}{\vert r \vert}\\).
 
-#### Conclusions
+__Conclusions__
 
-This was really the core video for this week, we've done some real work here. We found the **size** of a vector and we defined the **dot product**. We've then found out some mathematical operations we can do with the dot product (multiplication by a scalar and the dot product). We also proved that mathematical operations with vectors obey the following properties:
+This was really the core video for this week. We found the **size** of a vector and we defined the **dot product**. We've then found out some mathematical operations we can do with the dot product (multiplication by a scalar and the dot product). We also proved that mathematical operations with vectors obey the following properties:
 
 - commutative
 - distributive over vector addition
 - associative with scalar multiplication
 
-We then found that it captures the _angle_ between two vectors, the extent to which they go in the same direction, and also finds the _projection_ of one vector onto another.
+We then found that the dot product actually captures the _angle_ between two vectors, the extent to which they go in the same direction, and also finds the _projection_ of one vector onto another.
 
-### Changing basis
+### Changing the reference frame
 
-So far we haven't really talked about the [**coordinate system**](http://www.wikiwand.com/en/Coordinate_system) of our vector space, the coordinates in which all of our vectors exist. In this section we'll look at what we mean by coordinate systems and we'll do a few cases of changing from one coordinate system to another.
+> It is best to watch [this](https://youtu.be/P2LTAUO1TdA) video first, then return to and read through this section. If you want even more exposure to these ideas, try the first three sections of the Khan Academy course [here](https://www.khanacademy.org/math/linear-algebra/alternate-bases).
 
-Remember that a vector, e.g. \\(r\\) is just an object that takes us from the _origin_ to _some point in space_. This could be some _physical_ space or it could be some _data_ space, like the attributes of a house (bedrooms, price, etc.).
+#### Changing basis
+
+So far we haven't really talked about the [**coordinate system**](http://www.wikiwand.com/en/Coordinate_system) of our [**vector space**](http://www.wikiwand.com/en/Vector_space), the coordinates in which all of our vectors exist. In this section we'll look at what we mean by coordinate systems, and walk through a few examples of changing from one coordinate system to another.
+
+Remember that a vector (e.g. \\(r\\)) is just an object that takes us from the _origin_ to _some point in space_. This could be some _physical_ space or it could be some _data_ space, like the attributes of a house (bedrooms, price, etc.).
 
  We could use a coordinate system defined itself by vectors, such as the vectors \\(\hat{i}\\) and \\(\hat{j}\\) that we defined before. Lets give them names \\(\hat{e_1}\\) and \\(\hat{e_2}\\) instead. We will define them to be of unit lengths, meaning they're of length 1.
 
@@ -390,9 +409,13 @@ We can then define any other vector in our space in terms of \\(\hat{e_1}\\) and
 
 \\[r_e = 3\hat{e_1} + 3 \hat{e_2} = \begin{bmatrix} 3 \\\ 4 \end{bmatrix}\\]
 
- Here the instruction then is that \\(r_e\\) is going to be equal to doing a vector sum of \\(3 \hat{e_1}\\) and \\(4 \hat{e_2}\\).
+Here, the instruction is that \\(r_e\\) is going to be equal to doing a vector sum of \\(3 \hat{e_1}\\) and \\(4 \hat{e_2}\\).
 
-If you think about it, our choice of \\(\hat{e_1}\\) and \\(\hat{e_2}\\) is kind of arbitrary. There's no reason we couldn't have used different vectors to define our coordinate system (these vectors don't even need to be at 90 degrees to each other or of the same length). In any case, I could still have described \\(r\\) as being some sum of some vectors I used to define the space. We call the vectors we use to define our vector space (e.g. \\(\hat{e_1}\\) and \\(\hat{e_2}\\)) **[basis](http://www.wikiwand.com/en/Basis_(linear_algebra)) vectors**.
+If you think about it, our choice of \\(\hat{e_1}\\) and \\(\hat{e_2}\\) is kind of arbitrary. There's no reason we couldn't have used different vectors to define our coordinate system
+
+> Indeed, these vectors don't even need to be at 90 degrees to each other or of the same length
+
+In any case, I could still have described \\(r\\) as being some sum of some vectors I used to define the space. We call the vectors we use to define our vector space (e.g. \\(\hat{e_1}\\) and \\(\hat{e_2}\\)) **[basis](http://www.wikiwand.com/en/Basis_(linear_algebra)) vectors**.
 
 What we realize here, is that our vector \\(r\\) exists _independently_ of the coordinate system we use. The vector still takes us from the origin to some point in space, even when we change the coordinate system, more specifically, even when we change the **basis vectors** used to describe our [**vector space**](http://www.wikiwand.com/en/Vector_space).
 
@@ -401,7 +424,7 @@ It turns out, we can actually change the basis of the vector \\(r\\) (call this 
 1. The new basis vectors are orthogonal to each other, i.e. \\(\hat{b_1} \cdot \hat{b_2} = 0\\)
 2. We know the position of \\(\hat{b_1}\\) and \\(\hat{b_2}\\) in the space defined by \\(\hat{e_1}\\) and \\(\hat{e_2}\\).
 
-> We can still change basis even when the new basis vectors are not orthogonal to one another, but for this we will need matrices.
+> We can still change basis even when the new basis vectors are not orthogonal to one another, but for this we will need matrices. See later parts of the course.
 
 Lets define \\(\hat{b_1}\\) and \\(\hat{b_2}\\) in the space defined by \\(\hat{e_1}\\) and \\(\hat{e_2}\\):
 
@@ -429,7 +452,7 @@ Finally, notice that
 
 \\[ r_b = 2 \hat{b_1} + \frac{1}{2} \hat{b_2} = 2 \begin{bmatrix} 2 \\\ 1\end{bmatrix} + \frac{1}{2} \begin{bmatrix} -2 \\\ 4\end{bmatrix} = \begin{bmatrix} 3 \\\ 4\end{bmatrix} =  r_e\\]
 
-#### Conclusions
+##### Conclusions
 
 We've seen that our vector describing our data _isn't tied to the axis that we originally used to describe it_. We can redescribe it using _some other axis_, _some other basis vectors_.
 
@@ -1206,7 +1229,7 @@ That's going to be the component v3 that's made up of e1's, minus v3 dotted with
 
 ![](http://upload.wikimedia.org/wikipedia/commons/e/ee/Gram-Schmidt_orthonormalization_process.gif)
 
-## Week 5: Eigenvalues and Eigenvectors: Application to Data Problems
+## Week 5: Eigenvalues and Eigenvectors
 
 Eigenvectors are particular vectors that are unrotated by a transformation matrix, and eigenvalues are the amount by which the eigenvectors are stretched. These special 'eigen-things' are very useful in linear algebra and will let us examine Google's famous PageRank algorithm for presenting web search results. Then we'll apply this in code, which will wrap up the course.
 
