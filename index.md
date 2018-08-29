@@ -23,8 +23,8 @@ Just like the [Mathematics for Machine Learning Specialization](https://www.cour
 1. [Linear Algebra](#linear-algebra)
     1. [Course Resources](#course-resources-linear-algebra)
     2. [Week 1: Introduction to Linear Algebra and to Mathematics for Machine Learning](#week-1-introduction-to-linear-algebra)
-    3. [Week 2: Vectors are objects that move around space](#week-2-vectors-are-objects-that-move-around-space)
-    4. [Week 3: Matrices as objects that operate on vectors](#week-3-matrices-as-objects-that-operate-on-vectors)
+    3. [Week 2: Vectors are Objects that Move Around Space](#week-2-vectors-are-objects-that-move-around-space)
+    4. [Week 3: Matrices as Objects that Operate on Vectors](#week-3-matrices-as-objects-that-operate-on-vectors)
     5. [Week 4: Matrices Make Linear Mappings](#week-4-matrices-make-linear-mappings)
     6. [Week 5: Eigenvalues and Eigenvectors](#week-5-eigenvalues-and-eigenvectors)
 2. [Multivariate Calculus](#multivariate-calculus)
@@ -209,7 +209,7 @@ using these fundamental **basis** vectors, \\(\hat i\\) and \\(\hat{j}\\), and e
 
 We've also seen that although, perhaps, it's _easiest_ to think of vector operations _geometrically_, we don't have to do it in a real (number) space. We can also define vector operations on vectors that list different types of objects, like the _attributes of a house_.
 
-## Week 2: Vectors are objects that move around space
+## Week 2: Vectors are Objects that Move Around Space
 
 In this module, we will look at the types operations we can do with vectors - finding the modulus or magnitude (size), finding the angle between vectors (dot or inner product) and projecting one vector onto another. We can then examine how the entries describing a vector will depend on what vectors we use to define the axes - the basis. That will then let us determine whether a proposed set of basis vectors are what's called [**linearly independent**](http://www.wikiwand.com/en/Linear_independence). This will complete our examination of vectors, allowing us to move on to matrices and then start to solve linear algebra problems.
 
@@ -458,7 +458,9 @@ We've seen that our vector describing our data _isn't tied to the axis that we o
 
 It turns out that choosing basis vectors we use to describe the space of data carefully to help us solve our problem will be a very important thing in linear algebra, and in general. We can move the numbers in the vector we used to describe a data item from one basis to another. We can do that change just by taking the _dot_ or _projection product_ so long as the new basis factors are orthogonal to each other.
 
-### Basis, vector space, and linear independence
+#### Basis, vector space, and linear independence
+
+> Linear independence is really only brushed on here. To go deeper, check out [this](https://www.khanacademy.org/math/linear-algebra/alternate-bases/change-of-basis/v/linear-algebra-coordinates-with-respect-to-a-basis) Khan Academy series.
 
 Previously we've seen that our basis vectors _do not have to be_ the so called [**standard (or natural) basis**](http://www.wikiwand.com/en/Standard_basis). We can actually choose any basis vectors we want, which redefine how we we move about space.
 
@@ -468,9 +470,11 @@ The set of unit vectors pointing in the direction of the axes of a Cartesian coo
 
 \\[\hat{e_x} = \begin{bmatrix} 1 \\\ 0 \\\ 0 \end{bmatrix}, \; \hat{e_y} = \begin{bmatrix} 0 \\\ 1 \\\ 0 \end{bmatrix}, \; \hat{e_z} = \begin{bmatrix} 0 \\\ 0 \\\ 1 \end{bmatrix}\\]
 
+> Also known as the [orthonormal basis](http://www.wikiwand.com/en/Orthonormal_basis)
+
  Lets formally define what we mean by a **basis** (vector space), and define **linear independence**, which is going to let us understand how many dimensions our vector space actually has.
 
- ### Basis
+ __Basis__
 
  The **basis** is a set of \\(n\\) vectors that:
 
@@ -479,7 +483,7 @@ The set of unit vectors pointing in the direction of the axes of a Cartesian coo
 
 If these two qualities are fulfilled, then the space defined by the basis is \\(n\\)-dimensional.
 
-#### Linear independence
+__Linear independence__
 
 A set of vectors is said to be [**linearly dependent**](http://www.wikiwand.com/en/Linear_independence) if one of the vectors in the set can be defined as a linear combination of the others; if no vector in the set can be written in this way, then the vectors are said to be **linearly independent**.
 
@@ -489,29 +493,40 @@ For example, imagine we had some candidate vector \\({b_3}\\) . If we could writ
 
 where \\(c_1\\) and \\(c_2\\) were constants, then we would say that \\({b_3}\\) is _linearly dependent_ on \\({b_1}\\) and \\({b_2}\\) .
 
-![changing_basis](img/linear_dependence.png)
+![linear_dependence](img/linear_dependence.png)
 
 To drive the point home, we note that the following are true if \\({b_3}\\) is linearly dependent to the vectors \\({b_1}\\) and \\({b_2}\\):
 
 - \\({b_3}\\) does __not__ lie in the plane spanned by \\({b_1}\\) and \\({b_2}\\)
-- \\({b_3} \ne c_1  {b_1} + c_2  {b_2}\\) for any \\(c_1\\), \\(c_2 \in \mathbb R\\)
+- \\({b_3} \ne c_1  {b_1} + c_2  {b_2}\\) for any \\(c_1\\), \\(c_2 \in \mathbb R\\) OR, equivalently,
+- \\(0 = c_1  {b_1} + c_2 {b_2} + c_3 {b_3}\\) implies that \\(c_1 = c_2 = c_3 = 0\\)
 
 These concepts are central to the definition of **dimension**. As stated previously, if we have a set of \\(n\\) basis vectors, then these vectors describe an \\(n\\)-dimensional space, as we can express any \\(n\\)-dimensional vector as a linear combination of our \\(n\\) basis vectors.
 
 Now, notice what our basis vectors \\({b_n}\\) _don't_ have to be.
 
 - they _don't_ have to be unit vectors, by which we mean vectors of length 1 and
-- they _don't_ have to be _orthogonal_ (or _normal_) to each other.
+- they _don't_ have to be _orthogonal_ (or _normal_) to each other
 
 But, as it turns out, everything is going to be much easier if they are. So if at all possible, you want to construct what's called an **orthonormal basic vector set**, where all vectors of the set are at \\(90\\) degrees to each other and are all of unit length.
 
-Now, let's think about what happens when we map from one basis to another. The number line of the axes of the original grid then projects down onto the new grid. And potentially has different values on that grid, but the projection keeps the grid being evenly spaced. Therefore, any mapping that we do from one set of basis vectors, one coordinate system to another set of basis vectors, another coordinate system, keeps the vector space being a regularly spaced grid, where our original rules of vector addition and multiplication by a scaler still work. It doesn't warp or fold space, which is what the linear bit in linear algebra means geometrically. Things might be stretched or rotated or inverted, but everything remains evenly spaced and linear combinations still work. Now, when the new basis vectors aren't orthogonal, then to do the change from one base to another, we won't just be able to use the dot product anymore. We'll have to use matrices instead, which we'll meet in the next module.
+Now, let's think about what happens when we map from one basis to another. The axes of the _original grid_ are projected onto the _new grid_; and potentially have different values on that new grid, but _crucially_, the projection keeps the grid being evenly spaced.
 
-> This was a little unclear to me but 3Blue1Brown touches on it, so use his videos to explain it.
+![changing_basis](img/changing_basis.gif)
+
+Therefore, any mapping that we do from one set of basis vectors, (one coordinate system) to another set of basis vectors (another coordinate system), keeps the vector space being a _regularly spaced grid_, where our original rules of vector addition and multiplication by a scaler still work.
+
+> Basically, it doesn't warp or fold space, which is what the linear bit in linear algebra means geometrically. Things might be stretched or rotated or inverted, but everything remains evenly spaced and linear combinations still work.
+
+Now, when the new basis vectors aren't orthogonal, then we won't be able to use the dot product (really, the projection) to map from one basis to another. We'll have to use matrices instead, which we'll meet in the next module.
+
+> This part is a little tricky. Honestly, its best to watch
 
 #### Conclusions
 
- So in this video we've talked about the dimensionality of a vector space in terms of the number of independent basis factors that it has. We found a test for independence that the set of vectors are independent if one of them is not a linear combination of the others. We've talked more importantly about what that means in terms of mapping from one space to another and how that is going to be useful in data science and machine learning.
+So in this video we've talked about the dimensionality of a vector space in terms of the number of independent basis factors that it has. We found a test for independence that the set of vectors are independent if one of them is not a linear combination of the others. We've talked more importantly about what that means in terms of mapping from one space to another and how that is going to be useful in data science and machine learning.
+
+> Honestly, this part is tricky. It might be worth it to watch the first three videos of the [Essence of Linear Algebra](https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab) series. For the lazy, jumpy straight to this [video](https://youtu.be/kYB8IZa5AuE).
 
 ### Applications of changing basis
 
@@ -537,7 +552,7 @@ We've looked at vectors as being objects that describe where we are in space whi
 
 Then we've defined vector addition and scaling a vector by a number, making it bigger or reversing its direction. Then we've gone on to find the magnitude or modulus of a vector, and the dot scalar and vector projection product. We've defined the basis of a vector space, its dimension, and the ideas of linear independence and linear combinations. We've used projections to look at one case of changes from one basis to another, for the case where the new basis is orthogonal.
 
-## Week 3: Matrices in Linear Algebra: Objects that operate on Vectors
+## Week 3: Matrices as Objects that Operate on Vectors
 
 Now that we've looked at vectors, we can turn to matrices. First we look at how to use matrices as tools to solve linear algebra problems, and as objects that transform vectors. Then we look at how to solve systems of linear equations using matrices, which will then take us on to look at inverse matrices and determinants, and to think about what the determinant really is, intuitively speaking. Finally, we'll look at cases of special matrices that mean that the determinant is zero or where the matrix isn't invertible - cases where algorithms that need to invert a matrix will fail.
 
