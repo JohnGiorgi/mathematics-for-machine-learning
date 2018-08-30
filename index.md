@@ -11,7 +11,7 @@ I will do my best to include links to Wikipedia for every concept/definition int
 
 Full credit to the team behind the [Mathematics for Machine Learning Specialization](https://www.coursera.org/learn/linear-algebra-machine-learning) course on [Coursera](https://www.coursera.org) for creating such an awesome resource. I highly encourage anyone who needs to brush up on their mathematics for machine learning to check that course out.
 
-### Attribution
+##Attribution
 
 Just like the [Mathematics for Machine Learning Specialization](https://www.coursera.org/learn/linear-algebra-machine-learning), This work is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).
 
@@ -39,7 +39,7 @@ There are lots of useful web resources on **linear algebra**. Typically they go 
 - **Grant Sanderson** has a great series of videos developing mathematical intuition on YouTube, which you can reach through his site http://www.3Blue1Brown.com.
 - **Wikipedia** gets better every year - and the linear algebra wikipedia pages are actually pretty good. https://en.wikipedia.org/wiki/Linear_algebra
 
-## Week 1: Introduction to Linear Algebra
+# Week 1: Introduction to Linear Algebra
 
 In this first module we look at how linear algebra is relevant to machine learning and data science. Then we'll wind up the module with an initial introduction to vectors. Throughout, we're focussing on developing your mathematical intuition, not of crunching through algebra or doing long pen-and-paper examples. For many of these operations, there are callable functions in Python that can do the adding up - the point is to appreciate what they do and how they work so that, when things go wrong or there are special cases, you can understand why and what to do.
 
@@ -51,9 +51,9 @@ _Learning Objectives_
 - Use substitution / elimination to solve a fairly easy linear algebra problem
 - Understand how to add vectors and multiply by a scalar number
 
-### The relationship between machine learning, linear algebra, vectors and matrices
+## The relationship between machine learning, linear algebra, vectors and matrices
 
-#### Motivations for linear algebra
+### Motivations for linear algebra
 
  Lets take a look at the types of problems we might want to solve, in order to expose what **linear algebra** is and how it might help us to solve them.
 
@@ -89,11 +89,11 @@ This looks like a **population** with an **average** and some **variation**. A c
 
 That might be really handy, because with that fitted equation we'd have an easy "portable" description of the population we could carry around, without needing all the original data which would free us, for example, from privacy concerns.
 
-### Conclusions
+#### Conclusions
 
 In this video, we've set up two problems that can be solved with linear algebra. First, the problem of solving **simultaneous equations**. And secondly, the **optimization problem** of fitting and equation with some parameters to data. These problems and others will motivate our work right through the course on linear algebra, and it's partner course on [multivariate calculus](#multivariate-calculus).
 
-## Geometric and Numeric Interpretations
+### Geometric and Numeric Interpretations
 
 It is helpful to draw a distinction from the **numerical operations** we can perform using linear algebra, and the **geometric intuitions** underlying them (which are frequently not taught in may introductory courses).
 
@@ -105,11 +105,11 @@ With linear algebra (much like trigonometry, for example), there are a handful o
 
 > Full credit for this section goes to [3Blue1Brown](https://www.youtube.com/channel/UCYO_jab_esuFRV4b17AJtAw). Video [here](https://youtu.be/kjBOesZCoqc).
 
-### Vectors
+## Vectors
 
 > This section maps most closely the the set of Khan Academy courses [here](https://www.khanacademy.org/math/linear-algebra/vectors-and-spaces/vectors/v/vector-introduction-linear-algebra). Take these for more practice.
 
-#### Getting a handle on vectors
+### Getting a handle on vectors
 
 > Note: this actually is not a great introduction to vectors (IMO). I recommend you first watch [this](https://youtu.be/fNk_zzaMoSs) video, then come back and read this section.
 
@@ -209,7 +209,7 @@ using these fundamental **basis** vectors, \\(\hat i\\) and \\(\hat{j}\\), and e
 
 We've also seen that although, perhaps, it's _easiest_ to think of vector operations _geometrically_, we don't have to do it in a real (number) space. We can also define vector operations on vectors that list different types of objects, like the _attributes of a house_.
 
-## Week 2: Vectors are Objects that Move Around Space
+# Week 2: Vectors are Objects that Move Around Space
 
 In this module, we will look at the types operations we can do with vectors - finding the modulus or magnitude (size), finding the angle between vectors (dot or inner product) and projecting one vector onto another. We can then examine how the entries describing a vector will depend on what vectors we use to define the axes - the basis. That will then let us determine whether a proposed set of basis vectors are what's called [**linearly independent**](http://www.wikiwand.com/en/Linear_independence). This will complete our examination of vectors, allowing us to move on to matrices and then start to solve linear algebra problems.
 
@@ -220,11 +220,11 @@ _Learning Objectives_
 - Recall linear independence
 - Identify a linearly independent basis and relate this to the dimensionality of the space
 
-### Finding the size of a vector, its angle, and projection
+## Finding the size of a vector, its angle, and projection
 
 > It is probably worth it to watch [this](https://youtu.be/LyGKycYT2v0) 3Blue1Brown video first before reading through this section. However be warned, its the most confusing one in the series. If you want even more practice, check out [this](https://www.khanacademy.org/math/linear-algebra/vectors-and-spaces/dot-cross-products/v/vector-dot-product-and-vector-length) Khan Academy track.
 
-#### Modulus & inner product
+### Modulus & inner product
 
 Previously we looked at the two main vector operations of **addition** and **scaling** by a number (multiplication by a **scalar**). As it turns out, those are really the only operations we need to be able to do in order define something as a vector.
 
@@ -299,7 +299,7 @@ If we take \\(r\\) and dot it with itself, we get:
 
 So, the size of the vector is just given by \\(r\\) dotted with itself and squared.
 
-#### Cosine & dot product
+### Cosine & dot product
 
 Lets take the time to derive the **geometric** definition of the dot product.
 
@@ -342,7 +342,7 @@ More generally,
 
 In this way, the dot product captures whether the two vectors are pointing in similar directions (positive) or opposite directions (negative).
 
-#### Projection
+### Projection
 
 > Understanding projection can be a little tricky. If you want even more practice, check out [this](https://www.khanacademy.org/math/linear-algebra/alternate-bases#orthogonal-projections) Khan Academy series.
 
@@ -385,11 +385,11 @@ This was really the core video for this week. We found the **size** of a vector 
 
 We then found that the dot product actually captures the _angle_ between two vectors, the extent to which they go in the same direction, and also finds the _projection_ of one vector onto another.
 
-### Changing the reference frame
+## Changing the reference frame
 
 > It is best to watch [this](https://youtu.be/P2LTAUO1TdA) video first, then return to and read through this section. If you want even more exposure to these ideas, try the first three sections of the Khan Academy course [here](https://www.khanacademy.org/math/linear-algebra/alternate-bases).
 
-#### Changing basis
+### Changing basis
 
 So far we haven't really talked about the [**coordinate system**](http://www.wikiwand.com/en/Coordinate_system) of our [**vector space**](http://www.wikiwand.com/en/Vector_space), the coordinates in which all of our vectors exist. In this section we'll look at what we mean by coordinate systems, and walk through a few examples of changing from one coordinate system to another.
 
@@ -438,27 +438,27 @@ So, lets do it:
 
 **Vector projection of \\(r_e\\) onto \\(\hat{b_1}\\)**
 
-\\[\hat{b_1}\frac{r_e \cdot \hat{b_1}}{\vert \hat{b_1}\vert ^2} = \frac{3 \times 2 + 4 \times 1}{2^2 + 1^2} = \frac{10}{5} = 2\vert \hat{b_1}\vert  = 2 \begin{bmatrix} 2 \\\ 1\end{bmatrix} = \begin{bmatrix} 4 \\\ 2\end{bmatrix}\\]
+\\[\hat{b_1}\frac{r_e \cdot \hat{b_1}}{\vert \hat{b_1}\vert ^2} = \frac{3 \times 2 + 4 \times 1}{2^2 + 1^2} = \frac{10}{5} = 2 \hat{b_1}  = 2 \begin{bmatrix} 2 \\\ 1\end{bmatrix} = \begin{bmatrix} 4 \\\ 2\end{bmatrix}\\]
 
 **Vector projection of \\(r_e\\) onto \\(\hat{b_2}\\)**
 
-\\[\hat{b_2}\frac{r_e \cdot \hat{b_2}}{\vert \hat{b_2}\vert ^2} = \frac{3 \times -2 + 4 \times 4}{-2^2 + 4^2} = \frac{10}{20} = \frac{1}{2}\vert \hat{b_2}\vert  = \frac{1}{2} \begin{bmatrix} -2 \\\ 4\end{bmatrix} = \begin{bmatrix} -1 \\\ 2\end{bmatrix}\\]
+\\[\hat{b_2}\frac{r_e \cdot \hat{b_2}}{\vert \hat{b_2}\vert ^2} = \frac{3 \times -2 + 4 \times 4}{-2^2 + 4^2} = \frac{10}{20} = \frac{1}{2} \hat{b_2}  = \frac{1}{2} \begin{bmatrix} -2 \\\ 4\end{bmatrix} = \begin{bmatrix} -1 \\\ 2\end{bmatrix}\\]
 
 Thus,
 
-\\[ r_b =\vert \hat{b_1}\vert \frac{r_e \cdot \hat{b_1}}{\vert \hat{b_1}\vert ^2} + \vert \hat{b_2}\vert \frac{r_e \cdot \hat{b_2}}{\vert \hat{b_2}\vert ^2} = 2 \hat{b_1} + \frac{1}{2} \hat{b_2}\\]
+\\[ r_b = \hat{b_1} \frac{r_e \cdot \hat{b_1}}{\vert \hat{b_1}\vert ^2} + \hat{b_2} \frac{r_e \cdot \hat{b_2}}{\vert \hat{b_2}\vert ^2} = 2 \hat{b_1} + \frac{1}{2} \hat{b_2} = \begin{bmatrix}2 \\\ \frac{1}{2}\end{bmatrix}\\]
 
 Finally, notice that
 
 \\[ r_b = 2 \hat{b_1} + \frac{1}{2} \hat{b_2} = 2 \begin{bmatrix} 2 \\\ 1\end{bmatrix} + \frac{1}{2} \begin{bmatrix} -2 \\\ 4\end{bmatrix} = \begin{bmatrix} 3 \\\ 4\end{bmatrix} =  r_e\\]
 
-##### Conclusions
+#### Conclusions
 
 We've seen that our vector describing our data _isn't tied to the axis that we originally used to describe it_. We can redescribe it using _some other axis_, _some other basis vectors_.
 
 It turns out that choosing basis vectors we use to describe the space of data carefully to help us solve our problem will be a very important thing in linear algebra, and in general. We can move the numbers in the vector we used to describe a data item from one basis to another. We can do that change just by taking the _dot_ or _projection product_ so long as the new basis factors are orthogonal to each other.
 
-#### Basis, vector space, and linear independence
+### Basis, vector space, and linear independence
 
 > Linear independence is really only brushed on here. To go deeper, check out [this](https://www.khanacademy.org/math/linear-algebra/alternate-bases/change-of-basis/v/linear-algebra-coordinates-with-respect-to-a-basis) Khan Academy series.
 
@@ -520,13 +520,11 @@ Therefore, any mapping that we do from one set of basis vectors, (one coordinate
 
 Now, when the new basis vectors aren't orthogonal, then we won't be able to use the dot product (really, the projection) to map from one basis to another. We'll have to use matrices instead, which we'll meet in the next module.
 
-> This part is a little tricky. Honestly, its best to watch
+> Honestly, this part is tricky. It might be worth it to watch the first three videos of the [Essence of Linear Algebra](https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab) series. For the lazy, jumpy straight to this [video](https://youtu.be/kYB8IZa5AuE).
 
 #### Conclusions
 
 So in this video we've talked about the dimensionality of a vector space in terms of the number of independent basis factors that it has. We found a test for independence that the set of vectors are independent if one of them is not a linear combination of the others. We've talked more importantly about what that means in terms of mapping from one space to another and how that is going to be useful in data science and machine learning.
-
-> Honestly, this part is tricky. It might be worth it to watch the first three videos of the [Essence of Linear Algebra](https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab) series. For the lazy, jumpy straight to this [video](https://youtu.be/kYB8IZa5AuE).
 
 ### Applications of changing basis
 
@@ -546,7 +544,7 @@ The way that we have described these two directions (_along the line_ and _away 
 
 > I don't really get the point of this video.
 
-### Summary
+### Summary of week 2
 
 We've looked at vectors as being objects that describe where we are in space which could be a physical space, a space of data, or a parameter space of the parameters of a function. It doesn't really matter. It's just some space.
 
@@ -554,15 +552,18 @@ Then we've defined vector addition and scaling a vector by a number, making it b
 
 ## Week 3: Matrices as Objects that Operate on Vectors
 
-Now that we've looked at vectors, we can turn to matrices. First we look at how to use matrices as tools to solve linear algebra problems, and as objects that transform vectors. Then we look at how to solve systems of linear equations using matrices, which will then take us on to look at inverse matrices and determinants, and to think about what the determinant really is, intuitively speaking. Finally, we'll look at cases of special matrices that mean that the determinant is zero or where the matrix isn't invertible - cases where algorithms that need to invert a matrix will fail.
+Lets now turn our attention from vectors to [**matrices**](http://www.wikiwand.com/en/Matrix_(mathematics)). First we will look at how to use matrices as tools to solve linear algebra problems, before introducing them as objects that _transform_ vectors. We will then explain how to solve systems of linear equations using matrices, which will take introduce the concept of inverse matrices and determinants. Finally, we'll look at cases of special matrices: when the determinant is zero, and where the matrix isn't invertible. Because many algorithms require invert a matrix as one of their steps, this special case is important.
 
 **Learning Objectives**
 
-- Understand what a matrix is and how it corresponds to a transformation.
+- Understand what a matrix is and how it corresponds to a transformation
 - Explain and calculate inverse and determinant of matrices
-- Identify and explain how to find inverses computationally and what goes wrong.
+- Identify and explain how to find inverses computationally
+- Explore what it means for a matrix to be inertible
 
-### Matrices, vectors, and solving simultaneous equation problems
+## Matrices
+
+### Introduction to matrices
 
 At the start of the course, we encountered the "apples and bananas" problem: how to find the price of things when we only have the total bill. Now we're going to look at matrices, which can be thought of as objects that rotate and stretch vectors, and how they can be used to solve these sorts of problems.
 
@@ -574,7 +575,7 @@ On another day and we buy 10 apples and 1 banana, and that costs me 13 euros:
 
 \\[10a + 1b = 8\\]
 
-> Now you might say this is silly. What shop doesn't have sticker prices after all? But actually in business with complicated products and service agreements and higher purchase, this sort of thing, [**price discovery**](http://www.wikiwand.com/en/Price_discovery), happens all the time. Think about what happens when you buy a car for instance.
+> Now you might say this is silly. What shop doesn't have sticker prices after all? But actually, businesses with complicated products and service agreements often use [**price discovery**](http://www.wikiwand.com/en/Price_discovery).
 
 Now these are just **simultaneous equations** _but_, I can write them down with matrices as follows:
 
@@ -588,31 +589,33 @@ Now, what if we use our matrix \\(\begin{pmatrix}2 & 3 \\\ 10 & 1\end{pmatrix}\\
 
 \\[\begin{pmatrix}2 & 3 \\\ 10 & 1\end{pmatrix} \hat e_2 = \begin{pmatrix}2 & 3 \\\ 10 & 1\end{pmatrix} \begin{pmatrix}0 \\\ 1 \end{pmatrix} = \begin{pmatrix}3 \\\ 1 \end{pmatrix}\\]
 
-So, quite clearly, this matrix transforms the basis vectors \\(\hat e_1\\) and  \\(\hat e_2\\) to give us the vectors \\(\begin{pmatrix}2 \\\ 10 \end{pmatrix}\\) and \\(\begin{pmatrix}3 \\\ 1 \end{pmatrix}\\).
+It becomes clear that what this matrix is doing is actually _transforming_ the basis vectors \\(\hat e_1\\) and  \\(\hat e_2\\) to give us the vectors \\(\begin{pmatrix}2 \\\ 10 \end{pmatrix}\\) and \\(\begin{pmatrix}3 \\\ 1 \end{pmatrix}\\).
 
-Generally speaking, we can think of the matrix \\(\begin{pmatrix}2 & 3 \\\ 10 & 1\end{pmatrix}\\) as a _function_ that operates on _input_ vectors in order to give us _output_ vectors. A set of simultaneous equations, like the ones we have here, is asking, in effect, what vector I need in order to get a transformed product at the position \\(\begin{bmatrix}8 \\\ 13\end{bmatrix}\\).
+Generally speaking, we can think of the matrix \\(\begin{pmatrix}2 & 3 \\\ 10 & 1\end{pmatrix}\\) as a _function_ that operates on _input_ vectors in order to give us _output_ vectors. A set of simultaneous equations, like the ones we have here, is asking, in effect, what _input_ vector I need in order to get a transformed product (the _output vector_) at position \\(\begin{bmatrix}8 \\\ 13\end{bmatrix}\\).
 
 #### Conclusions
 
-Now we can see what we mean now by the term _linear_ algebra. Linear algebra is linear, because it just takes input values, our \\(a\\) and \\(b\\) for example, and multiplies them by constants. _Everything is linear_. And it's algebra, that is it's a notation describing mathematical objects and a system of manipulating those notations.
+Hopefully, it is a little more clear now what we mean now by the term _linear_ algebra. Linear algebra is _linear_, because it just takes input values, our \\(a\\) and \\(b\\) for example, and multiplies them by _constants_. _Everything is linear_. Finally, it's algebra simply because it is a notation describing mathematical objects and a system of manipulating those notations.
 
 So linear algebra is a _mathematical_ system for _manipulating vectors_ in the spaces _described by vectors_.
 
-> So this is interesting. There seems to be some kind of deep connection between simultaneous equations, these things called matrices, and the vectors we were talking about last week. And it turns that the key to solving simultaneous equation problems is appreciating how vectors are transformed by matrices, which is the heart of linear algebra.
+> This is important! We are noticing some kind of deep connection between simultaneous equations, these things called matrices, and the vectors we were talking about last week. It turns that the key to solving simultaneous equation problems is appreciating how vectors are transformed by matrices, which is the heart of linear algebra.
 
-### Matrices in linear algebra: operating on vectors
+## Matrices as objects that operate on vectors
 
-#### How matrices transform space
+### How matrices transform space
+
+> Watch [this](https://youtu.be/kYB8IZa5AuE) video before reading through this section.
 
 So far, we have introduced the idea of a matrix and related it to the problem of solving **simultaneous equations**. We showed that the **columns** of a matrix can be thought of as the transformations applied to **unit basis vector** along each axis. This is a pretty profound idea, so lets flesh it out.
 
-We know that we can make any (2D) vector out of a vector _sum_ of the _scaled_ versions of \\(\hat e_1\\) and \\(\hat e_2\\).
+We know that we can make any (2D) vector out of a vector _sum_ of the _scaled_ versions of \\(\hat e_1\\) and \\(\hat e_2\\) (our basis vectors).
 
-This means that the result of any _linear_ transformation is just going to be some sum of the transformed basis vectors, (\\(\hat e_1\\) and \\(\hat e_2\\) here). This is a bit hard to see but what it means is that the grid lines of our space stay _parallel_ and _evenly spaced_. They might be stretched or sheared, but the origin stays where it is and there isn't any curviness to the space, it doesn't get warped --- a a consequence of our scalar addition and multiplication rules for vectors.
+This means that the result of any _linear_ transformation is just going to be some sum of the transformed basis vectors, (\\(\hat e_1\\) and \\(\hat e_2\\) here). This is a bit hard to see but what it means is that the grid lines of our space stay _parallel_ and _evenly spaced_. They might be stretched or sheared, but the origin stays where it is and there isn't any curviness to the space, it doesn't get warped --- a consequence of our scalar addition and multiplication rules for vectors.
 
-> This is confusing. See if the 3Blue1Brown videos help.
+> If you find this confusingm see if the [3Blue1Brown](https://youtu.be/kYB8IZa5AuE) video for help.
 
- If we write down the matrix as capital \\(A\\) and the vector it is transforming as \\(r\\), we can represent our apples and bananas problem introduced earlier as:
+ If we write down the matrix \\(A\\) and the vector it is transforming as \\(r\\), we can represent our apples and bananas problem introduced earlier as:
 
 
 \\[\begin{pmatrix}2 & 3 \\\ 10 & 1\end{pmatrix} \begin{bmatrix}a \\\ b\end{bmatrix} = \begin{bmatrix}8 \\\ 13\end{bmatrix}\\]
@@ -649,13 +652,13 @@ Which is no different than how we might have multiplied matrices and vectors in 
 
 The take home idea here is that the matrix \\(A\\) just _tells us where the basis vectors go_. That's the _transformation_ it does.
 
-#### Types of matrix transformation
+### Types of matrix transformation
 
 Lets illustrate the type of transformations we can perform with matrices with a number of examples.
 
 > Remember, in linear algebra, linear transformations can be represented by matrices
 
-We are only going to scratch the surface here and to continue to build up our intuition of viewing matrices as _functions_ that apply _transformations_ to some _input vector_. For more detail, see [here](matrices).
+We are only going to scratch the surface here and to continue to build up our intuition of viewing matrices as _functions_ that apply _transformations_ to some _input vector_.
 
 __Identity matrix__
 
@@ -677,7 +680,7 @@ If \\(m = 3\\) and \\(n=2\\), visually this looks like:
 
 This transformation simply _scales_ each dimension of the space by the value at the corresponding diagonal of the matrix.
 
-> When \\(m \gt 1\\) and \\(n = 1\\) or vice versa, this is known as a **stretch**. When \\(m \lt 1\\) and \\(n = 1\\) or vice versa the transformation is sometimes referred to as a __compression__.
+> Note that when \\(m \gt 1\\) and/or \\(n \gt 1\\), our space is actually _compressed_.
 
 __Reflections__
 
@@ -723,19 +726,35 @@ Or a shear parallel to the \\(y\\) axis:
 
 \\[\begin{bmatrix} 1 & 0 \\\ k & 1\end{bmatrix} \begin{bmatrix} x  \\\ y\end{bmatrix} = \begin{bmatrix} x  \\\ kx + y\end{bmatrix}\\]
 
-# I forgot to do rotations! Add this.
+__Rotations__
 
-__Conclusions__
+Finally, we can rotate the space about the orign. For example,
 
-So, we have described the major transformations that a matrix can perform on a vector. Next, we will look at how we can combine these transformations (known as __composition__) to produce more complex matrix transformations
+\\[\begin{bmatrix} 0 & -1 \\\ 1 & 0\end{bmatrix} \begin{bmatrix} x  \\\ y\end{bmatrix} = \begin{bmatrix} y  \\\ -x\end{bmatrix}\\]
 
-#### Composition or combination of matrix transformations
+would rotate the entire space \\(90^0\\) counterclockwise.
+
+More generally, for a rotation by a angle \\(\theta\\) **clockwise** about the orgin:
+
+\\[\begin{bmatrix} \cos \theta & \sin \theta \\\ - \sin \theta & \cos \theta \end{bmatrix} \begin{bmatrix} x \\\ y\end{bmatrix} = \begin{bmatrix} x \cos \theta + y \sin \theta  \\\  - x \sin \theta + y \cos \theta\end{bmatrix}\\]
+
+and for a rotation by a angle \\(\theta\\) **counterclockwise** about the orgin
+
+\\[\begin{bmatrix} \cos \theta & - \sin \theta \\\ \sin \theta & \cos \theta \end{bmatrix} \begin{bmatrix} x \\\ y\end{bmatrix} = \begin{bmatrix} x \cos \theta - y \sin \theta  \\\  x \sin \theta + y \cos \theta\end{bmatrix}\\]
+
+#### Conclusions
+
+In this section, we described the major transformations that a matrix can perform on a vector. Next, we will look at how we can combine these transformations (known as __composition__) to produce more complex matrix transformations
+
+### Composition or combination of matrix transformations
+
+> Watch [this](https://youtu.be/XkY2DOUCWMU) video before reading through this section.
 
 So what is the point of introducing these different geometric transformations in this class? Well, if you want to do any kind of _shape_ alteration, say of all the pixels in an image, or a face, then you can always make that shape change out of some combination of _rotations_, _shears_, _stretches_, and _inverses_.
 
 > One example where these geometric transformations may be useful is in [**facial recognition**](http://www.wikiwand.com/en/Facial_recognition_system), where we may preprocess every image by transforming it so that the person(s) face(s) are directly facing the camera.
 
-Lets illustration this _composition_ of matrix transformations with an example. Here, we will first apply a \\(90^o\\) rotation about the \\(x\\)-axis, and then a shear parallel to the \\(x\\)-axis. Let the first transformation matrix be \\(A_1\\):
+Lets illustrate this _composition_ of matrix transformations with an example. Here, we will first apply a \\(90^o\\) rotation clockwise about the \\(x\\)-axis, and then a shear parallel to the \\(x\\)-axis. Let the first transformation matrix be \\(A_1\\):
 
 \\[\begin{bmatrix} 0 & 1  \\\ -1 & 0\end{bmatrix} \begin{bmatrix} x  \\\ y\end{bmatrix} = \begin{bmatrix} y  \\\ -x\end{bmatrix}\\]
 
@@ -769,11 +788,9 @@ The take home message here is that the transformation \\(A_2 \cdot (A_1 \cdot r)
 
 As it turns out, the key to solving simultaneous equation problems is appreciating how vectors are _transformed_ by matrices, which is at the the heart of linear algebra.
 
-> These videos, [here](https://youtu.be/kYB8IZa5AuE) and [here](https://youtu.be/XkY2DOUCWMU), correspond nicely with this section and really help to understanding matrix transformations and composition of matrix transformations.
+##Matrix inverses
 
-### Matrix inverses
-
-#### Solving the apples and bananas problem: Gaussian elimination
+###Solving the apples and bananas problem: Gaussian elimination
 
 We're finally going to present a way to solve the _apples and bananas_ problem. Along the way, we're going to find out about a thing called the [**inverse**](http://www.wikiwand.com/en/Invertible_matrix) of a matrix and a method for finding it. First, recall our probelm in matrix form:
 
@@ -815,7 +832,7 @@ __Conclusions__
 
 As it turns out, we didn't really have to compute the inverse at all. Although we showed the process for some vectors \\(r\\) and \\(s\\), we can use it in the general case to solve for any linear equation of the form \\(A\cdot r =   s\\). This actually one of the most computationally efficient ways to solve this problem, and it's going to work every time.
 
-#### Going from Gaussian elimination to finding the inverse matrix
+###Going from Gaussian elimination to finding the inverse matrix
 
 Now, let's think about how we can apply this idea of _elimination_ to find the inverse matrix, which solves the more general problem no matter what vectors I write down on the right hand side.
 
@@ -879,7 +896,7 @@ __Conclusions__
 
 We have figured out how to solve by sets of linear equations in the general case, by a procedure we can implement in a computer really easily (known as [**Gaussian elimination**](http://www.wikiwand.com/en/Gaussian_elimination)), and we've generalized this method to the to find the **inverse** of a matrix, regardless of what is on the right hand side of our system of equations.
 
-### Special matrices
+##Special matrices
 
 In the final section of this module, we're going to look at a property of a matrix called the [**determinant**](http://www.wikiwand.com/en/Determinant).
 
@@ -959,7 +976,7 @@ So this matrix, when applied to our vector space, actually _collapses it onto a 
 
 ![](img/determinant_4.png)
 
-#### What the determinant means numerically
+###What the determinant means numerically
 
 Now, let's turn back to our row-echelon form, and take this set of simultaneous equations here:
 
@@ -989,7 +1006,7 @@ So we've shown that where the basis vectors describing a matrix aren't linearly 
 
 > Don't totally get this, how is it clear that the determinant is 0?
 
-#### Summary
+###Summary
 
 So what we've done in this last video in this module is look at the determinant, how much we grow space, the area change. We've also looked at the special case where the determinant is zero and found that that means that the basis vectors aren't linearly independent, which in turn means that the inverse doesn't exist. So in this first module on matrices, what we've done is define what a matrix is, it's something that transforms space. We've looked at different archetypes of matrices, like **rotations**, and **inverses**, and **stretches**, and **shears**, and how to combine them by doing successive transformations, matrix multiplication or **composition**. Then, we've looked at how to solve systems of linear equations by elimination and how to find **inverses**. And then finally, we've looked at **determinants** and **linear independence**.
 
@@ -1004,9 +1021,9 @@ In Module 4, we continue our discussion of matrices; first we think about how to
 - Formulate code for mappings based on these transformation matrices
 - Write code to find an orthonormal basis set computationally
 
-### Matrices as objects that map one vector onto another
+##Matrices as objects that map one vector onto another
 
-#### Introduction to Einstein summation convention and the symmetry of the dot product
+###Introduction to Einstein summation convention and the symmetry of the dot product
 
 There's is an different, important way to write matrix transformations down that we have not yet discussed. It's called the [**Einstein's Summation Convention**](http://www.wikiwand.com/en/Einstein_notation). In this convention, we write down the actual operations on the elements of a matrix, which is useful when you're coding or programming. It also lets us see something neat about the dot product, and it lets us deal with _non-square_ matrices.
 
@@ -1053,9 +1070,9 @@ __Conclusions__
 
 In this section, we introduced [**Einstein's Summation Convention**](http://www.wikiwand.com/en/Einstein_notation), which is a compact and computationally useful (but not very visually intuitive) way to write down matrix operations. This led to a discussion on the similarities between the dot product and matrix multiplication, where we noticed a connection between **matrix multiplication**, and the **dot product**, which itself has a geometric understanding as the concept of **projection**, i.e. projecting one vector onto another. This allows us to think about matrix multiplication _with a vector_ as being the projection of that vector _onto the vectors composing the matrix_ (i.e. the columns of the matrix).
 
-### Matrices transform into the new basis vector set
+##Matrices transform into the new basis vector set
 
-#### Matrices changing basis
+###Matrices changing basis
 
 We have said before that the _columns_ of a transformation matrix are the _axes_ of the new basis vectors of the mapping in my coordinate system. We're now going to spend a little while looking at how to transform a vector _from one set of basis vectors to another_.
 
@@ -1097,7 +1114,7 @@ Not orthogonal, use matrix multiplication. Orthogonal, use projection product.
 
 > Closest corresponding 3Blue1Brown video for this section is [here](https://youtu.be/P2LTAUO1TdA).
 
-#### Doing a transformation in a changed basis
+###Doing a transformation in a changed basis
 
 Lets discuss the process of applying a transformation in a changed basis. Say again that the basis vectors of coordinate system \\(\text{CS}_2\\) from the perspective of coordinate system \\(\text{CS}_1\\) are:
 
@@ -1135,9 +1152,9 @@ So, this operation could be used to first change the basis of a vector in \\(\te
 
 This operation essentially builds on the previous operation to return the transformed output vector, \\({c_1}'\\) to \\(\text{CS}_2\\), that is it returns \\({c_2}'\\), where \\({c_2}'\\).
 
-### Making multiple mapping, deciding if these are reversible
+##Making multiple mapping, deciding if these are reversible
 
-#### Orthogonal matrices
+###Orthogonal matrices
 
 It is very useful to compose a transformation matrix whose column and row vectors make up a _new basis_, with the additional constraint of making all of these component vectors orthogonal. Such a square matrix of  orthonormal columns and rows is known as an [**orthogonal matrix**](http://www.wikiwand.com/en/Orthogonal_matrix).
 
@@ -1206,9 +1223,9 @@ One final note. If we arrange the bases vectors in the correct order, then the _
 
 An easy way to check if they aren't in the right order, is to check if the determinant is minus one. This means we've transformed our space from right to left handed orientation. All we have to do to remedy this is to exchange a pair of vectors in \\(A\\) such that \\(|A| = 1\\).
 
-### Recognizing mapping matrices and applying these to data
+##Recognizing mapping matrices and applying these to data
 
-#### The Gram–Schmidt process
+###The Gram–Schmidt process
 
 In the last section, we motivated the idea that life is much easier if we can construct an orthonormal basis vector set, but we haven't talked about how to do it. In this section, we will explore just that.
 
@@ -1248,16 +1265,16 @@ That's going to be the component v3 that's made up of e1's, minus v3 dotted with
 
 Eigenvectors are particular vectors that are unrotated by a transformation matrix, and eigenvalues are the amount by which the eigenvectors are stretched. These special 'eigen-things' are very useful in linear algebra and will let us examine Google's famous PageRank algorithm for presenting web search results. Then we'll apply this in code, which will wrap up the course.
 
-#### Learning Objectives
+###Learning Objectives
 
 - Identify geometrically what an eigenvector/value is
 - Apply mathematical formulation in simple cases
 - Build an intuition of larger dimensional eigensystems
 - Write code to solve a large dimensional eigen problem
 
-### What are eigen-things?
+##What are eigen-things?
 
-#### What are eigenvalues and eigenvectors?
+###What are eigenvalues and eigenvectors?
 
 The word, "eigen" is perhaps most usefully translated from the German as meaning _characteristic_. So when we talk about an _eigenproblem_, we're talking about finding the _characteristic properties of something_. But characteristic of what? This module, like the previous weeks, will try and explain this concept of _"eigen-ness"_ primarily through a geometric interpretation, which allows us to discuss images rather than immediately getting tangled up in the maths.
 
@@ -1289,9 +1306,9 @@ __Conclusions__
 
 In this lecture, we've already covered almost all of what you need to know about eigenvectors and eigenvalues. Although we've only been working in two dimensions so far, the concept is exactly the same in three or more dimensions. In the rest of the module, we'll be having a look at some special cases, as well as discussing how to describe what we've observed in more mathematical terms.
 
-### Getting into the detail of eigenproblems
+##Getting into the detail of eigenproblems
 
-#### Special eigen-cases
+###Special eigen-cases
 
 As we saw previously, **eigenvectors** are those which lie along the same span both _before and after_ applying a linear transform to a space. **Eigenvalues** are simply the amount that each of those vectors has been _stretched_ in the process. In this section, we're going to look at **three** special cases to make sure the intuition we've built so far is robust, and then we're going to try and extend this concept into three dimensions.
 
@@ -1319,7 +1336,7 @@ Before we do, let's just take a look at one quick example in 3D. Clearly, scalin
 
 In this video, we've covered a range of special cases, which I hope have prompted the questions in your mind about how we're going to go about writing a formal definition of an eigen-problem. And this is exactly what we're going to be discussing next time. See you then.
 
-#### Calculating eigenvectors
+###Calculating eigenvectors
 
 At this point, we should now have a reasonable feeling for what an eigen-problem looks like, at least geometrically. In this section, we're going to formalize this concept into an algebraic expression, which will allow us to calculate eigenvalues and eigenvectors whenever they exist. Once you've understood this method, we'll be in a good position to see why you should be glad that computers can do this for you.
 
@@ -1403,9 +1420,9 @@ Despite all the fun that we've just been having, the truth is that you will almo
 
 In this sections, we translated our geometrical understanding of eigenvectors into a robust mathematical expression, and validated it on a few test cases. But I hope that I've also convinced you that working through lots of eigen-problems, as is often done in engineering undergraduate degrees, is not a good investment of your time if you already understand the underlying concepts. This is what computers are for. Next video, we'll be referring back to the concept of basis change to see what magic happens when you use eigenvectors as your basis. See you then.
 
-### When changing to the eigenbasis is really useful
+##When changing to the eigenbasis is really useful
 
-#### Changing to the eigenbasis
+###Changing to the eigenbasis
 
 So now that we know what eigenvectors are and how to calculate them, we can combine this idea with a concept of changing basis which was covered earlier in the course. What emerges from this synthesis is a particularly powerful tool for performing efficient matrix operations called [**diagonalisation**](http://www.wikiwand.com/en/Matrix_diagonalization). Sometimes, we need to apply the same matrix multiplication many times.
 
@@ -1461,9 +1478,9 @@ __Conclusions__
 
 This result brings together many of the ideas that we've encountered so far in this course. Check out [this](https://www.coursera.org/learn/linear-algebra-machine-learning/lecture/zYzjM/eigenbasis-example) video, where we'll work through a short example just to ensure that this approach lines up with our expectations when applied to a simple case.
 
-### Making the PageRank algorithm
+##Making the PageRank algorithm
 
-#### PageRank
+###PageRank
 
 The final topic of this module on Eigenproblems, as well as the final topic of this course as a whole, will focus on an algorithm called [**PageRank**](http://www.wikiwand.com/en/PageRank). This algorithm was famously published by and named after Google founder Larry Page and colleagues in 1998. And was used by Google to help them decide which order to display their websites when they returned from search. The central assumption underpinning page rank is that the importance of a website is related to its links to and from other websites, and somehow Eigen theory comes up.
 
@@ -1559,4 +1576,4 @@ We then looked at basis transformations again using matrices, and looked at how 
 
 So Sam and I and all of us on the team here at Imperial really hope you've enjoyed this course and it's been valuable to you. Of course, this course is intended to link very closely to its companions on multivariate calculus and on machine learning. So we hope you'll check those out as well. And of course whether you do that or not, we wish you the very best of the future, whatever your future endeavor.
 
-### Multivariate Calculus
+##Multivariate Calculus
