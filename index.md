@@ -11,7 +11,7 @@ I will do my best to include links to Wikipedia for every concept/definition int
 
 Full credit to the team behind the [Mathematics for Machine Learning Specialization](https://www.coursera.org/learn/linear-algebra-machine-learning) course on [Coursera](https://www.coursera.org) for creating such an awesome resource. I highly encourage anyone who needs to brush up on their mathematics for machine learning to check that course out.
 
-##Attribution
+## Attribution
 
 Just like the [Mathematics for Machine Learning Specialization](https://www.coursera.org/learn/linear-algebra-machine-learning), This work is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).
 
@@ -788,9 +788,9 @@ The take home message here is that the transformation \\(A_2 \cdot (A_1 \cdot r)
 
 As it turns out, the key to solving simultaneous equation problems is appreciating how vectors are _transformed_ by matrices, which is at the the heart of linear algebra.
 
-##Matrix inverses
+## Matrix inverses
 
-###Solving the apples and bananas problem: Gaussian elimination
+### Solving the apples and bananas problem: Gaussian elimination
 
 We're finally going to present a way to solve the _apples and bananas_ problem. Along the way, we're going to find out about a thing called the [**inverse**](http://www.wikiwand.com/en/Invertible_matrix) of a matrix and a method for finding it. First, recall our probelm in matrix form:
 
@@ -832,7 +832,7 @@ __Conclusions__
 
 As it turns out, we didn't really have to compute the inverse at all. Although we showed the process for some vectors \\(r\\) and \\(s\\), we can use it in the general case to solve for any linear equation of the form \\(A\cdot r =   s\\). This actually one of the most computationally efficient ways to solve this problem, and it's going to work every time.
 
-###Going from Gaussian elimination to finding the inverse matrix
+### Going from Gaussian elimination to finding the inverse matrix
 
 Now, let's think about how we can apply this idea of _elimination_ to find the inverse matrix, which solves the more general problem no matter what vectors I write down on the right hand side.
 
@@ -896,7 +896,7 @@ __Conclusions__
 
 We have figured out how to solve by sets of linear equations in the general case, by a procedure we can implement in a computer really easily (known as [**Gaussian elimination**](http://www.wikiwand.com/en/Gaussian_elimination)), and we've generalized this method to the to find the **inverse** of a matrix, regardless of what is on the right hand side of our system of equations.
 
-##Special matrices
+## Special matrices
 
 In the final section of this module, we're going to look at a property of a matrix called the [**determinant**](http://www.wikiwand.com/en/Determinant).
 
@@ -976,7 +976,7 @@ So this matrix, when applied to our vector space, actually _collapses it onto a 
 
 ![](img/determinant_4.png)
 
-###What the determinant means numerically
+### What the determinant means numerically
 
 Now, let's turn back to our row-echelon form, and take this set of simultaneous equations here:
 
@@ -1006,7 +1006,7 @@ So we've shown that where the basis vectors describing a matrix aren't linearly 
 
 > Don't totally get this, how is it clear that the determinant is 0?
 
-###Summary
+### Summary
 
 So what we've done in this last video in this module is look at the determinant, how much we grow space, the area change. We've also looked at the special case where the determinant is zero and found that that means that the basis vectors aren't linearly independent, which in turn means that the inverse doesn't exist. So in this first module on matrices, what we've done is define what a matrix is, it's something that transforms space. We've looked at different archetypes of matrices, like **rotations**, and **inverses**, and **stretches**, and **shears**, and how to combine them by doing successive transformations, matrix multiplication or **composition**. Then, we've looked at how to solve systems of linear equations by elimination and how to find **inverses**. And then finally, we've looked at **determinants** and **linear independence**.
 
@@ -1021,9 +1021,9 @@ In Module 4, we continue our discussion of matrices; first we think about how to
 - Formulate code for mappings based on these transformation matrices
 - Write code to find an orthonormal basis set computationally
 
-##Matrices as objects that map one vector onto another
+## Matrices as objects that map one vector onto another
 
-###Introduction to Einstein summation convention and the symmetry of the dot product
+### Introduction to Einstein summation convention and the symmetry of the dot product
 
 There's is an different, important way to write matrix transformations down that we have not yet discussed. It's called the [**Einstein's Summation Convention**](http://www.wikiwand.com/en/Einstein_notation). In this convention, we write down the actual operations on the elements of a matrix, which is useful when you're coding or programming. It also lets us see something neat about the dot product, and it lets us deal with _non-square_ matrices.
 
@@ -1070,9 +1070,9 @@ __Conclusions__
 
 In this section, we introduced [**Einstein's Summation Convention**](http://www.wikiwand.com/en/Einstein_notation), which is a compact and computationally useful (but not very visually intuitive) way to write down matrix operations. This led to a discussion on the similarities between the dot product and matrix multiplication, where we noticed a connection between **matrix multiplication**, and the **dot product**, which itself has a geometric understanding as the concept of **projection**, i.e. projecting one vector onto another. This allows us to think about matrix multiplication _with a vector_ as being the projection of that vector _onto the vectors composing the matrix_ (i.e. the columns of the matrix).
 
-##Matrices transform into the new basis vector set
+## Matrices transform into the new basis vector set
 
-###Matrices changing basis
+### Matrices changing basis
 
 We have said before that the _columns_ of a transformation matrix are the _axes_ of the new basis vectors of the mapping in my coordinate system. We're now going to spend a little while looking at how to transform a vector _from one set of basis vectors to another_.
 
@@ -1114,7 +1114,7 @@ Not orthogonal, use matrix multiplication. Orthogonal, use projection product.
 
 > Closest corresponding 3Blue1Brown video for this section is [here](https://youtu.be/P2LTAUO1TdA).
 
-###Doing a transformation in a changed basis
+### Doing a transformation in a changed basis
 
 Lets discuss the process of applying a transformation in a changed basis. Say again that the basis vectors of coordinate system \\(\text{CS}_2\\) from the perspective of coordinate system \\(\text{CS}_1\\) are:
 
@@ -1152,9 +1152,9 @@ So, this operation could be used to first change the basis of a vector in \\(\te
 
 This operation essentially builds on the previous operation to return the transformed output vector, \\({c_1}'\\) to \\(\text{CS}_2\\), that is it returns \\({c_2}'\\), where \\({c_2}'\\).
 
-##Making multiple mapping, deciding if these are reversible
+## Making multiple mapping, deciding if these are reversible
 
-###Orthogonal matrices
+### Orthogonal matrices
 
 It is very useful to compose a transformation matrix whose column and row vectors make up a _new basis_, with the additional constraint of making all of these component vectors orthogonal. Such a square matrix of  orthonormal columns and rows is known as an [**orthogonal matrix**](http://www.wikiwand.com/en/Orthogonal_matrix).
 
@@ -1223,9 +1223,9 @@ One final note. If we arrange the bases vectors in the correct order, then the _
 
 An easy way to check if they aren't in the right order, is to check if the determinant is minus one. This means we've transformed our space from right to left handed orientation. All we have to do to remedy this is to exchange a pair of vectors in \\(A\\) such that \\(|A| = 1\\).
 
-##Recognizing mapping matrices and applying these to data
+## Recognizing mapping matrices and applying these to data
 
-###The Gram–Schmidt process
+### The Gram–Schmidt process
 
 In the last section, we motivated the idea that life is much easier if we can construct an orthonormal basis vector set, but we haven't talked about how to do it. In this section, we will explore just that.
 
@@ -1265,16 +1265,16 @@ That's going to be the component v3 that's made up of e1's, minus v3 dotted with
 
 Eigenvectors are particular vectors that are unrotated by a transformation matrix, and eigenvalues are the amount by which the eigenvectors are stretched. These special 'eigen-things' are very useful in linear algebra and will let us examine Google's famous PageRank algorithm for presenting web search results. Then we'll apply this in code, which will wrap up the course.
 
-###Learning Objectives
+### Learning Objectives
 
 - Identify geometrically what an eigenvector/value is
 - Apply mathematical formulation in simple cases
 - Build an intuition of larger dimensional eigensystems
 - Write code to solve a large dimensional eigen problem
 
-##What are eigen-things?
+## What are eigen-things?
 
-###What are eigenvalues and eigenvectors?
+### What are eigenvalues and eigenvectors?
 
 The word, "eigen" is perhaps most usefully translated from the German as meaning _characteristic_. So when we talk about an _eigenproblem_, we're talking about finding the _characteristic properties of something_. But characteristic of what? This module, like the previous weeks, will try and explain this concept of _"eigen-ness"_ primarily through a geometric interpretation, which allows us to discuss images rather than immediately getting tangled up in the maths.
 
@@ -1306,9 +1306,9 @@ __Conclusions__
 
 In this lecture, we've already covered almost all of what you need to know about eigenvectors and eigenvalues. Although we've only been working in two dimensions so far, the concept is exactly the same in three or more dimensions. In the rest of the module, we'll be having a look at some special cases, as well as discussing how to describe what we've observed in more mathematical terms.
 
-##Getting into the detail of eigenproblems
+## Getting into the detail of eigenproblems
 
-###Special eigen-cases
+### Special eigen-cases
 
 As we saw previously, **eigenvectors** are those which lie along the same span both _before and after_ applying a linear transform to a space. **Eigenvalues** are simply the amount that each of those vectors has been _stretched_ in the process. In this section, we're going to look at **three** special cases to make sure the intuition we've built so far is robust, and then we're going to try and extend this concept into three dimensions.
 
@@ -1336,7 +1336,7 @@ Before we do, let's just take a look at one quick example in 3D. Clearly, scalin
 
 In this video, we've covered a range of special cases, which I hope have prompted the questions in your mind about how we're going to go about writing a formal definition of an eigen-problem. And this is exactly what we're going to be discussing next time. See you then.
 
-###Calculating eigenvectors
+### Calculating eigenvectors
 
 At this point, we should now have a reasonable feeling for what an eigen-problem looks like, at least geometrically. In this section, we're going to formalize this concept into an algebraic expression, which will allow us to calculate eigenvalues and eigenvectors whenever they exist. Once you've understood this method, we'll be in a good position to see why you should be glad that computers can do this for you.
 
@@ -1420,9 +1420,9 @@ Despite all the fun that we've just been having, the truth is that you will almo
 
 In this sections, we translated our geometrical understanding of eigenvectors into a robust mathematical expression, and validated it on a few test cases. But I hope that I've also convinced you that working through lots of eigen-problems, as is often done in engineering undergraduate degrees, is not a good investment of your time if you already understand the underlying concepts. This is what computers are for. Next video, we'll be referring back to the concept of basis change to see what magic happens when you use eigenvectors as your basis. See you then.
 
-##When changing to the eigenbasis is really useful
+## When changing to the eigenbasis is really useful
 
-###Changing to the eigenbasis
+### Changing to the eigenbasis
 
 So now that we know what eigenvectors are and how to calculate them, we can combine this idea with a concept of changing basis which was covered earlier in the course. What emerges from this synthesis is a particularly powerful tool for performing efficient matrix operations called [**diagonalisation**](http://www.wikiwand.com/en/Matrix_diagonalization). Sometimes, we need to apply the same matrix multiplication many times.
 
@@ -1478,9 +1478,9 @@ __Conclusions__
 
 This result brings together many of the ideas that we've encountered so far in this course. Check out [this](https://www.coursera.org/learn/linear-algebra-machine-learning/lecture/zYzjM/eigenbasis-example) video, where we'll work through a short example just to ensure that this approach lines up with our expectations when applied to a simple case.
 
-##Making the PageRank algorithm
+## Making the PageRank algorithm
 
-###PageRank
+### PageRank
 
 The final topic of this module on Eigenproblems, as well as the final topic of this course as a whole, will focus on an algorithm called [**PageRank**](http://www.wikiwand.com/en/PageRank). This algorithm was famously published by and named after Google founder Larry Page and colleagues in 1998. And was used by Google to help them decide which order to display their websites when they returned from search. The central assumption underpinning page rank is that the importance of a website is related to its links to and from other websites, and somehow Eigen theory comes up.
 
@@ -1576,4 +1576,4 @@ We then looked at basis transformations again using matrices, and looked at how 
 
 So Sam and I and all of us on the team here at Imperial really hope you've enjoyed this course and it's been valuable to you. Of course, this course is intended to link very closely to its companions on multivariate calculus and on machine learning. So we hope you'll check those out as well. And of course whether you do that or not, we wish you the very best of the future, whatever your future endeavor.
 
-##Multivariate Calculus
+# Multivariate Calculus
