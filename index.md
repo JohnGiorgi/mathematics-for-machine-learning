@@ -828,6 +828,9 @@ We then perform two steps of [**back substitution**](http://www.wikiwand.com/en/
 
 We can then read the solution right from the matrices \\(a = 5\\), \\(b = 4\\), \\(c = 2\\).
 
+> Step by step [video](https://youtu.be/2j5Ic2V7wq4) by patrickJMT,
+ for solving a 3 linear equation system using Gaussian Elimination
+
 __Conclusions__
 
 As it turns out, we didn't really have to compute the inverse at all. Although we showed the process for some vectors \\(r\\) and \\(s\\), we can use it in the general case to solve for any linear equation of the form \\(A\cdot r =   s\\). This actually one of the most computationally efficient ways to solve this problem, and it's going to work every time.
