@@ -872,7 +872,7 @@ This means that:
 
 \\[\begin{pmatrix}1 & 1 & 3 \\\ 1 & 2 & 4 \\\ 1 & 1 & 2\end{pmatrix} \begin{pmatrix}b_{11} \\\ b_{21} \\\ b_{31}\end{pmatrix} = \begin{pmatrix} 1 \\\ 0 \\\ 0\end{pmatrix}\\]
 
-Now, we could solve this by the elimination method and back substitution in just the way we did before. Then I could do it again for the second column of \\(B\\), and finally the third. In this way, we would have solved for \\(B\\), in other words, we would have found \\(A^{-1}\\).
+Now, we could solve this by the elimination method and back substitution in just the way we did before. Then, we could do it again for the second column of \\(B\\), and finally the third. In this way, we would have solved for \\(B\\), in other words, we would have found \\(A^{-1}\\).
 
 It turns out, we can actually solve for \\(B\\) all at once. So lets do that:
 
