@@ -11,7 +11,11 @@ I will do my best to include links to Wikipedia for every concept/definition int
 
 Full credit to the team behind the [Mathematics for Machine Learning Specialization](https://www.coursera.org/learn/linear-algebra-machine-learning) course on [Coursera](https://www.coursera.org) for creating such an awesome resource. I highly encourage anyone who needs to brush up on their mathematics for machine learning to check that course out.
 
-## Attribution
+### Notebooks
+
+[Notebooks](notebooks) contains [Jupyter](https://github.com/jupyterlab/jupyterlab) notebooks for each course in the specialization, which each contain `python` implementations for many of the discussed concepts.
+
+### Attribution
 
 Just like the [Mathematics for Machine Learning Specialization](https://www.coursera.org/learn/linear-algebra-machine-learning), This work is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).
 
@@ -107,15 +111,15 @@ With linear algebra (much like trigonometry, for example), there are a handful o
 
 ## Vectors
 
+The first thing we need to do in this course on linear algebra is to get a handle on **vectors**, which will turn out to be really useful to us in solving the linear algebra problems we introduced earlier (along with many more!). That is, problems described by equations which are _linear in their coefficients_, such as most fitting parameters.
+
 > This section maps most closely the the set of Khan Academy courses [here](https://www.khanacademy.org/math/linear-algebra/vectors-and-spaces/vectors/v/vector-introduction-linear-algebra). Take these for more practice.
 
 ### Getting a handle on vectors
 
-> Note: this actually is not a great introduction to vectors (IMO). I recommend you first watch [this](https://youtu.be/fNk_zzaMoSs) video, then come back and read this section.
-
-The first thing we need to do in this course on linear algebra is to get a handle on **vectors**, which will turn out to be really useful to us in solving the linear algebra problems we introduced earlier (along with many more!). That is, problems described by equations which are _linear in their coefficients_, such as most fitting parameters.
-
 We're going to first step back and look in some detail at the sort of things we're trying to do with data. And why those vectors you first learned about in high school were even relevant. This will hopefully make all the work with vectors later on in the course a lot more intuitive.
+
+> Note: this actually is not a great introduction to vectors (IMO). I recommend you first watch [this](https://youtu.be/fNk_zzaMoSs) video, then come back and read this section.
 
 Let's go back to that simpler problem from the last video, the histogram distribution of heights of people in the population:
 
@@ -792,7 +796,7 @@ As it turns out, the key to solving simultaneous equation problems is appreciati
 
 In this section, we are finally going to present a way to solve the _apples and bananas_ problem with matrices. Along the way, we're going to find out about a thing called the [**inverse**](http://www.wikiwand.com/en/Invertible_matrix) of a matrix and a method for finding it.
 
-> For more practice with matrix inverses, see Khan Academy sections [here](https://www.khanacademy.org/math/linear-algebra/matrix-transformations/inverse-transformations/v/linear-algebra-introduction-to-the-inverse-of-a-function) and [here](https://www.khanacademy.org/math/linear-algebra/matrix-transformations/inverse-of-matrices/v/linear-algebra-deriving-a-method-for-determining-inverses).
+> Watch [this](https://youtu.be/uQhTuRlWMxw) video before reading this section. For more practice with matrix inverses, see Khan Academy sections [here](https://www.khanacademy.org/math/linear-algebra/matrix-transformations/inverse-transformations/v/linear-algebra-introduction-to-the-inverse-of-a-function) and [here](https://www.khanacademy.org/math/linear-algebra/matrix-transformations/inverse-of-matrices/v/linear-algebra-deriving-a-method-for-determining-inverses).
 
 ### Gaussian elimination: Solving the apples and bananas problem
 
@@ -912,7 +916,7 @@ We have figured out how to solve sets of linear equations in the general case, b
 
 ## Special matrices
 
-In the final section of this module, we're going to look at a property of a matrix called the [**determinant**](http://www.wikiwand.com/en/Determinant).
+In the final section of this week, we're going to look at a property of a matrix called the [**determinant**](http://www.wikiwand.com/en/Determinant).
 
 > The **determinant** is a value that can be computed from the elements of a [**square matrix**](http://www.wikiwand.com/en/Square_matrix#Square_matrices). The determinant of a matrix A is denoted \\(det(A)\\), \\(det A\\), or \\(\vert A \vert\\). Geometrically, it can be viewed as the scaling factor of the [**linear transformation**](http://www.wikiwand.com/en/Linear_map) described by the matrix.
 
@@ -1106,7 +1110,7 @@ The components of the resulting vector would define its position in \\(\text{CS}
 
 All we need to do to change basis in the reverse case is to multiply a vector in one coordinate system by the inverse of the matrix containing the basis vectors of another.
 
-\\[\text{vector in CS}_2 = \text{CS}_{21}^{-1} \cdot \text{vector in CS}_1\\]
+\\[\text{vector in CS}_{2} = \text{CS}_{21}^{-1} \cdot \text{vector in CS}_{1}\\]
 
 E.g.,
 
@@ -1158,10 +1162,12 @@ Then, we can apply the transformation:
 
 So, this operation could be used to first change the basis of a vector in \\(\text{CS}_2\\) to \\(\text{CS}_1\\) and then apply some transformation to that vector to give us an output vector. What if, once we obtained this output vector, we wanted to change its basis _back_ to \\(\text{CS}_2\\)?
 
+\\[{c_2}' = \text{CS}_{21}^{-1} \cdot R \cdot \text{CS}_{21} \cdot {c_2}\\]
 
-\\[ {c_2}' = \text{CS}_{21}^{-1} \cdot R \cdot \text{CS}_{21} \cdot  {c_2}\\]
-\\[ {c_2}' = \frac{1}{2} \begin{bmatrix}1 & -1 \\\ -1 & 3\end{bmatrix} \frac{1}{\sqrt{2}}\begin{bmatrix}1 & -1 \\\ 1 & 1\end{bmatrix} \begin{bmatrix}3 & 1 \\\ 1 & 1\end{bmatrix} \begin{bmatrix}x \\\ y\end{bmatrix}\\]
+\\[{c_2}' = \frac{1}{2} \begin{bmatrix}1 & -1 \\\ -1 & 3\end{bmatrix} \frac{1}{\sqrt{2}}\begin{bmatrix}1 & -1 \\\ 1 & 1\end{bmatrix} \begin{bmatrix}3 & 1 \\\ 1 & 1\end{bmatrix} \begin{bmatrix}x \\\ y\end{bmatrix}\\]
+
 \\[= \frac{1}{2} \begin{bmatrix}1 & -1 \\\ -1 & 3\end{bmatrix}\frac{1}{\sqrt{2}}\begin{bmatrix}2 & 0 \\\ 4 & 2\end{bmatrix} \begin{bmatrix}x \\\ y\end{bmatrix}\\]
+
 \\[= \frac{1}{\sqrt{2}}\begin{bmatrix}-1 & -1 \\\ 5 & 3\end{bmatrix} \begin{bmatrix}x \\\ y\end{bmatrix}\\]
 
 This operation essentially builds on the previous operation to return the transformed output vector, \\({c_1}'\\) to \\(\text{CS}_2\\), that is it returns \\({c_2}'\\), where \\({c_2}'\\).
@@ -1251,11 +1257,11 @@ but they aren't orthogonal to each other or of unit length. Our life would proba
 
  Let's take arbitrarily, the first vector in the set \\(v_1\\). In this first step, we're just going to normalize \\(v_1\\). So we define our eventual first basis vector \\(e_1\\), which is going to be equal to \\(v1\\), but normalized to be of unit length.
 
-\\[e_1 = \frac{v_1}{|v_1|}\\]
+\\[e_1 = \frac{v_1}{|v_1|} \\]
 
 Now, we can think of \\(v_2\\) as being composed of two things. One is a component that is in the direction of \\(e_1\\) plus a component that's perpendicular to \\(e_1\\). The component that's in the direction of \\(e_1\\) we can find by taking the vector projection \\(v_2\\) onto \\(e_1\\):
 
-\\[v_2 = (v_2 \cdot e_1) \frac{e_1}{|e_1|}\\]
+\\[v_2 = (v_2 \cdot e_1) \frac{e_1}{|e_1|} \\]
 
 > \\(|e_1|\\) is 1 so we can actually omit it.
 
@@ -1265,7 +1271,7 @@ Now, if we subtract this vector projection from \\(v_2\\) we get \\(u_2\\), a ve
 
 Finally, dividing \\(u_2\\) by its length gives us \\(e_2\\), the unit vector orthogonal to \\(e_1\\):
 
-\\[e_2 = \frac{u_2}{|u_2|}\\]
+\\[e_2 = \frac{u_2}{|u_2|} \\]
 
 Now my third vector v3 isn't a linear combination of v1 and v2, so v3 isn't in the plane defined by v1 and v2. So it's not in the plane of e1 and e2 either. So I can project v3 down, let's say something like that, onto the plane of e2 and e1, and that projection will be some vector in the plane composed of e2s and e1s. So I can then write down that v3 minus  v3 dotted with e1, e1's.
 

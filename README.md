@@ -8,6 +8,10 @@ The website can be accessed [here](https://johngiorgi.github.io/mathematics-for-
 
 Full credit to the team behind the [Mathematics for Machine Learning Specialization](https://www.coursera.org/learn/linear-algebra-machine-learning) course on [Coursera](https://www.coursera.org) for creating such an awesome resource. I highly encourage anyone who needs to brush up on their mathematics for machine learning to check that course out.
 
+### Notebooks
+
+[Notebooks](notebooks) contains [Jupyter](https://github.com/jupyterlab/jupyterlab) notebooks for each course in the specialization, which each contain `python` implementations for many of the discussed concepts.
+
 ### Attribution
 
 Just like the [Mathematics for Machine Learning Specialization](https://www.coursera.org/learn/linear-algebra-machine-learning), This work is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).
