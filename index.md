@@ -613,7 +613,7 @@ We know that we can make any (2D) vector out of a vector _sum_ of the _scaled_ v
 
 This means that the result of any _linear_ transformation is just going to be some sum of the transformed basis vectors, (\\(\hat e_1\\) and \\(\hat e_2\\) here). This is a bit hard to see but what it means is that the grid lines of our space stay _parallel_ and _evenly spaced_. They might be stretched or sheared, but the origin stays where it is and there isn't any curviness to the space, it doesn't get warped --- a consequence of our scalar addition and multiplication rules for vectors.
 
-> If you find this confusingm see if the [3Blue1Brown](https://youtu.be/kYB8IZa5AuE) video for help.
+> If you find this confusing see if the [3Blue1Brown](https://youtu.be/kYB8IZa5AuE) video for help.
 
  If we write down the matrix \\(A\\) and the vector it is transforming as \\(r\\), we can represent our apples and bananas problem introduced earlier as:
 
