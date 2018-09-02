@@ -573,7 +573,7 @@ Let's go back to that apples and bananas problem. Say we walk into a shop and we
 
 On another day and we buy 10 apples and 1 banana, and that costs me 13 euros:
 
-\\[10a + 1b = 8\\]
+\\[10a + 1b = 13\\]
 
 > Now you might say this is silly. What shop doesn't have sticker prices after all? But actually, businesses with complicated products and service agreements often use [**price discovery**](http://www.wikiwand.com/en/Price_discovery).
 
