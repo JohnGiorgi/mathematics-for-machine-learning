@@ -828,8 +828,7 @@ We then perform two steps of [**back substitution**](http://www.wikiwand.com/en/
 
 We can then read the solution right from the matrices \\(a = 5\\), \\(b = 4\\), \\(c = 2\\).
 
-> Step by step [video](https://youtu.be/2j5Ic2V7wq4) by patrickJMT,
- for solving a 3 linear equation system using Gaussian Elimination
+> If you are still feeling uneasy about using Gaussian elimination to solve a system of linear equations, see [here](https://youtu.be/2j5Ic2V7wq4) for an example walked through step-by-step example. Full credit to [PatrickJMT](http://patrickjmt.com).
 
 __Conclusions__
 
