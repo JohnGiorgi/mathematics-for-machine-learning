@@ -133,7 +133,7 @@ The closer our loss function is to zero, the better our parameters fit our data.
 
 ![](http://upload.wikimedia.org/wikipedia/commons/6/68/Gradient_ascent_%28surface%29.png)
 
-> Gradient descent on a 3D surface
+> Gradient descent on a 3D surface.
 
 This process involves computing the partial derivative of our loss function \\(w.r.t\\) to all possible parameters (also known as the [**gradient**](http://www.wikiwand.com/en/Gradient)). If our parameters are stored in a vector, \\(\begin{bmatrix}\mu&\sigma \end{bmatrix}\\), we could subtract from this vector the vector of gradients, \\(\begin{bmatrix}\frac{\partial f}{\partial \mu} & \frac{\partial f}{\partial \sigma}\end{bmatrix}\\) in order to complete the computation in (effectively) one step.
 
@@ -790,9 +790,13 @@ As it turns out, the key to solving simultaneous equation problems is appreciati
 
 ## Matrix inverses
 
-### Solving the apples and bananas problem: Gaussian elimination
+In this section, we are finally going to present a way to solve the _apples and bananas_ problem with matrices. Along the way, we're going to find out about a thing called the [**inverse**](http://www.wikiwand.com/en/Invertible_matrix) of a matrix and a method for finding it.
 
-We're finally going to present a way to solve the _apples and bananas_ problem. Along the way, we're going to find out about a thing called the [**inverse**](http://www.wikiwand.com/en/Invertible_matrix) of a matrix and a method for finding it. First, recall our probelm in matrix form:
+> For more practice with matrix inverses, see Khan Academy sections [here](https://www.khanacademy.org/math/linear-algebra/matrix-transformations/inverse-transformations/v/linear-algebra-introduction-to-the-inverse-of-a-function) and [here](https://www.khanacademy.org/math/linear-algebra/matrix-transformations/inverse-of-matrices/v/linear-algebra-deriving-a-method-for-determining-inverses).
+
+### Gaussian elimination: Solving the apples and bananas problem
+
+First, recall our apples and bananas problem in matrix form:
 
 \\[\begin{pmatrix}2 & 3 \\\ 10 & 1\end{pmatrix} \begin{bmatrix}a \\\ b\end{bmatrix} = \begin{bmatrix} 8 \\\ 3\end{bmatrix}\\]
 
@@ -800,25 +804,37 @@ Where we want to find the price of individual apples (\\(a\\)) and bananas (\\(b
 
 \\[A\cdot r =   s\\]
 
-> \\(A\\) _operates_ on vector \\(r\\) to give us \\(s\\).
+> This, in effect is saying: "\\(A\\) _operates_ on vector \\(r\\) to give us \\(s\\)".
 
-Lets take a detour and ask the following: can we find a matrix \\(A^{-1}\\) (known as the __inverse__ of \\(A\\)) such that
+To solve for \\(r\\), we need to move \\(A\\) to the other side of the equation. _But how?_. Well, to "undo" a division (and isolate \\(x\\)), you multiply by the reciprocal:
+
+\\[\frac{1}{2}x = 4\\]
+\\[\Rightarrow x = 8\\]
+
+Likewise, to undo a multiplication, we divide by the reciprocal:
+
+\\[2x = 4\\]
+\\[\Rightarrow x = 2\\]
+
+How do we _undo_ the transformation performed by \\(A\\)? The answer is to find the matrix \\(A^{-1}\\) (known as the __inverse__ of \\(A\\)) such that:
 
 \\(A^{-1}A = I\\)
 
-where \\(I\\) is the [identity matrix](http://www.wikiwand.com/en/Identity_matrix)? We call \\(A^{-1}\\) the __inverse__ of \\(A\\) because is it _reverses whatever transformation_ \\(A\\) does, giving us back \\(I\\). We note that:
+where \\(I\\) is the [identity matrix](http://www.wikiwand.com/en/Identity_matrix). We call \\(A^{-1}\\) the __inverse__ of \\(A\\) because is it _reverses whatever transformation_ \\(A\\) does, giving us back \\(I\\). We note that:
 
 \\[A^{-1}A\cdot r = A^{-1}   s\\]
 \\[\Rightarrow\ I \cdot r = A^{-1}   s\\]
 \\[\Rightarrow\   r = A^{-1}   s\\]
 
-So, if we could find the inverse of \\(A\\) (i.e. find \\(A^{-1}\\)), we can solve our problem (i.e. find \\(a\\) and \\(b\\)). We can solve for \\(A^{-1}\\) with a series of _row operations_ or _substitutions_. Let's look at a slightly more complicated problem and see how this is done:
+So, if we could find the inverse of \\(A\\) (i.e. find \\(A^{-1}\\)), we can solve our problem (i.e. find \\(a\\) and \\(b\\)). We can solve for \\(A^{-1}\\) with a series of _row operations_ or _substitutions_ (known as [**Gaussian elimination**](http://www.wikiwand.com/en/Gaussian_elimination)).
+
+Let's look at a slightly more complicated problem to see how this is done:
 
 \\[\begin{pmatrix}1 & 1 & 3 \\\ 1 & 2 & 4 \\\ 1 & 1 & 2\end{pmatrix} \begin{bmatrix}a \\\ b \\\ c\end{bmatrix} = \begin{bmatrix} 15 \\\ 21 \\\ 13\end{bmatrix}\\]
 
-We start by subtracting row 1 from rows 2 and 3, which gives us a matrix in [**row echelon form**](http://www.wikiwand.com/en/Row_echelon_form):
+We start by subtracting row 1 from rows 2 and 3, which gives us a matrix in [**row echelon form**](http://www.wikiwand.com/en/Row_echelon_form) (technically, [reduced row echelon form](http://www.wikiwand.com/en/Row_echelon_form#/Reduced_row_echelon_form)):
 
-\\[\begin{pmatrix}1 & 1 & 3 \\\ 0 & 1 & 1 \\\ 0 & 0 & -1\end{pmatrix} \begin{bmatrix}a \\\ b \\\ c\end{bmatrix} = \begin{bmatrix} 15 \\\ 6 \\\ -2\end{bmatrix}\\]
+\\[\begin{pmatrix}1 & 1 & 3 \\\ 0 & 1 & 1 \\\ 0 & 0 & 1\end{pmatrix} \begin{bmatrix}a \\\ b \\\ c\end{bmatrix} = \begin{bmatrix} 15 \\\ 6 \\\ 2\end{bmatrix}\\]
 
 We then perform two steps of [**back substitution**](http://www.wikiwand.com/en/Triangular_matrix#/Forward_and_back_substitution) to get the identify matrix:
 
@@ -830,19 +846,15 @@ We can then read the solution right from the matrices \\(a = 5\\), \\(b = 4\\), 
 
 __Conclusions__
 
-As it turns out, we didn't really have to compute the inverse at all. Although we showed the process for some vectors \\(r\\) and \\(s\\), we can use it in the general case to solve for any linear equation of the form \\(A\cdot r =   s\\). This actually one of the most computationally efficient ways to solve this problem, and it's going to work every time.
+As it turns out, we don't have to compute the inverse at all to solve a system of linear equations. Although we showed the process of Gaussian elimination for some vectors \\(r\\) and \\(s\\), we can use it in the general case to solve for any linear equation of the form \\(A\cdot r =   s\\). This actually one of the most computationally efficient ways to solve this problem, and it's going to work every time.
 
-### Going from Gaussian elimination to finding the inverse matrix
+### From Gaussian elimination to finding the inverse matrix
 
 Now, let's think about how we can apply this idea of _elimination_ to find the inverse matrix, which solves the more general problem no matter what vectors I write down on the right hand side.
 
-Say I have a 3 by 3 matrix \\(A\\) and its inverse \\(B\\) (\\(B = A^{-1})\\), then we know that:
+Say I have a 3 \\(\times\\) 3 matrix \\(A\\) and its inverse \\(B\\) (\\(B = A^{-1})\\). By the definition of the [**inverse**](http://www.wikiwand.com/en/Invertible_matrix),
 
-\\[A \cdot B = I\\]
-
-Because \\(AA^{-1} = I\\).
-
-> Note, \\(AA^{-1} = A^{-1}A = I\\).
+\\[AB = BA = I_n\\]
 
 If we use our matrix \\(A\\) from the last section:
 
@@ -850,9 +862,9 @@ If we use our matrix \\(A\\) from the last section:
 
 > Where \\(b_{ij}\\) is the element at the \\(i^{th}\\) row and \\(j^{th}\\) column of matrix \\(B\\).
 
-Now, notice that this first column of \\(B\\) is just a vector. It's a vector that describes what the \\(B\\) matrix, the inverse of A, does to space.
+we notice that the first column of \\(B\\) is just a vector. It's a vector that describes what the \\(B\\) matrix, the inverse of \\(A\\), does to space.
 
-> Actually, it's the transformation that that vector does to the x-axis
+> Actually, it's the transformation that that vector does to the x-axis.
 
 This means that:
 
@@ -890,11 +902,11 @@ Because any matrix times its identity is that matrix itself:
 
 So that's our answer. We've found the identity matrix, \\(B = A^{-1}\\) for \\(A\\), and we did this by transforming \\(A\\) into it's identity matrix via elimination and back substitution. Moreover, because \\(B\\) could be any matrix, we have solved this in the general case. The solution is the same regardless of the number of dimensions, and this leads to a computationally efficient way to invert a matrix.
 
-> There are computationally faster methods of doing what's called a **decomposition process**. And in practice what you do in any program that you write, is you simply call the solver of your problem or the function, something like `inv(A)`, and it will pick the best method by inspecting the matrix you give it and return the answer.
+> There are computationally faster methods of computing the inverse, one such method is known as  a **decomposition process**. In practice, you will simply call the solver of your problem or function, something like `inv(A)`, and it will pick the best method by inspecting the matrix you give it and return the answer.
 
 __Conclusions__
 
-We have figured out how to solve by sets of linear equations in the general case, by a procedure we can implement in a computer really easily (known as [**Gaussian elimination**](http://www.wikiwand.com/en/Gaussian_elimination)), and we've generalized this method to the to find the **inverse** of a matrix, regardless of what is on the right hand side of our system of equations.
+We have figured out how to solve sets of linear equations in the general case, by a procedure we can implement in a computer really easily (known as [**Gaussian elimination**](http://www.wikiwand.com/en/Gaussian_elimination)), and we've generalized this method to the to find the **inverse** of a matrix, regardless of what is on the right hand side of our system of equations.
 
 ## Special matrices
 
