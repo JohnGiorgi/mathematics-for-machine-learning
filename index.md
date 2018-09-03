@@ -11,11 +11,11 @@ I will do my best to include links to Wikipedia for every concept/definition int
 
 Full credit to the team behind the [Mathematics for Machine Learning Specialization](https://www.coursera.org/learn/linear-algebra-machine-learning) course on [Coursera](https://www.coursera.org) for creating such an awesome resource. I highly encourage anyone who needs to brush up on their mathematics for machine learning to check that course out.
 
-### Notebooks
+## Notebooks
 
 [Notebooks](notebooks) contains [Jupyter](https://github.com/jupyterlab/jupyterlab) notebooks for each course in the specialization, which each contain `python` implementations for many of the discussed concepts.
 
-### Attribution
+## Attribution
 
 Just like the [Mathematics for Machine Learning Specialization](https://www.coursera.org/learn/linear-algebra-machine-learning), This work is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).
 
@@ -617,7 +617,7 @@ We know that we can make any (2D) vector out of a vector _sum_ of the _scaled_ v
 
 This means that the result of any _linear_ transformation is just going to be some sum of the transformed basis vectors, (\\(\hat e_1\\) and \\(\hat e_2\\) here). This is a bit hard to see but what it means is that the grid lines of our space stay _parallel_ and _evenly spaced_. They might be stretched or sheared, but the origin stays where it is and there isn't any curviness to the space, it doesn't get warped --- a consequence of our scalar addition and multiplication rules for vectors.
 
-> If you find this confusing see if the [3Blue1Brown](https://youtu.be/kYB8IZa5AuE) video for help.
+> If you find this confusing see the [3Blue1Brown](https://youtu.be/kYB8IZa5AuE) video for help.
 
  If we write down the matrix \\(A\\) and the vector it is transforming as \\(r\\), we can represent our apples and bananas problem introduced earlier as:
 
@@ -918,9 +918,13 @@ We have figured out how to solve sets of linear equations in the general case, b
 
 In the final section of this week, we're going to look at a property of a matrix called the [**determinant**](http://www.wikiwand.com/en/Determinant).
 
-> The **determinant** is a value that can be computed from the elements of a [**square matrix**](http://www.wikiwand.com/en/Square_matrix#Square_matrices). The determinant of a matrix A is denoted \\(det(A)\\), \\(det A\\), or \\(\vert A \vert\\). Geometrically, it can be viewed as the scaling factor of the [**linear transformation**](http://www.wikiwand.com/en/Linear_map) described by the matrix.
+> The **determinant** is a value that can be computed from the elements of a [**square matrix**](http://www.wikiwand.com/en/Square_matrix#Square_matrices). The determinant of a matrix \\(A\\) is denoted \\(det(A)\\), \\(det A\\), or \\(\vert A \vert\\). Geometrically, it can be viewed as the scaling factor of the [**linear transformation**](http://www.wikiwand.com/en/Linear_map) described by the matrix.
 
 We'll also look at what happens when a matrix _doesn't_ have linearly independent basis vectors.  
+
+> Watch [this](https://youtu.be/Ip3X9LOh2dk) video before reading this section. For more practice with matrix inverses, see Khan Academy sections [here](https://www.khanacademy.org/math/linear-algebra/matrix-transformations/inverse-of-matrices/v/linear-algebra-deriving-a-method-for-determining-inverses) and [here](https://www.khanacademy.org/math/linear-algebra/matrix-transformations/determinant-depth/v/linear-algebra-determinant-when-row-multiplied-by-scalar).
+
+### The determinant
 
 Let's start by looking at the simple matrix:
 
@@ -931,7 +935,11 @@ If we multiply this matrix by our basis vectors \\(\hat e_1\\) and  \\(\hat e_2\
 \\[\hat e_1' = \begin{bmatrix} a \\\ 0 \end{bmatrix}\\]
 \\[\hat e_2' = \begin{bmatrix} 0 \\\ d \end{bmatrix}\\]
 
-So, in plain english, we have stretched our \\(x\\)-axis by a factor of \\(a\\) and our \\(y\\)-axis by a factor of \\(d\\). Notice that we have changed the area of the grid cells of the vector space by a factor of \\(ad\\). We call this number, \\(ad\\) the **determinant**.
+So, in plain english, we have stretched our \\(x\\)-axis by a factor of \\(a\\) and our \\(y\\)-axis by a factor of \\(d\\) and, therefore, scaled the area of the grid cells of the vector space by a factor of \\(ad\\).
+
+> This is a property of the fact that any linear transformation keeps grid lines parallel and evenly spaced.
+
+We call this number, \\(ad\\) the **determinant**.
 
 ![determinant_1](img/determinant_1.png)
 
@@ -939,17 +947,17 @@ Now, if I instead have a matrix:
 
 \\[\begin{pmatrix} a & b \\\ 0 & d\end{pmatrix}\\]
 
-this is still going to stretch \\(\hat e_1\\) out, by a factor of \\(a\\), _but_ on the other axis, I am going to move \\(\hat e_2\\) hat to:
+then this is still going to stretch \\(\hat e_1\\) out by a factor of \\(a\\), _but_ on the other axis, I am going to move \\(\hat e_2\\) hat to:
 
 \\[\hat e_2 = \begin{pmatrix} b \\\ d\end{pmatrix}\\]
 
-What we have done is taken the original grid and stretched it along the \\(x\\)-axis by \\(a\\) and, along the \\(y\\)-axis by \\(d\\) and sheared it (parallel to the \\(x\\)-axis) \\(b\\).
-
-Notice that the area defined by our transformed vectors \\(\hat e_1'\\) and  \\(\hat e_2'\\) is just the base times the perpendicular height, which is still \\(ad\\), the determinant.
+What we have done is taken the original grid and stretched it along the \\(x\\)-axis by \\(a\\) and, along the \\(y\\)-axis by \\(d\\) and sheared it (parallel to the \\(x\\)-axis) by \\(b\\).
 
 ![determinant_2](img/determinant_2.png)
 
 > We've still changed the size, the scale of the space (which is what the determinant really is) by a factor of \\(ad\\).
+
+Notice that the area defined by our transformed vectors \\(\hat e_1'\\) and \\(\hat e_2'\\) is _still_ just the base times the perpendicular height, \\(ad\\) (the determinant).
 
 Lets flesh this out in the _general_ case. Say we have the matrix:
 
@@ -959,15 +967,21 @@ Multiplying this matrix by our basis vectors yields a parallelogram (stretched b
 
 ![determinant_3](img/determinant_3.png)
 
+> We find the area of this parallelogram by finding the area of the whole box the encloses it, and subtracting off combined area of the the little bits around it.
+
 The exact method for solving the area is not important (although it is pretty trivial). What is important, is that the **determinant** of \\(A\\) can be computed as \\(\vert A \vert =  ad - bc\\), and that this computation has a _geometric interpretation_.
 
-> We find the area of this parallelogram by finding the area of the whole box the encloses it, and subtracting off combined area of the the little bits around it.
+> This is the formula for the determinant of a square \\(2 \times 2\\) matrix. See [here](http://www.wikiwand.com/en/Determinant#/3_×_3_matrices) for the formula for higher dimensional matrices.
 
 Now, in school when you looked at matrices, you probably saw that you could find the inverse in the following way. For a matrix:
 
 \\[A = \begin{pmatrix} a & b \\\ c & d\end{pmatrix}\\]
 
-multiply by a matrix where you exchange the \\(a\\) and the \\(d\\), and take the minus sign on the \\(b\\) and the \\(c\\) on the off diagonal terms. Additionally multiply by a scaler, \\(ad - bc\\):
+1. Exchange \\(a\\) and the \\(d\\), and switch the sign on the \\(b\\) and the \\(c\\)
+2. Multiply \\(A\\) by this matrix
+3. Scale the transformation by \\(\frac{1}{ad - bc}\\)
+
+In the general case, this looks like:
 
 \\[\frac{1}{ad - bc} \begin{pmatrix} a & b \\\ c & d\end{pmatrix} \begin{pmatrix} d & -b \\\ -c & a\end{pmatrix} = \frac{1}{ad - bc} \begin{pmatrix} ad - bc & 0 \\\ 0 & ad - bc\end{pmatrix} = I\\]
 
@@ -977,11 +991,13 @@ This demonstrates that
 
 is in fact the inverse of the matrix \\(A\\).
 
-This helps capture what the determinant really is. It's the _amount_ by which the original matrix stretched out our vector space. In the above example, dividing by the determinant normalizes the space back to its _original_ size.
+This helps capture what the determinant really is. It's the _amount_ by which the original matrix _scaled_ vector space. In the above example, dividing by the determinant normalizes the space back to its _original_ size.
 
-> Now, we could spend a lot of time looking at an extension of the ideas of elimination and back substitution, But this is both tricky to show and derive, and is kind of pointless. Knowing how to do the operations isn't a useful skill anymore because we just type, for example,`det(A)` into a computer. From a learning perspective, it doesn't add much. If you want to know how to compute determinants by hand, then look up a [**QR decomposition**](http://www.wikiwand.com/en/QR_decomposition) online, or better yet, look in a linear algebra textbook.
+> We could spend a lot of time talking about how to solve for the derivative. However, knowing how to do the operations isn't really a useful skill. Many programming libraries (e.g. `python`) have linear algebra libraries (e.g. `Numpy`) which makes computing the derivative as easy, for example, as calling `det(A)`. If you really want to know how to compute determinants by hand, then look up a [**QR decomposition**](http://www.wikiwand.com/en/QR_decomposition) online.
 
-Now, let's think about a matrix
+#### A determinant of zero
+
+Now, let's think about the matrix
 
 \\[A = \begin{pmatrix} 1 & 2 \\\ 1 & 2\end{pmatrix}\\]
 
@@ -994,17 +1010,17 @@ So this matrix, when applied to our vector space, actually _collapses it onto a 
 
 ![](img/determinant_4.png)
 
-### What the determinant means numerically
+#### A negative determinant
 
-Now, let's turn back to our row-echelon form, and take this set of simultaneous equations here:
+A negative determinant simply means that the transformation has _flipped_ the orientation of our vector space. This is much easier to _see_ than to _explain_; check out [this](https://youtu.be/Ip3X9LOh2dk) video which presents some awesome visualizations of the determinant.
+
+#### What the determinant means numerically
+
+To drive home the numerical interpretation of the determinant, lets start with this set of simultaneous equations:
 
 \\[\begin{pmatrix} 1 & 1 & 3 \\\ 1 & 2 & 4 \\\ 2 & 3 & 7\end{pmatrix} \begin{pmatrix} a \\\ b \\\ c\end{pmatrix} = \begin{pmatrix} 12 \\\ 17 \\\ 29\end{pmatrix}\\]
 
-Now, you'll notice here that if I take the sum of the first two rows, I get the third row. Likewise, if I take the columns, if I take two times column one plus one times column two, then I'll get column three.
-
-So, thinking about the columns of this matrix as the basis vectors of some 3-dimensional space, we notice that column 3 (or basis vector (\\(\hat e_3\\)) can be represented as a linear combination of \\(\hat e_1\\) and \\(\hat e_2\\) and is therefore _linearly dependent_ on those vectors.
-
-This is going to be a problem as it will collapse our vector space from being 3D to 2D (by collapsing every point in space onto a plane). Let's see what this means numerically by trying to reduce our matrix to row-echelon form:
+You'll notice that both the _rows_ and the _columns_ are _linearly dependent_. Thinking about the columns of this matrix as the basis vectors of some 3-dimensional space, we note that this transformation collapses our vector space from being 3D to 2D (by collapsing every point in space onto a plane). Let's see what this means numerically by trying to reduce our matrix to row-echelon form:
 
 \\[\begin{pmatrix} 1 & 1 & 3 \\\ 1 & 2 & 4 \\\ 2 & 3 & 7\end{pmatrix} \begin{pmatrix} a \\\ b \\\ c\end{pmatrix} = \begin{pmatrix} 12 \\\ 17 \\\ 29\end{pmatrix}\\]
 
@@ -1012,21 +1028,29 @@ Subtract row 1 from row 2,
 
 \\[\Rightarrow \begin{pmatrix} 1 & 1 & 3 \\\ 0 & 1 & 1 \\\ 2 & 3 & 7\end{pmatrix} \begin{pmatrix} a \\\ b \\\ c\end{pmatrix} = \begin{pmatrix} 12 \\\ 5 \\\ 29\end{pmatrix}\\]
 
-Subtract row 1 + row 2 from row 3,
+Subtract row 1 plus row 2 from row 3,
 
 \\[\Rightarrow \begin{pmatrix} 1 & 1 & 3 \\\ 0 & 1 & 1 \\\ 0 & 0 & 0\end{pmatrix} \begin{pmatrix} a \\\ b \\\ c\end{pmatrix} = \begin{pmatrix} 12 \\\ 5 \\\ 0\end{pmatrix}\\]
 
-So this is row-echelon form, but we don't have a one in the final entry of the matrix (\\(0\cdot c = 0\\)). Because we don't have a solution for \\(c\\) we can't back substitute, and we can't solve my system of equations anymore.
+while the matrix is now is row-echelon form, _we don't have a final entry of the matrix_ (\\(0\cdot c = 0\\)). Because we don't have a solution for \\(c\\) we can't back substitute, and we can't solve our system of equations.
 
-> The reason we can solve this system is because we don't have enough information. In keeping whith our apples and bananas problem, imagine that when we went into buy apples and bananas and carrots the third time, we ordered just a the _sum_ of first two orders. Therefore, we didn't get any _new_ information and therefore, we don't have enough data to find out the solution for how much apples and bananas and carrots cost. This third order wasn't _linearly independent_ from our first two, in the language of matrices and vectors.
+> The reason we can't solve this system is because we don't have enough information. In keeping with our apples and bananas problem, imagine that when we went in to buy apples and bananas and carrots the third time, we ordered just a the _sum_ of first two orders. Therefore, we didn't get any _new_ information and thus don't have enough data to find out the solution for how much apples and bananas and carrots cost. This third order wasn't _linearly independent_ from our first two, in the language of matrices and vectors.
 
-So we've shown that where the basis vectors describing a matrix aren't linearly independent, then the **determinant** is _zero_, and we can't solve the system. That is because these aren't linearly independent, I don't have a determinant with any _volume_, it's now collapsed to a plane so the determinant is nought, and that means when I try my row-echelon form, I can't solve the problem. And that means I cant invert the matrix, which means I'm stuck. So in fact this matrix has no inverse, it's what's called **singular**. So, there are situations where I might want to do a transformation that collapses the number of dimensions in a space. I might want to do that sometimes, but that will come at a cost. Another way of looking at this is the inverse matrix let's me undo my transformation. It lets me get from the new vectors back to the original vectors. But if I have dumped the dimension, if I have scrapped dimension by turning 2D space into a line, or a 3D space into a plane or a line, I can't undo that anymore. I don't have enough information. So I've lost some of it in doing the transformation, I've lost that third dimension. So in general, it's worth checking before you propose a new basis vector set, and then use a matrix to transform your data vectors that this is a translation you can undo. And you do that by checking that your proposed new basis vectors are linearly independent.
+So, when the basis vectors describing a matrix aren't linearly independent, then the **determinant** is _zero_, and we can't solve the system. The loss of information when we map from \\(n\\)-dimensional to \\((n-x)\\)-dimensional space (where \\(x \ge 1\\)) means we cannot possibly know what the inverse matrix is (as it is impossible to map a lower dimensional space back to the original, higher dimensional space). When a matrix has no inverse, we say that it is **singular**.
 
-> Don't totally get this, how is it clear that the determinant is 0?
+> There are situations where we might want to do a transformation that collapses the number of dimensions in a space, but it means that we cannot possibly reverse the mapping, meaning the matrix has no inverse. This also means we cannot solve a system of linear equations defined by a singular matrix using Gaussian elimination and back substitution.
 
 ### Summary
 
-So what we've done in this last video in this module is look at the determinant, how much we grow space, the area change. We've also looked at the special case where the determinant is zero and found that that means that the basis vectors aren't linearly independent, which in turn means that the inverse doesn't exist. So in this first module on matrices, what we've done is define what a matrix is, it's something that transforms space. We've looked at different archetypes of matrices, like **rotations**, and **inverses**, and **stretches**, and **shears**, and how to combine them by doing successive transformations, matrix multiplication or **composition**. Then, we've looked at how to solve systems of linear equations by elimination and how to find **inverses**. And then finally, we've looked at **determinants** and **linear independence**.
+In the last section of this week, we took a look at the determinant, which is how much a given transformation _scales_ our space. In 2-dimensions, this can be thought as the scalar multiple appleid to any _area_ of our space, and in 3-dimensions any _volume_ of our space. We also looked at the special case where the determinant is zero and found that this means that the basis vectors aren't linearly independent, which in turn means that the inverse doesn't exist.
+
+To summarize [Week 3](#week-3-matrices-as-objects-that-operate-on-vectors), we
+
+- introduced matrices as objects that transforms space.
+- looked at different archetypes of matrices, like **rotations**, **inverses**, **stretches**, and **shears**,
+- how to combine matrices by doing successive transformations, known as m**atrix multiplication** or **composition**
+- how to solve systems of linear equations by elimination and how to find **inverses**
+- and finally, we introduced **determinants** and showed how that relates to the concept of **linear independence**.
 
 ## Week 4: Matrices Make Linear Mappings
 
