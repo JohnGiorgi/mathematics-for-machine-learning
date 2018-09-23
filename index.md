@@ -45,7 +45,7 @@ There are lots of useful web resources on **linear algebra**. Typically they go 
 
 # Week 1: Introduction to Linear Algebra
 
-In this first module we look at how linear algebra is relevant to machine learning and data science. Then we'll wind up the module with an initial introduction to vectors. Throughout, we're focussing on developing your mathematical intuition, not of crunching through algebra or doing long pen-and-paper examples. For many of these operations, there are callable functions in Python that can do the adding up - the point is to appreciate what they do and how they work so that, when things go wrong or there are special cases, you can understand why and what to do.
+In this first module we look at how linear algebra is relevant to machine learning and data science. Then we'll wind up the module with an initial introduction to vectors. Throughout, we're focussing on developing your mathematical intuition, not of crunching through algebra or doing long pen-and-paper examples. For many of these operations, there are callable functions in Python that can do the math - the point is to appreciate what they do and how they work, so that when things go wrong or there are special cases, you can understand why and what to do.
 
 _Learning Objectives_
 
@@ -164,7 +164,7 @@ We can think of a **vector** as an **object** that moves us about space. This co
 
 > At school, you probably thought of a vector as something that moved you around a physical space, but in computer and data science, we generalize that idea to think of a vector as just a list of attributes of an objects.
 
-More formally, mathematics generalizes the definition of a vector to be an object for which the following to operations are _defined_:
+More formally, mathematics generalizes the definition of a vector to be an object for which the following two operations are _defined_:
 
 1. **addition**
 2. **multiplication** by a scalar
@@ -215,7 +215,9 @@ We've also seen that although, perhaps, it's _easiest_ to think of vector operat
 
 # Week 2: Vectors are Objects that Move Around Space
 
-In this module, we will look at the types operations we can do with vectors - finding the modulus or magnitude (size), finding the angle between vectors (dot or inner product) and projecting one vector onto another. We can then examine how the entries describing a vector will depend on what vectors we use to define the axes - the basis. That will then let us determine whether a proposed set of basis vectors are what's called [**linearly independent**](http://www.wikiwand.com/en/Linear_independence). This will complete our examination of vectors, allowing us to move on to matrices and then start to solve linear algebra problems.
+In this module, we will look at the types operations we can do with vectors - finding the modulus or magnitude (size), finding the angle between vectors (dot or inner product) and projecting one vector onto another. We will then examine how the entries describing a vector will depend on what vectors we use to define the axes - the basis. That will then let us determine whether a proposed set of basis vectors are [**linearly independent**](http://www.wikiwand.com/en/Linear_independence).
+
+This will complete our examination of vectors, allowing us to move on to matrices and then to begin solving linear algebra problems.
 
 _Learning Objectives_
 
@@ -324,7 +326,7 @@ Now, we can translate this into our vector notation:
 **LHS**
 
 \\[\Rightarrow (r-s) \cdot (r-s) = r \cdot r - s \cdot r - s \cdot r - s \cdot s\\]
-\\[= \vert r\vert ^2 - 2 s \cdot r + \vert \vert s\vert ^2\\]
+\\[= \vert r\vert ^2 - 2 s \cdot r + \vert s\vert ^2\\]
 
 > \\(\vert r - s\vert ^2 = (r-s) \cdot (r-s)\\) comes straight from the definition of the dot product.
 
@@ -399,7 +401,7 @@ So far we haven't really talked about the [**coordinate system**](http://www.wik
 
 Remember that a vector (e.g. \\(r\\)) is just an object that takes us from the _origin_ to _some point in space_. This could be some _physical_ space or it could be some _data_ space, like the attributes of a house (bedrooms, price, etc.).
 
- We could use a coordinate system defined itself by vectors, such as the vectors \\(\hat{i}\\) and \\(\hat{j}\\) that we defined before. Lets give them names \\(\hat{e_1}\\) and \\(\hat{e_2}\\) instead. We will define them to be of unit lengths, meaning they're of length 1.
+ We could use a coordinate system defined itself by vectors, such as the vectors \\(\hat{i}\\) and \\(\hat{j}\\) that we defined before. Lets give them names \\(\hat{e_1}\\) and \\(\hat{e_2}\\) instead. We will define them to be of unit length, meaning they're of length 1.
 
 > The little hat denotes unit length.
 
@@ -528,7 +530,7 @@ Now, when the new basis vectors aren't orthogonal, then we won't be able to use 
 
 #### Conclusions
 
-So in this video we've talked about the dimensionality of a vector space in terms of the number of independent basis factors that it has. We found a test for independence that the set of vectors are independent if one of them is not a linear combination of the others. We've talked more importantly about what that means in terms of mapping from one space to another and how that is going to be useful in data science and machine learning.
+In this section, we've talked about the dimensionality of a vector space in terms of the number of independent basis factors that it has. We found a test for independence: vectors are independent if one of them is not a linear combination of the others. Finally, we discussed what that means to map vectors from one space to another and how that is going to be useful in data science and machine learning.
 
 ### Applications of changing basis
 
@@ -556,7 +558,7 @@ Then we've defined vector addition and scaling a vector by a number, making it b
 
 ## Week 3: Matrices as Objects that Operate on Vectors
 
-Lets now turn our attention from vectors to [**matrices**](http://www.wikiwand.com/en/Matrix_(mathematics)). First we will look at how to use matrices as tools to solve linear algebra problems, before introducing them as objects that _transform_ vectors. We will then explain how to solve systems of linear equations using matrices, which will take introduce the concept of inverse matrices and determinants. Finally, we'll look at cases of special matrices: when the determinant is zero, and where the matrix isn't invertible. Because many algorithms require invert a matrix as one of their steps, this special case is important.
+Lets now turn our attention from vectors to [**matrices**](http://www.wikiwand.com/en/Matrix_(mathematics)). First we will look at how to use matrices as tools to solve linear algebra problems, before introducing them as objects that _transform_ vectors. We will then explain how to solve systems of linear equations using matrices, which will introduce the concept of inverse matrices and determinants. Finally, we'll look at cases of special matrices: when the determinant is zero, and where the matrix isn't invertible. Because many algorithms require us to invert a matrix as one of their steps, this special case is important.
 
 **Learning Objectives**
 
@@ -617,8 +619,6 @@ We know that we can make any (2D) vector out of a vector _sum_ of the _scaled_ v
 
 This means that the result of any _linear_ transformation is just going to be some sum of the transformed basis vectors, (\\(\hat e_1\\) and \\(\hat e_2\\) here). This is a bit hard to see but what it means is that the grid lines of our space stay _parallel_ and _evenly spaced_. They might be stretched or sheared, but the origin stays where it is and there isn't any curviness to the space, it doesn't get warped --- a consequence of our scalar addition and multiplication rules for vectors.
 
-> If you find this confusing see the [3Blue1Brown](https://youtu.be/kYB8IZa5AuE) video for help.
-
  If we write down the matrix \\(A\\) and the vector it is transforming as \\(r\\), we can represent our apples and bananas problem introduced earlier as:
 
 
@@ -660,7 +660,7 @@ The take home idea here is that the matrix \\(A\\) just _tells us where the basi
 
 Lets illustrate the type of transformations we can perform with matrices with a number of examples.
 
-> Remember, in linear algebra, linear transformations can be represented by matrices
+> Remember, in linear algebra, linear transformations can be represented by matrices!
 
 We are only going to scratch the surface here and to continue to build up our intuition of viewing matrices as _functions_ that apply _transformations_ to some _input vector_.
 
@@ -684,7 +684,7 @@ If \\(m = 3\\) and \\(n=2\\), visually this looks like:
 
 This transformation simply _scales_ each dimension of the space by the value at the corresponding diagonal of the matrix.
 
-> Note that when \\(m \gt 1\\) and/or \\(n \gt 1\\), our space is actually _compressed_.
+> Note that when \\(m \lt 1\\) and/or \\(n \lt 1\\), our space is actually _compressed_ along the axes.
 
 __Reflections__
 
@@ -993,7 +993,7 @@ is in fact the inverse of the matrix \\(A\\).
 
 This helps capture what the determinant really is. It's the _amount_ by which the original matrix _scaled_ vector space. In the above example, dividing by the determinant normalizes the space back to its _original_ size.
 
-> We could spend a lot of time talking about how to solve for the derivative. However, knowing how to do the operations isn't really a useful skill. Many programming libraries (e.g. `python`) have linear algebra libraries (e.g. `Numpy`) which makes computing the derivative as easy, for example, as calling `det(A)`. If you really want to know how to compute determinants by hand, then look up a [**QR decomposition**](http://www.wikiwand.com/en/QR_decomposition) online.
+> We could spend a lot of time talking about how to solve for the determinant. However, knowing how to do the operations isn't really a useful skill. Many programming libraries (e.g. `python`) have linear algebra libraries (e.g. `Numpy`) which makes computing the determinant as easy, for example, as calling `det(A)`. If you really want to know how to compute determinants by hand, then look up a [**QR decomposition**](http://www.wikiwand.com/en/QR_decomposition) online.
 
 #### A determinant of zero
 
@@ -1054,7 +1054,7 @@ To summarize [Week 3](#week-3-matrices-as-objects-that-operate-on-vectors), we
 
 ## Week 4: Matrices Make Linear Mappings
 
-In Module 4, we continue our discussion of matrices; first we think about how to code up matrix multiplication and matrix operations using the Einstein Summation Convention, which is a widely used notation in more advanced linear algebra courses. Then, we look at how matrices can transform a description of a vector from one basis (set of axes) to another. This will allow us to, for example, figure out how to apply a reflection to an image and manipulate images. We'll also look at how to construct a convenient basis vector set in order to do such transformations. Then, we'll write some code to do these transformations and apply this work computationally.
+In Module 4, we continue our discussion of matrices; first we think about how to code up matrix multiplication and matrix operations using the Einstein Summation Convention, which is a widely used notation in more advanced linear algebra courses. Then, we look at how matrices can transform a description of a vector from one basis (set of axes) to another. This will allow us to, for example, manipulate images. We'll also look at how to construct a convenient basis vector set in order to do such transformations. Then, we'll write some code to do these transformations and apply this work computationally.
 
 **Learning Objectives**
 
@@ -1067,21 +1067,23 @@ In Module 4, we continue our discussion of matrices; first we think about how to
 
 ### Introduction to Einstein summation convention and the symmetry of the dot product
 
-There's is an different, important way to write matrix transformations down that we have not yet discussed. It's called the [**Einstein's Summation Convention**](http://www.wikiwand.com/en/Einstein_notation). In this convention, we write down the actual operations on the elements of a matrix, which is useful when you're coding or programming. It also lets us see something neat about the dot product, and it lets us deal with _non-square_ matrices.
+There is a different, important way to write matrix transformations that we have not yet discussed. It's called the [**Einstein's Summation Convention**](http://www.wikiwand.com/en/Einstein_notation). In this convention, we write down the actual operations on the elements of a matrix, which is useful when you're coding or programming. It also lets us see something neat about the dot product, and it lets us deal with _non-square_ matrices.
 
-When we started, we said that multiplying a matrix by a vector or with another matrix is a process of taking every element in each row in turn, multiplied with corresponding element in each column in the other matrix, and adding them all up and putting them in place. In Einstein's Summation Convention, we represent the matrix product \\(C = AB\\):
+When we started, we said that multiplying a matrix by a vector or with another matrix is a process of taking every element in each row of the first matrix multiplied with the corresponding element in each column of the other matrix, summing the products and putting them in place. In Einstein's Summation Convention, we represent the matrix product \\(C = AB\\):
 
 \\[\begin{pmatrix} a_{11} & a_{12} & . & . & . & a_{1n} \\\ a_{21} & a_{22} &  &  &  & . &\\\ . & & & & & .  \\\ . & & & & & .  \\\ . & & & & & . \\\ a_{n1} & . & . & . & . & a_{nm}\end{pmatrix} \begin{pmatrix} b_{11} & b_{12} & . & . & . & b_{1m} \\\ b_{21} & b_{22} &  &  &  & . &\\\ . & & & & & .  \\\ . & & & & & .  \\\ . & & & & & . \\\ b_{m1} & . & . & . & . & b_{mp}\end{pmatrix} = AB\\]
 
-As,
+as,
 
 \\[c_{ij} = a_{i1}b_{1j} + ... + a_{im}b_{mj} =  \sum_{k=1}^m a_{ik}b_{kj}\\]
 
+> To be clear, its the \\(c_{ij}\\) itself that is written Einstein's Summation Convention, not everything that comes to the right of the \\(=\\) sign.
+
 For \\(i = 1, ..., n\\) and \\(j = 1, ..., p\\), where \\(A\\) is a \\(n \times m\\) matrix, \\(B\\) is a \\(m \times p\\) matrix, and \\(C\\) is a \\(n \times p\\) matrix.
 
-This is useful when we are implementing matrix multiplication in code. Trivially, we can run three loops over \\(i\\), \\(j\\) and \\(k\\), and then use an accumulator on the \\(k\\)'s to find the elements of the product matrix \\(AB\\).  
+This is useful when we are implementing matrix multiplication in code, because it makes it obvious exactly what operations we need to perform. In this case, it should be obvious that we can run three loops over \\(i\\), \\(j\\) and \\(k\\), and then use an accumulator on the \\(k\\)'s to find the elements of the product matrix \\(AB\\).  
 
-> Now, we haven't talked about this so far but now we can see it clearly. There's no reason, so long as the matrices have the same number of entries in \\(k\\), that we need to multiply matrices of the same shape.
+> We haven't talked about this yet, but now we can see it clearly. There's no reason, so long as the matrices have the same number of entries in \\(k\\), that the matrices we multiply need to be the same shape!
 
 Let's revisit the **dot product** in light of the Einstein Summation Convention. If we've got two vectors, let's call them \\(u\\) and \\(v\\), where \\(u\\) is a column vector having elements \\(u_i\\) and \\(v\\) is another column vector having elements \\(v_i\\).
 
@@ -1092,8 +1094,6 @@ When we dot them together, we are computing the following:
 \\[  u \cdot v = \sum^n_{i=1}u_iv_i = u_1v_1 + u_2v_2 + ... + u_nv_n\\]
 
 
-> Go over what _exactly_ Einstein's Summation Convention is. There was an in-video quiz question which asked us to write the above in ESC, and this: \\(\sum^n_{i=1}u_iv_i\\) was wrong by \\(u_iv_i\\) was correct?
-
 Notice that,
 
 \\[\begin{pmatrix}u_i \\\ \vdots \\\ u_{n}\end{pmatrix} \cdot \begin{pmatrix}v_i \\\ \vdots \\\ v_n \end{pmatrix} = \begin{pmatrix}u_i & \cdots & u_{n}\end{pmatrix} \cdot \begin{pmatrix}v_i \\\ \vdots \\\ v_n \end{pmatrix}\\]
@@ -1102,11 +1102,11 @@ and so we notice that there's some equivalence between a **matrix transformation
 
 __Symmetry of the dot product__
 
-Say we have the vector \\(\hat u_1\\), with components \\(u_1\\) and \\(u_2\\). Let's imagine what happens if we dot \\(\hat u_1\\) with the basis vector \\(\hat e_1\\). We know from previous sections that this gives us the length of the projection of \\(\hat u_1\\) and \\(\hat e_1\\). But what if we do the reverse? What if we dot \\(\hat e_1\\) with \\(\hat u_1\\)? We already know that numerically, the result will be the same, as the dot product is [**commutative**](http://www.wikiwand.com/en/Commutative_property). So geometrically, we can imagine drawing a line of symmetry between the point where the two projections cross:
+Say we have the vector \\(\hat u\\), with components \\(u_1\\) and \\(u_2\\). Let's imagine what happens if we dot \\(\hat u\\) with the basis vector \\(\hat e_1\\). We know from previous sections that this gives us the length of the projection of \\(\hat u_1\\) on \\(\hat e_1\\) multiplied by the norm of \\(\hat e_1\\). But what if we do the reverse? What if we dot \\(\hat e_1\\) with \\(\hat u\\)? We already know that numerically, the result will be the same, as the dot product is [**commutative**](http://www.wikiwand.com/en/Commutative_property). So geometrically, we can imagine drawing a line of symmetry between the point where the two projections cross:
 
 ![dot_product_is_symmetric](img/dot_product_is_symmetric.png)
 
-So, previously we stated (without proof, although the numerical proof is trivial) that the dot product is commutative, and now, we have shown geometrically why that is true.
+Previously, we stated (without proof, although the numerical proof is trivial) that the dot product is commutative, and now, we have shown geometrically why that is true.
 
 __Conclusions__
 
@@ -1114,33 +1114,55 @@ In this section, we introduced [**Einstein's Summation Convention**](http://www.
 
 ## Matrices transform into the new basis vector set
 
+> Watch [this](https://youtu.be/P2LTAUO1TdA) video before reading this section. For more practice with changing basis, see [this](https://www.khanacademy.org/math/linear-algebra/alternate-bases#change-of-basis) Khan Academy section.
+
 ### Matrices changing basis
 
-We have said before that the _columns_ of a transformation matrix are the _axes_ of the new basis vectors of the mapping in my coordinate system. We're now going to spend a little while looking at how to transform a vector _from one set of basis vectors to another_.
+We have said before that the _columns_ of a transformation matrix are the _axes_ of the new basis vectors after applying the mapping. We're now going to spend a little time looking at how to transform a vector _from one set of basis vectors to another_.
 
 Let's say we have two sets of basis vectors, which define a first coordinate system (\\(\text{CS}_1)\\) and a second coordinate system (\\(\text{CS}_2)\\). Let the basis vectors of \\(\text{CS}_2\\), from the perspective of \\(\text{CS}_1\\) be:
 
+\\[\hat b_1 = \begin{bmatrix}3 \\\ 1\end{bmatrix}, \hat b_2 = \begin{bmatrix}1 \\\ 1\end{bmatrix} \\]
+
+Lets package these basis vectors into a matrix \\(\text{CS}_{21}\\), for convenience
+
 \\[\text{CS}_{21} = \begin{bmatrix}3 & 1 \\\ 1 & 1\end{bmatrix}\\]
 
-Think of these as the basis vectors in \\(\text{CS}_2\\) as they would appear in \\(\text{CS}_1\\). If we wanted to change the basis of any vectors in \\(\text{CS}_2\\) to \\(\text{CS}_1\\), we simply do:
 
-\\[\text{CS}_{21}^{} \cdot \text{vector in CS}_2 = \text{vector in CS}_1\\]
+Think of these as the basis vectors of \\(\text{CS}_2\\) as they would appear in \\(\text{CS}_1\\). If we wanted to change the basis of any vectors in \\(\text{CS}_2\\) to \\(\text{CS}_1\\), we simply do:
 
- E.g.,
+\\[\text{CS}_{21} \cdot \text{vector in CS}_2 = \text{vector in CS}_1\\]
+
+ E.g., for the vector \\(\begin{bmatrix}\frac{3}{2}  \\ \frac{1}{2}\end{bmatrix}\\) defined in terms of \\(\text{CS}_{2}\\)
 
 \\[\begin{bmatrix}3 & 1 \\\ 1 & 1\end{bmatrix} \begin{bmatrix}\frac{3}{2}  \\ \frac{1}{2}\end{bmatrix} = \begin{bmatrix}5  \\\ 2\end{bmatrix}\\]
 
-The components of the resulting vector would define its position in \\(\text{CS}_1\\). Now, how do we do the reverse? How do we _translate_ a vector in \\(\text{vector in CS}_1\\) to a vector in \text{vector in CS}_1?
+That is, a vector \\(\begin{bmatrix}\frac{3}{2}  \\ \frac{1}{2}\end{bmatrix}\\) described in \\(\text{CS}_{2}\\), is described as \\(\begin{bmatrix}5  \\\ 2\end{bmatrix}\\) in \\(\text{CS}_{1}\\). Why does this make sense? Well, you can think of \\(\text{CS}_{21}\\) as the transformation that takes the basis vectors of \\(\text{CS}_{1}\\) and moves them to the positions of the basis vectors of \\(\text{CS}_{2}\\). Applying this transformation to a vector in \\(\text{CS}_{2}\\), therefore, gives us the corresponding vector in \\(\text{CS}_{1}\\).
 
-All we need to do to change basis in the reverse case is to multiply a vector in one coordinate system by the inverse of the matrix containing the basis vectors of another.
 
-\\[\text{vector in CS}_{2} = \text{CS}_{21}^{-1} \cdot \text{vector in CS}_{1}\\]
+Now, how do we do the reverse? How do we _translate_ a vector in \\(\text{CS}_1\\) to a vector in \\(\text{CS}_2\\)? All we need to do to change basis in the reverse case is to multiply a vector in one coordinate system by the inverse of the matrix containing the basis vectors of another:
+
+\\[\text{CS}_{21}^{-1} \cdot \text{vector in CS}_{1} = \text{vector in CS}_{2}\\]
 
 E.g.,
 
-\\[\text{CS}_{21}^{-1} = \frac{1}{2}\begin{bmatrix}1 & -1 \\\ -1 & 3\end{bmatrix}\begin{bmatrix}5  \\\ 2\end{bmatrix} = \begin{bmatrix}\frac{3}{2}  \\ \frac{1}{2}\end{bmatrix}\\]
+\\[\frac{1}{2}\begin{bmatrix}1 & -1 \\\ -1 & 3\end{bmatrix}\begin{bmatrix}5  \\\ 2\end{bmatrix} = \begin{bmatrix}\frac{3}{2}  \\ \frac{1}{2}\end{bmatrix}\\]
 
-Notice that this process gave us the coordinates of the vector \\(\begin{bmatrix}5  \\\ 2\end{bmatrix}\\) in \\(\text{CS}_2\\), which is equal to the vector that we started with
+Notice that this process gave us the coordinates of the vector \\(\begin{bmatrix}\frac{3}{2}  \\ \frac{1}{2}\end{bmatrix}\\) in \\(\text{CS}_2\\), which is equal to the vector that we started with.
+
+#### Generalizing
+
+This is a little bit tricky, so lets generalize. Imagine we have two coordinate systems, "ours" and "theirs". We can translate vectors in "their" coordinate system to "our" coordinate system by applying a transformation \\(A\\), where \\(A\\) is a matrix whose columns contain the basis vectors of "their" coordinate system as they appear in "our coordinate system":
+
+\\[\text{(1) } A \cdot \text{vector in "their" coordinate system} = \text{vector in "our" coordinate system}\\]
+
+To do the reverse, i.e. take a vector in "our" coordinate system and translate it to "their" coordinate system, we simply multiply "our" vector by the inverse of A
+
+\\[\text{(2) } \text{vector in "their" coordinate system} = A^{-1} \cdot \text{vector in "our" coordinate system}\\]
+
+It should be obvious now why this is the case, we simply moved \\(A\\) over in the (1) to get (2)!
+
+
 
 __Orthonormal basis set__
 
@@ -1152,27 +1174,25 @@ __Summary__
 
 Not orthogonal, use matrix multiplication. Orthogonal, use projection product.
 
-> Watch 3Blue1Brown video on changing basis and improve these notes.
-
-> Closest corresponding 3Blue1Brown video for this section is [here](https://youtu.be/P2LTAUO1TdA).
-
 ### Doing a transformation in a changed basis
+
+> Watch the last little bit of [this](https://youtu.be/P2LTAUO1TdA?t=8m50s) video first.
 
 Lets discuss the process of applying a transformation in a changed basis. Say again that the basis vectors of coordinate system \\(\text{CS}_2\\) from the perspective of coordinate system \\(\text{CS}_1\\) are:
 
 \\[\text{CS}_{21} = \begin{bmatrix}3 & 1 \\\ 1 & 1\end{bmatrix}\\]
 
-Lets say we have a vector in \\(\text{CS}_2\\) that we want to transform:
+Say further that we have a vector in \\(\text{CS}_2\\) that we want to transform:
 
 \\[ {c_2} = \begin{bmatrix}x \\\ y\end{bmatrix}\\]
 
 And the tranformation we want to apply is:
 
-\\[R = \frac{1}{\sqrt{2}}\begin{bmatrix}1 & -1 \\\ 1 & 1\end{bmatrix}\\]
+\\[N = \frac{1}{\sqrt{2}}\begin{bmatrix}1 & -1 \\\ 1 & 1\end{bmatrix}\\]
 
 > This rotates the vector space \\(45^0\\) counter-clockwise.
 
-Say that we want to apply the tranformation \\(R\\) relative to \\(\text{CS}_1\\). So how do we apply this transformation?
+How do we apply the transformation \\(N\\) to a vector defined by the coordinate system \\(\text{CS}_{2}\\)?
 
 The first thing to do is take the vector \\({c_2}\\) and multiply it by \\(\text{CS}_{21}\\), that is, change the basis of the vector \\({c_2}\\) from \\(\text{CS}_2\\) to \\(\text{CS}_1\\):
 
@@ -1184,7 +1204,7 @@ Then, we can apply the transformation:
 \\[ {c_1}' = \frac{1}{\sqrt{2}}\begin{bmatrix}1 & -1 \\\ 1 & 1\end{bmatrix} \begin{bmatrix}3 & 1 \\\ 1 & 1\end{bmatrix} \begin{bmatrix}x \\\ y\end{bmatrix}\\]
 \\[= \frac{1}{\sqrt{2}}\begin{bmatrix}2 & 0 \\\ 4 & 2\end{bmatrix} \begin{bmatrix}x \\\ y\end{bmatrix}\\]
 
-So, this operation could be used to first change the basis of a vector in \\(\text{CS}_2\\) to \\(\text{CS}_1\\) and then apply some transformation to that vector to give us an output vector. What if, once we obtained this output vector, we wanted to change its basis _back_ to \\(\text{CS}_2\\)?
+What if, once we obtained this output vector, we wanted to change its basis _back_ to \\(\text{CS}_2\\)? Recall from the last section that we multiply the whole thing by the inverse of \\(\text{CS}_{21}^{-1}\\)
 
 \\[{c_2}' = \text{CS}_{21}^{-1} \cdot R \cdot \text{CS}_{21} \cdot {c_2}\\]
 
@@ -1194,9 +1214,33 @@ So, this operation could be used to first change the basis of a vector in \\(\te
 
 \\[= \frac{1}{\sqrt{2}}\begin{bmatrix}-1 & -1 \\\ 5 & 3\end{bmatrix} \begin{bmatrix}x \\\ y\end{bmatrix}\\]
 
-This operation essentially builds on the previous operation to return the transformed output vector, \\({c_1}'\\) to \\(\text{CS}_2\\), that is it returns \\({c_2}'\\), where \\({c_2}'\\).
+This operation essentially builds on the previous operation to return the transformed output vector, \\({c_1}'\\) relative to \\(\text{CS}_2\\), that is it returns \\({c_2}'\\), where \\({c_2}'\\) is where \\(c_2\\) ends up after in the basis \\(\text{CS}_{2}\\) after some transformation \\(M\\) has been applied.
 
-## Making multiple mapping, deciding if these are reversible
+#### Generalizing
+
+Again, this is tricky, so lets generalize. Imagine we have two coordinate systems, "ours" and "theirs". If we are given:
+
+- a vector with its basis in "their" coordinate system
+- \\(A\\), a matrix whose columns are the basis vectors of "their" coordinate system as they appear in "our" coordinate system
+- \\(M\\) some transformation, with its basis in "our" coordinate system
+
+Then,
+
+**Change the vector in "their" basis to "ours":**
+
+\\[A \cdot \text{vector in "their" coordinate system}\\]
+
+**Apply the transformation in "our" coordinate system:**
+
+\\[M \cdot A \cdot \text{vector in "their" coordinate system}\\]
+
+**Change the resulting vector back to "their" coordinate system:**
+
+\\[A^{-1} \cdot M \cdot A \cdot \text{vector in "their" coordinate system}\\]
+
+In sum, the transformation \\(A^{-1}MA\\) will take any vector in "their" coordinate system, apply some transformation in "our" coordinate system, and return the resulting vector in "their" coordinate system.
+
+## Making multiple mappings, deciding if these are reversible
 
 ### Orthogonal matrices
 
@@ -1216,7 +1260,7 @@ First, we need to define a new matrix operation called the [**transpose**](http:
 
 Formally, the _i_-th row, _j_-th column element of \\(A^T\\) is the _j_-th row, _i_-th column element of \\(A\\):
 
-\\[[A^T]_{ij} = [A^T]_{ji}\\]
+\\[[A^T]_{ij} = [A]_{ji}\\]
 
 Now let's imagine I have a \\(n \times n\\) matrix \\(A\\), with a series of column vectors which are going to be the basis vectors of the some new transformed vector space:
 
@@ -1233,7 +1277,7 @@ Lets think about what happens when we multiply \\(A\\) by its transpose, \\(A^T\
 
 \\[A^TA =  \begin{pmatrix} \begin{pmatrix}\dots & \hat a_1 & \dots\end{pmatrix} \\\ \begin{pmatrix} \dots & \hat a_2 & \dots \end{pmatrix} \\\ \vdots \\\ \begin{pmatrix} \dots & \hat a_n & \dots \end{pmatrix} \end{pmatrix}  \begin{pmatrix} \begin{pmatrix}\vdots \\\ \hat a_1 \\\ \vdots\end{pmatrix} & \begin{pmatrix} \vdots \\\ \hat a_2\\\ \vdots \end{pmatrix} & \dots \begin{pmatrix} \vdots \\\ \hat a_n\\\ \vdots \end{pmatrix} \end{pmatrix} = I_n\\]
 
-So what we notice is that in the case where \\(A\\) is composed of vectors that are _normal_ to each other and have _unit length_, (i.e. when they're **orthonormal**), then \\(A^TA = I\\). Stated another way, \\(A^T\\) in this sitation is actuall the _inverse_ of \\(A\\)! This special case is known as an **orthogonal matrix**.
+So what we notice is that in the case where \\(A\\) is composed of vectors that are _normal_ to each other and have _unit length_, (i.e. when they're **orthonormal**), then \\(A^TA = I\\). Stated another way, \\(A^T\\) in this situation is actually the _inverse_ of \\(A\\)! This special case is known as an **orthogonal matrix**.
 
 
 Another thing to note is that because all the basis vectors are of unit length, it must scale space by a _factor of one_. Stated another way, the determinant of an orthogonal matrix must be either plus or minus one.
@@ -1247,19 +1291,19 @@ Where the minus one arises if the new basis vector set _flip space around_ (from
 
 So, we could pre- or post- multiply and still get the identity. This means that the rows of the orthogonal matrix are also orthonormal to each other! So, the transpose matrix of an orthogonal basis set, is itself another orthogonal basis set.
 
-Now, remember that in the last module on vectors, we said that transforming a vector onto a new coordinate system, was just taking the projection or dot product of that vector onto each of the new bases vectors, _as long as they were orthogonal to each other_. So, if we have a vector \\(r\\) and we want to project \\(r\\) into a new set of axes, let's call them \\(\hat e_1\\) and  \\(\hat e_2\\), as long as these vectors are orthogonal to each other, then we  can project into the new vector space just by taking the dot product of \\(r\\) with \\(\hat e_2\\), and the dot product of \\(r\\) with \\(\hat e_1\\), and then we'd have its components in the new set of axis.
+Now, remember that in the last module on vectors, we said that transforming a vector onto a new coordinate system was as easy as taking the projection or dot product of that vector onto each of the new bases vectors, _as long as they were orthogonal to each other_. So, if we have a vector \\(r\\) and we want to project \\(r\\) into a new set of axes, let's call them \\(\hat e_1\\) and  \\(\hat e_2\\), as long as these vectors are orthogonal to each other, then we  can project into the new vector space just by taking the dot product of \\(r\\) with \\(\hat e_2\\), and the dot product of \\(r\\) with \\(\hat e_1\\), and then we'd have its components in the new set of axis.
 
-> Add link back up to the fleshed out example of this.
+> See [Changing basis](#changing-basis) for a walked-through example.
 
 __Conclusions__
 
-In this section, introduced the most convenient basis vector set of all, the **orthonormal bases vector set** which together can be represented as an orthogonal matrix, whose inverse is its transpose.
+In this section, we introduced the most convenient basis vector set of all, the **orthonormal bases vector set**.
 
- So, wherever possible we want to use an orthonormal basis vector set represented as a orthogonal matrix \\(A\\), when we transform our data. This set of vectors has the following properties and consequences that make it easy to work with:
+ Wherever possible we want to use an orthonormal basis vector set represented as a orthogonal matrix \\(A\\). This set of vectors has the following properties and consequences that make it easy to work with:
 
- - the transpose of such a matrix will be the inverse, which makes the inverse incredibly easy to compute,
- - the transformation will be reversible because space doesn't get collapse by any dimensions,
- - the projections (i.e. the result of computed the projection of a vector onto the matrix \\(A\\)) are just the dot products.
+ - the **transpose** of such a matrix will be its **inverse**, which makes the inverse incredibly easy to compute,
+ - the transformation will be **reversible** because space doesn't get collapsed by any dimensions,
+ - the projections (i.e. the result of computing the projection of a vector onto the matrix \\(A\\)) are just the dot products.
 
 One final note. If we arrange the bases vectors in the correct order, then the _determinant will be one_.
 
@@ -1275,21 +1319,21 @@ In the last section, we motivated the idea that life is much easier if we can co
 
 We'll start from the assumption that we already have some linearly independent vectors that span the space we're interested in. Say we have some such vectors \\(V = \{v_1, v_2, ..., v_n\}\\),
 
-> If you want to check linear independence you can write down the columns in a matrix and check that the determinant isn't zero.
+> If you want to check linear independence, you can write down your vectors as the the columns in a matrix and check that the determinant of that matrix isn't zero.
 
 but they aren't orthogonal to each other or of unit length. Our life would probably be easier if we could construct some orthonormal basis. As it turns out, there's a process for doing just that which is called the [**Gram-Schmidt process**](http://www.wikiwand.com/en/Gram–Schmidt_process).
 
- Let's take arbitrarily, the first vector in the set \\(v_1\\). In this first step, we're just going to normalize \\(v_1\\). So we define our eventual first basis vector \\(e_1\\), which is going to be equal to \\(v1\\), but normalized to be of unit length.
+ Let's take the first vector in the set to be \\(v_1\\). In this first step, we're just going to normalize \\(v_1\\) to get our eventual first basis vector \\(e_1\\)
 
 \\[e_1 = \frac{v_1}{|v_1|} \\]
 
-Now, we can think of \\(v_2\\) as being composed of two things. One is a component that is in the direction of \\(e_1\\) plus a component that's perpendicular to \\(e_1\\). The component that's in the direction of \\(e_1\\) we can find by taking the vector projection \\(v_2\\) onto \\(e_1\\):
+Now, we can think of \\(v_2\\) as being composed of two things: a component that is in the direction of \\(e_1\\) and a component that's perpendicular to \\(e_1\\). We can find the component that's in the direction of \\(e_1\\) by taking the vector projection \\(v_2\\) onto \\(e_1\\):
 
 \\[v_2 = (v_2 \cdot e_1) \frac{e_1}{|e_1|} \\]
 
-> \\(|e_1|\\) is 1 so we can actually omit it.
+> \\(|e_1|\\) is 1 so we could actually omit it.
 
-Now, if we subtract this vector projection from \\(v_2\\) we get \\(u_2\\), a vector which is orthogonal to \\(e_1\\):
+If we subtract this vector projection from \\(v_2\\) we get \\(u_2\\), a vector which is orthogonal to \\(e_1\\):
 
 \\[u_2 = v_2 - (v_2 \cdot e_1) e_1\\]
 
@@ -1297,13 +1341,28 @@ Finally, dividing \\(u_2\\) by its length gives us \\(e_2\\), the unit vector or
 
 \\[e_2 = \frac{u_2}{|u_2|} \\]
 
-Now my third vector v3 isn't a linear combination of v1 and v2, so v3 isn't in the plane defined by v1 and v2. So it's not in the plane of e1 and e2 either. So I can project v3 down, let's say something like that, onto the plane of e2 and e1, and that projection will be some vector in the plane composed of e2s and e1s. So I can then write down that v3 minus  v3 dotted with e1, e1's.
+We could continue this process for all vectors in our set \\(V\\). The general formula (in pseudocode) is:
 
-\\[u_3 = v_3 - (v_3 \cdot e_1)e_1 - (v_3 \cdot e_2)e_2\\]
-
-That's going to be the component v3 that's made up of e1's, minus v3 dotted with e2, e2's. That's the component of v3 that's made up of e2's. And then all that's going to be left is going to be this perpendicular guy there, so that's going to be a perpendicular vector which we'll call u3, which is perpendicular to the plane. This is some funny 3D space so the diagram gets quite messy. And then if I normalize u3, divide by the length of u3, then I'll have a unit vector which is normal the plane, normal to the other two. So now I've got an orthonormal basis for e1, e2, e3, and I can keep on going through all the vn's until I've got enough orthonormal basis vectors to complete the set and span, the space that I originally had. But I've gone from a bunch of awkward, non-orthogonal, non-unit vectors to a bunch of nice orthogonal unit vectors, an orthonormal basis set. So that's how I construct an orthonormal basis set, I make my life easy so that my transformation vectors are nice, my transformation matrices are nice, sorry. And so that I can do the transposes, the inverse, and all those lovely things. So I can use dot product projections for the transformations, all those nice things that are going to make my life very very much nicer whenever I'm doing any transformations, or rotations, or whatever it is I want to do with my vectors. So that's going to be really nice. This is a really nice process. And what we'll do next is we'll apply this, we'll try this for an example and see how it rolls and then apply that to doing a transformation.
+```python
+# For all vectors in our set V
+for i in |V|:
+  # For all vectors in our set V that come before v_i
+  for j in i:
+    # Subtract the component of v_i in the direction of the previous vectors v_j
+    v_i = v_i - v_i.dot(v_j) * v_j
+  # If |v_i| is not zero, normalize it to unit length. Otherwise it is linearly dependent on a
+  # previous vector, so set it equal to the zero vector.
+  if |v_i| > 0:
+    v_i = v_i / |v_i|
+  else:
+    v_i = zero_vector
+```
 
 ![](http://upload.wikimedia.org/wikipedia/commons/e/ee/Gram-Schmidt_orthonormalization_process.gif)
+
+#### Conclusions
+
+So that's how we construct an orthonormal basis set, which makes our lives much easier for all the reasons we discussed [here](#orthogonal-matrices).
 
 ## Week 5: Eigenvalues and Eigenvectors
 
