@@ -1133,22 +1133,22 @@ Think of these as the basis vectors of \\(\text{CS}_2\\) as they would appear in
 
 \\[\text{CS}_{21} \cdot \text{vector in CS}_2 = \text{vector in CS}_1\\]
 
- E.g., for the vector \\(\begin{bmatrix}\frac{3}{2}  \\ \frac{1}{2}\end{bmatrix}\\) defined in terms of \\(\text{CS}_{2}\\)
+ E.g., for the vector \\(\begin{bmatrix}\frac{3}{2}  \\ \frac{1}{2}\end{bmatrix}\\) defined in terms of \\(\text{CS}_2\\)
 
 \\[\begin{bmatrix}3 & 1 \\\ 1 & 1\end{bmatrix} \begin{bmatrix}\frac{3}{2}  \\ \frac{1}{2}\end{bmatrix} = \begin{bmatrix}5  \\\ 2\end{bmatrix}\\]
 
-That is, a vector \\(\begin{bmatrix}\frac{3}{2}  \\ \frac{1}{2}\end{bmatrix}\\) described in \\(\text{CS}_{2}\\), is described as \\(\begin{bmatrix}5  \\\ 2\end{bmatrix}\\) in \\(\text{CS}_{1}\\). Why does this make sense? Well, you can think of \\(\text{CS}_{21}\\) as the transformation that takes the basis vectors of \\(\text{CS}_{1}\\) and moves them to the positions of the basis vectors of \\(\text{CS}_{2}\\). Applying this transformation to a vector in \\(\text{CS}_{2}\\), therefore, gives us the corresponding vector in \\(\text{CS}_{1}\\).
+That is, a vector \\(\begin{bmatrix}\frac{3}{2} \\\ \frac{1}{2}\end{bmatrix}\\) described in \\(\text{CS}_2\\), is described as \\(\begin{bmatrix}5 \\\ 2\end{bmatrix}\\) in \\(\text{CS}_1\\). Why does this make sense? Well, you can think of \\(\text{CS}_{21}\\) as the transformation that takes the basis vectors of \\(\text{CS}_1\\) and moves them to the positions of the basis vectors of \\(\text{CS}_2\\). Applying this transformation to a vector in \\(\text{CS}_2\\), therefore, gives us the corresponding vector in \\(\text{CS}_1\\).
 
 
 Now, how do we do the reverse? How do we _translate_ a vector in \\(\text{CS}_1\\) to a vector in \\(\text{CS}_2\\)? All we need to do to change basis in the reverse case is to multiply a vector in one coordinate system by the inverse of the matrix containing the basis vectors of another:
 
-\\[\text{CS}_{21}^{-1} \cdot \text{vector in CS}_{1} = \text{vector in CS}_{2}\\]
+\\[\text{CS}^{-1}_{21} \cdot \text{vector in CS}_1 = \text{vector in CS}_2\\]
 
 E.g.,
 
-\\[\frac{1}{2}\begin{bmatrix}1 & -1 \\\ -1 & 3\end{bmatrix}\begin{bmatrix}5  \\\ 2\end{bmatrix} = \begin{bmatrix}\frac{3}{2}  \\ \frac{1}{2}\end{bmatrix}\\]
+\\[\frac{1}{2}\begin{bmatrix}1 & -1 \\\ -1 & 3\end{bmatrix}\begin{bmatrix}5  \\\ 2\end{bmatrix} = \begin{bmatrix}\frac{3}{2} \\\ \frac{1}{2}\end{bmatrix}\\]
 
-Notice that this process gave us the coordinates of the vector \\(\begin{bmatrix}\frac{3}{2}  \\ \frac{1}{2}\end{bmatrix}\\) in \\(\text{CS}_2\\), which is equal to the vector that we started with.
+Notice that this process gave us the coordinates of the vector \\(\begin{bmatrix}\frac{3}{2} \\\ \frac{1}{2}\end{bmatrix}\\) in \\(\text{CS}_2\\), which is equal to the vector that we started with.
 
 #### Generalizing
 
@@ -1192,7 +1192,7 @@ And the tranformation we want to apply is:
 
 > This rotates the vector space \\(45^0\\) counter-clockwise.
 
-How do we apply the transformation \\(N\\) to a vector defined by the coordinate system \\(\text{CS}_{2}\\)?
+How do we apply the transformation \\(N\\) to a vector defined by the coordinate system \\(\text{CS}_2\\)?
 
 The first thing to do is take the vector \\({c_2}\\) and multiply it by \\(\text{CS}_{21}\\), that is, change the basis of the vector \\({c_2}\\) from \\(\text{CS}_2\\) to \\(\text{CS}_1\\):
 
@@ -1214,7 +1214,7 @@ What if, once we obtained this output vector, we wanted to change its basis _bac
 
 \\[= \frac{1}{\sqrt{2}}\begin{bmatrix}-1 & -1 \\\ 5 & 3\end{bmatrix} \begin{bmatrix}x \\\ y\end{bmatrix}\\]
 
-This operation essentially builds on the previous operation to return the transformed output vector, \\({c_1}'\\) relative to \\(\text{CS}_2\\), that is it returns \\({c_2}'\\), where \\({c_2}'\\) is where \\(c_2\\) ends up after in the basis \\(\text{CS}_{2}\\) after some transformation \\(M\\) has been applied.
+This operation essentially builds on the previous operation to return the transformed output vector, \\({c_1}'\\) relative to \\(\text{CS}_2\\), that is it returns \\({c_2}'\\), where \\({c_2}'\\) is where \\(c_2\\) ends up after in the basis \\(\text{CS}_2\\) after some transformation \\(M\\) has been applied.
 
 #### Generalizing
 
@@ -1282,7 +1282,7 @@ So what we notice is that in the case where \\(A\\) is composed of vectors that 
 
 Another thing to note is that because all the basis vectors are of unit length, it must scale space by a _factor of one_. Stated another way, the determinant of an orthogonal matrix must be either plus or minus one.
 
-\\[|A| = \pm 1\\]
+\\[\vert A \vert = \pm 1\\]
 
 
 Where the minus one arises if the new basis vector set _flip space around_ (from right-handed to left-handed or vice versa). Notice that if \\(A^T\\), the inverse of \\(A\\), then by the definition of the inverse:
@@ -1307,9 +1307,9 @@ In this section, we introduced the most convenient basis vector set of all, the 
 
 One final note. If we arrange the bases vectors in the correct order, then the _determinant will be one_.
 
-\\[|A| = 1\\]
+\\[ \vert A \vert = 1\\]
 
-An easy way to check if they aren't in the right order, is to check if the determinant is minus one. This means we've transformed our space from right to left handed orientation. All we have to do to remedy this is to exchange a pair of vectors in \\(A\\) such that \\(|A| = 1\\).
+An easy way to check if they aren't in the right order, is to check if the determinant is minus one. This means we've transformed our space from right to left handed orientation. All we have to do to remedy this is to exchange a pair of vectors in \\(A\\) such that \\(\vert A \vert = 1\\).
 
 ## Recognizing mapping matrices and applying these to data
 
@@ -1325,11 +1325,11 @@ but they aren't orthogonal to each other or of unit length. Our life would proba
 
  Let's take the first vector in the set to be \\(v_1\\). In this first step, we're just going to normalize \\(v_1\\) to get our eventual first basis vector \\(e_1\\)
 
-\\[e_1 = \frac{v_1}{|v_1|} \\]
+\\[e_1 = \frac{v_1}{\vert v_1 \vert} \\]
 
 Now, we can think of \\(v_2\\) as being composed of two things: a component that is in the direction of \\(e_1\\) and a component that's perpendicular to \\(e_1\\). We can find the component that's in the direction of \\(e_1\\) by taking the vector projection \\(v_2\\) onto \\(e_1\\):
 
-\\[v_2 = (v_2 \cdot e_1) \frac{e_1}{|e_1|} \\]
+\\[v_2 = (v_2 \cdot e_1) \frac{e_1}{\vert e_1 \vert} \\]
 
 > \\(|e_1|\\) is 1 so we could actually omit it.
 
@@ -1339,7 +1339,7 @@ If we subtract this vector projection from \\(v_2\\) we get \\(u_2\\), a vector 
 
 Finally, dividing \\(u_2\\) by its length gives us \\(e_2\\), the unit vector orthogonal to \\(e_1\\):
 
-\\[e_2 = \frac{u_2}{|u_2|} \\]
+\\[e_2 = \frac{u_2}{\vert u_2 \vert} \\]
 
 We could continue this process for all vectors in our set \\(V\\). The general formula (in pseudocode) is:
 
@@ -1360,9 +1360,13 @@ for i in |V|:
 
 ![](http://upload.wikimedia.org/wikipedia/commons/e/ee/Gram-Schmidt_orthonormalization_process.gif)
 
-#### Conclusions
+__Conclusions__
 
 So that's how we construct an orthonormal basis set, which makes our lives much easier for all the reasons we discussed [here](#orthogonal-matrices).
+
+### Reflecting in a plane
+
+This is a rather involved example, and is probably best if you just watch it yourself [here](https://www.coursera.org/learn/linear-algebra-machine-learning/lecture/oXE0Y/example-reflecting-in-a-plane). If I can find the time, i'll make notes for the video!
 
 ## Week 5: Eigenvalues and Eigenvectors
 
