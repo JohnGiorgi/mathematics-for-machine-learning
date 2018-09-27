@@ -104,7 +104,15 @@ The closer our loss function is to zero, the better our parameters fit our data.
 
 > Gradient descent on a 3D surface.
 
-This process involves computing the partial derivative of our loss function \\(w.r.t\\) to all possible parameters (also known as the [**gradient**](http://www.wikiwand.com/en/Gradient)). If our parameters are stored in a vector, \\(\begin{bmatrix}\mu&\sigma \end{bmatrix}\\), we could subtract from this vector the vector of gradients, \\(\begin{bmatrix}\frac{\partial f}{\partial \mu} & \frac{\partial f}{\partial \sigma}\end{bmatrix}\\) in order to complete the computation in (effectively) one step.
+This process involves computing the partial derivative of our loss function \\(w.r.t\\) to all possible parameters (also known as the [**gradient**](http://www.wikiwand.com/en/Gradient)). If our parameters are stored in a vector,
+
+\[\begin{bmatrix}\mu&\sigma \end{bmatrix}\]
+
+we could subtract from this vector the vector of gradients,
+
+\[\begin{bmatrix}\frac{\partial f}{\partial \mu} & \frac{\partial f}{\partial \sigma}\end{bmatrix}\]
+
+in order to complete the computation in (effectively) one step.
 
 So vectors (and calculus) give us a computational means of navigating a parameter space, in this case by determining the set of parameters for a function \\(f(x)\\) which best explain the data.
 
@@ -1383,11 +1391,13 @@ So that's how we construct an orthonormal basis set, which makes our lives much 
 
 This is a rather involved example, and is probably best if you just watch it yourself [here](https://www.coursera.org/learn/linear-algebra-machine-learning/lecture/oXE0Y/example-reflecting-in-a-plane). If I can find the time, i'll make notes for the video!
 
-### Week 5: Eigenvalues and Eigenvectors
+## Week 5: Eigenvalues and Eigenvectors
 
-Eigenvectors are particular vectors that are unrotated by a transformation matrix, and eigenvalues are the amount by which the eigenvectors are stretched. These special 'eigen-things' are very useful in linear algebra and will let us examine Google's famous PageRank algorithm for presenting web search results. Then we'll apply this in code, which will wrap up the course.
+**Eigenvectors** are particular vectors that are unrotated by a transformation matrix (i.e., they _remain on their own span_), and **eigenvalues** are the amount by which the eigenvectors are scaled. These special 'eigen-things' are very useful in linear algebra and will let us examine Google's famous PageRank algorithm for presenting web search results. Then we'll apply this in code, which will wrap up the course.
 
-#### Learning Objectives
+> It is best to watch [this](https://youtu.be/PFDu9oVAE-g) video first, then return to and read through this section. If you want even more exposure to these ideas, try the first three sections of the Khan Academy course [here](https://www.khanacademy.org/math/linear-algebra/alternate-bases#eigen-everything).
+
+### Learning Objectives
 
 - Identify geometrically what an eigenvector/value is
 - Apply mathematical formulation in simple cases
@@ -1398,7 +1408,7 @@ Eigenvectors are particular vectors that are unrotated by a transformation matri
 
 #### What are eigenvalues and eigenvectors?
 
-The word, "eigen" is perhaps most usefully translated from the German as meaning _characteristic_. So when we talk about an _eigenproblem_, we're talking about finding the _characteristic properties of something_. But characteristic of what? This module, like the previous weeks, will try and explain this concept of _"eigen-ness"_ primarily through a geometric interpretation, which allows us to discuss images rather than immediately getting tangled up in the maths.
+The word, "eigen" is perhaps most usefully translated from German as meaning _characteristic_. So when we talk about an _eigenproblem_, we're talking about finding the _characteristic properties of something_. But characteristic of what? This module, like the previous weeks, will try and explain this concept of _"eigen-ness"_ primarily through a geometric interpretation, which allows us to discuss images rather than immediately getting tangled up in the maths.
 
 > This topic is often considered by students to be quite tricky. But once you know how to sketch these problems, the rest is just algebra.
 
@@ -1406,15 +1416,15 @@ As you've seen from previous weeks, it's possible to express the concept of **li
 
 ![matrix_transformations](img/matrix_transformations.gif)
 
-Often, when applying these transformations, we are thinking about what they might do to a _specific vector_. However, it can also be useful to think about what it might look like when they are applied to every vector in this space. This can be most easily visualized by drawing a square centered at the origin, and then seeing how your shape is distorted when you apply the transformation. So if we apply a scaling of 2 in the vertical direction, the square would now become a rectangle. Whereas, if we applied a horizontal shear to this space, it might look something like this.
+Often, when applying these transformations, we are thinking about what they might do to a _specific vector_. However, it can also be useful to think about what it might look like when they are applied to every vector in this space. This can be most easily visualized by drawing a square centered at the origin, and then seeing how your shape is distorted when you apply the transformation. So if we apply a scaling of 2 in the vertical direction, the square would now become a rectangle. Whereas, if we applied a horizontal shear to this space, it might look something like this:
 
 ![scale_and_shear](img/scale_and_shear.gif)
 
-Now, here's the key concept, we are using our little square to help us visualize what is happening to many vectors. But notice that some vectors end up lying on the same line that they started on whereas, others do not. To highlight this, I'm going to draw three specific vectors onto our initial square. Now, let's consider our vertical scaling again, and think about what will happen to these three vectors. As you can see, the horizontal green vector is unchanged pointing in the same direction and having the same length. The vertical pink vector is also still pointing in the same direction as before but its length is doubled. Lastly, the diagonal orange vector used to be exactly 45 degrees to the axis, it's angle has now increased as has its length.
+Now, here's the key concept. We are using our little square to help us visualize what is happening to many vectors. But notice that some vectors end up lying on the same line that they started on whereas, others do not. To highlight this, lets draw three specific vectors onto our initial square. Now, consider our vertical scaling again, and think about what will happen to these three vectors. As you can see, the horizontal green vector is unchanged, i.e. it is pointing in the same direction and having the same length. The vertical pink vector is also still pointing in the same direction as before but its length is doubled. Lastly, the diagonal orange vector used to be exactly 45 degrees to the axis, but it's angle has now increased as has its length.
 
 ![vertical_stretch](img/vertical_stretch.gif)
 
-I hope you can see that actually besides the horizontal and vertical vectors, any other vectors' direction would have been changed by this vertical scaling. So in some sense, the horizontal and vertical vectors are special, they are characteristic of this particular transform, which is why we refer to them as [**eigenvectors**](). Furthermore, because the horizontal vectors' length was unchanged, we say that it has a corresponding [**eigenvalue**]() of one whereas, the vertical eigenvector doubled in length, so we say it has an eigenvalue of two. So, from a conceptual perspective, that's about it, for 2D eigen-problems, we simply take a transform and we look for the vectors who are still laying on the same span as before, and then we measure how much their length has changed. This is basically what eigenvectors and their corresponding eigenvalues are.
+Besides the horizontal and vertical vectors, any other vectors' direction would have been changed by this vertical scaling. So in some sense, the horizontal and vertical vectors are special, they are characteristic of this particular transform, which is why we refer to them as [**eigenvectors**](). Furthermore, because the horizontal vectors' length was unchanged, we say that it has a corresponding [**eigenvalue**]() of **one** whereas, the vertical eigenvector doubled in length, so we say it has an eigenvalue of **two**. So, from a conceptual perspective, that's about it, for 2D eigen-problems, we simply take a transform and we look for the vectors who are still laying on the same span as before, and then we measure how much their length has changed. This is basically what eigenvectors and their corresponding eigenvalues are.
 
 Let's look at two more classic examples to make sure that we can generalize what we've learned. First, let look look at pure **shear**, where pure means that we aren't performing any scaling or rotation in addition, so the area is unchanged. As I hope you've spotted, it's only the green horizontal line that is still laying along its original span, and all the other vectors will be shifted:
 
@@ -1684,7 +1694,7 @@ We've covered a lot of ground in the past five modules, but I hope that we've ma
 
 There is a tension at the heart of mathematics teaching in the computer age. Classical teaching approaches focused around working through lots of examples by hand without much emphasis on building intuition. However, computers now do nearly all of the calculation work for us, and it's not typical for the methods appropriate to hand calculation to be the same as those employed by a computer. This can mean that, despite doing lots of work, students can come away from a classical education missing both the detailed view of the computational methods, but also the high level view of what each method is really doing. The concepts that you've been exposed to over the last five modules cover the core of linear algebra. That you will need as you progress your study of machine learning. And we hope that at the very least, when you get stuck in the future, you'll know the appropriate language. So that you can quickly look up some help when you need it. Which, after all, is the most important skill of a professional coder.
 
-### Wrap up
+## Wrap up
 
 Hello again. So that's it for this course of linear algebra in our little specialization on mathematics for machine learning. Our goal here was to give you some of the underpinnings of linear algebra, vectors and matrices. In order to enable to access neural networks, machine learning and data science courses more generally. By no means is this a course that a computer scientist or mathematician will be completely happy with as setting out the foundations required for more advanced work in linear algebra in a graduate course.
 
