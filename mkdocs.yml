@@ -1,15 +1,43 @@
+# Project information
 site_name: Mathematics for Machine Learning
+site_author: 'John Giorgi'
+site_url: 'https://johngiorgi.github.io/mathematics-for-machine-learning/'
 
-nav:
-    - About: index.md
-    - Linear Algebra: linear_algebra.md
-    - Calculus: calculus.md
+# Repository
+repo_name: 'JohnGiorgi/mathematics-for-machine-learning'
+repo_url: 'https://github.com/JohnGiorgi/mathematics-for-machine-learning'
 
+# Configuration
 theme:
   name: 'material'
+  language: 'en'
+  palette:
+    primary: 'red'
+    accent: 'teal'
+
+# Customization
+extra:
+  social:
+    - type: 'github'
+      link: 'https://github.com/JohnGiorgi'
+
+# Navigation
+nav:
+    - About: index.md
+    - Linear Algebra:
+        - Course Resources: linear_algebra/course_resources.md
+        - Week 1: linear_algebra/week_1.md
+        - Week 2: linear_algebra/week_2.md
+        - Week 3: linear_algebra/week_3.md
+        - Week 4: linear_algebra/week_4.md
+        - Week 5: linear_algebra/week_5.md
+    - Calculus: calculus.md
 
 # Add MathJax support
 extra_javascript:
-    - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+  - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
 markdown_extensions:
-    - mdx_math
+    - pymdownx.arithmatex
+    - pymdownx.details
+    - pymdownx.superfences
+    - admonition
