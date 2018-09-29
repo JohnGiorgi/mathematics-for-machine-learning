@@ -1,18 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-     <loc>None</loc>
-     <lastmod>2018-09-25</lastmod>
+     <loc>https://johngiorgi.github.io/mathematics-for-machine-learning/</loc>
+     <lastmod>2018-09-29</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>None</loc>
-     <lastmod>2018-09-25</lastmod>
+     <loc>https://johngiorgi.github.io/mathematics-for-machine-learning/linear_algebra/course_resources/</loc>
+     <lastmod>2018-09-29</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>None</loc>
-     <lastmod>2018-09-25</lastmod>
+     <loc>https://johngiorgi.github.io/mathematics-for-machine-learning/linear_algebra/week_1/</loc>
+     <lastmod>2018-09-29</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://johngiorgi.github.io/mathematics-for-machine-learning/linear_algebra/week_2/</loc>
+     <lastmod>2018-09-29</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://johngiorgi.github.io/mathematics-for-machine-learning/linear_algebra/week_3/</loc>
+     <lastmod>2018-09-29</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://johngiorgi.github.io/mathematics-for-machine-learning/linear_algebra/week_4/</loc>
+     <lastmod>2018-09-29</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://johngiorgi.github.io/mathematics-for-machine-learning/linear_algebra/week_5/</loc>
+     <lastmod>2018-09-29</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://johngiorgi.github.io/mathematics-for-machine-learning/calculus/</loc>
+     <lastmod>2018-09-29</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>

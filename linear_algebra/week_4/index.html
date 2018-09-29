@@ -1,0 +1,1112 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+        <link rel="canonical" href="https://johngiorgi.github.io/mathematics-for-machine-learning/linear_algebra/week_4/">
+      
+      
+        <meta name="author" content="John Giorgi">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
+    
+    
+      
+        <title>Week 4 - Mathematics for Machine Learning</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#ef5350">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="red" data-md-color-accent="teal">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="../../#week-4-matrices-make-linear-mappings" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://johngiorgi.github.io/mathematics-for-machine-learning/" title="Mathematics for Machine Learning" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Mathematics for Machine Learning
+              </span>
+              <span class="md-header-nav__topic">
+                Week 4
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/JohnGiorgi/mathematics-for-machine-learning/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      JohnGiorgi/mathematics-for-machine-learning
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://johngiorgi.github.io/mathematics-for-machine-learning/" title="Mathematics for Machine Learning" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Mathematics for Machine Learning
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/JohnGiorgi/mathematics-for-machine-learning/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      JohnGiorgi/mathematics-for-machine-learning
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="About" class="md-nav__link">
+      About
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      Linear Algebra
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Linear Algebra
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../course_resources/" title="Course Resources" class="md-nav__link">
+      Course Resources
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../week_1/" title="Week 1" class="md-nav__link">
+      Week 1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../week_2/" title="Week 2" class="md-nav__link">
+      Week 2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../week_3/" title="Week 3" class="md-nav__link">
+      Week 3
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Week 4
+      </label>
+    
+    <a href="./" title="Week 4" class="md-nav__link md-nav__link--active">
+      Week 4
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#week-4-matrices-make-linear-mappings" title="Week 4: Matrices Make Linear Mappings" class="md-nav__link">
+    Week 4: Matrices Make Linear Mappings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matrices-as-objects-that-map-one-vector-onto-another" title="Matrices as objects that map one vector onto another" class="md-nav__link">
+    Matrices as objects that map one vector onto another
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introduction-to-einstein-summation-convention-and-the-symmetry-of-the-dot-product" title="Introduction to Einstein summation convention and the symmetry of the dot product" class="md-nav__link">
+    Introduction to Einstein summation convention and the symmetry of the dot product
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matrices-transform-into-the-new-basis-vector-set" title="Matrices transform into the new basis vector set" class="md-nav__link">
+    Matrices transform into the new basis vector set
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#matrices-changing-basis" title="Matrices changing basis" class="md-nav__link">
+    Matrices changing basis
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generalizing" title="Generalizing" class="md-nav__link">
+    Generalizing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#doing-a-transformation-in-a-changed-basis" title="Doing a transformation in a changed basis" class="md-nav__link">
+    Doing a transformation in a changed basis
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generalizing_1" title="Generalizing" class="md-nav__link">
+    Generalizing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#making-multiple-mappings-deciding-if-these-are-reversible" title="Making multiple mappings, deciding if these are reversible" class="md-nav__link">
+    Making multiple mappings, deciding if these are reversible
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#orthogonal-matrices" title="Orthogonal matrices" class="md-nav__link">
+    Orthogonal matrices
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recognizing-mapping-matrices-and-applying-these-to-data" title="Recognizing mapping matrices and applying these to data" class="md-nav__link">
+    Recognizing mapping matrices and applying these to data
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-gramschmidt-process" title="The Gram–Schmidt process" class="md-nav__link">
+    The Gram–Schmidt process
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reflecting-in-a-plane" title="Reflecting in a plane" class="md-nav__link">
+    Reflecting in a plane
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../week_5/" title="Week 5" class="md-nav__link">
+      Week 5
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../calculus/" title="Calculus" class="md-nav__link">
+      Calculus
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#week-4-matrices-make-linear-mappings" title="Week 4: Matrices Make Linear Mappings" class="md-nav__link">
+    Week 4: Matrices Make Linear Mappings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matrices-as-objects-that-map-one-vector-onto-another" title="Matrices as objects that map one vector onto another" class="md-nav__link">
+    Matrices as objects that map one vector onto another
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introduction-to-einstein-summation-convention-and-the-symmetry-of-the-dot-product" title="Introduction to Einstein summation convention and the symmetry of the dot product" class="md-nav__link">
+    Introduction to Einstein summation convention and the symmetry of the dot product
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matrices-transform-into-the-new-basis-vector-set" title="Matrices transform into the new basis vector set" class="md-nav__link">
+    Matrices transform into the new basis vector set
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#matrices-changing-basis" title="Matrices changing basis" class="md-nav__link">
+    Matrices changing basis
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generalizing" title="Generalizing" class="md-nav__link">
+    Generalizing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#doing-a-transformation-in-a-changed-basis" title="Doing a transformation in a changed basis" class="md-nav__link">
+    Doing a transformation in a changed basis
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generalizing_1" title="Generalizing" class="md-nav__link">
+    Generalizing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#making-multiple-mappings-deciding-if-these-are-reversible" title="Making multiple mappings, deciding if these are reversible" class="md-nav__link">
+    Making multiple mappings, deciding if these are reversible
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#orthogonal-matrices" title="Orthogonal matrices" class="md-nav__link">
+    Orthogonal matrices
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recognizing-mapping-matrices-and-applying-these-to-data" title="Recognizing mapping matrices and applying these to data" class="md-nav__link">
+    Recognizing mapping matrices and applying these to data
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-gramschmidt-process" title="The Gram–Schmidt process" class="md-nav__link">
+    The Gram–Schmidt process
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reflecting-in-a-plane" title="Reflecting in a plane" class="md-nav__link">
+    Reflecting in a plane
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/JohnGiorgi/mathematics-for-machine-learning/edit/master/docs/linear_algebra/week_4.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                  <h1>Week 4</h1>
+                
+                <h2 id="week-4-matrices-make-linear-mappings">Week 4: Matrices Make Linear Mappings</h2>
+<p>In Module 4, we continue our discussion of matrices; first we think about how to code up matrix multiplication and matrix operations using the Einstein Summation Convention, which is a widely used notation in more advanced linear algebra courses. Then, we look at how matrices can transform a description of a vector from one basis (set of axes) to another. This will allow us to, for example, manipulate images. We'll also look at how to construct a convenient basis vector set in order to do such transformations. Then, we'll write some code to do these transformations and apply this work computationally.</p>
+<p><strong>Learning Objectives</strong></p>
+<ul>
+<li>Identify matrices as operators</li>
+<li>Relate the transformation matrix to a set of new basis vectors</li>
+<li>Formulate code for mappings based on these transformation matrices</li>
+<li>Write code to find an orthonormal basis set computationally</li>
+</ul>
+<h2 id="matrices-as-objects-that-map-one-vector-onto-another">Matrices as objects that map one vector onto another</h2>
+<h3 id="introduction-to-einstein-summation-convention-and-the-symmetry-of-the-dot-product">Introduction to Einstein summation convention and the symmetry of the dot product</h3>
+<p>There is a different, important way to write matrix transformations that we have not yet discussed. It's called the <a href="http://www.wikiwand.com/en/Einstein_notation"><strong>Einstein's Summation Convention</strong></a>. In this convention, we write down the actual operations on the elements of a matrix, which is useful when you're coding or programming. It also lets us see something neat about the dot product, and it lets us deal with <em>non-square</em> matrices.</p>
+<p>When we started, we said that multiplying a matrix by a vector or with another matrix is a process of taking every element in each row of the first matrix multiplied with the corresponding element in each column of the other matrix, summing the products and putting them in place. In Einstein's Summation Convention, we represent the matrix product <span><span class="MathJax_Preview">C = AB</span><script type="math/tex">C = AB</script></span>:</p>
+<div>
+<div class="MathJax_Preview">\begin{pmatrix} a_{11} &amp; a_{12} &amp; . &amp; . &amp; . &amp; a_{1n} \\\ a_{21} &amp; a_{22} &amp;  &amp;  &amp;  &amp; . &amp;\\\ . &amp; &amp; &amp; &amp; &amp; .  \\\ . &amp; &amp; &amp; &amp; &amp; .  \\\ . &amp; &amp; &amp; &amp; &amp; . \\\ a_{n1} &amp; . &amp; . &amp; . &amp; . &amp; a_{nm}\end{pmatrix} \begin{pmatrix} b_{11} &amp; b_{12} &amp; . &amp; . &amp; . &amp; b_{1m} \\\ b_{21} &amp; b_{22} &amp;  &amp;  &amp;  &amp; . &amp;\\\ . &amp; &amp; &amp; &amp; &amp; .  \\\ . &amp; &amp; &amp; &amp; &amp; .  \\\ . &amp; &amp; &amp; &amp; &amp; . \\\ b_{m1} &amp; . &amp; . &amp; . &amp; . &amp; b_{mp}\end{pmatrix} = AB</div>
+<script type="math/tex; mode=display">\begin{pmatrix} a_{11} & a_{12} & . & . & . & a_{1n} \\\ a_{21} & a_{22} &  &  &  & . &\\\ . & & & & & .  \\\ . & & & & & .  \\\ . & & & & & . \\\ a_{n1} & . & . & . & . & a_{nm}\end{pmatrix} \begin{pmatrix} b_{11} & b_{12} & . & . & . & b_{1m} \\\ b_{21} & b_{22} &  &  &  & . &\\\ . & & & & & .  \\\ . & & & & & .  \\\ . & & & & & . \\\ b_{m1} & . & . & . & . & b_{mp}\end{pmatrix} = AB</script>
+</div>
+<p>as,</p>
+<div>
+<div class="MathJax_Preview">c_{ij} = a_{i1}b_{1j} + ... + a_{im}b_{mj} =  \sum_{k=1}^m a_{ik}b_{kj}</div>
+<script type="math/tex; mode=display">c_{ij} = a_{i1}b_{1j} + ... + a_{im}b_{mj} =  \sum_{k=1}^m a_{ik}b_{kj}</script>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To be clear, its the <span><span class="MathJax_Preview">c_{ij}</span><script type="math/tex">c_{ij}</script></span> itself that is written Einstein's Summation Convention, not everything that comes to the right of the <span><span class="MathJax_Preview">=</span><script type="math/tex">=</script></span> sign.</p>
+</div>
+<p>For <span><span class="MathJax_Preview">i = 1, ..., n</span><script type="math/tex">i = 1, ..., n</script></span> and <span><span class="MathJax_Preview">j = 1, ..., p</span><script type="math/tex">j = 1, ..., p</script></span>, where <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> is a <span><span class="MathJax_Preview">n \times m</span><script type="math/tex">n \times m</script></span> matrix, <span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span> is a <span><span class="MathJax_Preview">m \times p</span><script type="math/tex">m \times p</script></span> matrix, and <span><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span> is a <span><span class="MathJax_Preview">n \times p</span><script type="math/tex">n \times p</script></span> matrix.</p>
+<p>This is useful when we are implementing matrix multiplication in code, because it makes it obvious exactly what operations we need to perform. In this case, it should be obvious that we can run three loops over <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>, <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> and <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>, and then use an accumulator on the <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>'s to find the elements of the product matrix <span><span class="MathJax_Preview">AB</span><script type="math/tex">AB</script></span>.  </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We haven't talked about this yet, but now we can see it clearly. There's no reason, so long as the matrices have the same number of entries in <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>, that the matrices we multiply need to be the same shape!</p>
+</div>
+<p>Let's revisit the <strong>dot product</strong> in light of the Einstein Summation Convention. If we've got two vectors, let's call them <span><span class="MathJax_Preview">u</span><script type="math/tex">u</script></span> and <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>, where <span><span class="MathJax_Preview">u</span><script type="math/tex">u</script></span> is a column vector having elements <span><span class="MathJax_Preview">u_i</span><script type="math/tex">u_i</script></span> and <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> is another column vector having elements <span><span class="MathJax_Preview">v_i</span><script type="math/tex">v_i</script></span>.</p>
+<div>
+<div class="MathJax_Preview">\begin{pmatrix}u_i \\\ \vdots \\\ u_{n}\end{pmatrix} \cdot \begin{pmatrix}v_i \\\ \vdots \\\ v_n \end{pmatrix}</div>
+<script type="math/tex; mode=display">\begin{pmatrix}u_i \\\ \vdots \\\ u_{n}\end{pmatrix} \cdot \begin{pmatrix}v_i \\\ \vdots \\\ v_n \end{pmatrix}</script>
+</div>
+<p>When we dot them together, we are computing the following:</p>
+<div>
+<div class="MathJax_Preview">  u \cdot v = \sum^n_{i=1}u_iv_i = u_1v_1 + u_2v_2 + ... + u_nv_n</div>
+<script type="math/tex; mode=display">  u \cdot v = \sum^n_{i=1}u_iv_i = u_1v_1 + u_2v_2 + ... + u_nv_n</script>
+</div>
+<p>Notice that,</p>
+<div>
+<div class="MathJax_Preview">\begin{pmatrix}u_i \\\ \vdots \\\ u_{n}\end{pmatrix} \cdot \begin{pmatrix}v_i \\\ \vdots \\\ v_n \end{pmatrix} = \begin{pmatrix}u_i &amp; \cdots &amp; u_{n}\end{pmatrix} \cdot \begin{pmatrix}v_i \\\ \vdots \\\ v_n \end{pmatrix}</div>
+<script type="math/tex; mode=display">\begin{pmatrix}u_i \\\ \vdots \\\ u_{n}\end{pmatrix} \cdot \begin{pmatrix}v_i \\\ \vdots \\\ v_n \end{pmatrix} = \begin{pmatrix}u_i & \cdots & u_{n}\end{pmatrix} \cdot \begin{pmatrix}v_i \\\ \vdots \\\ v_n \end{pmatrix}</script>
+</div>
+<p>and so we notice that there's some equivalence between a <strong>matrix transformation</strong> (or <em>multiplication</em>) and the <strong>dot product</strong>. Lets explore this in more detail.</p>
+<p><strong>Symmetry of the dot product</strong></p>
+<p>Say we have the vector <span><span class="MathJax_Preview">\hat u</span><script type="math/tex">\hat u</script></span>, with components <span><span class="MathJax_Preview">u_1</span><script type="math/tex">u_1</script></span> and <span><span class="MathJax_Preview">u_2</span><script type="math/tex">u_2</script></span>. Let's imagine what happens if we dot <span><span class="MathJax_Preview">\hat u</span><script type="math/tex">\hat u</script></span> with the basis vector <span><span class="MathJax_Preview">\hat e_1</span><script type="math/tex">\hat e_1</script></span>. We know from previous sections that this gives us the length of the projection of <span><span class="MathJax_Preview">\hat u_1</span><script type="math/tex">\hat u_1</script></span> on <span><span class="MathJax_Preview">\hat e_1</span><script type="math/tex">\hat e_1</script></span> multiplied by the norm of <span><span class="MathJax_Preview">\hat e_1</span><script type="math/tex">\hat e_1</script></span>. But what if we do the reverse? What if we dot <span><span class="MathJax_Preview">\hat e_1</span><script type="math/tex">\hat e_1</script></span> with <span><span class="MathJax_Preview">\hat u</span><script type="math/tex">\hat u</script></span>? We already know that numerically, the result will be the same, as the dot product is <a href="http://www.wikiwand.com/en/Commutative_property"><strong>commutative</strong></a>. So geometrically, we can imagine drawing a line of symmetry between the point where the two projections cross:</p>
+<p><img alt="dot_product_is_symmetric" src="../../img/dot_product_is_symmetric.png" /></p>
+<p>Previously, we stated (without proof, although the numerical proof is trivial) that the dot product is commutative, and now, we have shown geometrically why that is true.</p>
+<p><strong>Conclusions</strong></p>
+<p>In this section, we introduced <a href="http://www.wikiwand.com/en/Einstein_notation"><strong>Einstein's Summation Convention</strong></a>, which is a compact and computationally useful (but not very visually intuitive) way to write down matrix operations. This led to a discussion on the similarities between the dot product and matrix multiplication, where we noticed a connection between <strong>matrix multiplication</strong>, and the <strong>dot product</strong>, which itself has a geometric understanding as the concept of <strong>projection</strong>, i.e. projecting one vector onto another. This allows us to think about matrix multiplication <em>with a vector</em> as being the projection of that vector <em>onto the vectors composing the matrix</em> (i.e. the columns of the matrix).</p>
+<h2 id="matrices-transform-into-the-new-basis-vector-set">Matrices transform into the new basis vector set</h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Watch <a href="https://youtu.be/P2LTAUO1TdA">this</a> video before reading this section. For more practice with changing basis, see <a href="https://www.khanacademy.org/math/linear-algebra/alternate-bases#change-of-basis">this</a> Khan Academy section.</p>
+</div>
+<h3 id="matrices-changing-basis">Matrices changing basis</h3>
+<p>We have said before that the <em>columns</em> of a transformation matrix are the <em>axes</em> of the new basis vectors after applying the mapping. We're now going to spend a little time looking at how to transform a vector <em>from one set of basis vectors to another</em>.</p>
+<p>Let's say we have two sets of basis vectors, which define a first coordinate system (<span><span class="MathJax_Preview">\text{CS}_1)</span><script type="math/tex">\text{CS}_1)</script></span> and a second coordinate system (<span><span class="MathJax_Preview">\text{CS}_2)</span><script type="math/tex">\text{CS}_2)</script></span>. Let the basis vectors of <span><span class="MathJax_Preview">\text{CS}_2</span><script type="math/tex">\text{CS}_2</script></span>, from the perspective of <span><span class="MathJax_Preview">\text{CS}_1</span><script type="math/tex">\text{CS}_1</script></span> be:</p>
+<div>
+<div class="MathJax_Preview">\hat b_1 = \begin{bmatrix}3 \\\ 1\end{bmatrix}, \hat b_2 = \begin{bmatrix}1 \\\ 1\end{bmatrix} </div>
+<script type="math/tex; mode=display">\hat b_1 = \begin{bmatrix}3 \\\ 1\end{bmatrix}, \hat b_2 = \begin{bmatrix}1 \\\ 1\end{bmatrix} </script>
+</div>
+<p>Lets package these basis vectors into a matrix <span><span class="MathJax_Preview">\text{CS}_{21}</span><script type="math/tex">\text{CS}_{21}</script></span>, for convenience</p>
+<div>
+<div class="MathJax_Preview">\text{CS}_{21} = \begin{bmatrix}3 &amp; 1 \\\ 1 &amp; 1\end{bmatrix}</div>
+<script type="math/tex; mode=display">\text{CS}_{21} = \begin{bmatrix}3 & 1 \\\ 1 & 1\end{bmatrix}</script>
+</div>
+<p>Think of these as the basis vectors of <span><span class="MathJax_Preview">\text{CS}_2</span><script type="math/tex">\text{CS}_2</script></span> as they would appear in <span><span class="MathJax_Preview">\text{CS}_1</span><script type="math/tex">\text{CS}_1</script></span>. If we wanted to change the basis of any vectors in <span><span class="MathJax_Preview">\text{CS}_2</span><script type="math/tex">\text{CS}_2</script></span> to <span><span class="MathJax_Preview">\text{CS}_1</span><script type="math/tex">\text{CS}_1</script></span>, we simply do:</p>
+<div>
+<div class="MathJax_Preview">\text{CS}_{21} \cdot \text{vector in CS}_2 = \text{vector in CS}_1</div>
+<script type="math/tex; mode=display">\text{CS}_{21} \cdot \text{vector in CS}_2 = \text{vector in CS}_1</script>
+</div>
+<p>E.g., for the vector</p>
+<div>
+<div class="MathJax_Preview">\begin{bmatrix}\frac{3}{2} \\\ \frac{1}{2}\end{bmatrix}</div>
+<script type="math/tex; mode=display">\begin{bmatrix}\frac{3}{2} \\\ \frac{1}{2}\end{bmatrix}</script>
+</div>
+<p>defined in terms of <span><span class="MathJax_Preview">\text{CS}_2</span><script type="math/tex">\text{CS}_2</script></span></p>
+<div>
+<div class="MathJax_Preview">\begin{bmatrix}3 &amp; 1 \\\ 1 &amp; 1\end{bmatrix} \begin{bmatrix}\frac{3}{2} \\\ \frac{1}{2}\end{bmatrix} = \begin{bmatrix}5  \\\ 2\end{bmatrix}</div>
+<script type="math/tex; mode=display">\begin{bmatrix}3 & 1 \\\ 1 & 1\end{bmatrix} \begin{bmatrix}\frac{3}{2} \\\ \frac{1}{2}\end{bmatrix} = \begin{bmatrix}5  \\\ 2\end{bmatrix}</script>
+</div>
+<p>That is, a vector</p>
+<div>
+<div class="MathJax_Preview">\begin{bmatrix}\frac{3}{2} \\\ \frac{1}{2}\end{bmatrix}</div>
+<script type="math/tex; mode=display">\begin{bmatrix}\frac{3}{2} \\\ \frac{1}{2}\end{bmatrix}</script>
+</div>
+<p>described in <span><span class="MathJax_Preview">\text{CS}_2</span><script type="math/tex">\text{CS}_2</script></span>, is described as</p>
+<div>
+<div class="MathJax_Preview">\begin{bmatrix}5 \\\ 2\end{bmatrix}</div>
+<script type="math/tex; mode=display">\begin{bmatrix}5 \\\ 2\end{bmatrix}</script>
+</div>
+<p>in <span><span class="MathJax_Preview">\text{CS}_1</span><script type="math/tex">\text{CS}_1</script></span>. Why does this make sense? Well, you can think of <span><span class="MathJax_Preview">\text{CS}_{21}</span><script type="math/tex">\text{CS}_{21}</script></span> as the transformation that takes the basis vectors of <span><span class="MathJax_Preview">\text{CS}_1</span><script type="math/tex">\text{CS}_1</script></span> and moves them to the positions of the basis vectors of <span><span class="MathJax_Preview">\text{CS}_2</span><script type="math/tex">\text{CS}_2</script></span>. Applying this transformation to a vector in <span><span class="MathJax_Preview">\text{CS}_2</span><script type="math/tex">\text{CS}_2</script></span>, therefore, gives us the corresponding vector in <span><span class="MathJax_Preview">\text{CS}_1</span><script type="math/tex">\text{CS}_1</script></span>.</p>
+<p>Now, how do we do the reverse? How do we <em>translate</em> a vector in <span><span class="MathJax_Preview">\text{CS}_1</span><script type="math/tex">\text{CS}_1</script></span> to a vector in <span><span class="MathJax_Preview">\text{CS}_2</span><script type="math/tex">\text{CS}_2</script></span>? All we need to do to change basis in the reverse case is to multiply a vector in one coordinate system by the inverse of the matrix containing the basis vectors of another:</p>
+<div>
+<div class="MathJax_Preview">\text{CS}^{-1}_{21} \cdot \text{vector in CS}_1 = \text{vector in CS}_2</div>
+<script type="math/tex; mode=display">\text{CS}^{-1}_{21} \cdot \text{vector in CS}_1 = \text{vector in CS}_2</script>
+</div>
+<p>E.g.,</p>
+<div>
+<div class="MathJax_Preview">\frac{1}{2}\begin{bmatrix}1 &amp; -1 \\\ -1 &amp; 3\end{bmatrix}\begin{bmatrix}5  \\\ 2\end{bmatrix} = \begin{bmatrix}\frac{3}{2} \\\ \frac{1}{2}\end{bmatrix}</div>
+<script type="math/tex; mode=display">\frac{1}{2}\begin{bmatrix}1 & -1 \\\ -1 & 3\end{bmatrix}\begin{bmatrix}5  \\\ 2\end{bmatrix} = \begin{bmatrix}\frac{3}{2} \\\ \frac{1}{2}\end{bmatrix}</script>
+</div>
+<p>Notice that this process gave us the coordinates of the vector</p>
+<div>
+<div class="MathJax_Preview">\begin{bmatrix}\frac{3}{2} \\\ \frac{1}{2}\end{bmatrix}</div>
+<script type="math/tex; mode=display">\begin{bmatrix}\frac{3}{2} \\\ \frac{1}{2}\end{bmatrix}</script>
+</div>
+<p>in <span><span class="MathJax_Preview">\text{CS}_2</span><script type="math/tex">\text{CS}_2</script></span>, which is equal to the vector that we started with.</p>
+<h4 id="generalizing">Generalizing</h4>
+<p>This is a little bit tricky, so lets generalize. Imagine we have two coordinate systems, "ours" and "theirs". We can translate vectors in "their" coordinate system to "our" coordinate system by applying a transformation <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>, where <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> is a matrix whose columns contain the basis vectors of "their" coordinate system as they appear in "our coordinate system":</p>
+<div>
+<div class="MathJax_Preview">\text{(1) } A \cdot \text{vector in "their" coordinate system} = \text{vector in "our" coordinate system}</div>
+<script type="math/tex; mode=display">\text{(1) } A \cdot \text{vector in "their" coordinate system} = \text{vector in "our" coordinate system}</script>
+</div>
+<p>To do the reverse, i.e. take a vector in "our" coordinate system and translate it to "their" coordinate system, we simply multiply "our" vector by the inverse of A</p>
+<div>
+<div class="MathJax_Preview">\text{(2) } \text{vector in "their" coordinate system} = A^{-1} \cdot \text{vector in "our" coordinate system}</div>
+<script type="math/tex; mode=display">\text{(2) } \text{vector in "their" coordinate system} = A^{-1} \cdot \text{vector in "our" coordinate system}</script>
+</div>
+<p>It should be obvious now why this is the case, we simply moved <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> over in the (1) to get (2)!</p>
+<p><strong>Orthonormal basis set</strong></p>
+<p>When we discussed vectors and projections, we said that if the new basis vectors were orthogonal then we could use projection to easily change basis.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>see <a href="#changing-basis">Changing basis</a> for a fleshed out example.</p>
+</div>
+<p><strong>Summary</strong></p>
+<p>Not orthogonal, use matrix multiplication. Orthogonal, use projection product.</p>
+<h3 id="doing-a-transformation-in-a-changed-basis">Doing a transformation in a changed basis</h3>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Watch the last little bit of <a href="https://youtu.be/P2LTAUO1TdA?t=8m50s">this</a> video first.</p>
+</div>
+<p>Lets discuss the process of applying a transformation in a changed basis. Say again that the basis vectors of coordinate system <span><span class="MathJax_Preview">\text{CS}_2</span><script type="math/tex">\text{CS}_2</script></span> from the perspective of coordinate system <span><span class="MathJax_Preview">\text{CS}_1</span><script type="math/tex">\text{CS}_1</script></span> are:</p>
+<div>
+<div class="MathJax_Preview">\text{CS}_{21} = \begin{bmatrix}3 &amp; 1 \\\ 1 &amp; 1\end{bmatrix}</div>
+<script type="math/tex; mode=display">\text{CS}_{21} = \begin{bmatrix}3 & 1 \\\ 1 & 1\end{bmatrix}</script>
+</div>
+<p>Say further that we have a vector in <span><span class="MathJax_Preview">\text{CS}_2</span><script type="math/tex">\text{CS}_2</script></span> that we want to transform:</p>
+<div>
+<div class="MathJax_Preview"> {c_2} = \begin{bmatrix}x \\\ y\end{bmatrix}</div>
+<script type="math/tex; mode=display"> {c_2} = \begin{bmatrix}x \\\ y\end{bmatrix}</script>
+</div>
+<p>And the tranformation we want to apply is:</p>
+<div>
+<div class="MathJax_Preview">N = \frac{1}{\sqrt{2}}\begin{bmatrix}1 &amp; -1 \\\ 1 &amp; 1\end{bmatrix}</div>
+<script type="math/tex; mode=display">N = \frac{1}{\sqrt{2}}\begin{bmatrix}1 & -1 \\\ 1 & 1\end{bmatrix}</script>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This rotates the vector space <span><span class="MathJax_Preview">45^0</span><script type="math/tex">45^0</script></span> counter-clockwise.</p>
+</div>
+<p>How do we apply the transformation <span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span> to a vector defined by the coordinate system <span><span class="MathJax_Preview">\text{CS}_2</span><script type="math/tex">\text{CS}_2</script></span>?</p>
+<p>The first thing to do is take the vector <span><span class="MathJax_Preview">{c_2}</span><script type="math/tex">{c_2}</script></span> and multiply it by <span><span class="MathJax_Preview">\text{CS}_{21}</span><script type="math/tex">\text{CS}_{21}</script></span>, that is, change the basis of the vector <span><span class="MathJax_Preview">{c_2}</span><script type="math/tex">{c_2}</script></span> from <span><span class="MathJax_Preview">\text{CS}_2</span><script type="math/tex">\text{CS}_2</script></span> to <span><span class="MathJax_Preview">\text{CS}_1</span><script type="math/tex">\text{CS}_1</script></span>:</p>
+<div>
+<div class="MathJax_Preview"> {c_1} = \begin{bmatrix}3 &amp; 1 \\\ 1 &amp; 1\end{bmatrix} \begin{bmatrix}x \\\ y\end{bmatrix}</div>
+<script type="math/tex; mode=display"> {c_1} = \begin{bmatrix}3 & 1 \\\ 1 & 1\end{bmatrix} \begin{bmatrix}x \\\ y\end{bmatrix}</script>
+</div>
+<p>Then, we can apply the transformation:</p>
+<div>
+<div class="MathJax_Preview">{c_1}' = R \cdot \text{CS}_{21} \cdot  {c_2}</div>
+<script type="math/tex; mode=display">{c_1}' = R \cdot \text{CS}_{21} \cdot  {c_2}</script>
+</div>
+<div>
+<div class="MathJax_Preview"> {c_1}' = \frac{1}{\sqrt{2}}\begin{bmatrix}1 &amp; -1 \\\ 1 &amp; 1\end{bmatrix} \begin{bmatrix}3 &amp; 1 \\\ 1 &amp; 1\end{bmatrix} \begin{bmatrix}x \\\ y\end{bmatrix}</div>
+<script type="math/tex; mode=display"> {c_1}' = \frac{1}{\sqrt{2}}\begin{bmatrix}1 & -1 \\\ 1 & 1\end{bmatrix} \begin{bmatrix}3 & 1 \\\ 1 & 1\end{bmatrix} \begin{bmatrix}x \\\ y\end{bmatrix}</script>
+</div>
+<div>
+<div class="MathJax_Preview">= \frac{1}{\sqrt{2}}\begin{bmatrix}2 &amp; 0 \\\ 4 &amp; 2\end{bmatrix} \begin{bmatrix}x \\\ y\end{bmatrix}</div>
+<script type="math/tex; mode=display">= \frac{1}{\sqrt{2}}\begin{bmatrix}2 & 0 \\\ 4 & 2\end{bmatrix} \begin{bmatrix}x \\\ y\end{bmatrix}</script>
+</div>
+<p>What if, once we obtained this output vector, we wanted to change its basis <em>back</em> to <span><span class="MathJax_Preview">\text{CS}_2</span><script type="math/tex">\text{CS}_2</script></span>? Recall from the last section that we multiply the whole thing by the inverse of <span><span class="MathJax_Preview">\text{CS}_{21}^{-1}</span><script type="math/tex">\text{CS}_{21}^{-1}</script></span></p>
+<div>
+<div class="MathJax_Preview">{c_2}' = \text{CS}_{21}^{-1} \cdot R \cdot \text{CS}_{21} \cdot {c_2}</div>
+<script type="math/tex; mode=display">{c_2}' = \text{CS}_{21}^{-1} \cdot R \cdot \text{CS}_{21} \cdot {c_2}</script>
+</div>
+<div>
+<div class="MathJax_Preview">{c_2}' = \frac{1}{2} \begin{bmatrix}1 &amp; -1 \\\ -1 &amp; 3\end{bmatrix} \frac{1}{\sqrt{2}}\begin{bmatrix}1 &amp; -1 \\\ 1 &amp; 1\end{bmatrix} \begin{bmatrix}3 &amp; 1 \\\ 1 &amp; 1\end{bmatrix} \begin{bmatrix}x \\\ y\end{bmatrix}</div>
+<script type="math/tex; mode=display">{c_2}' = \frac{1}{2} \begin{bmatrix}1 & -1 \\\ -1 & 3\end{bmatrix} \frac{1}{\sqrt{2}}\begin{bmatrix}1 & -1 \\\ 1 & 1\end{bmatrix} \begin{bmatrix}3 & 1 \\\ 1 & 1\end{bmatrix} \begin{bmatrix}x \\\ y\end{bmatrix}</script>
+</div>
+<div>
+<div class="MathJax_Preview">= \frac{1}{2} \begin{bmatrix}1 &amp; -1 \\\ -1 &amp; 3\end{bmatrix}\frac{1}{\sqrt{2}}\begin{bmatrix}2 &amp; 0 \\\ 4 &amp; 2\end{bmatrix} \begin{bmatrix}x \\\ y\end{bmatrix}</div>
+<script type="math/tex; mode=display">= \frac{1}{2} \begin{bmatrix}1 & -1 \\\ -1 & 3\end{bmatrix}\frac{1}{\sqrt{2}}\begin{bmatrix}2 & 0 \\\ 4 & 2\end{bmatrix} \begin{bmatrix}x \\\ y\end{bmatrix}</script>
+</div>
+<div>
+<div class="MathJax_Preview">= \frac{1}{\sqrt{2}}\begin{bmatrix}-1 &amp; -1 \\\ 5 &amp; 3\end{bmatrix} \begin{bmatrix}x \\\ y\end{bmatrix}</div>
+<script type="math/tex; mode=display">= \frac{1}{\sqrt{2}}\begin{bmatrix}-1 & -1 \\\ 5 & 3\end{bmatrix} \begin{bmatrix}x \\\ y\end{bmatrix}</script>
+</div>
+<p>This operation essentially builds on the previous operation to return the transformed output vector, <span><span class="MathJax_Preview">{c_1}'</span><script type="math/tex">{c_1}'</script></span> relative to <span><span class="MathJax_Preview">\text{CS}_2</span><script type="math/tex">\text{CS}_2</script></span>, that is it returns <span><span class="MathJax_Preview">{c_2}'</span><script type="math/tex">{c_2}'</script></span>, where <span><span class="MathJax_Preview">{c_2}'</span><script type="math/tex">{c_2}'</script></span> is where <span><span class="MathJax_Preview">c_2</span><script type="math/tex">c_2</script></span> ends up after in the basis <span><span class="MathJax_Preview">\text{CS}_2</span><script type="math/tex">\text{CS}_2</script></span> after some transformation <span><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span> has been applied.</p>
+<h4 id="generalizing_1">Generalizing</h4>
+<p>Again, this is tricky, so lets generalize. Imagine we have two coordinate systems, "ours" and "theirs". If we are given:</p>
+<ul>
+<li>a vector with its basis in "their" coordinate system</li>
+<li><span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>, a matrix whose columns are the basis vectors of "their" coordinate system as they appear in "our" coordinate system</li>
+<li><span><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span> some transformation, with its basis in "our" coordinate system</li>
+</ul>
+<p>Then,</p>
+<p><strong>Change the vector in "their" basis to "ours":</strong></p>
+<div>
+<div class="MathJax_Preview">A \cdot \text{vector in "their" coordinate system}</div>
+<script type="math/tex; mode=display">A \cdot \text{vector in "their" coordinate system}</script>
+</div>
+<p><strong>Apply the transformation in "our" coordinate system:</strong></p>
+<div>
+<div class="MathJax_Preview">M \cdot A \cdot \text{vector in "their" coordinate system}</div>
+<script type="math/tex; mode=display">M \cdot A \cdot \text{vector in "their" coordinate system}</script>
+</div>
+<p><strong>Change the resulting vector back to "their" coordinate system:</strong></p>
+<div>
+<div class="MathJax_Preview">A^{-1} \cdot M \cdot A \cdot \text{vector in "their" coordinate system}</div>
+<script type="math/tex; mode=display">A^{-1} \cdot M \cdot A \cdot \text{vector in "their" coordinate system}</script>
+</div>
+<p>In sum, the transformation <span><span class="MathJax_Preview">A^{-1}MA</span><script type="math/tex">A^{-1}MA</script></span> will take any vector in "their" coordinate system, apply some transformation in "our" coordinate system, and return the resulting vector in "their" coordinate system.</p>
+<h2 id="making-multiple-mappings-deciding-if-these-are-reversible">Making multiple mappings, deciding if these are reversible</h2>
+<h3 id="orthogonal-matrices">Orthogonal matrices</h3>
+<p>It is very useful to compose a transformation matrix whose column and row vectors make up a <em>new basis</em>, with the additional constraint of making all of these component vectors orthogonal. Such a square matrix of  orthonormal columns and rows is known as an <a href="http://www.wikiwand.com/en/Orthogonal_matrix"><strong>orthogonal matrix</strong></a>.</p>
+<p>In this section we are going to look at <em>how</em> to construct such a matrix, and why it's useful.</p>
+<p><strong>(Aside) Transpose</strong></p>
+<p>First, we need to define a new matrix operation called the <a href="http://www.wikiwand.com/en/Transpose"><strong>transpose</strong></a>. The transpose of a matrix is an <em>operator</em> which flips a matrix <em>over its diagonal</em>, that is it switches the row and column indices of the matrix by producing another matrix denoted as <span><span class="MathJax_Preview">A^T</span><script type="math/tex">A^T</script></span>. It is achieved by any one of the following equivalent actions:</p>
+<ul>
+<li>reflect <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> over its main diagonal (which runs from top-left to bottom-right) to obtain <span><span class="MathJax_Preview">A^T</span><script type="math/tex">A^T</script></span>,</li>
+<li>write the rows of <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> as the columns of <span><span class="MathJax_Preview">A^T</span><script type="math/tex">A^T</script></span>,</li>
+<li>write the columns of <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> as the rows of <span><span class="MathJax_Preview">A^T</span><script type="math/tex">A^T</script></span>.</li>
+</ul>
+<p><img alt="" src="http://upload.wikimedia.org/wikipedia/commons/e/e4/Matrix_transpose.gif" /></p>
+<p>Formally, the <em>i</em>-th row, <em>j</em>-th column element of <span><span class="MathJax_Preview">A^T</span><script type="math/tex">A^T</script></span> is the <em>j</em>-th row, <em>i</em>-th column element of <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>:</p>
+<div>
+<div class="MathJax_Preview">[A^T]_{ij} = [A]_{ji}</div>
+<script type="math/tex; mode=display">[A^T]_{ij} = [A]_{ji}</script>
+</div>
+<p>Now let's imagine I have a <span><span class="MathJax_Preview">n \times n</span><script type="math/tex">n \times n</script></span> matrix <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>, with a series of column vectors which are going to be the basis vectors of the some new transformed vector space:</p>
+<div>
+<div class="MathJax_Preview">A = \begin{pmatrix} \begin{pmatrix}\vdots \\\ \hat a_1 \\\ \vdots\end{pmatrix} &amp; \begin{pmatrix} \vdots \\\ \hat a_2\\\ \vdots \end{pmatrix} &amp; \dots \begin{pmatrix} \vdots \\\ \hat a_n\\\ \vdots \end{pmatrix} \end{pmatrix}</div>
+<script type="math/tex; mode=display">A = \begin{pmatrix} \begin{pmatrix}\vdots \\\ \hat a_1 \\\ \vdots\end{pmatrix} & \begin{pmatrix} \vdots \\\ \hat a_2\\\ \vdots \end{pmatrix} & \dots \begin{pmatrix} \vdots \\\ \hat a_n\\\ \vdots \end{pmatrix} \end{pmatrix}</script>
+</div>
+<p>Lets place two more constaints on this matrix <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>:</p>
+<ul>
+<li>First, the column vectors <span><span class="MathJax_Preview">a_i</span><script type="math/tex">a_i</script></span> have unit length</li>
+<li>Second, the column vectors <span><span class="MathJax_Preview">a_i</span><script type="math/tex">a_i</script></span> are orthogonal to each other.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>That is, <span><span class="MathJax_Preview">\hat a_i \cdot \hat a_j = 0</span><script type="math/tex">\hat a_i \cdot \hat a_j = 0</script></span> for <span><span class="MathJax_Preview">\forall i \ne j</span><script type="math/tex">\forall i \ne j</script></span> and <span><span class="MathJax_Preview">\hat a_i \cdot \hat a_i = 1</span><script type="math/tex">\hat a_i \cdot \hat a_i = 1</script></span>.</p>
+</div>
+<p>Lets think about what happens when we multiply <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> by its transpose, <span><span class="MathJax_Preview">A^T</span><script type="math/tex">A^T</script></span>:</p>
+<div>
+<div class="MathJax_Preview">A^TA =  \begin{pmatrix} \begin{pmatrix}\dots &amp; \hat a_1 &amp; \dots\end{pmatrix} \\\ \begin{pmatrix} \dots &amp; \hat a_2 &amp; \dots \end{pmatrix} \\\ \vdots \\\ \begin{pmatrix} \dots &amp; \hat a_n &amp; \dots \end{pmatrix} \end{pmatrix}  \begin{pmatrix} \begin{pmatrix}\vdots \\\ \hat a_1 \\\ \vdots\end{pmatrix} &amp; \begin{pmatrix} \vdots \\\ \hat a_2\\\ \vdots \end{pmatrix} &amp; \dots \begin{pmatrix} \vdots \\\ \hat a_n\\\ \vdots \end{pmatrix} \end{pmatrix} = I_n</div>
+<script type="math/tex; mode=display">A^TA =  \begin{pmatrix} \begin{pmatrix}\dots & \hat a_1 & \dots\end{pmatrix} \\\ \begin{pmatrix} \dots & \hat a_2 & \dots \end{pmatrix} \\\ \vdots \\\ \begin{pmatrix} \dots & \hat a_n & \dots \end{pmatrix} \end{pmatrix}  \begin{pmatrix} \begin{pmatrix}\vdots \\\ \hat a_1 \\\ \vdots\end{pmatrix} & \begin{pmatrix} \vdots \\\ \hat a_2\\\ \vdots \end{pmatrix} & \dots \begin{pmatrix} \vdots \\\ \hat a_n\\\ \vdots \end{pmatrix} \end{pmatrix} = I_n</script>
+</div>
+<p>So what we notice is that in the case where <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> is composed of vectors that are <em>normal</em> to each other and have <em>unit length</em>, (i.e. when they're <strong>orthonormal</strong>), then <span><span class="MathJax_Preview">A^TA = I</span><script type="math/tex">A^TA = I</script></span>. Stated another way, <span><span class="MathJax_Preview">A^T</span><script type="math/tex">A^T</script></span> in this situation is actually the <em>inverse</em> of <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>! This special case is known as an <strong>orthogonal matrix</strong>.</p>
+<p>Another thing to note is that because all the basis vectors are of unit length, it must scale space by a <em>factor of one</em>. Stated another way, the determinant of an orthogonal matrix must be either plus or minus one.</p>
+<div>
+<div class="MathJax_Preview">\vert A \vert = \pm 1</div>
+<script type="math/tex; mode=display">\vert A \vert = \pm 1</script>
+</div>
+<p>Where the minus one arises if the new basis vector set <em>flip space around</em> (from right-handed to left-handed or vice versa). Notice that if <span><span class="MathJax_Preview">A^T</span><script type="math/tex">A^T</script></span>, the inverse of <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>, then by the definition of the inverse:</p>
+<div>
+<div class="MathJax_Preview">A^TA = AA^T = I_n</div>
+<script type="math/tex; mode=display">A^TA = AA^T = I_n</script>
+</div>
+<p>So, we could pre- or post- multiply and still get the identity. This means that the rows of the orthogonal matrix are also orthonormal to each other! So, the transpose matrix of an orthogonal basis set, is itself another orthogonal basis set.</p>
+<p>Now, remember that in the last module on vectors, we said that transforming a vector onto a new coordinate system was as easy as taking the projection or dot product of that vector onto each of the new bases vectors, <em>as long as they were orthogonal to each other</em>. So, if we have a vector <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> and we want to project <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> into a new set of axes, let's call them <span><span class="MathJax_Preview">\hat e_1</span><script type="math/tex">\hat e_1</script></span> and  <span><span class="MathJax_Preview">\hat e_2</span><script type="math/tex">\hat e_2</script></span>, as long as these vectors are orthogonal to each other, then we  can project into the new vector space just by taking the dot product of <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> with <span><span class="MathJax_Preview">\hat e_2</span><script type="math/tex">\hat e_2</script></span>, and the dot product of <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> with <span><span class="MathJax_Preview">\hat e_1</span><script type="math/tex">\hat e_1</script></span>, and then we'd have its components in the new set of axis.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See <a href="#changing-basis">Changing basis</a> for a walked-through example.</p>
+</div>
+<p><strong>Conclusions</strong></p>
+<p>In this section, we introduced the most convenient basis vector set of all, the <strong>orthonormal bases vector set</strong>.</p>
+<p>Wherever possible we want to use an orthonormal basis vector set represented as a orthogonal matrix <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>. This set of vectors has the following properties and consequences that make it easy to work with:</p>
+<ul>
+<li>the <strong>transpose</strong> of such a matrix will be its <strong>inverse</strong>, which makes the inverse incredibly easy to compute,</li>
+<li>the transformation will be <strong>reversible</strong> because space doesn't get collapsed by any dimensions,</li>
+<li>the projections (i.e. the result of computing the projection of a vector onto the matrix <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>) are just the dot products.</li>
+</ul>
+<p>One final note. If we arrange the bases vectors in the correct order, then the <em>determinant will be one</em>.</p>
+<div>
+<div class="MathJax_Preview"> \vert A \vert = 1</div>
+<script type="math/tex; mode=display"> \vert A \vert = 1</script>
+</div>
+<p>An easy way to check if they aren't in the right order, is to check if the determinant is minus one. This means we've transformed our space from right to left handed orientation. All we have to do to remedy this is to exchange a pair of vectors in <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> such that <span><span class="MathJax_Preview">\vert A \vert = 1</span><script type="math/tex">\vert A \vert = 1</script></span>.</p>
+<h2 id="recognizing-mapping-matrices-and-applying-these-to-data">Recognizing mapping matrices and applying these to data</h2>
+<h3 id="the-gramschmidt-process">The Gram–Schmidt process</h3>
+<p>In the last section, we motivated the idea that life is much easier if we can construct an orthonormal basis vector set, but we haven't talked about how to do it. In this section, we will explore just that.</p>
+<p>We'll start from the assumption that we already have some linearly independent vectors that span the space we're interested in. Say we have some such vectors <span><span class="MathJax_Preview">V = \{v_1, v_2, ..., v_n\}</span><script type="math/tex">V = \{v_1, v_2, ..., v_n\}</script></span>,</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you want to check linear independence, you can write down your vectors as the the columns in a matrix and check that the determinant of that matrix isn't zero.</p>
+</div>
+<p>but they aren't orthogonal to each other or of unit length. Our life would probably be easier if we could construct some orthonormal basis. As it turns out, there's a process for doing just that which is called the <a href="http://www.wikiwand.com/en/Gram–Schmidt_process"><strong>Gram-Schmidt process</strong></a>.</p>
+<p>Let's take the first vector in the set to be <span><span class="MathJax_Preview">v_1</span><script type="math/tex">v_1</script></span>. In this first step, we're just going to normalize <span><span class="MathJax_Preview">v_1</span><script type="math/tex">v_1</script></span> to get our eventual first basis vector <span><span class="MathJax_Preview">e_1</span><script type="math/tex">e_1</script></span></p>
+<div>
+<div class="MathJax_Preview">e_1 = \frac{v_1}{\vert v_1 \vert} </div>
+<script type="math/tex; mode=display">e_1 = \frac{v_1}{\vert v_1 \vert} </script>
+</div>
+<p>Now, we can think of <span><span class="MathJax_Preview">v_2</span><script type="math/tex">v_2</script></span> as being composed of two things: a component that is in the direction of <span><span class="MathJax_Preview">e_1</span><script type="math/tex">e_1</script></span> and a component that's perpendicular to <span><span class="MathJax_Preview">e_1</span><script type="math/tex">e_1</script></span>. We can find the component that's in the direction of <span><span class="MathJax_Preview">e_1</span><script type="math/tex">e_1</script></span> by taking the vector projection <span><span class="MathJax_Preview">v_2</span><script type="math/tex">v_2</script></span> onto <span><span class="MathJax_Preview">e_1</span><script type="math/tex">e_1</script></span>:</p>
+<div>
+<div class="MathJax_Preview">v_2 = (v_2 \cdot e_1) \frac{e_1}{\vert e_1 \vert} </div>
+<script type="math/tex; mode=display">v_2 = (v_2 \cdot e_1) \frac{e_1}{\vert e_1 \vert} </script>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><span><span class="MathJax_Preview">|e_1|</span><script type="math/tex">|e_1|</script></span> is 1 so we could actually omit it.</p>
+</div>
+<p>If we subtract this vector projection from <span><span class="MathJax_Preview">v_2</span><script type="math/tex">v_2</script></span> we get <span><span class="MathJax_Preview">u_2</span><script type="math/tex">u_2</script></span>, a vector which is orthogonal to <span><span class="MathJax_Preview">e_1</span><script type="math/tex">e_1</script></span>:</p>
+<div>
+<div class="MathJax_Preview">u_2 = v_2 - (v_2 \cdot e_1) e_1</div>
+<script type="math/tex; mode=display">u_2 = v_2 - (v_2 \cdot e_1) e_1</script>
+</div>
+<p>Finally, dividing <span><span class="MathJax_Preview">u_2</span><script type="math/tex">u_2</script></span> by its length gives us <span><span class="MathJax_Preview">e_2</span><script type="math/tex">e_2</script></span>, the unit vector orthogonal to <span><span class="MathJax_Preview">e_1</span><script type="math/tex">e_1</script></span>:</p>
+<div>
+<div class="MathJax_Preview">e_2 = \frac{u_2}{\vert u_2 \vert} </div>
+<script type="math/tex; mode=display">e_2 = \frac{u_2}{\vert u_2 \vert} </script>
+</div>
+<p>We could continue this process for all vectors in our set <span><span class="MathJax_Preview">V</span><script type="math/tex">V</script></span>. The general formula (in pseudocode) is:</p>
+<div class="highlight"><pre><span></span><span class="c1"># For all vectors in our set V</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="o">|</span><span class="n">V</span><span class="o">|</span><span class="p">:</span>
+  <span class="c1"># For all vectors in our set V that come before v_i</span>
+  <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">i</span><span class="p">:</span>
+    <span class="c1"># Subtract the component of v_i in the direction of the previous vectors v_j</span>
+    <span class="n">v_i</span> <span class="o">=</span> <span class="n">v_i</span> <span class="o">-</span> <span class="n">v_i</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v_j</span><span class="p">)</span> <span class="o">*</span> <span class="n">v_j</span>
+  <span class="c1"># If |v_i| is not zero, normalize it to unit length. Otherwise it is linearly dependent on a</span>
+  <span class="c1"># previous vector, so set it equal to the zero vector.</span>
+  <span class="k">if</span> <span class="o">|</span><span class="n">v_i</span><span class="o">|</span> <span class="err">!!!</span> <span class="n">note</span>
+    <span class="mi">0</span><span class="p">:</span>
+    <span class="n">v_i</span> <span class="o">=</span> <span class="n">v_i</span> <span class="o">/</span> <span class="o">|</span><span class="n">v_i</span><span class="o">|</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">v_i</span> <span class="o">=</span> <span class="n">zero_vector</span>
+</pre></div>
+
+<p><img alt="" src="http://upload.wikimedia.org/wikipedia/commons/e/ee/Gram-Schmidt_orthonormalization_process.gif" /></p>
+<p><strong>Conclusions</strong></p>
+<p>So that's how we construct an orthonormal basis set, which makes our lives much easier for all the reasons we discussed <a href="#orthogonal-matrices">here</a>.</p>
+<h3 id="reflecting-in-a-plane">Reflecting in a plane</h3>
+<p>This is a rather involved example, and is probably best if you just watch it yourself <a href="https://www.coursera.org/learn/linear-algebra-machine-learning/lecture/oXE0Y/example-reflecting-in-a-plane">here</a>. If I can find the time, i'll make notes for the video!</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../week_3/" title="Week 3" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Week 3
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../week_5/" title="Week 5" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Week 5
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/JohnGiorgi" class="md-footer-social__link fa fa-github"></a>
+    
+  </div>
+
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.583bbe55.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+    
+      
+    
+  </body>
+</html>

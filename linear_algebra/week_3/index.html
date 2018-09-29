@@ -1,0 +1,1466 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+        <link rel="canonical" href="https://johngiorgi.github.io/mathematics-for-machine-learning/linear_algebra/week_3/">
+      
+      
+        <meta name="author" content="John Giorgi">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
+    
+    
+      
+        <title>Week 3 - Mathematics for Machine Learning</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#ef5350">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="red" data-md-color-accent="teal">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="../../#week-3-matrices-as-objects-that-operate-on-vectors" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://johngiorgi.github.io/mathematics-for-machine-learning/" title="Mathematics for Machine Learning" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Mathematics for Machine Learning
+              </span>
+              <span class="md-header-nav__topic">
+                Week 3
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/JohnGiorgi/mathematics-for-machine-learning/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      JohnGiorgi/mathematics-for-machine-learning
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://johngiorgi.github.io/mathematics-for-machine-learning/" title="Mathematics for Machine Learning" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Mathematics for Machine Learning
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/JohnGiorgi/mathematics-for-machine-learning/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      JohnGiorgi/mathematics-for-machine-learning
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="About" class="md-nav__link">
+      About
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      Linear Algebra
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Linear Algebra
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../course_resources/" title="Course Resources" class="md-nav__link">
+      Course Resources
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../week_1/" title="Week 1" class="md-nav__link">
+      Week 1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../week_2/" title="Week 2" class="md-nav__link">
+      Week 2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Week 3
+      </label>
+    
+    <a href="./" title="Week 3" class="md-nav__link md-nav__link--active">
+      Week 3
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#matrices" title="Matrices" class="md-nav__link">
+    Matrices
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introduction-to-matrices" title="Introduction to matrices" class="md-nav__link">
+    Introduction to matrices
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conclusions" title="Conclusions" class="md-nav__link">
+    Conclusions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matrices-as-objects-that-operate-on-vectors" title="Matrices as objects that operate on vectors" class="md-nav__link">
+    Matrices as objects that operate on vectors
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-matrices-transform-space" title="How matrices transform space" class="md-nav__link">
+    How matrices transform space
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#types-of-matrix-transformation" title="Types of matrix transformation" class="md-nav__link">
+    Types of matrix transformation
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conclusions_1" title="Conclusions" class="md-nav__link">
+    Conclusions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#composition-or-combination-of-matrix-transformations" title="Composition or combination of matrix transformations" class="md-nav__link">
+    Composition or combination of matrix transformations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matrix-inverses" title="Matrix inverses" class="md-nav__link">
+    Matrix inverses
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gaussian-elimination-solving-the-apples-and-bananas-problem" title="Gaussian elimination: Solving the apples and bananas problem" class="md-nav__link">
+    Gaussian elimination: Solving the apples and bananas problem
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-gaussian-elimination-to-finding-the-inverse-matrix" title="From Gaussian elimination to finding the inverse matrix" class="md-nav__link">
+    From Gaussian elimination to finding the inverse matrix
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#special-matrices" title="Special matrices" class="md-nav__link">
+    Special matrices
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-determinant" title="The determinant" class="md-nav__link">
+    The determinant
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-determinant-of-zero" title="A determinant of zero" class="md-nav__link">
+    A determinant of zero
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-negative-determinant" title="A negative determinant" class="md-nav__link">
+    A negative determinant
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-the-determinant-means-numerically" title="What the determinant means numerically" class="md-nav__link">
+    What the determinant means numerically
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary" title="Summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../week_4/" title="Week 4" class="md-nav__link">
+      Week 4
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../week_5/" title="Week 5" class="md-nav__link">
+      Week 5
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../calculus/" title="Calculus" class="md-nav__link">
+      Calculus
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#matrices" title="Matrices" class="md-nav__link">
+    Matrices
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introduction-to-matrices" title="Introduction to matrices" class="md-nav__link">
+    Introduction to matrices
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conclusions" title="Conclusions" class="md-nav__link">
+    Conclusions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matrices-as-objects-that-operate-on-vectors" title="Matrices as objects that operate on vectors" class="md-nav__link">
+    Matrices as objects that operate on vectors
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-matrices-transform-space" title="How matrices transform space" class="md-nav__link">
+    How matrices transform space
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#types-of-matrix-transformation" title="Types of matrix transformation" class="md-nav__link">
+    Types of matrix transformation
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conclusions_1" title="Conclusions" class="md-nav__link">
+    Conclusions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#composition-or-combination-of-matrix-transformations" title="Composition or combination of matrix transformations" class="md-nav__link">
+    Composition or combination of matrix transformations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matrix-inverses" title="Matrix inverses" class="md-nav__link">
+    Matrix inverses
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gaussian-elimination-solving-the-apples-and-bananas-problem" title="Gaussian elimination: Solving the apples and bananas problem" class="md-nav__link">
+    Gaussian elimination: Solving the apples and bananas problem
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-gaussian-elimination-to-finding-the-inverse-matrix" title="From Gaussian elimination to finding the inverse matrix" class="md-nav__link">
+    From Gaussian elimination to finding the inverse matrix
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#special-matrices" title="Special matrices" class="md-nav__link">
+    Special matrices
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-determinant" title="The determinant" class="md-nav__link">
+    The determinant
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-determinant-of-zero" title="A determinant of zero" class="md-nav__link">
+    A determinant of zero
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-negative-determinant" title="A negative determinant" class="md-nav__link">
+    A negative determinant
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-the-determinant-means-numerically" title="What the determinant means numerically" class="md-nav__link">
+    What the determinant means numerically
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary" title="Summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/JohnGiorgi/mathematics-for-machine-learning/edit/master/docs/linear_algebra/week_3.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="week-3-matrices-as-objects-that-operate-on-vectors">Week 3: Matrices as Objects that Operate on Vectors</h1>
+<p>Lets now turn our attention from vectors to <a href="http://www.wikiwand.com/en/Matrix_(mathematics)"><strong>matrices</strong></a>. First we will look at how to use matrices as tools to solve linear algebra problems, before introducing them as objects that <em>transform</em> vectors. We will then explain how to solve systems of linear equations using matrices, which will introduce the concept of inverse matrices and determinants. Finally, we'll look at cases of special matrices: when the determinant is zero, and where the matrix isn't invertible. Because many algorithms require us to invert a matrix as one of their steps, this special case is important.</p>
+<p><strong>Learning Objectives</strong></p>
+<ul>
+<li>Understand what a matrix is and how it corresponds to a transformation</li>
+<li>Explain and calculate inverse and determinant of matrices</li>
+<li>Identify and explain how to find inverses computationally</li>
+<li>Explore what it means for a matrix to be inertible</li>
+</ul>
+<h2 id="matrices">Matrices</h2>
+<h3 id="introduction-to-matrices">Introduction to matrices</h3>
+<p>At the start of the course, we encountered the "apples and bananas" problem: how to find the price of things when we only have the total bill. Now we're going to look at matrices, which can be thought of as objects that rotate and stretch vectors, and how they can be used to solve these sorts of problems.</p>
+<p>Let's go back to that apples and bananas problem. Say we walk into a shop and we buy two apples, and three bananas and that costs us 8 euros:</p>
+<div>
+<div class="MathJax_Preview">2a + 3b = 8</div>
+<script type="math/tex; mode=display">2a + 3b = 8</script>
+</div>
+<p>On another day and we buy 10 apples and 1 banana, and that costs me 13 euros:</p>
+<div>
+<div class="MathJax_Preview">10a + 1b = 13</div>
+<script type="math/tex; mode=display">10a + 1b = 13</script>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Now you might say this is silly. What shop doesn't have sticker prices after all? But actually, businesses with complicated products and service agreements often use <a href="http://www.wikiwand.com/en/Price_discovery"><strong>price discovery</strong></a>.</p>
+</div>
+<p>Now these are just <strong>simultaneous equations</strong> <em>but</em>, I can write them down with matrices as follows:</p>
+<div>
+<div class="MathJax_Preview">\begin{pmatrix}2 &amp; 3 \\\ 10 &amp; 1\end{pmatrix} \begin{bmatrix}a \\\ b\end{bmatrix} = \begin{bmatrix}8 \\\ 13\end{bmatrix}</div>
+<script type="math/tex; mode=display">\begin{pmatrix}2 & 3 \\\ 10 & 1\end{pmatrix} \begin{bmatrix}a \\\ b\end{bmatrix} = \begin{bmatrix}8 \\\ 13\end{bmatrix}</script>
+</div>
+<p>We can say that the <strong>matrix</strong></p>
+<div>
+<div class="MathJax_Preview">\begin{pmatrix}2 &amp; 3 \\\ 10 &amp; 1\end{pmatrix}</div>
+<script type="math/tex; mode=display">\begin{pmatrix}2 & 3 \\\ 10 & 1\end{pmatrix}</script>
+</div>
+<p><em>operates</em> on the <strong>vector</strong></p>
+<div>
+<div class="MathJax_Preview">\begin{bmatrix}a \\\ b\end{bmatrix}</div>
+<script type="math/tex; mode=display">\begin{bmatrix}a \\\ b\end{bmatrix}</script>
+</div>
+<p>to give the other <strong>vector</strong></p>
+<div>
+<div class="MathJax_Preview">\begin{bmatrix}8 \\\ 13\end{bmatrix}</div>
+<script type="math/tex; mode=display">\begin{bmatrix}8 \\\ 13\end{bmatrix}</script>
+</div>
+<p>Our question, our problem to solve, is what vector</p>
+<div>
+<div class="MathJax_Preview">\begin{bmatrix}a \\\ b\end{bmatrix}</div>
+<script type="math/tex; mode=display">\begin{bmatrix}a \\\ b\end{bmatrix}</script>
+</div>
+<p><em>transforms</em> to give us</p>
+<div>
+<div class="MathJax_Preview">\begin{bmatrix}8 \\\ 13\end{bmatrix}</div>
+<script type="math/tex; mode=display">\begin{bmatrix}8 \\\ 13\end{bmatrix}</script>
+</div>
+<p>Now, what if we use our matrix</p>
+<div>
+<div class="MathJax_Preview">\begin{pmatrix}2 &amp; 3 \\ 10 &amp; 1\end{pmatrix}</div>
+<script type="math/tex; mode=display">\begin{pmatrix}2 & 3 \\ 10 & 1\end{pmatrix}</script>
+</div>
+<p>to transform our basis vectors <span><span class="MathJax_Preview">\hat e_1</span><script type="math/tex">\hat e_1</script></span> and  <span><span class="MathJax_Preview">\hat e_2</span><script type="math/tex">\hat e_2</script></span>?</p>
+<div>
+<div class="MathJax_Preview">\begin{pmatrix}2 &amp; 3 \\\ 10 &amp; 1\end{pmatrix} \cdot \hat e_1 = \begin{pmatrix}2 &amp; 3 \\\ 10 &amp; 1\end{pmatrix} \begin{pmatrix}1 \\\ 0 \end{pmatrix} = \begin{pmatrix}2 \\\ 10 \end{pmatrix}</div>
+<script type="math/tex; mode=display">\begin{pmatrix}2 & 3 \\\ 10 & 1\end{pmatrix} \cdot \hat e_1 = \begin{pmatrix}2 & 3 \\\ 10 & 1\end{pmatrix} \begin{pmatrix}1 \\\ 0 \end{pmatrix} = \begin{pmatrix}2 \\\ 10 \end{pmatrix}</script>
+</div>
+<div>
+<div class="MathJax_Preview">\begin{pmatrix}2 &amp; 3 \\\ 10 &amp; 1\end{pmatrix} \cdot \hat e_2 = \begin{pmatrix}2 &amp; 3 \\\ 10 &amp; 1\end{pmatrix} \begin{pmatrix}0 \\\ 1 \end{pmatrix} = \begin{pmatrix}3 \\\ 1 \end{pmatrix}</div>
+<script type="math/tex; mode=display">\begin{pmatrix}2 & 3 \\\ 10 & 1\end{pmatrix} \cdot \hat e_2 = \begin{pmatrix}2 & 3 \\\ 10 & 1\end{pmatrix} \begin{pmatrix}0 \\\ 1 \end{pmatrix} = \begin{pmatrix}3 \\\ 1 \end{pmatrix}</script>
+</div>
+<p>It becomes clear that what this matrix is doing is actually <em>transforming</em> the basis vectors <span><span class="MathJax_Preview">\hat e_1</span><script type="math/tex">\hat e_1</script></span> and  <span><span class="MathJax_Preview">\hat e_2</span><script type="math/tex">\hat e_2</script></span> to give us the vectors</p>
+<div>
+<div class="MathJax_Preview">\begin{pmatrix}2 \\\ 10 \end{pmatrix} \text{ , } \begin{pmatrix}3 \\\ 1 \end{pmatrix}</div>
+<script type="math/tex; mode=display">\begin{pmatrix}2 \\\ 10 \end{pmatrix} \text{ , } \begin{pmatrix}3 \\\ 1 \end{pmatrix}</script>
+</div>
+<p>Generally speaking, we can think of the matrix</p>
+<div>
+<div class="MathJax_Preview">\begin{pmatrix}2 &amp; 3 \\\ 10 &amp; 1\end{pmatrix}</div>
+<script type="math/tex; mode=display">\begin{pmatrix}2 & 3 \\\ 10 & 1\end{pmatrix}</script>
+</div>
+<p>as a <em>function</em> that operates on <em>input</em> vectors in order to give us <em>output</em> vectors. A set of simultaneous equations, like the ones we have here, is asking, in effect, what <em>input</em> vector I need in order to get a transformed product (the <em>output vector</em>) at position</p>
+<div>
+<div class="MathJax_Preview">\begin{bmatrix}8 \\\ 13\end{bmatrix}</div>
+<script type="math/tex; mode=display">\begin{bmatrix}8 \\\ 13\end{bmatrix}</script>
+</div>
+<h4 id="conclusions">Conclusions</h4>
+<p>Hopefully, it is a little more clear now what we mean now by the term <em>linear</em> algebra. Linear algebra is <em>linear</em>, because it just takes input values, our <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span> for example, and multiplies them by <em>constants</em>. <em>Everything is linear</em>. Finally, it's algebra simply because it is a notation describing mathematical objects and a system of manipulating those notations.</p>
+<p>So linear algebra is a <em>mathematical</em> system for <em>manipulating vectors</em> in the spaces <em>described by vectors</em>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is important! We are noticing some kind of deep connection between simultaneous equations, these things called matrices, and the vectors we were talking about last week. It turns that the key to solving simultaneous equation problems is appreciating how vectors are transformed by matrices, which is the heart of linear algebra.</p>
+</div>
+<h2 id="matrices-as-objects-that-operate-on-vectors">Matrices as objects that operate on vectors</h2>
+<h3 id="how-matrices-transform-space">How matrices transform space</h3>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Watch <a href="https://youtu.be/kYB8IZa5AuE">this</a> video before reading through this section.</p>
+</div>
+<p>So far, we have introduced the idea of a matrix and related it to the problem of solving <strong>simultaneous equations</strong>. We showed that the <strong>columns</strong> of a matrix can be thought of as the transformations applied to <strong>unit basis vector</strong> along each axis. This is a pretty profound idea, so lets flesh it out.</p>
+<p>We know that we can make any (2D) vector out of a vector <em>sum</em> of the <em>scaled</em> versions of <span><span class="MathJax_Preview">\hat e_1</span><script type="math/tex">\hat e_1</script></span> and <span><span class="MathJax_Preview">\hat e_2</span><script type="math/tex">\hat e_2</script></span> (our basis vectors).</p>
+<p>This means that the result of any <em>linear</em> transformation is just going to be some sum of the transformed basis vectors, (<span><span class="MathJax_Preview">\hat e_1</span><script type="math/tex">\hat e_1</script></span> and <span><span class="MathJax_Preview">\hat e_2</span><script type="math/tex">\hat e_2</script></span> here). This is a bit hard to see but what it means is that the grid lines of our space stay <em>parallel</em> and <em>evenly spaced</em>. They might be stretched or sheared, but the origin stays where it is and there isn't any curviness to the space, it doesn't get warped --- a consequence of our scalar addition and multiplication rules for vectors.</p>
+<p>If we write down the matrix <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> and the vector it is transforming as <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span>, we can represent our apples and bananas problem introduced earlier as:</p>
+<div>
+<div class="MathJax_Preview">\begin{pmatrix}2 &amp; 3 \\\ 10 &amp; 1\end{pmatrix} \begin{bmatrix}a \\\ b\end{bmatrix} = \begin{bmatrix}8 \\\ 13\end{bmatrix}</div>
+<script type="math/tex; mode=display">\begin{pmatrix}2 & 3 \\\ 10 & 1\end{pmatrix} \begin{bmatrix}a \\\ b\end{bmatrix} = \begin{bmatrix}8 \\\ 13\end{bmatrix}</script>
+</div>
+<div>
+<div class="MathJax_Preview">A   r =    r' </div>
+<script type="math/tex; mode=display">A   r =    r' </script>
+</div>
+<p>Where <span><span class="MathJax_Preview">r'</span><script type="math/tex">r'</script></span> is our <em>transformed</em> vector. We can generalize further, and add a scalar, <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>:</p>
+<div>
+<div class="MathJax_Preview">A (n  r) =  n  r' </div>
+<script type="math/tex; mode=display">A (n  r) =  n  r' </script>
+</div>
+<p>We notice that:</p>
+<div>
+<div class="MathJax_Preview">A (r +   s) =  A   r + A   s </div>
+<script type="math/tex; mode=display">A (r +   s) =  A   r + A   s </script>
+</div>
+<p>Putting it together, we can represent any vector in 2D space as:</p>
+<div>
+<div class="MathJax_Preview">A (n \hat e_1 + m \hat e_2) =  n A \hat e_1 + m A \hat e_2 </div>
+<script type="math/tex; mode=display">A (n \hat e_1 + m \hat e_2) =  n A \hat e_1 + m A \hat e_2 </script>
+</div>
+<div>
+<div class="MathJax_Preview">\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;= n \hat e_1' + m \hat e_2' </div>
+<script type="math/tex; mode=display">\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;= n \hat e_1' + m \hat e_2' </script>
+</div>
+<p>Now let's try an example. Let,</p>
+<div>
+<div class="MathJax_Preview">A = \begin{pmatrix}2 &amp; 3 \\\ 10 &amp; 1\end{pmatrix}</div>
+<script type="math/tex; mode=display">A = \begin{pmatrix}2 & 3 \\\ 10 & 1\end{pmatrix}</script>
+</div>
+<div>
+<div class="MathJax_Preview">  r = \begin{bmatrix}3 \\\ 2\end{bmatrix}</div>
+<script type="math/tex; mode=display">  r = \begin{bmatrix}3 \\\ 2\end{bmatrix}</script>
+</div>
+<p>Then,</p>
+<div>
+<div class="MathJax_Preview">A   r =    r' </div>
+<script type="math/tex; mode=display">A   r =    r' </script>
+</div>
+<div>
+<div class="MathJax_Preview">\Rightarrow \begin{pmatrix}2 &amp; 3 \\\ 10 &amp; 1\end{pmatrix} \begin{bmatrix}3 \\\ 2\end{bmatrix} = \begin{bmatrix}12 \\\ 32\end{bmatrix}</div>
+<script type="math/tex; mode=display">\Rightarrow \begin{pmatrix}2 & 3 \\\ 10 & 1\end{pmatrix} \begin{bmatrix}3 \\\ 2\end{bmatrix} = \begin{bmatrix}12 \\\ 32\end{bmatrix}</script>
+</div>
+<p>Which is no different than how we might have multiplied matrices and vectors in school. But, we can think of this another way:</p>
+<div>
+<div class="MathJax_Preview">A (n \hat e_1 + m \hat e_2) =  r'</div>
+<script type="math/tex; mode=display">A (n \hat e_1 + m \hat e_2) =  r'</script>
+</div>
+<div>
+<div class="MathJax_Preview">\Rightarrow \begin{pmatrix}2 &amp; 3 \\\ 10 &amp; 1\end{pmatrix} \Biggl (3 \begin{bmatrix}1 \\\ 0\end{bmatrix} + 2 \begin{bmatrix}0 \\\ 1\end{bmatrix} \Biggl) = </div>
+<script type="math/tex; mode=display">\Rightarrow \begin{pmatrix}2 & 3 \\\ 10 & 1\end{pmatrix} \Biggl (3 \begin{bmatrix}1 \\\ 0\end{bmatrix} + 2 \begin{bmatrix}0 \\\ 1\end{bmatrix} \Biggl) = </script>
+</div>
+<div>
+<div class="MathJax_Preview">3 \begin{pmatrix}2 &amp; 3 \\\ 10 &amp; 1\end{pmatrix} \begin{bmatrix}1 \\\ 0\end{bmatrix} + 2 \begin{pmatrix}2 &amp; 3 \\\ 10 &amp; 1\end{pmatrix} \begin{bmatrix}0 \\\ 1\end{bmatrix} = </div>
+<script type="math/tex; mode=display">3 \begin{pmatrix}2 & 3 \\\ 10 & 1\end{pmatrix} \begin{bmatrix}1 \\\ 0\end{bmatrix} + 2 \begin{pmatrix}2 & 3 \\\ 10 & 1\end{pmatrix} \begin{bmatrix}0 \\\ 1\end{bmatrix} = </script>
+</div>
+<div>
+<div class="MathJax_Preview">= 3 \begin{bmatrix}2 \\\ 10\end{bmatrix} + 2 \begin{bmatrix}3 \\\ 1\end{bmatrix} = \begin{bmatrix}12 \\\ 32\end{bmatrix}</div>
+<script type="math/tex; mode=display">= 3 \begin{bmatrix}2 \\\ 10\end{bmatrix} + 2 \begin{bmatrix}3 \\\ 1\end{bmatrix} = \begin{bmatrix}12 \\\ 32\end{bmatrix}</script>
+</div>
+<p>The take home idea here is that the matrix <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> just <em>tells us where the basis vectors go</em>. That's the <em>transformation</em> it does.</p>
+<h3 id="types-of-matrix-transformation">Types of matrix transformation</h3>
+<p>Lets illustrate the type of transformations we can perform with matrices with a number of examples.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Remember, in linear algebra, linear transformations can be represented by matrices!</p>
+</div>
+<p>We are only going to scratch the surface here and to continue to build up our intuition of viewing matrices as <em>functions</em> that apply <em>transformations</em> to some <em>input vector</em>.</p>
+<p><strong>Identity matrix</strong></p>
+<p>First, let's think about a matrix that doesn't change anything. Such a matrix is just composed of the <strong>basis vectors</strong> of the space,</p>
+<div>
+<div class="MathJax_Preview">\begin{bmatrix} 1 &amp; 0  \\\ 0 &amp; 1\end{bmatrix} \begin{bmatrix} x  \\\ y\end{bmatrix} = \begin{bmatrix} x  \\\ y\end{bmatrix}</div>
+<script type="math/tex; mode=display">\begin{bmatrix} 1 & 0  \\\ 0 & 1\end{bmatrix} \begin{bmatrix} x  \\\ y\end{bmatrix} = \begin{bmatrix} x  \\\ y\end{bmatrix}</script>
+</div>
+<p>this is known as the <a href="http://www.wikiwand.com/en/Identity_matrix"><strong>identity matrix</strong></a>. It's the matrix that does nothing and leaves everything preserved, typically denoted <span><span class="MathJax_Preview">I_m</span><script type="math/tex">I_m</script></span> where <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> is the number of dimensions in our vector space.</p>
+<p><strong>Scaling</strong></p>
+<p>When our matrix contains values other than <span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span> in the diagnonal, we get a <strong>scaling</strong>:</p>
+<div>
+<div class="MathJax_Preview">\begin{bmatrix} m &amp; 0  \\\ 0 &amp; n\end{bmatrix} \begin{bmatrix} x  \\\ y\end{bmatrix} = \begin{bmatrix} mx  \\\ ny\end{bmatrix}</div>
+<script type="math/tex; mode=display">\begin{bmatrix} m & 0  \\\ 0 & n\end{bmatrix} \begin{bmatrix} x  \\\ y\end{bmatrix} = \begin{bmatrix} mx  \\\ ny\end{bmatrix}</script>
+</div>
+<p>If <span><span class="MathJax_Preview">m = 3</span><script type="math/tex">m = 3</script></span> and <span><span class="MathJax_Preview">n=2</span><script type="math/tex">n=2</script></span>, visually this looks like:</p>
+<p><img alt="matrix_transformation_1" src="../../img/matrix_transformation_1.png" /></p>
+<p>This transformation simply <em>scales</em> each dimension of the space by the value at the corresponding diagonal of the matrix.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that when <span><span class="MathJax_Preview">m \lt 1</span><script type="math/tex">m \lt 1</script></span> and/or <span><span class="MathJax_Preview">n \lt 1</span><script type="math/tex">n \lt 1</script></span>, our space is actually <em>compressed</em> along the axes.</p>
+</div>
+<p><strong>Reflections</strong></p>
+<p>When one or more of our diagonal values is negative, we get a <strong>reflection</strong>:</p>
+<div>
+<div class="MathJax_Preview">\begin{bmatrix} -1 &amp; 0  \\\ 0 &amp; k\end{bmatrix} \begin{bmatrix} x  \\\ y\end{bmatrix} = \begin{bmatrix} -x  \\\ ky\end{bmatrix}</div>
+<script type="math/tex; mode=display">\begin{bmatrix} -1 & 0  \\\ 0 & k\end{bmatrix} \begin{bmatrix} x  \\\ y\end{bmatrix} = \begin{bmatrix} -x  \\\ ky\end{bmatrix}</script>
+</div>
+<p>In this case, our coordinate system is flipped across the <em>vertical</em> axis. When <span><span class="MathJax_Preview">k = 2</span><script type="math/tex">k = 2</script></span>, visually this looks like:</p>
+<p><img alt="matrix_transformation_2" src="../../img/matrix_transformation_2.png" /></p>
+<p>In another example,</p>
+<div>
+<div class="MathJax_Preview">\begin{bmatrix} -1 &amp; 0  \\\ 0 &amp; -1\end{bmatrix} \begin{bmatrix} x  \\\ y\end{bmatrix} = \begin{bmatrix} -x  \\\ -y\end{bmatrix}</div>
+<script type="math/tex; mode=display">\begin{bmatrix} -1 & 0  \\\ 0 & -1\end{bmatrix} \begin{bmatrix} x  \\\ y\end{bmatrix} = \begin{bmatrix} -x  \\\ -y\end{bmatrix}</script>
+</div>
+<p>This transformation inverts <em>all</em> axes, and is known as an <strong>inversion</strong>.</p>
+<p>We can also produce mirror reflections over a straight line that crosses through the origin:</p>
+<div>
+<div class="MathJax_Preview">\begin{bmatrix} 0 &amp; 1  \\\ 1 &amp; 0\end{bmatrix} \begin{bmatrix} x  \\\ y\end{bmatrix} = \begin{bmatrix} y  \\\ x\end{bmatrix}</div>
+<script type="math/tex; mode=display">\begin{bmatrix} 0 & 1  \\\ 1 & 0\end{bmatrix} \begin{bmatrix} x  \\\ y\end{bmatrix} = \begin{bmatrix} y  \\\ x\end{bmatrix}</script>
+</div>
+<p>or,</p>
+<div>
+<div class="MathJax_Preview">\begin{bmatrix} 0 &amp; -1  \\\ -1 &amp; 0\end{bmatrix} \begin{bmatrix} x  \\\ y\end{bmatrix} = \begin{bmatrix} -y  \\\ -x\end{bmatrix}</div>
+<script type="math/tex; mode=display">\begin{bmatrix} 0 & -1  \\\ -1 & 0\end{bmatrix} \begin{bmatrix} x  \\\ y\end{bmatrix} = \begin{bmatrix} -y  \\\ -x\end{bmatrix}</script>
+</div>
+<p><img alt="matrix_transformation_4" src="../../img/matrix_transformation_4.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Of course, we can also produce mirror transformations over the <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> or <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span> axis as well, by making one of the diagonals <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span> and the other <span><span class="MathJax_Preview">-1</span><script type="math/tex">-1</script></span>.</p>
+</div>
+<p><strong>Shears</strong></p>
+<p><a href="http://www.wikiwand.com/en/Shear_mapping"><strong>Shears</strong></a> are visually similar to <em>slanting</em>. There are two possibilities:</p>
+<p>A shear parallel to the <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> axis looks like:</p>
+<div>
+<div class="MathJax_Preview">\begin{bmatrix} 1 &amp; k \\\ 0 &amp; 1\end{bmatrix} \begin{bmatrix} x  \\\ y\end{bmatrix} = \begin{bmatrix} x + ky  \\\ y\end{bmatrix}</div>
+<script type="math/tex; mode=display">\begin{bmatrix} 1 & k \\\ 0 & 1\end{bmatrix} \begin{bmatrix} x  \\\ y\end{bmatrix} = \begin{bmatrix} x + ky  \\\ y\end{bmatrix}</script>
+</div>
+<p>If <span><span class="MathJax_Preview">k=1</span><script type="math/tex">k=1</script></span>, then visually this looks like:</p>
+<p><img alt="matrix_transformation_3" src="../../img/matrix_transformation_3.png" /></p>
+<p>Or a shear parallel to the <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span> axis:</p>
+<div>
+<div class="MathJax_Preview">\begin{bmatrix} 1 &amp; 0 \\\ k &amp; 1\end{bmatrix} \begin{bmatrix} x  \\\ y\end{bmatrix} = \begin{bmatrix} x  \\\ kx + y\end{bmatrix}</div>
+<script type="math/tex; mode=display">\begin{bmatrix} 1 & 0 \\\ k & 1\end{bmatrix} \begin{bmatrix} x  \\\ y\end{bmatrix} = \begin{bmatrix} x  \\\ kx + y\end{bmatrix}</script>
+</div>
+<p><strong>Rotations</strong></p>
+<p>Finally, we can rotate the space about the orign. For example,</p>
+<div>
+<div class="MathJax_Preview">\begin{bmatrix} 0 &amp; -1 \\\ 1 &amp; 0\end{bmatrix} \begin{bmatrix} x  \\\ y\end{bmatrix} = \begin{bmatrix} y  \\\ -x\end{bmatrix}</div>
+<script type="math/tex; mode=display">\begin{bmatrix} 0 & -1 \\\ 1 & 0\end{bmatrix} \begin{bmatrix} x  \\\ y\end{bmatrix} = \begin{bmatrix} y  \\\ -x\end{bmatrix}</script>
+</div>
+<p>would rotate the entire space <span><span class="MathJax_Preview">90^0</span><script type="math/tex">90^0</script></span> counterclockwise.</p>
+<p>More generally, for a rotation by a angle <span><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span> <strong>clockwise</strong> about the orgin:</p>
+<div>
+<div class="MathJax_Preview">\begin{bmatrix} \cos \theta &amp; \sin \theta \\\ - \sin \theta &amp; \cos \theta \end{bmatrix} \begin{bmatrix} x \\\ y\end{bmatrix} = \begin{bmatrix} x \cos \theta + y \sin \theta  \\\  - x \sin \theta + y \cos \theta\end{bmatrix}</div>
+<script type="math/tex; mode=display">\begin{bmatrix} \cos \theta & \sin \theta \\\ - \sin \theta & \cos \theta \end{bmatrix} \begin{bmatrix} x \\\ y\end{bmatrix} = \begin{bmatrix} x \cos \theta + y \sin \theta  \\\  - x \sin \theta + y \cos \theta\end{bmatrix}</script>
+</div>
+<p>and for a rotation by a angle <span><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span> <strong>counterclockwise</strong> about the orgin</p>
+<div>
+<div class="MathJax_Preview">\begin{bmatrix} \cos \theta &amp; - \sin \theta \\\ \sin \theta &amp; \cos \theta \end{bmatrix} \begin{bmatrix} x \\\ y\end{bmatrix} = \begin{bmatrix} x \cos \theta - y \sin \theta  \\\  x \sin \theta + y \cos \theta\end{bmatrix}</div>
+<script type="math/tex; mode=display">\begin{bmatrix} \cos \theta & - \sin \theta \\\ \sin \theta & \cos \theta \end{bmatrix} \begin{bmatrix} x \\\ y\end{bmatrix} = \begin{bmatrix} x \cos \theta - y \sin \theta  \\\  x \sin \theta + y \cos \theta\end{bmatrix}</script>
+</div>
+<h4 id="conclusions_1">Conclusions</h4>
+<p>In this section, we described the major transformations that a matrix can perform on a vector. Next, we will look at how we can combine these transformations (known as <strong>composition</strong>) to produce more complex matrix transformations</p>
+<h3 id="composition-or-combination-of-matrix-transformations">Composition or combination of matrix transformations</h3>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Watch <a href="https://youtu.be/XkY2DOUCWMU">this</a> video before reading through this section.</p>
+</div>
+<p>So what is the point of introducing these different geometric transformations in this class? Well, if you want to do any kind of <em>shape</em> alteration, say of all the pixels in an image, or a face, then you can always make that shape change out of some combination of <em>rotations</em>, <em>shears</em>, <em>stretches</em>, and <em>inverses</em>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>One example where these geometric transformations may be useful is in <a href="http://www.wikiwand.com/en/Facial_recognition_system"><strong>facial recognition</strong></a>, where we may preprocess every image by transforming it so that the person(s) face(s) are directly facing the camera.</p>
+</div>
+<p>Lets illustrate this <em>composition</em> of matrix transformations with an example. Here, we will first apply a <span><span class="MathJax_Preview">90^o</span><script type="math/tex">90^o</script></span> rotation clockwise about the <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>-axis, and then a shear parallel to the <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>-axis. Let the first transformation matrix be <span><span class="MathJax_Preview">A_1</span><script type="math/tex">A_1</script></span>:</p>
+<div>
+<div class="MathJax_Preview">\begin{bmatrix} 0 &amp; 1  \\\ -1 &amp; 0\end{bmatrix} \begin{bmatrix} x  \\\ y\end{bmatrix} = \begin{bmatrix} y  \\\ -x\end{bmatrix}</div>
+<script type="math/tex; mode=display">\begin{bmatrix} 0 & 1  \\\ -1 & 0\end{bmatrix} \begin{bmatrix} x  \\\ y\end{bmatrix} = \begin{bmatrix} y  \\\ -x\end{bmatrix}</script>
+</div>
+<p>And our second transformation matrix <span><span class="MathJax_Preview">A_2</span><script type="math/tex">A_2</script></span>:</p>
+<div>
+<div class="MathJax_Preview">\begin{bmatrix} 1 &amp; 1  \\\ 0 &amp; 1\end{bmatrix} \begin{bmatrix} x  \\\ y\end{bmatrix} = \begin{bmatrix} x + y  \\\ y\end{bmatrix}</div>
+<script type="math/tex; mode=display">\begin{bmatrix} 1 & 1  \\\ 0 & 1\end{bmatrix} \begin{bmatrix} x  \\\ y\end{bmatrix} = \begin{bmatrix} x + y  \\\ y\end{bmatrix}</script>
+</div>
+<p>Applying <span><span class="MathJax_Preview">A_1</span><script type="math/tex">A_1</script></span> to our basis vectors <span><span class="MathJax_Preview">\hat e_1</span><script type="math/tex">\hat e_1</script></span> and <span><span class="MathJax_Preview">\hat e_2</span><script type="math/tex">\hat e_2</script></span> gives us <span><span class="MathJax_Preview">\hat e_1'</span><script type="math/tex">\hat e_1'</script></span> and <span><span class="MathJax_Preview">\hat e_1'</span><script type="math/tex">\hat e_1'</script></span>:</p>
+<div>
+<div class="MathJax_Preview">\hat e_1' = A_1 \cdot \hat e_1 = \begin{bmatrix} 0  \\\ -1\end{bmatrix}</div>
+<script type="math/tex; mode=display">\hat e_1' = A_1 \cdot \hat e_1 = \begin{bmatrix} 0  \\\ -1\end{bmatrix}</script>
+</div>
+<div>
+<div class="MathJax_Preview">\hat e_2' = A_1 \cdot \hat e_2 = \begin{bmatrix} 1  \\\ 0\end{bmatrix}</div>
+<script type="math/tex; mode=display">\hat e_2' = A_1 \cdot \hat e_2 = \begin{bmatrix} 1  \\\ 0\end{bmatrix}</script>
+</div>
+<p>Applying <span><span class="MathJax_Preview">A_2</span><script type="math/tex">A_2</script></span> to our new transformed vectors <span><span class="MathJax_Preview">\hat e_1'</span><script type="math/tex">\hat e_1'</script></span> and <span><span class="MathJax_Preview">\hat e_2'</span><script type="math/tex">\hat e_2'</script></span> gives us <span><span class="MathJax_Preview">\hat e_1''</span><script type="math/tex">\hat e_1''</script></span> and <span><span class="MathJax_Preview">\hat e_1''</span><script type="math/tex">\hat e_1''</script></span>:</p>
+<div>
+<div class="MathJax_Preview">\hat e_1'' = A_2 \cdot \hat e_1' = \begin{bmatrix}-1 \\\ -1\end{bmatrix}</div>
+<script type="math/tex; mode=display">\hat e_1'' = A_2 \cdot \hat e_1' = \begin{bmatrix}-1 \\\ -1\end{bmatrix}</script>
+</div>
+<div>
+<div class="MathJax_Preview">\hat e_2'' = A_2 \cdot \hat e_2' = \begin{bmatrix} 1  \\\ 0\end{bmatrix}</div>
+<script type="math/tex; mode=display">\hat e_2'' = A_2 \cdot \hat e_2' = \begin{bmatrix} 1  \\\ 0\end{bmatrix}</script>
+</div>
+<p>Notice that if we stack our final transformed vectors <span><span class="MathJax_Preview">\hat e_1''</span><script type="math/tex">\hat e_1''</script></span> and <span><span class="MathJax_Preview">\hat e_1''</span><script type="math/tex">\hat e_1''</script></span> as columns we get the matrix:</p>
+<div>
+<div class="MathJax_Preview">\begin{bmatrix} -1 &amp; 1  \\\ -1 &amp; 0\end{bmatrix}</div>
+<script type="math/tex; mode=display">\begin{bmatrix} -1 & 1  \\\ -1 & 0\end{bmatrix}</script>
+</div>
+<p>Which is equal to <span><span class="MathJax_Preview">A_2 \cdot A_1</span><script type="math/tex">A_2 \cdot A_1</script></span>. Geometrically, this looks like:</p>
+<p><img alt="composition" src="../../img/composition.jpg" /></p>
+<p><strong>Conclusions</strong></p>
+<p>The take home message here is that the transformation <span><span class="MathJax_Preview">A_2 \cdot (A_1 \cdot r)</span><script type="math/tex">A_2 \cdot (A_1 \cdot r)</script></span> for some transformation matrices <span><span class="MathJax_Preview">A_1</span><script type="math/tex">A_1</script></span> and <span><span class="MathJax_Preview">A_2</span><script type="math/tex">A_2</script></span> and some vector <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span>, is equivalent to the transformation <span><span class="MathJax_Preview">(A_2A_1) \cdot r</span><script type="math/tex">(A_2A_1) \cdot r</script></span></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that <span><span class="MathJax_Preview">A_2 \cdot (A_1 \cdot r) \ne A_1 \cdot (A_2 \cdot r)</span><script type="math/tex">A_2 \cdot (A_1 \cdot r) \ne A_1 \cdot (A_2 \cdot r)</script></span>, that is, the order in which we apply our transformations <em>matters</em>.</p>
+</div>
+<p>As it turns out, the key to solving simultaneous equation problems is appreciating how vectors are <em>transformed</em> by matrices, which is at the the heart of linear algebra.</p>
+<h2 id="matrix-inverses">Matrix inverses</h2>
+<p>In this section, we are finally going to present a way to solve the <em>apples and bananas</em> problem with matrices. Along the way, we're going to find out about a thing called the <a href="http://www.wikiwand.com/en/Invertible_matrix"><strong>inverse</strong></a> of a matrix and a method for finding it.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Watch <a href="https://youtu.be/uQhTuRlWMxw">this</a> video before reading this section. For more practice with matrix inverses, see Khan Academy sections <a href="https://www.khanacademy.org/math/linear-algebra/matrix-transformations/inverse-transformations/v/linear-algebra-introduction-to-the-inverse-of-a-function">here</a> and <a href="https://www.khanacademy.org/math/linear-algebra/matrix-transformations/inverse-of-matrices/v/linear-algebra-deriving-a-method-for-determining-inverses">here</a>.</p>
+</div>
+<h3 id="gaussian-elimination-solving-the-apples-and-bananas-problem">Gaussian elimination: Solving the apples and bananas problem</h3>
+<p>First, recall our apples and bananas problem in matrix form:</p>
+<div>
+<div class="MathJax_Preview">\begin{pmatrix}2 &amp; 3 \\\ 10 &amp; 1\end{pmatrix} \begin{bmatrix}a \\\ b\end{bmatrix} = \begin{bmatrix} 8 \\\ 3\end{bmatrix}</div>
+<script type="math/tex; mode=display">\begin{pmatrix}2 & 3 \\\ 10 & 1\end{pmatrix} \begin{bmatrix}a \\\ b\end{bmatrix} = \begin{bmatrix} 8 \\\ 3\end{bmatrix}</script>
+</div>
+<p>Where we want to find the price of individual apples (<span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span>) and bananas (<span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span>). Simplifying, lets say that:</p>
+<div>
+<div class="MathJax_Preview">A\cdot r =   s</div>
+<script type="math/tex; mode=display">A\cdot r =   s</script>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This, in effect is saying: "<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> <em>operates</em> on vector <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> to give us <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>".</p>
+</div>
+<p>To solve for <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span>, we need to move <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> to the other side of the equation. <em>But how?</em>. Well, to "undo" a division (and isolate <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>), you multiply by the reciprocal:</p>
+<div>
+<div class="MathJax_Preview">\frac{1}{2}x = 4</div>
+<script type="math/tex; mode=display">\frac{1}{2}x = 4</script>
+</div>
+<div>
+<div class="MathJax_Preview">\Rightarrow x = 8</div>
+<script type="math/tex; mode=display">\Rightarrow x = 8</script>
+</div>
+<p>Likewise, to undo a multiplication, we divide by the reciprocal:</p>
+<div>
+<div class="MathJax_Preview">2x = 4</div>
+<script type="math/tex; mode=display">2x = 4</script>
+</div>
+<div>
+<div class="MathJax_Preview">\Rightarrow x = 2</div>
+<script type="math/tex; mode=display">\Rightarrow x = 2</script>
+</div>
+<p>How do we <em>undo</em> the transformation performed by <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>? The answer is to find the matrix <span><span class="MathJax_Preview">A^{-1}</span><script type="math/tex">A^{-1}</script></span> (known as the <strong>inverse</strong> of <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>) such that:</p>
+<p><span><span class="MathJax_Preview">A^{-1}A = I</span><script type="math/tex">A^{-1}A = I</script></span></p>
+<p>where <span><span class="MathJax_Preview">I</span><script type="math/tex">I</script></span> is the <a href="http://www.wikiwand.com/en/Identity_matrix">identity matrix</a>. We call <span><span class="MathJax_Preview">A^{-1}</span><script type="math/tex">A^{-1}</script></span> the <strong>inverse</strong> of <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> because is it <em>reverses whatever transformation</em> <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> does, giving us back <span><span class="MathJax_Preview">I</span><script type="math/tex">I</script></span>. We note that:</p>
+<div>
+<div class="MathJax_Preview">A^{-1}A\cdot r = A^{-1}   s</div>
+<script type="math/tex; mode=display">A^{-1}A\cdot r = A^{-1}   s</script>
+</div>
+<div>
+<div class="MathJax_Preview">\Rightarrow\ I \cdot r = A^{-1}   s</div>
+<script type="math/tex; mode=display">\Rightarrow\ I \cdot r = A^{-1}   s</script>
+</div>
+<div>
+<div class="MathJax_Preview">\Rightarrow\   r = A^{-1}   s</div>
+<script type="math/tex; mode=display">\Rightarrow\   r = A^{-1}   s</script>
+</div>
+<p>So, if we could find the inverse of <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> (i.e. find <span><span class="MathJax_Preview">A^{-1}</span><script type="math/tex">A^{-1}</script></span>), we can solve our problem (i.e. find <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span>). We can solve for <span><span class="MathJax_Preview">A^{-1}</span><script type="math/tex">A^{-1}</script></span> with a series of <em>row operations</em> or <em>substitutions</em> (known as <a href="http://www.wikiwand.com/en/Gaussian_elimination"><strong>Gaussian elimination</strong></a>).</p>
+<p>Let's look at a slightly more complicated problem to see how this is done:</p>
+<div>
+<div class="MathJax_Preview">\begin{pmatrix}1 &amp; 1 &amp; 3 \\\ 1 &amp; 2 &amp; 4 \\\ 1 &amp; 1 &amp; 2\end{pmatrix} \begin{bmatrix}a \\\ b \\\ c\end{bmatrix} = \begin{bmatrix} 15 \\\ 21 \\\ 13\end{bmatrix}</div>
+<script type="math/tex; mode=display">\begin{pmatrix}1 & 1 & 3 \\\ 1 & 2 & 4 \\\ 1 & 1 & 2\end{pmatrix} \begin{bmatrix}a \\\ b \\\ c\end{bmatrix} = \begin{bmatrix} 15 \\\ 21 \\\ 13\end{bmatrix}</script>
+</div>
+<p>We start by subtracting row 1 from rows 2 and 3, which gives us a matrix in <a href="http://www.wikiwand.com/en/Row_echelon_form"><strong>row echelon form</strong></a> (technically, <a href="http://www.wikiwand.com/en/Row_echelon_form#/Reduced_row_echelon_form">reduced row echelon form</a>):</p>
+<div>
+<div class="MathJax_Preview">\begin{pmatrix}1 &amp; 1 &amp; 3 \\\ 0 &amp; 1 &amp; 1 \\\ 0 &amp; 0 &amp; 1\end{pmatrix} \begin{bmatrix}a \\\ b \\\ c\end{bmatrix} = \begin{bmatrix} 15 \\\ 6 \\\ 2\end{bmatrix}</div>
+<script type="math/tex; mode=display">\begin{pmatrix}1 & 1 & 3 \\\ 0 & 1 & 1 \\\ 0 & 0 & 1\end{pmatrix} \begin{bmatrix}a \\\ b \\\ c\end{bmatrix} = \begin{bmatrix} 15 \\\ 6 \\\ 2\end{bmatrix}</script>
+</div>
+<p>We then perform two steps of <a href="http://www.wikiwand.com/en/Triangular_matrix#/Forward_and_back_substitution"><strong>back substitution</strong></a> to get the identify matrix:</p>
+<div>
+<div class="MathJax_Preview">\begin{pmatrix}1 &amp; 1 &amp; 0 \\\ 0 &amp; 1 &amp; 0 \\\ 0 &amp; 0 &amp; 1\end{pmatrix} \begin{bmatrix}a \\\ b \\\ c\end{bmatrix} = \begin{bmatrix} 9 \\\ 4 \\\ 2\end{bmatrix}</div>
+<script type="math/tex; mode=display">\begin{pmatrix}1 & 1 & 0 \\\ 0 & 1 & 0 \\\ 0 & 0 & 1\end{pmatrix} \begin{bmatrix}a \\\ b \\\ c\end{bmatrix} = \begin{bmatrix} 9 \\\ 4 \\\ 2\end{bmatrix}</script>
+</div>
+<div>
+<div class="MathJax_Preview">\begin{pmatrix}1 &amp; 0 &amp; 0 \\\ 0 &amp; 1 &amp; 0 \\\ 0 &amp; 0 &amp; 1\end{pmatrix} \begin{bmatrix}a \\\ b \\\ c\end{bmatrix} = \begin{bmatrix} 5 \\\ 4 \\\ 2\end{bmatrix}</div>
+<script type="math/tex; mode=display">\begin{pmatrix}1 & 0 & 0 \\\ 0 & 1 & 0 \\\ 0 & 0 & 1\end{pmatrix} \begin{bmatrix}a \\\ b \\\ c\end{bmatrix} = \begin{bmatrix} 5 \\\ 4 \\\ 2\end{bmatrix}</script>
+</div>
+<p>We can then read the solution right from the matrices <span><span class="MathJax_Preview">a = 5</span><script type="math/tex">a = 5</script></span>, <span><span class="MathJax_Preview">b = 4</span><script type="math/tex">b = 4</script></span>, <span><span class="MathJax_Preview">c = 2</span><script type="math/tex">c = 2</script></span>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you are still feeling uneasy about using Gaussian elimination to solve a system of linear equations, see <a href="https://youtu.be/2j5Ic2V7wq4">here</a> for an example walked through step-by-step example. Full credit to <a href="http://patrickjmt.com">PatrickJMT</a>.</p>
+</div>
+<p><strong>Conclusions</strong></p>
+<p>As it turns out, we don't have to compute the inverse at all to solve a system of linear equations. Although we showed the process of Gaussian elimination for some vectors <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> and <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>, we can use it in the general case to solve for any linear equation of the form <span><span class="MathJax_Preview">A\cdot r =   s</span><script type="math/tex">A\cdot r =   s</script></span>. This actually one of the most computationally efficient ways to solve this problem, and it's going to work every time.</p>
+<h3 id="from-gaussian-elimination-to-finding-the-inverse-matrix">From Gaussian elimination to finding the inverse matrix</h3>
+<p>Now, let's think about how we can apply this idea of <em>elimination</em> to find the inverse matrix, which solves the more general problem no matter what vectors I write down on the right hand side.</p>
+<p>Say I have a 3 <span><span class="MathJax_Preview">\times</span><script type="math/tex">\times</script></span> 3 matrix <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> and its inverse <span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span> (<span><span class="MathJax_Preview">B = A^{-1})</span><script type="math/tex">B = A^{-1})</script></span>. By the definition of the <a href="http://www.wikiwand.com/en/Invertible_matrix"><strong>inverse</strong></a>,</p>
+<div>
+<div class="MathJax_Preview">AB = BA = I_n</div>
+<script type="math/tex; mode=display">AB = BA = I_n</script>
+</div>
+<p>If we use our matrix <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> from the last section:</p>
+<div>
+<div class="MathJax_Preview">\begin{pmatrix}1 &amp; 1 &amp; 3 \\\ 1 &amp; 2 &amp; 4 \\\ 1 &amp; 1 &amp; 2\end{pmatrix} \begin{pmatrix}b_{11} &amp; b_{12} &amp; b_{13} \\\ b_{21} &amp; b_{22} &amp; b_{23} \\\ b_{31} &amp; b_{32} &amp; b_{33}\end{pmatrix} = I</div>
+<script type="math/tex; mode=display">\begin{pmatrix}1 & 1 & 3 \\\ 1 & 2 & 4 \\\ 1 & 1 & 2\end{pmatrix} \begin{pmatrix}b_{11} & b_{12} & b_{13} \\\ b_{21} & b_{22} & b_{23} \\\ b_{31} & b_{32} & b_{33}\end{pmatrix} = I</script>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Where <span><span class="MathJax_Preview">b_{ij}</span><script type="math/tex">b_{ij}</script></span> is the element at the <span><span class="MathJax_Preview">i^{th}</span><script type="math/tex">i^{th}</script></span> row and <span><span class="MathJax_Preview">j^{th}</span><script type="math/tex">j^{th}</script></span> column of matrix <span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>.</p>
+</div>
+<p>we notice that the first column of <span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span> is just a vector. It's a vector that describes what the <span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span> matrix, the inverse of <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>, does to space.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Actually, it's the transformation that that vector does to the x-axis.</p>
+</div>
+<p>This means that:</p>
+<div>
+<div class="MathJax_Preview">\begin{pmatrix}1 &amp; 1 &amp; 3 \\\ 1 &amp; 2 &amp; 4 \\\ 1 &amp; 1 &amp; 2\end{pmatrix} \begin{pmatrix}b_{11} \\\ b_{21} \\\ b_{31}\end{pmatrix} = \begin{pmatrix} 1 \\\ 0 \\\ 0\end{pmatrix}</div>
+<script type="math/tex; mode=display">\begin{pmatrix}1 & 1 & 3 \\\ 1 & 2 & 4 \\\ 1 & 1 & 2\end{pmatrix} \begin{pmatrix}b_{11} \\\ b_{21} \\\ b_{31}\end{pmatrix} = \begin{pmatrix} 1 \\\ 0 \\\ 0\end{pmatrix}</script>
+</div>
+<p>Now, we could solve this by the elimination method and back substitution in just the way we did before. Then, we could do it again for the second column of <span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>, and finally the third. In this way, we would have solved for <span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>, in other words, we would have found <span><span class="MathJax_Preview">A^{-1}</span><script type="math/tex">A^{-1}</script></span>.</p>
+<p>It turns out, we can actually solve for <span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span> all at once. So lets do that:</p>
+<div>
+<div class="MathJax_Preview">\begin{pmatrix}1 &amp; 1 &amp; 3 \\\ 1 &amp; 2 &amp; 4 \\\ 1 &amp; 1 &amp; 2\end{pmatrix} \begin{pmatrix}b_{11} &amp; b_{12} &amp; b_{13} \\\ b_{21} &amp; b_{22} &amp; b_{23} \\\ b_{31} &amp; b_{32} &amp; b_{33}\end{pmatrix} = I</div>
+<script type="math/tex; mode=display">\begin{pmatrix}1 & 1 & 3 \\\ 1 & 2 & 4 \\\ 1 & 1 & 2\end{pmatrix} \begin{pmatrix}b_{11} & b_{12} & b_{13} \\\ b_{21} & b_{22} & b_{23} \\\ b_{31} & b_{32} & b_{33}\end{pmatrix} = I</script>
+</div>
+<p>Subtract row 1 from row 2 and 3:</p>
+<div>
+<div class="MathJax_Preview">\Rightarrow \begin{pmatrix}1 &amp; 1 &amp; 3 \\\ 0 &amp; 1 &amp; 1 \\\ 0 &amp; 0 &amp; -1\end{pmatrix} \begin{pmatrix}b_{11} &amp; b_{12} &amp; b_{13} \\\ b_{21} &amp; b_{22} &amp; b_{23} \\\ b_{31} &amp; b_{32} &amp; b_{33}\end{pmatrix} = \begin{pmatrix}1 &amp; 0 &amp; 0 \\\ -1 &amp; 1 &amp; 0 \\\ -1 &amp; 0 &amp; 1\end{pmatrix}</div>
+<script type="math/tex; mode=display">\Rightarrow \begin{pmatrix}1 & 1 & 3 \\\ 0 & 1 & 1 \\\ 0 & 0 & -1\end{pmatrix} \begin{pmatrix}b_{11} & b_{12} & b_{13} \\\ b_{21} & b_{22} & b_{23} \\\ b_{31} & b_{32} & b_{33}\end{pmatrix} = \begin{pmatrix}1 & 0 & 0 \\\ -1 & 1 & 0 \\\ -1 & 0 & 1\end{pmatrix}</script>
+</div>
+<p>Multiply row 3 by <span><span class="MathJax_Preview">-1</span><script type="math/tex">-1</script></span>:</p>
+<div>
+<div class="MathJax_Preview">\Rightarrow \begin{pmatrix}1 &amp; 1 &amp; 3 \\\ 0 &amp; 1 &amp; 1 \\\ 0 &amp; 0 &amp; 1\end{pmatrix} \begin{pmatrix}b_{11} &amp; b_{12} &amp; b_{13} \\\ b_{21} &amp; b_{22} &amp; b_{23} \\\ b_{31} &amp; b_{32} &amp; b_{33}\end{pmatrix} = \begin{pmatrix}1 &amp; 0 &amp; 0 \\\ -1 &amp; 1 &amp; 0 \\\ 1 &amp; 0 &amp; -1\end{pmatrix}</div>
+<script type="math/tex; mode=display">\Rightarrow \begin{pmatrix}1 & 1 & 3 \\\ 0 & 1 & 1 \\\ 0 & 0 & 1\end{pmatrix} \begin{pmatrix}b_{11} & b_{12} & b_{13} \\\ b_{21} & b_{22} & b_{23} \\\ b_{31} & b_{32} & b_{33}\end{pmatrix} = \begin{pmatrix}1 & 0 & 0 \\\ -1 & 1 & 0 \\\ 1 & 0 & -1\end{pmatrix}</script>
+</div>
+<p>Now that row 3 is in <a href="http://www.wikiwand.com/en/Row_echelon_form">row echelon form</a>, we can substitute it back into row 2 and row 1:</p>
+<div>
+<div class="MathJax_Preview">\Rightarrow \begin{pmatrix}1 &amp; 1 &amp; 0 \\\ 0 &amp; 1 &amp; 0 \\\ 0 &amp; 0 &amp; 1\end{pmatrix} \begin{pmatrix}b_{11} &amp; b_{12} &amp; b_{13} \\\ b_{21} &amp; b_{22} &amp; b_{23} \\\ b_{31} &amp; b_{32} &amp; b_{33}\end{pmatrix} = \begin{pmatrix} -2 &amp; 0 &amp; 3 \\\ -2 &amp; 1 &amp; 1 \\\ 1 &amp; 0 &amp; -1\end{pmatrix}</div>
+<script type="math/tex; mode=display">\Rightarrow \begin{pmatrix}1 & 1 & 0 \\\ 0 & 1 & 0 \\\ 0 & 0 & 1\end{pmatrix} \begin{pmatrix}b_{11} & b_{12} & b_{13} \\\ b_{21} & b_{22} & b_{23} \\\ b_{31} & b_{32} & b_{33}\end{pmatrix} = \begin{pmatrix} -2 & 0 & 3 \\\ -2 & 1 & 1 \\\ 1 & 0 & -1\end{pmatrix}</script>
+</div>
+<p>And finally, back substitute row 2 into row 1:</p>
+<div>
+<div class="MathJax_Preview">\Rightarrow \begin{pmatrix}1 &amp; 0 &amp; 0 \\\ 0 &amp; 1 &amp; 0 \\\ 0 &amp; 0 &amp; 1\end{pmatrix} \begin{pmatrix}b_{11} &amp; b_{12} &amp; b_{13} \\\ b_{21} &amp; b_{22} &amp; b_{23} \\\ b_{31} &amp; b_{32} &amp; b_{33}\end{pmatrix} = \begin{pmatrix} 0 &amp; -1 &amp; 2 \\\ -2 &amp; 1 &amp; 1 \\\ 1 &amp; 0 &amp; -1\end{pmatrix}</div>
+<script type="math/tex; mode=display">\Rightarrow \begin{pmatrix}1 & 0 & 0 \\\ 0 & 1 & 0 \\\ 0 & 0 & 1\end{pmatrix} \begin{pmatrix}b_{11} & b_{12} & b_{13} \\\ b_{21} & b_{22} & b_{23} \\\ b_{31} & b_{32} & b_{33}\end{pmatrix} = \begin{pmatrix} 0 & -1 & 2 \\\ -2 & 1 & 1 \\\ 1 & 0 & -1\end{pmatrix}</script>
+</div>
+<p>Because any matrix times its identity is that matrix itself:</p>
+<div>
+<div class="MathJax_Preview">\begin{pmatrix}1 &amp; 0 &amp; 0 \\\ 0 &amp; 1 &amp; 0 \\\ 0 &amp; 0 &amp; 1\end{pmatrix} \begin{pmatrix}b_{11} &amp; b_{12} &amp; b_{13} \\\ b_{21} &amp; b_{22} &amp; b_{23} \\\ b_{31} &amp; b_{32} &amp; b_{33}\end{pmatrix} = \begin{pmatrix} 0 &amp; -1 &amp; 2 \\\ -2 &amp; 1 &amp; 1 \\\ 1 &amp; 0 &amp; -1\end{pmatrix}</div>
+<script type="math/tex; mode=display">\begin{pmatrix}1 & 0 & 0 \\\ 0 & 1 & 0 \\\ 0 & 0 & 1\end{pmatrix} \begin{pmatrix}b_{11} & b_{12} & b_{13} \\\ b_{21} & b_{22} & b_{23} \\\ b_{31} & b_{32} & b_{33}\end{pmatrix} = \begin{pmatrix} 0 & -1 & 2 \\\ -2 & 1 & 1 \\\ 1 & 0 & -1\end{pmatrix}</script>
+</div>
+<div>
+<div class="MathJax_Preview">\Rightarrow \begin{pmatrix}b_{11} &amp; b_{12} &amp; b_{13} \\\ b_{21} &amp; b_{22} &amp; b_{23} \\\ b_{31} &amp; b_{32} &amp; b_{33}\end{pmatrix} = \begin{pmatrix} 0 &amp; -1 &amp; 2 \\\ -2 &amp; 1 &amp; 1 \\\ 1 &amp; 0 &amp; -1\end{pmatrix}</div>
+<script type="math/tex; mode=display">\Rightarrow \begin{pmatrix}b_{11} & b_{12} & b_{13} \\\ b_{21} & b_{22} & b_{23} \\\ b_{31} & b_{32} & b_{33}\end{pmatrix} = \begin{pmatrix} 0 & -1 & 2 \\\ -2 & 1 & 1 \\\ 1 & 0 & -1\end{pmatrix}</script>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can actually prove to yourself that we got the right answer by checking that <span><span class="MathJax_Preview">A \cdot B = I</span><script type="math/tex">A \cdot B = I</script></span>.</p>
+</div>
+<p>So that's our answer. We've found the identity matrix, <span><span class="MathJax_Preview">B = A^{-1}</span><script type="math/tex">B = A^{-1}</script></span> for <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>, and we did this by transforming <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> into it's identity matrix via elimination and back substitution. Moreover, because <span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span> could be any matrix, we have solved this in the general case. The solution is the same regardless of the number of dimensions, and this leads to a computationally efficient way to invert a matrix.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There are computationally faster methods of computing the inverse, one such method is known as  a <strong>decomposition process</strong>. In practice, you will simply call the solver of your problem or function, something like <code>inv(A)</code>, and it will pick the best method by inspecting the matrix you give it and return the answer.</p>
+</div>
+<p><strong>Conclusions</strong></p>
+<p>We have figured out how to solve sets of linear equations in the general case, by a procedure we can implement in a computer really easily (known as <a href="http://www.wikiwand.com/en/Gaussian_elimination"><strong>Gaussian elimination</strong></a>), and we've generalized this method to the to find the <strong>inverse</strong> of a matrix, regardless of what is on the right hand side of our system of equations.</p>
+<h2 id="special-matrices">Special matrices</h2>
+<p>In the final section of this week, we're going to look at a property of a matrix called the <a href="http://www.wikiwand.com/en/Determinant"><strong>determinant</strong></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <strong>determinant</strong> is a value that can be computed from the elements of a <a href="http://www.wikiwand.com/en/Square_matrix#Square_matrices"><strong>square matrix</strong></a>. The determinant of a matrix <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> is denoted <span><span class="MathJax_Preview">det(A)</span><script type="math/tex">det(A)</script></span>, <span><span class="MathJax_Preview">det A</span><script type="math/tex">det A</script></span>, or <span><span class="MathJax_Preview">\vert A \vert</span><script type="math/tex">\vert A \vert</script></span>. Geometrically, it can be viewed as the scaling factor of the <a href="http://www.wikiwand.com/en/Linear_map"><strong>linear transformation</strong></a> described by the matrix.</p>
+</div>
+<p>We'll also look at what happens when a matrix <em>doesn't</em> have linearly independent basis vectors.  </p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Watch <a href="https://youtu.be/Ip3X9LOh2dk">this</a> video before reading this section. For more practice with matrix inverses, see Khan Academy sections <a href="https://www.khanacademy.org/math/linear-algebra/matrix-transformations/inverse-of-matrices/v/linear-algebra-deriving-a-method-for-determining-inverses">here</a> and <a href="https://www.khanacademy.org/math/linear-algebra/matrix-transformations/determinant-depth/v/linear-algebra-determinant-when-row-multiplied-by-scalar">here</a>.</p>
+</div>
+<h3 id="the-determinant">The determinant</h3>
+<p>Let's start by looking at the simple matrix:</p>
+<div>
+<div class="MathJax_Preview">\begin{pmatrix} a &amp; 0 \\\ 0 &amp; d\end{pmatrix}</div>
+<script type="math/tex; mode=display">\begin{pmatrix} a & 0 \\\ 0 & d\end{pmatrix}</script>
+</div>
+<p>If we multiply this matrix by our basis vectors <span><span class="MathJax_Preview">\hat e_1</span><script type="math/tex">\hat e_1</script></span> and  <span><span class="MathJax_Preview">\hat e_2</span><script type="math/tex">\hat e_2</script></span>, we get</p>
+<div>
+<div class="MathJax_Preview">\hat e_1' = \begin{bmatrix} a \\\ 0 \end{bmatrix}</div>
+<script type="math/tex; mode=display">\hat e_1' = \begin{bmatrix} a \\\ 0 \end{bmatrix}</script>
+</div>
+<div>
+<div class="MathJax_Preview">\hat e_2' = \begin{bmatrix} 0 \\\ d \end{bmatrix}</div>
+<script type="math/tex; mode=display">\hat e_2' = \begin{bmatrix} 0 \\\ d \end{bmatrix}</script>
+</div>
+<p>So, in plain english, we have stretched our <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>-axis by a factor of <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and our <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>-axis by a factor of <span><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span> and, therefore, scaled the area of the grid cells of the vector space by a factor of <span><span class="MathJax_Preview">ad</span><script type="math/tex">ad</script></span>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is a property of the fact that any linear transformation keeps grid lines parallel and evenly spaced.</p>
+</div>
+<p>We call this number, <span><span class="MathJax_Preview">ad</span><script type="math/tex">ad</script></span> the <strong>determinant</strong>.</p>
+<p><img alt="determinant_1" src="../../img/determinant_1.png" /></p>
+<p>Now, if I instead have a matrix:</p>
+<div>
+<div class="MathJax_Preview">\begin{pmatrix} a &amp; b \\\ 0 &amp; d\end{pmatrix}</div>
+<script type="math/tex; mode=display">\begin{pmatrix} a & b \\\ 0 & d\end{pmatrix}</script>
+</div>
+<p>then this is still going to stretch <span><span class="MathJax_Preview">\hat e_1</span><script type="math/tex">\hat e_1</script></span> out by a factor of <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span>, <em>but</em> on the other axis, I am going to move <span><span class="MathJax_Preview">\hat e_2</span><script type="math/tex">\hat e_2</script></span> hat to:</p>
+<div>
+<div class="MathJax_Preview">\hat e_2 = \begin{pmatrix} b \\\ d\end{pmatrix}</div>
+<script type="math/tex; mode=display">\hat e_2 = \begin{pmatrix} b \\\ d\end{pmatrix}</script>
+</div>
+<p>What we have done is taken the original grid and stretched it along the <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>-axis by <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and, along the <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>-axis by <span><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span> and sheared it (parallel to the <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>-axis) by <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span>.</p>
+<p><img alt="determinant_2" src="../../img/determinant_2.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We've still changed the size, the scale of the space (which is what the determinant really is) by a factor of <span><span class="MathJax_Preview">ad</span><script type="math/tex">ad</script></span>.</p>
+</div>
+<p>Notice that the area defined by our transformed vectors <span><span class="MathJax_Preview">\hat e_1'</span><script type="math/tex">\hat e_1'</script></span> and <span><span class="MathJax_Preview">\hat e_2'</span><script type="math/tex">\hat e_2'</script></span> is <em>still</em> just the base times the perpendicular height, <span><span class="MathJax_Preview">ad</span><script type="math/tex">ad</script></span> (the determinant).</p>
+<p>Lets flesh this out in the <em>general</em> case. Say we have the matrix:</p>
+<div>
+<div class="MathJax_Preview">A = \begin{pmatrix} a &amp; b \\\ c &amp; d\end{pmatrix}</div>
+<script type="math/tex; mode=display">A = \begin{pmatrix} a & b \\\ c & d\end{pmatrix}</script>
+</div>
+<p>Multiplying this matrix by our basis vectors yields a parallelogram (stretched by <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span> and sheared by <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span> and <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span>). We can actual compute the area of this parallelogram as follows:</p>
+<p><img alt="determinant_3" src="../../img/determinant_3.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We find the area of this parallelogram by finding the area of the whole box the encloses it, and subtracting off combined area of the the little bits around it.</p>
+</div>
+<p>The exact method for solving the area is not important (although it is pretty trivial). What is important, is that the <strong>determinant</strong> of <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> can be computed as <span><span class="MathJax_Preview">\vert A \vert =  ad - bc</span><script type="math/tex">\vert A \vert =  ad - bc</script></span>, and that this computation has a <em>geometric interpretation</em>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is the formula for the determinant of a square <span><span class="MathJax_Preview">2 \times 2</span><script type="math/tex">2 \times 2</script></span> matrix. See <a href="http://www.wikiwand.com/en/Determinant#/3_×_3_matrices">here</a> for the formula for higher dimensional matrices.</p>
+</div>
+<p>Now, in school when you looked at matrices, you probably saw that you could find the inverse in the following way. For a matrix:</p>
+<div>
+<div class="MathJax_Preview">A = \begin{pmatrix} a &amp; b \\\ c &amp; d\end{pmatrix}</div>
+<script type="math/tex; mode=display">A = \begin{pmatrix} a & b \\\ c & d\end{pmatrix}</script>
+</div>
+<ol>
+<li>Exchange <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and the <span><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span>, and switch the sign on the <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span> and the <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span></li>
+<li>Multiply <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> by this matrix</li>
+<li>Scale the transformation by <span><span class="MathJax_Preview">\frac{1}{ad - bc}</span><script type="math/tex">\frac{1}{ad - bc}</script></span></li>
+</ol>
+<p>In the general case, this looks like:</p>
+<div>
+<div class="MathJax_Preview">\frac{1}{ad - bc} \begin{pmatrix} a &amp; b \\\ c &amp; d\end{pmatrix} \begin{pmatrix} d &amp; -b \\\ -c &amp; a\end{pmatrix} = \frac{1}{ad - bc} \begin{pmatrix} ad - bc &amp; 0 \\\ 0 &amp; ad - bc\end{pmatrix} = I</div>
+<script type="math/tex; mode=display">\frac{1}{ad - bc} \begin{pmatrix} a & b \\\ c & d\end{pmatrix} \begin{pmatrix} d & -b \\\ -c & a\end{pmatrix} = \frac{1}{ad - bc} \begin{pmatrix} ad - bc & 0 \\\ 0 & ad - bc\end{pmatrix} = I</script>
+</div>
+<p>This demonstrates that</p>
+<div>
+<div class="MathJax_Preview">\frac{1}{ad - bc} \begin{pmatrix} d &amp; -b \\\ -c &amp; a\end{pmatrix}</div>
+<script type="math/tex; mode=display">\frac{1}{ad - bc} \begin{pmatrix} d & -b \\\ -c & a\end{pmatrix}</script>
+</div>
+<p>is in fact the inverse of the matrix <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>.</p>
+<p>This helps capture what the determinant really is. It's the <em>amount</em> by which the original matrix <em>scaled</em> vector space. In the above example, dividing by the determinant normalizes the space back to its <em>original</em> size.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We could spend a lot of time talking about how to solve for the determinant. However, knowing how to do the operations isn't really a useful skill. Many programming libraries (e.g. <code>python</code>) have linear algebra libraries (e.g. <code>Numpy</code>) which makes computing the determinant as easy, for example, as calling <code>det(A)</code>. If you really want to know how to compute determinants by hand, then look up a <a href="http://www.wikiwand.com/en/QR_decomposition"><strong>QR decomposition</strong></a> online.</p>
+</div>
+<h4 id="a-determinant-of-zero">A determinant of zero</h4>
+<p>Now, let's think about the matrix</p>
+<div>
+<div class="MathJax_Preview">A = \begin{pmatrix} 1 &amp; 2 \\\ 1 &amp; 2\end{pmatrix}</div>
+<script type="math/tex; mode=display">A = \begin{pmatrix} 1 & 2 \\\ 1 & 2\end{pmatrix}</script>
+</div>
+<p>If we multiply this matrix by our basis vectors <span><span class="MathJax_Preview">\hat e_1</span><script type="math/tex">\hat e_1</script></span> and  <span><span class="MathJax_Preview">\hat e_2</span><script type="math/tex">\hat e_2</script></span>, we get</p>
+<div>
+<div class="MathJax_Preview">\hat e_1' = \begin{bmatrix} 1 \\\ 1 \end{bmatrix}</div>
+<script type="math/tex; mode=display">\hat e_1' = \begin{bmatrix} 1 \\\ 1 \end{bmatrix}</script>
+</div>
+<div>
+<div class="MathJax_Preview">\hat e_2' = \begin{bmatrix} 2 \\\ 2 \end{bmatrix}</div>
+<script type="math/tex; mode=display">\hat e_2' = \begin{bmatrix} 2 \\\ 2 \end{bmatrix}</script>
+</div>
+<p>So this matrix, when applied to our vector space, actually <em>collapses it onto a line</em>. All our <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>'s are mapped to the vector</p>
+<div>
+<div class="MathJax_Preview">\begin{bmatrix}2 \\\ 2 \end{bmatrix}</div>
+<script type="math/tex; mode=display">\begin{bmatrix}2 \\\ 2 \end{bmatrix}</script>
+</div>
+<p>and our <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>'s to</p>
+<div>
+<div class="MathJax_Preview">\begin{bmatrix}1 \\\ 1 \end{bmatrix}</div>
+<script type="math/tex; mode=display">\begin{bmatrix}1 \\\ 1 \end{bmatrix}</script>
+</div>
+<p>Correspondingly, we notice that <span><span class="MathJax_Preview">\vert A \vert = 0</span><script type="math/tex">\vert A \vert = 0</script></span>. Therefore, the area enclosed by the new basis vectors is <em>zero</em>.</p>
+<p><img alt="" src="../../img/determinant_4.png" /></p>
+<h4 id="a-negative-determinant">A negative determinant</h4>
+<p>A negative determinant simply means that the transformation has <em>flipped</em> the orientation of our vector space. This is much easier to <em>see</em> than to <em>explain</em>; check out <a href="https://youtu.be/Ip3X9LOh2dk">this</a> video which presents some awesome visualizations of the determinant.</p>
+<h4 id="what-the-determinant-means-numerically">What the determinant means numerically</h4>
+<p>To drive home the numerical interpretation of the determinant, lets start with this set of simultaneous equations:</p>
+<div>
+<div class="MathJax_Preview">\begin{pmatrix} 1 &amp; 1 &amp; 3 \\\ 1 &amp; 2 &amp; 4 \\\ 2 &amp; 3 &amp; 7\end{pmatrix} \begin{pmatrix} a \\\ b \\\ c\end{pmatrix} = \begin{pmatrix} 12 \\\ 17 \\\ 29\end{pmatrix}</div>
+<script type="math/tex; mode=display">\begin{pmatrix} 1 & 1 & 3 \\\ 1 & 2 & 4 \\\ 2 & 3 & 7\end{pmatrix} \begin{pmatrix} a \\\ b \\\ c\end{pmatrix} = \begin{pmatrix} 12 \\\ 17 \\\ 29\end{pmatrix}</script>
+</div>
+<p>You'll notice that both the <em>rows</em> and the <em>columns</em> are <em>linearly dependent</em>. Thinking about the columns of this matrix as the basis vectors of some 3-dimensional space, we note that this transformation collapses our vector space from being 3D to 2D (by collapsing every point in space onto a plane). Let's see what this means numerically by trying to reduce our matrix to row-echelon form:</p>
+<div>
+<div class="MathJax_Preview">\begin{pmatrix} 1 &amp; 1 &amp; 3 \\\ 1 &amp; 2 &amp; 4 \\\ 2 &amp; 3 &amp; 7\end{pmatrix} \begin{pmatrix} a \\\ b \\\ c\end{pmatrix} = \begin{pmatrix} 12 \\\ 17 \\\ 29\end{pmatrix}</div>
+<script type="math/tex; mode=display">\begin{pmatrix} 1 & 1 & 3 \\\ 1 & 2 & 4 \\\ 2 & 3 & 7\end{pmatrix} \begin{pmatrix} a \\\ b \\\ c\end{pmatrix} = \begin{pmatrix} 12 \\\ 17 \\\ 29\end{pmatrix}</script>
+</div>
+<p>Subtract row 1 from row 2,</p>
+<div>
+<div class="MathJax_Preview">\Rightarrow \begin{pmatrix} 1 &amp; 1 &amp; 3 \\\ 0 &amp; 1 &amp; 1 \\\ 2 &amp; 3 &amp; 7\end{pmatrix} \begin{pmatrix} a \\\ b \\\ c\end{pmatrix} = \begin{pmatrix} 12 \\\ 5 \\\ 29\end{pmatrix}</div>
+<script type="math/tex; mode=display">\Rightarrow \begin{pmatrix} 1 & 1 & 3 \\\ 0 & 1 & 1 \\\ 2 & 3 & 7\end{pmatrix} \begin{pmatrix} a \\\ b \\\ c\end{pmatrix} = \begin{pmatrix} 12 \\\ 5 \\\ 29\end{pmatrix}</script>
+</div>
+<p>Subtract row 1 plus row 2 from row 3,</p>
+<div>
+<div class="MathJax_Preview">\Rightarrow \begin{pmatrix} 1 &amp; 1 &amp; 3 \\\ 0 &amp; 1 &amp; 1 \\\ 0 &amp; 0 &amp; 0\end{pmatrix} \begin{pmatrix} a \\\ b \\\ c\end{pmatrix} = \begin{pmatrix} 12 \\\ 5 \\\ 0\end{pmatrix}</div>
+<script type="math/tex; mode=display">\Rightarrow \begin{pmatrix} 1 & 1 & 3 \\\ 0 & 1 & 1 \\\ 0 & 0 & 0\end{pmatrix} \begin{pmatrix} a \\\ b \\\ c\end{pmatrix} = \begin{pmatrix} 12 \\\ 5 \\\ 0\end{pmatrix}</script>
+</div>
+<p>while the matrix is now is row-echelon form, <em>we don't have a final entry of the matrix</em> (<span><span class="MathJax_Preview">0\cdot c = 0</span><script type="math/tex">0\cdot c = 0</script></span>). Because we don't have a solution for <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span> we can't back substitute, and we can't solve our system of equations.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The reason we can't solve this system is because we don't have enough information. In keeping with our apples and bananas problem, imagine that when we went in to buy apples and bananas and carrots the third time, we ordered just a the <em>sum</em> of first two orders. Therefore, we didn't get any <em>new</em> information and thus don't have enough data to find out the solution for how much apples and bananas and carrots cost. This third order wasn't <em>linearly independent</em> from our first two, in the language of matrices and vectors.</p>
+</div>
+<p>So, when the basis vectors describing a matrix aren't linearly independent, then the <strong>determinant</strong> is <em>zero</em>, and we can't solve the system. The loss of information when we map from <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>-dimensional to <span><span class="MathJax_Preview">(n-x)</span><script type="math/tex">(n-x)</script></span>-dimensional space (where <span><span class="MathJax_Preview">x \ge 1</span><script type="math/tex">x \ge 1</script></span>) means we cannot possibly know what the inverse matrix is (as it is impossible to map a lower dimensional space back to the original, higher dimensional space). When a matrix has no inverse, we say that it is <strong>singular</strong>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There are situations where we might want to do a transformation that collapses the number of dimensions in a space, but it means that we cannot possibly reverse the mapping, meaning the matrix has no inverse. This also means we cannot solve a system of linear equations defined by a singular matrix using Gaussian elimination and back substitution.</p>
+</div>
+<h3 id="summary">Summary</h3>
+<p>In the last section of this week, we took a look at the determinant, which is how much a given transformation <em>scales</em> our space. In 2-dimensions, this can be thought as the scalar multiple appleid to any <em>area</em> of our space, and in 3-dimensions any <em>volume</em> of our space. We also looked at the special case where the determinant is zero and found that this means that the basis vectors aren't linearly independent, which in turn means that the inverse doesn't exist.</p>
+<p>To summarize <a href="#week-3-matrices-as-objects-that-operate-on-vectors">Week 3</a>, we</p>
+<ul>
+<li>introduced matrices as objects that transforms space.</li>
+<li>looked at different archetypes of matrices, like <strong>rotations</strong>, <strong>inverses</strong>, <strong>stretches</strong>, and <strong>shears</strong>,</li>
+<li>how to combine matrices by doing successive transformations, known as m<strong>atrix multiplication</strong> or <strong>composition</strong></li>
+<li>how to solve systems of linear equations by elimination and how to find <strong>inverses</strong></li>
+<li>and finally, we introduced <strong>determinants</strong> and showed how that relates to the concept of <strong>linear independence</strong>.</li>
+</ul>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../week_2/" title="Week 2" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Week 2
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../week_4/" title="Week 4" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Week 4
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/JohnGiorgi" class="md-footer-social__link fa fa-github"></a>
+    
+  </div>
+
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.583bbe55.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+    
+      
+    
+  </body>
+</html>
