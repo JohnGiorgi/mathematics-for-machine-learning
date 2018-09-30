@@ -173,8 +173,8 @@ Despite all the fun that we've just been having, the truth is that you will almo
     ```python
     import numpy as np
 
-    A = np.array([1, 0],
-                 [0, 2])
+    A = np.array([[1, 0],
+                  [0, 2]] )
 
     eigenvalues, eigenvectors = numpy.linalg.eig(A)
     ```
@@ -187,13 +187,13 @@ In this sections, we translated our geometrical understanding of eigenvectors in
 
 ### Changing to the eigenbasis
 
-So now that we know what eigenvectors are and how to calculate them, we can combine this idea with a concept of changing basis which was covered earlier in the course. What emerges from this synthesis is a particularly powerful tool for performing efficient matrix operations called [**diagonalisation**](http://www.wikiwand.com/en/Matrix_diagonalization). Sometimes, we need to apply the same matrix multiplication many times.
+Now that we know what eigenvectors are and how to calculate them, we can combine this idea with the concept of changing basis (which was covered earlier in the course). What emerges from this synthesis is a particularly powerful tool for performing efficient matrix operations called [**diagonalisation**](http://www.wikiwand.com/en/Matrix_diagonalization).
 
-For example, imagine a transformation matrix $T$ represents the change in location of a particle after a single time step. So we can write that our initial position, described by vector $v_0$, multiplied by the transformation $T$ gives us our new location, $v_1$.
+Sometimes, we need to apply the same matrix multiplication many times. For example, imagine a transformation matrix, $T$, that represents the change in location of a particle after a single time step. We can write that: our initial position, described by vector $v_0$, multiplied by the transformation $T$ gives us our new location, $v_1$.
 
 ![](../img/v_0_to_v_1.gif)
 
-To work out where our particle will be after two time steps, we can find $v_2$ by simply multiplying $v_1$ by $T$, which is of course the same thing as multiplying $v_0$ by $T$ two times. So $v_2 = T^2 v_0$.
+To work out where our particle will be after two time steps, we can find $v_2$ by simply multiplying $v_1$ by $T$, which is the same thing as multiplying $v_0$ by $T$ two times. So $v_2 = T^2 v_0$.
 
 ![](../img/v_1_to_v_2.gif)
 
@@ -201,7 +201,7 @@ Now imagine that we expect the same linear transformation to occur every time st
 
 $$v_n = T^n v_0$$
 
-You've already seen how much work it takes to apply a single 3D matrix multiplication. So if we were to imagine that $T$ tells us what happens in one second, but we'd like to know where our particle is in two weeks from now, then $n$ is going to be around 1.2 million, i.e., we'd need to multiply $T$ by itself more than a million times, which may take quite a while.
+You've already seen how much work it takes to apply a single 3D matrix multiplication. If we were to imagine that $T$ tells us what happens in one second, but we'd like to know where our particle is in two weeks from now, then $n$ is going to be around 1.2 million, i.e., we'd need to multiply $T$ by itself _more than a million times_, which may take quite a while.
 
 ![](../img/v_0_to_v_n.gif)
 
@@ -209,32 +209,38 @@ If all the terms in the matrix are zero except for those along the leading diago
 
 $$T^n = \begin{pmatrix} a^n & 0 & 0 \\\ 0 & b^n & 0 \\\ 0 & 0 & c^n\end{pmatrix}$$
 
-It's simple enough, but what if $T$ is not a diagonal matrix? Well, as you may have guessed, the answer comes from eigen-analysis. Essentially, what we're going to do is simply change to a basis where our transformation $T$ _becomes_ diagonal, which is what we call an eigen-basis. We can then easily apply our power of $n$ to the diagonalized form, and finally transform the resulting matrix back again, giving us $T^n$, but avoiding much of the work. As we saw in the section on changing basis, each column of our transform matrix simply represents the new location of the transformed unit vectors. So, to build our eigen-basis conversion matrix, we just plug in each of our eigenvectors as columns:
+Thats simple enough, but what if $T$ is not a diagonal matrix? Well, as you may have guessed, the answer comes from eigen-analysis. Essentially, what we're going to do is change to a basis where our transformation $T$ _becomes_ diagonal, which is what we call an **eigen-basis**. We can then easily apply our power of $n$ to the diagonalized form, and finally transform the resulting matrix back again, giving us $T^n$, but avoiding much of the work.
+
+!!! tip
+    If this is confusing, watch the last 4 minutes of [this](https://youtu.be/PFDu9oVAE-g?t=13m2s) video.
+
+As we saw in the section on changing basis, each column of our transform matrix simply represents the new location of the transformed unit vectors. So, to build our eigen-basis conversion matrix, we just plug in each of our eigenvectors as columns:
 
 $$C = \begin{pmatrix}x_1 & x_2 & x_3 \\\ \vdots & \vdots & \vdots\end{pmatrix}$$
 
 !!! note
-    However, don't forget that some of these maybe complex, so not easy to spot using the purely geometrical approach, but they are appear in the math just like the others.
+    The basic idea here is that the transformation $T$ just becomes a uniform scaling (represented by a diagonal matrix) in a basis composed strictly of eigenvectors of $T$.
 
 Applying this transform, we find ourselves in a world where multiplying by $T$ is effectively just a pure scaling, which is another way of saying that it can now be represented by a diagonal matrix. Crucially, this diagonal matrix, $D$, contains the corresponding eigenvalues of the matrix $T$. So,
 
 $$D = \begin{pmatrix} \lambda_1 & 0 & 0 \\\ 0 & \lambda_2 & 0 \\\ 0 & 0 & \lambda_3\end{pmatrix}$$
 
-
  We're so close now to unleashing the power of eigen. The final link that we need to see is the following. Bringing together everything we've just said, it should now be clear that applying the transformation $T$ is just the same as converting to our eigenbasis, applying the diagonalized matrix, and then converting back again. So
 
- $$T = CDC^{-1}$$
+$$T = CDC^{-1}$$
 
- which suggests that
+which suggests that
 
- $$T^2 = CDC^{-1}CDC^{-1} = CDDC^{-1} = CD^2C^{-1}$$
+$$T^2 = CDC^{-1}CDC^{-1} = CDDC^{-1} = CD^2C^{-1}$$
 
-So hopefully you've spotted that in the middle of our expression on the right-hand side, you've got $C$ multiplied by C inverse. But multiplying a matrix and then by its inverse is just the same as doing nothing at all. So we can simply remove this operation. And then we can finish this expression by saying, well this must be $CD^2C^{-1}$. We can of course then generalize this to any power of $T$ we'd like. So finally we can say that,
+!!! note
+    $C^{-1}C = I$, so we omit it.
+
+We can then generalize this to any power of $T$ we'd like
 
 $$T^n = CD^nC^{-1}$$
 
 We now have a method which lets us apply a transformation matrix as many times as we'd like without paying a large computational cost.
-
 
 ![eigenbasis](../img/eigenbasis.png)
 
@@ -246,77 +252,92 @@ This result brings together many of the ideas that we've encountered so far in t
 
 ### PageRank
 
-The final topic of this module on Eigenproblems, as well as the final topic of this course as a whole, will focus on an algorithm called [**PageRank**](http://www.wikiwand.com/en/PageRank). This algorithm was famously published by and named after Google founder Larry Page and colleagues in 1998. And was used by Google to help them decide which order to display their websites when they returned from search. The central assumption underpinning page rank is that the importance of a website is related to its links to and from other websites, and somehow Eigen theory comes up.
+The final topic of this module on eigenproblems, as well as the final topic of this course as a whole, will focus on an algorithm called [**PageRank**](http://www.wikiwand.com/en/PageRank).
+
+!!! info
+    This algorithm was famously published by and named after Google founder Larry Page and colleagues in 1998. And was used by Google to help them decide which order to display their websites when they returned from search.
+
+The central assumption underpinning PageRank is that the importance of a website is related to its links to and from other websites. This bubble diagram represents a model mini Internet, where each bubble is a webpage and each arrow from A, B, C, and D represents a link on that webpage which takes you to one of the others.
 
 ![page_rank](../img/page_rank.png)
 
-This bubble diagram represents a model mini Internet, where each bubble is a webpage and each arrow from A, B, C, and D represents a link on that webpage which takes you to one of the others. We're trying to build an expression that tells us, based on this network structure, which of these webpages is most relevant to the person who made the search. As such, we're going to use the concept of _Procrastinating Pat_ who is an imaginary person who goes on the Internet and just randomly click links to avoid doing their work. By mapping all the possible links, we can build a model to estimate the amount of time we would expect Pat to spend on each webpage. We can describe the links present on page A as a vector, where each row is either a one or a zero based on whether there is a link to the corresponding page. And then normalise the vector by the total number of the links, such that they can be used to describe a probability for that page.
+We're trying to build an expression that tells us, based on this network structure, which of these webpages is most relevant to the person who made the search. As such, we're going to use the concept of _Procrastinating Pat_ who is an imaginary person who goes on the Internet and just randomly click links to avoid doing their work. By mapping all the possible links, we can build a model to estimate the amount of time we would expect Pat to spend on each webpage.
+
+We can describe the links present on page A as a vector, where each row is either a one or a zero based on whether there is a link to the corresponding page. And then normalize the vector by the total number of the links, such that they can be used to describe a probability for that page.
 
 For example, the vector of links from page A will be
 
 $$\begin{bmatrix} 0 & 1 & 1 & 1\end{bmatrix}$$
 
-because vector A has links to sites B, to C, and to D, but it doesn't have a link to itself. Also, because there are three links in this page in total, we would normalize by a factor of a third. So the total click probability sums to one. So we can write,
+because vector A has links to sites B, to C, and to D, but it doesn't have a link to itself. Also, because there are three links in this page in total, we would normalize by a factor of a third. So the total click probability sums to one. We can write,
 
 $$L_A =  \begin{bmatrix}0 & \frac{1}{3} & \frac{1}{3} & \frac{1}{3}\end{bmatrix}$$
 
 Following the same logic, the link vectors in the next two sites are shown here:
 
-$$L_B =  \begin{bmatrix} \frac{1}{2} & 0 & 0 &  \frac{1}{2}\end{bmatrix}$$
-$$L_C =  \begin{bmatrix}0 & 0 & 0 & 1\end{bmatrix}$$
+$$L_B =  \begin{bmatrix} \frac{1}{2} & 0 & 0 &  \frac{1}{2}\end{bmatrix}, \;  L_C =  \begin{bmatrix}0 & 0 & 0 & 1\end{bmatrix}$$
 
 and finally, for page D, we can write
 
 $$L_D =  \begin{bmatrix} 0 & \frac{1}{2} & \frac{1}{2} & 0 \end{bmatrix}$$
 
-We can now build our link matrix $L$ by using each of our linked vectors as a column, which you can see will form a square matrix.
+We can now build our link matrix $L$ by using each of our linked vectors as a column, which you can see will form a square matrix
 
 $$L =  \begin{bmatrix} 0 & \frac{1}{2} & 0 & 0 \\\ \frac{1}{3} & 0 & 0 & \frac{1}{2} \\\ \frac{1}{3} & 0 & 0 & \frac{1}{2}  \\\ \frac{1}{3} & \frac{1}{2} & 1 & 0 \end{bmatrix}$$
 
-What we're trying to represent here with our matrix $L$ is the probability of ending up on each of the pages. For example, the only way to get to A is by being at B. So you then need to know the probability of being at B, which you could've got to from either A or D. As you can see, this problem is self-referential, as the ranks on all the pages depend on all the others. Although we built our matrix from columns of outward links, we can see that the rows describe inward links normalized with respect to their page of origin.
+What we're trying to represent here with our matrix $L$ is the probability of ending up on each of the pages. For example, the only way to get to A is by being at B. So you then need to know the probability of being at B, which you could've got to from either A or D. As you can see, this problem is self-referential, as the ranks on all the pages depend on all the others. Although we built our matrix from columns of outward links, we can see that the rows of $L$ describe inward links normalized with respect to their page of origin.
 
-We can now write an expression which summarises the approach. We're going to use the vector \(r\) to store the rank of all webpages. To calculate the rank of page A, you need to know three things about all other pages on the Internet.
+We can now write an expression which summarises the approach. We're going to use the vector \(r\) to store the rank of all webpages. To calculate the rank of page A, you need to know three things about all other pages on the Internet:
 
 1. What's your rank?
 2. Do you link to page A?
 3. And how many outgoing links do you have in total?
 
-The following expression combines these three pieces of information for webpage A only.
+The following expression combines these three pieces of information for webpage A only
 
-$$r_a = \sum_{j=1}^n L_{a, j}r_j$$
+$$r_A = \sum_{j=1}^n L_{A, j}r_j$$
 
-So this is going to scroll through each of our webpages. Which means that the rank of A is the sum of the ranks of all the pages which link to it, weighted by their specific link probability taken from matrix $L$. Now we want to be able to write this expression for all pages and solve them simultaneously. Thinking back to our linear algebra, we can rewrite the above expression applied to all webpages as a simple matrix multiplication. So
+This expression states that the rank of A is the _sum of the ranks of all the pages which link to it_, weighted by their specific link probability taken from matrix $L$. It would be nice, however, if we could modify this expression to solve for all pages simultaneously. We can rewrite the above expression applied to all webpages as a simple matrix multiplication
 
 $$r = Lr$$
 
-Clearly, we start off not knowing $r$. So we simply assume that all the ranks are equally and normalise them by the total number of webpages in our analysis, which in this case is 4. So
+!!! tip
+    If this is confusing, think of it as saying, in english: the rank of some page $i$ is equal to probability that it is linked to from $j$ times the rank of $j$ for all pages $i, j$.
+
+Clearly, we start off not knowing $r$, so we simply assume that all the ranks are equal and normalize them by the total number of webpages in our analysis, which in this case is 4
 
 $$r = \begin{bmatrix}\frac{1}{4} \\ \frac{1}{4} \\ \frac{1}{4} \\ \frac{1}{4}\end{bmatrix}$$
 
-Then, each time you multiply $r$ by our matrix $L$, this gives us an updated value for $r$. So we can say that
+Then, each time we multiply $r$ by our matrix $L$, we get an updated value for $r$
 
 $$r^{i+1} = Lr^i$$
 
-Applying this expression repeatedly means that we are solving this problem iteratively. Each time we do this, we update the values in $r$ until, eventually, $r$ stops changing. So now $r$ really does equal $Lr$. Thinking back to the previous videos in this module, this implies that $r$ is now an eigenvector of matrix $L$, with an eigenvalue of 1. At this point, you might well be thinking, if we want to multiply $r$ by $L$ many times, perhaps this will be best tackled by applying the diagonalization method that we saw in the last video. But don't forget, this would require us to already know all of the Eigen vectors, which is what we're trying to find in the first place. So now that we have an equation, and hopefully some idea of where it came from, we can ask our computer to iteratively apply it until it converges to find our rank vector.
+Applying this expression repeatedly means that we are solving this problem iteratively. Each time we do this, we update the values in $r$ until, eventually, $r$ stops changing, i.e. $r = Lr$. Quite beautifully, this implies that $r$ is now an eigenvector of matrix $L$, with an eigenvalue of 1!
+
+!!! note
+    At this point, you might well be thinking, if we want to multiply $r$ by $L$ many times, perhaps we should apply the diagonalization method that we saw in the last video. But don't forget, this would require us to already know all of the eigenvectors, which is what we're trying to find in the first place.
+
+Now that we have an equation, and hopefully some idea of where it came from, we can ask our computer to iteratively apply it until it converges to find our rank vector:
 
 ![page_rank](../img/page_rank.gif)
 
-You can see that although it takes about ten iterations for the numbers to settle down, the order is already established after the first iteration. However, this is just an artifact of our system being so tiny. So now we have our result, which says that as Procrastinating Pat randomly clicks around our network, we'd expect them to spend about 40% of their time on page D. But only about 12% of their time on page A, with 24% on each of pages B and C. We now have our ranking, with D at the top and A at the bottom, and B and C equal in the middle.
+Although it takes about ten iterations for the numbers to settle down, the order is already established after the first iteration. However, this is just an artifact of our system being so tiny. Finally, we can read off our result, which says that as Procrastinating Pat randomly clicks around our network, we'd expect them to spend about 40% of their time on page D, but only about 12% of their time on page A and 24% on each of pages B and C
 
 ![page_rank_2](../img/page_rank_2.gif)
 
-As it turns out, although there are many approaches for efficiently calculating eigenvectors that have been developed over the years, repeatedly multiplying a randomly selected initial guest vector by a matrix, which is called the **power method**, is still very effective for the page rank problem for two reasons. Firstly, although the power method will clearly only give you one eigenvector, when we know that there will be $n$ for an $n$ webpage system, it turns out that because of the way we've structured our link matrix, the vector it gives you will always be the one that you're looking for, with an eigenvalue of 1. Secondly, although this is not true for the full webpage mini Internet, when looking at the real Internet you can imagine that almost every entry in the link matrix will be zero, i.e,, most pages don't connect to most other pages. This is referred to as a **sparse matrix**. And algorithms exist such that multiplications can be performed very efficiently.
+As it turns out, although there are many approaches for efficiently calculating eigenvectors that have been developed over the years, repeatedly multiplying a randomly selected initial guest vector by a matrix, which is called the **power method**, is still very effective for the PageRank problem for two reasons. Firstly, although the power method will clearly only give you one eigenvector, when we know that there will be $n$ for an $n$ webpage system, it turns out that because of the way we've structured our link matrix, the vector it gives you will always be the one that you're looking for, with an eigenvalue of 1. Secondly, although this is not true for the full webpage mini Internet, when looking at the real Internet you can imagine that almost every entry in the link matrix will be zero, i.e,, most pages don't connect to most other pages. This is referred to as a **sparse matrix**. And algorithms exist such that multiplications can be performed very efficiently.
 
-One key aspect of the page rank algorithm that we haven't discussed so far is called the damping factor, $d$. This adds an additional term to our iterative formula. So $r^{i + 1}$ is now going to equal
+#### Damping factor
+
+One key aspect of the PageRank algorithm that we haven't discussed so far is the **damping factor**, $d$. This adds an additional term to our iterative formula. So $r^{i + 1}$ is now going to equal
 
 $$r^{i + 1}= d Lr^i + \frac{1 - d}{n}$$
 
-where $d$ is something between 0 and 1. And you can think of it as 1 minus the probability with which procrastinating Pat suddenly, randomly types in a web address, rather than clicking on a link on his current page. The effect that this has on the actual calculation is about finding a compromise between speed and stability of the iterative convergence process. There are over one billion websites on the Internet today, compared with just a few million when the page rank algorithm was first published in 1998. And so the methods for search and ranking have had to evolve to maximize efficiency, although the core concept has remained unchanged for many years.
-
+where $d$ is something between 0 and 1. You can think of it as 1 minus the probability with which procrastinating Pat suddenly, randomly types in a web address, rather than clicking on a link on his current page. The effect that this has on the actual calculation is about finding a compromise between speed and stability of the iterative convergence process. There are over one billion websites on the Internet today, compared with just a few million when the PageRank algorithm was first published in 1998, and so the methods for search and ranking have had to evolve to maximize efficiency, although the core concept has remained unchanged for many years.
 
 __Conclusions__
 
-This brings us to the end of our introduction to the page rank algorithm. There are, of course, many details which we didn't cover in this video. But I hope this has allowed you to come away with some insight and understanding into how the page rank works, and hopefully the confidence to apply this to some larger networks yourself.
+This brings us to the end of our introduction to the PageRank algorithm. There are, of course, many details which we didn't cover in this video. But I hope this has allowed you to come away with some insight and understanding into how the PageRank works, and hopefully the confidence to apply this to some larger networks yourself.
 
 ## Summary
 
