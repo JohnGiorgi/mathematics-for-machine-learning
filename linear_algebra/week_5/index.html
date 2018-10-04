@@ -464,6 +464,19 @@
     PageRank
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#damping-factor" title="Damping factor" class="md-nav__link">
+    Damping factor
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -499,10 +512,46 @@
       
 
 
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Multivariate Calculus
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Multivariate Calculus
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
   <li class="md-nav__item">
-    <a href="../../calculus/" title="Calculus" class="md-nav__link">
-      Calculus
+    <a href="../../multivariate_calculus/course_resources/" title="Course Resources" class="md-nav__link">
+      Course Resources
     </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../multivariate_calculus/week_1/" title="Week 1" class="md-nav__link">
+      Week 1
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
     
@@ -625,6 +674,19 @@
   <a href="#pagerank" title="PageRank" class="md-nav__link">
     PageRank
   </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#damping-factor" title="Damping factor" class="md-nav__link">
+    Damping factor
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -761,8 +823,8 @@
 <p>Indeed, with libraries like numpy this is as easy as
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
-<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-             <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span> <span class="p">)</span>
 
 <span class="n">eigenvalues</span><span class="p">,</span> <span class="n">eigenvectors</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
 </pre></div></p>
@@ -771,31 +833,36 @@
 <p>In this sections, we translated our geometrical understanding of eigenvectors into a robust mathematical expression, and validated it on a few test cases. But I hope that I've also convinced you that working through lots of eigen-problems, as is often done in engineering undergraduate degrees, is not a good investment of your time if you already understand the underlying concepts. This is what computers are for. Next video, we'll be referring back to the concept of basis change to see what magic happens when you use eigenvectors as your basis. See you then.</p>
 <h2 id="when-changing-to-the-eigenbasis-is-really-useful">When changing to the eigenbasis is really useful</h2>
 <h3 id="changing-to-the-eigenbasis">Changing to the eigenbasis</h3>
-<p>So now that we know what eigenvectors are and how to calculate them, we can combine this idea with a concept of changing basis which was covered earlier in the course. What emerges from this synthesis is a particularly powerful tool for performing efficient matrix operations called <a href="http://www.wikiwand.com/en/Matrix_diagonalization"><strong>diagonalisation</strong></a>. Sometimes, we need to apply the same matrix multiplication many times.</p>
-<p>For example, imagine a transformation matrix <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span> represents the change in location of a particle after a single time step. So we can write that our initial position, described by vector <span><span class="MathJax_Preview">v_0</span><script type="math/tex">v_0</script></span>, multiplied by the transformation <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span> gives us our new location, <span><span class="MathJax_Preview">v_1</span><script type="math/tex">v_1</script></span>.</p>
+<p>Now that we know what eigenvectors are and how to calculate them, we can combine this idea with the concept of changing basis (which was covered earlier in the course). What emerges from this synthesis is a particularly powerful tool for performing efficient matrix operations called <a href="http://www.wikiwand.com/en/Matrix_diagonalization"><strong>diagonalisation</strong></a>.</p>
+<p>Sometimes, we need to apply the same matrix multiplication many times. For example, imagine a transformation matrix, <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>, that represents the change in location of a particle after a single time step. We can write that: our initial position, described by vector <span><span class="MathJax_Preview">v_0</span><script type="math/tex">v_0</script></span>, multiplied by the transformation <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span> gives us our new location, <span><span class="MathJax_Preview">v_1</span><script type="math/tex">v_1</script></span>.</p>
 <p><img alt="" src="../../img/v_0_to_v_1.gif" /></p>
-<p>To work out where our particle will be after two time steps, we can find <span><span class="MathJax_Preview">v_2</span><script type="math/tex">v_2</script></span> by simply multiplying <span><span class="MathJax_Preview">v_1</span><script type="math/tex">v_1</script></span> by <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>, which is of course the same thing as multiplying <span><span class="MathJax_Preview">v_0</span><script type="math/tex">v_0</script></span> by <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span> two times. So <span><span class="MathJax_Preview">v_2 = T^2 v_0</span><script type="math/tex">v_2 = T^2 v_0</script></span>.</p>
+<p>To work out where our particle will be after two time steps, we can find <span><span class="MathJax_Preview">v_2</span><script type="math/tex">v_2</script></span> by simply multiplying <span><span class="MathJax_Preview">v_1</span><script type="math/tex">v_1</script></span> by <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>, which is the same thing as multiplying <span><span class="MathJax_Preview">v_0</span><script type="math/tex">v_0</script></span> by <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span> two times. So <span><span class="MathJax_Preview">v_2 = T^2 v_0</span><script type="math/tex">v_2 = T^2 v_0</script></span>.</p>
 <p><img alt="" src="../../img/v_1_to_v_2.gif" /></p>
 <p>Now imagine that we expect the same linear transformation to occur every time step for <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> time steps. We can write this transformation as</p>
 <div>
 <div class="MathJax_Preview">v_n = T^n v_0</div>
 <script type="math/tex; mode=display">v_n = T^n v_0</script>
 </div>
-<p>You've already seen how much work it takes to apply a single 3D matrix multiplication. So if we were to imagine that <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span> tells us what happens in one second, but we'd like to know where our particle is in two weeks from now, then <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> is going to be around 1.2 million, i.e., we'd need to multiply <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span> by itself more than a million times, which may take quite a while.</p>
+<p>You've already seen how much work it takes to apply a single 3D matrix multiplication. If we were to imagine that <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span> tells us what happens in one second, but we'd like to know where our particle is in two weeks from now, then <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> is going to be around 1.2 million, i.e., we'd need to multiply <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span> by itself <em>more than a million times</em>, which may take quite a while.</p>
 <p><img alt="" src="../../img/v_0_to_v_n.gif" /></p>
 <p>If all the terms in the matrix are zero except for those along the leading diagonal, we refer to it as a <a href="http://www.wikiwand.com/en/Diagonal_matrix"><strong>diagonal matrix</strong></a>. When raising matrices to powers, diagonal matrices make things a lot easier. All you need to do is put each of the terms on the diagonal to the power of <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> and you've got the answer. So in this case,</p>
 <div>
 <div class="MathJax_Preview">T^n = \begin{pmatrix} a^n &amp; 0 &amp; 0 \\\ 0 &amp; b^n &amp; 0 \\\ 0 &amp; 0 &amp; c^n\end{pmatrix}</div>
 <script type="math/tex; mode=display">T^n = \begin{pmatrix} a^n & 0 & 0 \\\ 0 & b^n & 0 \\\ 0 & 0 & c^n\end{pmatrix}</script>
 </div>
-<p>It's simple enough, but what if <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span> is not a diagonal matrix? Well, as you may have guessed, the answer comes from eigen-analysis. Essentially, what we're going to do is simply change to a basis where our transformation <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span> <em>becomes</em> diagonal, which is what we call an eigen-basis. We can then easily apply our power of <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> to the diagonalized form, and finally transform the resulting matrix back again, giving us <span><span class="MathJax_Preview">T^n</span><script type="math/tex">T^n</script></span>, but avoiding much of the work. As we saw in the section on changing basis, each column of our transform matrix simply represents the new location of the transformed unit vectors. So, to build our eigen-basis conversion matrix, we just plug in each of our eigenvectors as columns:</p>
+<p>Thats simple enough, but what if <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span> is not a diagonal matrix? Well, as you may have guessed, the answer comes from eigen-analysis. Essentially, what we're going to do is change to a basis where our transformation <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span> <em>becomes</em> diagonal, which is what we call an <strong>eigen-basis</strong>. We can then easily apply our power of <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> to the diagonalized form, and finally transform the resulting matrix back again, giving us <span><span class="MathJax_Preview">T^n</span><script type="math/tex">T^n</script></span>, but avoiding much of the work.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If this is confusing, watch the last 4 minutes of <a href="https://youtu.be/PFDu9oVAE-g?t=13m2s">this</a> video.</p>
+</div>
+<p>As we saw in the section on changing basis, each column of our transform matrix simply represents the new location of the transformed unit vectors. So, to build our eigen-basis conversion matrix, we just plug in each of our eigenvectors as columns:</p>
 <div>
 <div class="MathJax_Preview">C = \begin{pmatrix}x_1 &amp; x_2 &amp; x_3 \\\ \vdots &amp; \vdots &amp; \vdots\end{pmatrix}</div>
 <script type="math/tex; mode=display">C = \begin{pmatrix}x_1 & x_2 & x_3 \\\ \vdots & \vdots & \vdots\end{pmatrix}</script>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>However, don't forget that some of these maybe complex, so not easy to spot using the purely geometrical approach, but they are appear in the math just like the others.</p>
+<p>The basic idea here is that the transformation <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span> just becomes a uniform scaling (represented by a diagonal matrix) in a basis composed strictly of eigenvectors of <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>.</p>
 </div>
 <p>Applying this transform, we find ourselves in a world where multiplying by <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span> is effectively just a pure scaling, which is another way of saying that it can now be represented by a diagonal matrix. Crucially, this diagonal matrix, <span><span class="MathJax_Preview">D</span><script type="math/tex">D</script></span>, contains the corresponding eigenvalues of the matrix <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>. So,</p>
 <div>
@@ -803,10 +870,20 @@
 <script type="math/tex; mode=display">D = \begin{pmatrix} \lambda_1 & 0 & 0 \\\ 0 & \lambda_2 & 0 \\\ 0 & 0 & \lambda_3\end{pmatrix}</script>
 </div>
 <p>We're so close now to unleashing the power of eigen. The final link that we need to see is the following. Bringing together everything we've just said, it should now be clear that applying the transformation <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span> is just the same as converting to our eigenbasis, applying the diagonalized matrix, and then converting back again. So</p>
-<p><span><span class="MathJax_Preview"><span><span class="MathJax_Preview">T = CDC^{-1}</span><script type="math/tex">T = CDC^{-1}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">T = CDC^{-1}</span><script type="math/tex">T = CDC^{-1}</script></span></script></span></p>
+<div>
+<div class="MathJax_Preview">T = CDC^{-1}</div>
+<script type="math/tex; mode=display">T = CDC^{-1}</script>
+</div>
 <p>which suggests that</p>
-<p><span><span class="MathJax_Preview"><span><span class="MathJax_Preview">T^2 = CDC^{-1}CDC^{-1} = CDDC^{-1} = CD^2C^{-1}</span><script type="math/tex">T^2 = CDC^{-1}CDC^{-1} = CDDC^{-1} = CD^2C^{-1}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">T^2 = CDC^{-1}CDC^{-1} = CDDC^{-1} = CD^2C^{-1}</span><script type="math/tex">T^2 = CDC^{-1}CDC^{-1} = CDDC^{-1} = CD^2C^{-1}</script></span></script></span></p>
-<p>So hopefully you've spotted that in the middle of our expression on the right-hand side, you've got <span><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span> multiplied by C inverse. But multiplying a matrix and then by its inverse is just the same as doing nothing at all. So we can simply remove this operation. And then we can finish this expression by saying, well this must be <span><span class="MathJax_Preview">CD^2C^{-1}</span><script type="math/tex">CD^2C^{-1}</script></span>. We can of course then generalize this to any power of <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span> we'd like. So finally we can say that,</p>
+<div>
+<div class="MathJax_Preview">T^2 = CDC^{-1}CDC^{-1} = CDDC^{-1} = CD^2C^{-1}</div>
+<script type="math/tex; mode=display">T^2 = CDC^{-1}CDC^{-1} = CDDC^{-1} = CD^2C^{-1}</script>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><span><span class="MathJax_Preview">C^{-1}C = I</span><script type="math/tex">C^{-1}C = I</script></span>, so we omit it.</p>
+</div>
+<p>We can then generalize this to any power of <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span> we'd like</p>
 <div>
 <div class="MathJax_Preview">T^n = CD^nC^{-1}</div>
 <script type="math/tex; mode=display">T^n = CD^nC^{-1}</script>
@@ -817,76 +894,90 @@
 <p>This result brings together many of the ideas that we've encountered so far in this course. Check out <a href="https://www.coursera.org/learn/linear-algebra-machine-learning/lecture/zYzjM/eigenbasis-example">this</a> video, where we'll work through a short example just to ensure that this approach lines up with our expectations when applied to a simple case.</p>
 <h2 id="making-the-pagerank-algorithm">Making the PageRank algorithm</h2>
 <h3 id="pagerank">PageRank</h3>
-<p>The final topic of this module on Eigenproblems, as well as the final topic of this course as a whole, will focus on an algorithm called <a href="http://www.wikiwand.com/en/PageRank"><strong>PageRank</strong></a>. This algorithm was famously published by and named after Google founder Larry Page and colleagues in 1998. And was used by Google to help them decide which order to display their websites when they returned from search. The central assumption underpinning page rank is that the importance of a website is related to its links to and from other websites, and somehow Eigen theory comes up.</p>
+<p>The final topic of this module on eigenproblems, as well as the final topic of this course as a whole, will focus on an algorithm called <a href="http://www.wikiwand.com/en/PageRank"><strong>PageRank</strong></a>.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>This algorithm was famously published by and named after Google founder Larry Page and colleagues in 1998. And was used by Google to help them decide which order to display their websites when they returned from search.</p>
+</div>
+<p>The central assumption underpinning PageRank is that the importance of a website is related to its links to and from other websites. This bubble diagram represents a model mini Internet, where each bubble is a webpage and each arrow from A, B, C, and D represents a link on that webpage which takes you to one of the others.</p>
 <p><img alt="page_rank" src="../../img/page_rank.png" /></p>
-<p>This bubble diagram represents a model mini Internet, where each bubble is a webpage and each arrow from A, B, C, and D represents a link on that webpage which takes you to one of the others. We're trying to build an expression that tells us, based on this network structure, which of these webpages is most relevant to the person who made the search. As such, we're going to use the concept of <em>Procrastinating Pat</em> who is an imaginary person who goes on the Internet and just randomly click links to avoid doing their work. By mapping all the possible links, we can build a model to estimate the amount of time we would expect Pat to spend on each webpage. We can describe the links present on page A as a vector, where each row is either a one or a zero based on whether there is a link to the corresponding page. And then normalise the vector by the total number of the links, such that they can be used to describe a probability for that page.</p>
+<p>We're trying to build an expression that tells us, based on this network structure, which of these webpages is most relevant to the person who made the search. As such, we're going to use the concept of <em>Procrastinating Pat</em> who is an imaginary person who goes on the Internet and just randomly click links to avoid doing their work. By mapping all the possible links, we can build a model to estimate the amount of time we would expect Pat to spend on each webpage.</p>
+<p>We can describe the links present on page A as a vector, where each row is either a one or a zero based on whether there is a link to the corresponding page. And then normalize the vector by the total number of the links, such that they can be used to describe a probability for that page.</p>
 <p>For example, the vector of links from page A will be</p>
 <div>
 <div class="MathJax_Preview">\begin{bmatrix} 0 &amp; 1 &amp; 1 &amp; 1\end{bmatrix}</div>
 <script type="math/tex; mode=display">\begin{bmatrix} 0 & 1 & 1 & 1\end{bmatrix}</script>
 </div>
-<p>because vector A has links to sites B, to C, and to D, but it doesn't have a link to itself. Also, because there are three links in this page in total, we would normalize by a factor of a third. So the total click probability sums to one. So we can write,</p>
+<p>because vector A has links to sites B, to C, and to D, but it doesn't have a link to itself. Also, because there are three links in this page in total, we would normalize by a factor of a third. So the total click probability sums to one. We can write,</p>
 <div>
 <div class="MathJax_Preview">L_A =  \begin{bmatrix}0 &amp; \frac{1}{3} &amp; \frac{1}{3} &amp; \frac{1}{3}\end{bmatrix}</div>
 <script type="math/tex; mode=display">L_A =  \begin{bmatrix}0 & \frac{1}{3} & \frac{1}{3} & \frac{1}{3}\end{bmatrix}</script>
 </div>
 <p>Following the same logic, the link vectors in the next two sites are shown here:</p>
 <div>
-<div class="MathJax_Preview">L_B =  \begin{bmatrix} \frac{1}{2} &amp; 0 &amp; 0 &amp;  \frac{1}{2}\end{bmatrix}$$
-$$L_C =  \begin{bmatrix}0 &amp; 0 &amp; 0 &amp; 1\end{bmatrix}</div>
-<script type="math/tex; mode=display">L_B =  \begin{bmatrix} \frac{1}{2} & 0 & 0 &  \frac{1}{2}\end{bmatrix}$$
-$$L_C =  \begin{bmatrix}0 & 0 & 0 & 1\end{bmatrix}</script>
+<div class="MathJax_Preview">L_B =  \begin{bmatrix} \frac{1}{2} &amp; 0 &amp; 0 &amp;  \frac{1}{2}\end{bmatrix}, \;  L_C =  \begin{bmatrix}0 &amp; 0 &amp; 0 &amp; 1\end{bmatrix}</div>
+<script type="math/tex; mode=display">L_B =  \begin{bmatrix} \frac{1}{2} & 0 & 0 &  \frac{1}{2}\end{bmatrix}, \;  L_C =  \begin{bmatrix}0 & 0 & 0 & 1\end{bmatrix}</script>
 </div>
 <p>and finally, for page D, we can write</p>
 <div>
 <div class="MathJax_Preview">L_D =  \begin{bmatrix} 0 &amp; \frac{1}{2} &amp; \frac{1}{2} &amp; 0 \end{bmatrix}</div>
 <script type="math/tex; mode=display">L_D =  \begin{bmatrix} 0 & \frac{1}{2} & \frac{1}{2} & 0 \end{bmatrix}</script>
 </div>
-<p>We can now build our link matrix <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span> by using each of our linked vectors as a column, which you can see will form a square matrix.</p>
+<p>We can now build our link matrix <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span> by using each of our linked vectors as a column, which you can see will form a square matrix</p>
 <div>
 <div class="MathJax_Preview">L =  \begin{bmatrix} 0 &amp; \frac{1}{2} &amp; 0 &amp; 0 \\\ \frac{1}{3} &amp; 0 &amp; 0 &amp; \frac{1}{2} \\\ \frac{1}{3} &amp; 0 &amp; 0 &amp; \frac{1}{2}  \\\ \frac{1}{3} &amp; \frac{1}{2} &amp; 1 &amp; 0 \end{bmatrix}</div>
 <script type="math/tex; mode=display">L =  \begin{bmatrix} 0 & \frac{1}{2} & 0 & 0 \\\ \frac{1}{3} & 0 & 0 & \frac{1}{2} \\\ \frac{1}{3} & 0 & 0 & \frac{1}{2}  \\\ \frac{1}{3} & \frac{1}{2} & 1 & 0 \end{bmatrix}</script>
 </div>
-<p>What we're trying to represent here with our matrix <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span> is the probability of ending up on each of the pages. For example, the only way to get to A is by being at B. So you then need to know the probability of being at B, which you could've got to from either A or D. As you can see, this problem is self-referential, as the ranks on all the pages depend on all the others. Although we built our matrix from columns of outward links, we can see that the rows describe inward links normalized with respect to their page of origin.</p>
-<p>We can now write an expression which summarises the approach. We're going to use the vector <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> to store the rank of all webpages. To calculate the rank of page A, you need to know three things about all other pages on the Internet.</p>
+<p>What we're trying to represent here with our matrix <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span> is the probability of ending up on each of the pages. For example, the only way to get to A is by being at B. So you then need to know the probability of being at B, which you could've got to from either A or D. As you can see, this problem is self-referential, as the ranks on all the pages depend on all the others. Although we built our matrix from columns of outward links, we can see that the rows of <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span> describe inward links normalized with respect to their page of origin.</p>
+<p>We can now write an expression which summarises the approach. We're going to use the vector <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> to store the rank of all webpages. To calculate the rank of page A, you need to know three things about all other pages on the Internet:</p>
 <ol>
 <li>What's your rank?</li>
 <li>Do you link to page A?</li>
 <li>And how many outgoing links do you have in total?</li>
 </ol>
-<p>The following expression combines these three pieces of information for webpage A only.</p>
+<p>The following expression combines these three pieces of information for webpage A only</p>
 <div>
-<div class="MathJax_Preview">r_a = \sum_{j=1}^n L_{a, j}r_j</div>
-<script type="math/tex; mode=display">r_a = \sum_{j=1}^n L_{a, j}r_j</script>
+<div class="MathJax_Preview">r_A = \sum_{j=1}^n L_{A, j}r_j</div>
+<script type="math/tex; mode=display">r_A = \sum_{j=1}^n L_{A, j}r_j</script>
 </div>
-<p>So this is going to scroll through each of our webpages. Which means that the rank of A is the sum of the ranks of all the pages which link to it, weighted by their specific link probability taken from matrix <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span>. Now we want to be able to write this expression for all pages and solve them simultaneously. Thinking back to our linear algebra, we can rewrite the above expression applied to all webpages as a simple matrix multiplication. So</p>
+<p>This expression states that the rank of A is the <em>sum of the ranks of all the pages which link to it</em>, weighted by their specific link probability taken from matrix <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span>. It would be nice, however, if we could modify this expression to solve for all pages simultaneously. We can rewrite the above expression applied to all webpages as a simple matrix multiplication</p>
 <div>
 <div class="MathJax_Preview">r = Lr</div>
 <script type="math/tex; mode=display">r = Lr</script>
 </div>
-<p>Clearly, we start off not knowing <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span>. So we simply assume that all the ranks are equally and normalise them by the total number of webpages in our analysis, which in this case is 4. So</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If this is confusing, think of it as saying, in english: the rank of some page <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> is equal to probability that it is linked to from <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> times the rank of <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> for all pages <span><span class="MathJax_Preview">i, j</span><script type="math/tex">i, j</script></span>.</p>
+</div>
+<p>Clearly, we start off not knowing <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span>, so we simply assume that all the ranks are equal and normalize them by the total number of webpages in our analysis, which in this case is 4</p>
 <div>
 <div class="MathJax_Preview">r = \begin{bmatrix}\frac{1}{4} \\ \frac{1}{4} \\ \frac{1}{4} \\ \frac{1}{4}\end{bmatrix}</div>
 <script type="math/tex; mode=display">r = \begin{bmatrix}\frac{1}{4} \\ \frac{1}{4} \\ \frac{1}{4} \\ \frac{1}{4}\end{bmatrix}</script>
 </div>
-<p>Then, each time you multiply <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> by our matrix <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span>, this gives us an updated value for <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span>. So we can say that</p>
+<p>Then, each time we multiply <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> by our matrix <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span>, we get an updated value for <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span></p>
 <div>
 <div class="MathJax_Preview">r^{i+1} = Lr^i</div>
 <script type="math/tex; mode=display">r^{i+1} = Lr^i</script>
 </div>
-<p>Applying this expression repeatedly means that we are solving this problem iteratively. Each time we do this, we update the values in <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> until, eventually, <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> stops changing. So now <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> really does equal <span><span class="MathJax_Preview">Lr</span><script type="math/tex">Lr</script></span>. Thinking back to the previous videos in this module, this implies that <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> is now an eigenvector of matrix <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span>, with an eigenvalue of 1. At this point, you might well be thinking, if we want to multiply <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> by <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span> many times, perhaps this will be best tackled by applying the diagonalization method that we saw in the last video. But don't forget, this would require us to already know all of the Eigen vectors, which is what we're trying to find in the first place. So now that we have an equation, and hopefully some idea of where it came from, we can ask our computer to iteratively apply it until it converges to find our rank vector.</p>
+<p>Applying this expression repeatedly means that we are solving this problem iteratively. Each time we do this, we update the values in <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> until, eventually, <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> stops changing, i.e. <span><span class="MathJax_Preview">r = Lr</span><script type="math/tex">r = Lr</script></span>. Quite beautifully, this implies that <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> is now an eigenvector of matrix <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span>, with an eigenvalue of 1!</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>At this point, you might well be thinking, if we want to multiply <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> by <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span> many times, perhaps we should apply the diagonalization method that we saw in the last video. But don't forget, this would require us to already know all of the eigenvectors, which is what we're trying to find in the first place.</p>
+</div>
+<p>Now that we have an equation, and hopefully some idea of where it came from, we can ask our computer to iteratively apply it until it converges to find our rank vector:</p>
 <p><img alt="page_rank" src="../../img/page_rank.gif" /></p>
-<p>You can see that although it takes about ten iterations for the numbers to settle down, the order is already established after the first iteration. However, this is just an artifact of our system being so tiny. So now we have our result, which says that as Procrastinating Pat randomly clicks around our network, we'd expect them to spend about 40% of their time on page D. But only about 12% of their time on page A, with 24% on each of pages B and C. We now have our ranking, with D at the top and A at the bottom, and B and C equal in the middle.</p>
+<p>Although it takes about ten iterations for the numbers to settle down, the order is already established after the first iteration. However, this is just an artifact of our system being so tiny. Finally, we can read off our result, which says that as Procrastinating Pat randomly clicks around our network, we'd expect them to spend about 40% of their time on page D, but only about 12% of their time on page A and 24% on each of pages B and C</p>
 <p><img alt="page_rank_2" src="../../img/page_rank_2.gif" /></p>
-<p>As it turns out, although there are many approaches for efficiently calculating eigenvectors that have been developed over the years, repeatedly multiplying a randomly selected initial guest vector by a matrix, which is called the <strong>power method</strong>, is still very effective for the page rank problem for two reasons. Firstly, although the power method will clearly only give you one eigenvector, when we know that there will be <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> for an <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> webpage system, it turns out that because of the way we've structured our link matrix, the vector it gives you will always be the one that you're looking for, with an eigenvalue of 1. Secondly, although this is not true for the full webpage mini Internet, when looking at the real Internet you can imagine that almost every entry in the link matrix will be zero, i.e,, most pages don't connect to most other pages. This is referred to as a <strong>sparse matrix</strong>. And algorithms exist such that multiplications can be performed very efficiently.</p>
-<p>One key aspect of the page rank algorithm that we haven't discussed so far is called the damping factor, <span><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span>. This adds an additional term to our iterative formula. So <span><span class="MathJax_Preview">r^{i + 1}</span><script type="math/tex">r^{i + 1}</script></span> is now going to equal</p>
+<p>As it turns out, although there are many approaches for efficiently calculating eigenvectors that have been developed over the years, repeatedly multiplying a randomly selected initial guest vector by a matrix, which is called the <strong>power method</strong>, is still very effective for the PageRank problem for two reasons. Firstly, although the power method will clearly only give you one eigenvector, when we know that there will be <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> for an <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> webpage system, it turns out that because of the way we've structured our link matrix, the vector it gives you will always be the one that you're looking for, with an eigenvalue of 1. Secondly, although this is not true for the full webpage mini Internet, when looking at the real Internet you can imagine that almost every entry in the link matrix will be zero, i.e,, most pages don't connect to most other pages. This is referred to as a <strong>sparse matrix</strong>. And algorithms exist such that multiplications can be performed very efficiently.</p>
+<h4 id="damping-factor">Damping factor</h4>
+<p>One key aspect of the PageRank algorithm that we haven't discussed so far is the <strong>damping factor</strong>, <span><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span>. This adds an additional term to our iterative formula. So <span><span class="MathJax_Preview">r^{i + 1}</span><script type="math/tex">r^{i + 1}</script></span> is now going to equal</p>
 <div>
 <div class="MathJax_Preview">r^{i + 1}= d Lr^i + \frac{1 - d}{n}</div>
 <script type="math/tex; mode=display">r^{i + 1}= d Lr^i + \frac{1 - d}{n}</script>
 </div>
-<p>where <span><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span> is something between 0 and 1. And you can think of it as 1 minus the probability with which procrastinating Pat suddenly, randomly types in a web address, rather than clicking on a link on his current page. The effect that this has on the actual calculation is about finding a compromise between speed and stability of the iterative convergence process. There are over one billion websites on the Internet today, compared with just a few million when the page rank algorithm was first published in 1998. And so the methods for search and ranking have had to evolve to maximize efficiency, although the core concept has remained unchanged for many years.</p>
+<p>where <span><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span> is something between 0 and 1. You can think of it as 1 minus the probability with which procrastinating Pat suddenly, randomly types in a web address, rather than clicking on a link on his current page. The effect that this has on the actual calculation is about finding a compromise between speed and stability of the iterative convergence process. There are over one billion websites on the Internet today, compared with just a few million when the PageRank algorithm was first published in 1998, and so the methods for search and ranking have had to evolve to maximize efficiency, although the core concept has remained unchanged for many years.</p>
 <p><strong>Conclusions</strong></p>
-<p>This brings us to the end of our introduction to the page rank algorithm. There are, of course, many details which we didn't cover in this video. But I hope this has allowed you to come away with some insight and understanding into how the page rank works, and hopefully the confidence to apply this to some larger networks yourself.</p>
+<p>This brings us to the end of our introduction to the PageRank algorithm. There are, of course, many details which we didn't cover in this video. But I hope this has allowed you to come away with some insight and understanding into how the PageRank works, and hopefully the confidence to apply this to some larger networks yourself.</p>
 <h2 id="summary">Summary</h2>
 <p>This brings us to the end of the fifth module and also, to the end of this course on linear algebra for machine learning.</p>
 <p>We've covered a lot of ground in the past five modules, but I hope that we've managed to balance, the speed with the level of detail to ensure that you've stayed with us throughout.</p>
@@ -926,13 +1017,13 @@ $$L_C =  \begin{bmatrix}0 & 0 & 0 & 1\end{bmatrix}</script>
           </a>
         
         
-          <a href="../../calculus/" title="Calculus" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../multivariate_calculus/course_resources/" title="Course Resources" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Calculus
+                Course Resources
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

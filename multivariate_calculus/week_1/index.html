@@ -1,0 +1,981 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+        <link rel="canonical" href="https://johngiorgi.github.io/mathematics-for-machine-learning/multivariate_calculus/week_1/">
+      
+      
+        <meta name="author" content="John Giorgi">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
+    
+    
+      
+        <title>Week 1 - Mathematics for Machine Learning</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#ef5350">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="red" data-md-color-accent="teal">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="../../#week-1-what-is-calculus" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://johngiorgi.github.io/mathematics-for-machine-learning/" title="Mathematics for Machine Learning" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Mathematics for Machine Learning
+              </span>
+              <span class="md-header-nav__topic">
+                Week 1
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/JohnGiorgi/mathematics-for-machine-learning/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      JohnGiorgi/mathematics-for-machine-learning
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://johngiorgi.github.io/mathematics-for-machine-learning/" title="Mathematics for Machine Learning" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Mathematics for Machine Learning
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/JohnGiorgi/mathematics-for-machine-learning/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      JohnGiorgi/mathematics-for-machine-learning
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="About" class="md-nav__link">
+      About
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Linear Algebra
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Linear Algebra
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linear_algebra/course_resources/" title="Course Resources" class="md-nav__link">
+      Course Resources
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linear_algebra/week_1/" title="Week 1" class="md-nav__link">
+      Week 1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linear_algebra/week_2/" title="Week 2" class="md-nav__link">
+      Week 2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linear_algebra/week_3/" title="Week 3" class="md-nav__link">
+      Week 3
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linear_algebra/week_4/" title="Week 4" class="md-nav__link">
+      Week 4
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linear_algebra/week_5/" title="Week 5" class="md-nav__link">
+      Week 5
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      Multivariate Calculus
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Multivariate Calculus
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../course_resources/" title="Course Resources" class="md-nav__link">
+      Course Resources
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Week 1
+      </label>
+    
+    <a href="./" title="Week 1" class="md-nav__link md-nav__link--active">
+      Week 1
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#back-to-basics-functions" title="Back to basics: functions" class="md-nav__link">
+    Back to basics: functions
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#welcome-to-this-course" title="Welcome to this course" class="md-nav__link">
+    Welcome to this course
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functions" title="Functions" class="md-nav__link">
+    Functions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gradients-and-derivatives" title="Gradients and derivatives" class="md-nav__link">
+    Gradients and derivatives
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rise-over-run" title="Rise Over Run" class="md-nav__link">
+    Rise Over Run
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conclusions" title="Conclusions" class="md-nav__link">
+    Conclusions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#definition-of-a-derivative" title="Definition of a derivative" class="md-nav__link">
+    Definition of a derivative
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conclusions_1" title="Conclusions" class="md-nav__link">
+    Conclusions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#differentiation-examples-special-cases" title="Differentiation examples &amp; special cases" class="md-nav__link">
+    Differentiation examples &amp; special cases
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#special-case-1-discontinuities" title="Special case 1: discontinuities" class="md-nav__link">
+    Special case 1: discontinuities
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#special-case-2-exponentials" title="Special case 2: exponentials" class="md-nav__link">
+    Special case 2: exponentials
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#special-case-3-trigonometric-functions" title="Special case 3: trigonometric functions" class="md-nav__link">
+    Special case 3: trigonometric functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conclusions_2" title="Conclusions" class="md-nav__link">
+    Conclusions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#back-to-basics-functions" title="Back to basics: functions" class="md-nav__link">
+    Back to basics: functions
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#welcome-to-this-course" title="Welcome to this course" class="md-nav__link">
+    Welcome to this course
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functions" title="Functions" class="md-nav__link">
+    Functions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gradients-and-derivatives" title="Gradients and derivatives" class="md-nav__link">
+    Gradients and derivatives
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rise-over-run" title="Rise Over Run" class="md-nav__link">
+    Rise Over Run
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conclusions" title="Conclusions" class="md-nav__link">
+    Conclusions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#definition-of-a-derivative" title="Definition of a derivative" class="md-nav__link">
+    Definition of a derivative
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conclusions_1" title="Conclusions" class="md-nav__link">
+    Conclusions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#differentiation-examples-special-cases" title="Differentiation examples &amp; special cases" class="md-nav__link">
+    Differentiation examples &amp; special cases
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#special-case-1-discontinuities" title="Special case 1: discontinuities" class="md-nav__link">
+    Special case 1: discontinuities
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#special-case-2-exponentials" title="Special case 2: exponentials" class="md-nav__link">
+    Special case 2: exponentials
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#special-case-3-trigonometric-functions" title="Special case 3: trigonometric functions" class="md-nav__link">
+    Special case 3: trigonometric functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conclusions_2" title="Conclusions" class="md-nav__link">
+    Conclusions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/JohnGiorgi/mathematics-for-machine-learning/edit/master/docs/multivariate_calculus/week_1.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="week-1-what-is-calculus">Week 1: What is calculus?</h1>
+<p>Understanding calculus is central to understanding machine learning! You can think of calculus as a set of tools for analysing the relationship between functions and their inputs. Typically, in machine learning, we are trying to find the inputs which enable a function to best match the data. We start this module from the basics, by recalling what a function is and where we might encounter one. Following this, we talk about the how, when sketching a function on a graph, the slope describes the rate of change of the output with respect to an input. Using this visual intuition, we derive a robust mathematical definition of a derivative, which we then use to differentiate some interesting functions. Finally, by studying a few examples, we develop four handy time saving rules that enable us to speed up differentiation for many common scenarios.</p>
+<p><em>Learning Objectives</em></p>
+<ul>
+<li>Recall the definition of differentiation</li>
+<li>Apply differentiation to simple functions</li>
+<li>Describe the utility of time saving rules</li>
+<li>Apply <a href="https://en.wikipedia.org/wiki/Sum_rule_in_differentiation">sum</a>, <a href="https://en.wikipedia.org/wiki/Product_rule">product</a> and <a href="https://en.wikipedia.org/wiki/Chain_rule">chain rule</a></li>
+</ul>
+<h2 id="back-to-basics-functions">Back to basics: functions</h2>
+<h3 id="welcome-to-this-course">Welcome to this course</h3>
+<p>Welcome to module one of six. We start right from the basics, but build you up fairly quickly to some interesting applications in modules five and six. This week, we'll be focusing on the <a href="https://en.wikipedia.org/wiki/Fundamental_theorem_of_calculus">fundamental theory of calculus</a>, as well as some handy rules to speed things up. Where possible, We're going to try and represent the concepts graphically so that you can see the derivations rather than just reading them. This sometimes means that we'll be skimming over a few details, but we'll also provide you with links to the more rigorous descriptions so that you can check them out if you're interested.</p>
+<h3 id="functions">Functions</h3>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Try watching <a href="https://youtu.be/WUvTyaaNkzM">this</a> video at first for quickly building up your intuition for what calculus is all about.</p>
+</div>
+<p>Before diving into calculus, we should first talk briefly about what functions are and where we use them. Essentially, a <a href="https://en.wikipedia.org/wiki/Function_(mathematics)">function</a> is a relationship between some inputs and an output. For example, if I had a function for modeling the distribution of temperature in a room, I might input the <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>, <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>, and <span><span class="MathJax_Preview">z</span><script type="math/tex">z</script></span> coordinates of a specific location I'm interested in as well as the time, <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>. And then the function would return me the temperature at that specific point in space at that moment in time.</p>
+<details class="note"><summary>Note</summary><p>Like so many areas of math, even if the idea is quite straightforward, often, the notation can make things unnecessarily confusing. We'll be confronted by this again later in the course and although it's sometimes fairly arbitrary historical reasons that decide this, like different people inventing different parts of math at different times, it can also be because a particular notation style is more convenient for the specific application it was developed for. However, and here is where a lot of the problems seem to arise, in order to use and play with the interesting applications of math, it requires you to have done quite a large amount of often quite boring groundwork. Mathematical language is like learning any other language in that respect. You can't enjoy French poetry until you've learned a lot of French vocabulary and grammar including all its quirks and irregularities! Quite understandably, some people find this off-putting. This is made worse by the fact that most people have not even realized that there is math poetry waiting for them at the end of this algebra tunnel. Machine learning is a whole genre of this poetry, so stick with us for the rest of the specialization and you'll be ready to appreciate it and even write some of your own.</p></details><p>We often see expressions such as</p>
+<div>
+<div class="MathJax_Preview">f(x) = x^2 + 3</div>
+<script type="math/tex; mode=display">f(x) = x^2 + 3</script>
+</div>
+<p>It is rather absurd that you should somehow just know that <span><span class="MathJax_Preview">f(x)</span><script type="math/tex">f(x)</script></span> means "<span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> is a function of <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>" and not "<span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> multiplied by <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>". Sometimes, this gets genuinely unclear when other bracketed terms appear in your expression. For example, in the expression</p>
+<div>
+<div class="MathJax_Preview">f(x) = g(x) + h(x - a)</div>
+<script type="math/tex; mode=display">f(x) = g(x) + h(x - a)</script>
+</div>
+<p>you can assume that <span><span class="MathJax_Preview">g</span><script type="math/tex">g</script></span>, <span><span class="MathJax_Preview">h</span><script type="math/tex">h</script></span>, and <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> are all not variables. Otherwise, we would have to write</p>
+<div>
+<div class="MathJax_Preview">f(x, g, h, a)</div>
+<script type="math/tex; mode=display">f(x, g, h, a)</script>
+</div>
+<p>but you could only know for sure what was going on here if it was explained to you with more context. For example, is <span><span class="MathJax_Preview">g</span><script type="math/tex">g</script></span> a function being applied to <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>? What about <span><span class="MathJax_Preview">h</span><script type="math/tex">h</script></span> and <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> over here? Learning to read between the lines and fill in the missing context is a skill you build up over time.</p>
+<p>Calculus is simply the study of how these functions change with respect to their input variables and it allows you to investigate and manipulate them. But ultimately, it's just a set of tools. And by the end of this course, you'll be using them yourself to model some real world data.</p>
+<details class="warning"><summary>Warning</summary><p>This video was confusing and likely unnecessary for anyone taking this course, as some highschool math is presumed. Might delete this section.</p></details><h2 id="gradients-and-derivatives">Gradients and derivatives</h2>
+<h3 id="rise-over-run">Rise Over Run</h3>
+<p>Previously we said that calculus is just a set of tools for describing the relationship between a function and the change in its variables. In this lecture, we're going to explore what this means and how it might be useful.</p>
+<p>Let's start by having a look at a classic example, a speed versus time graph for a car</p>
+<p><img alt="" src="../../img/car_speed.png" /></p>
+<p>The most obvious thing this graph tells us is that the car's speed is not constant, as a constant speed would be represented with a flat horizontal line. Furthermore, starting from zero speed at zero time, this car's speed is initially increasing with time, which is another way of saying that it is <em>accelerating</em>. Towards the end of the time period, the car's speed is shown to be rapidly decreasing, meaning that it is <em>decelerating</em>.</p>
+<p>As we've already said, a <em>horizontal</em> line implies a <em>constant</em> speed and an acceleration of <span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span>. A steep positive slope represents <em>increasing</em> speed and an acceleration <span><span class="MathJax_Preview">\gt 1</span><script type="math/tex">\gt 1</script></span>.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>In fact, acceleration can be defined as the local gradient of a speed-time graph.</p>
+</div>
+<p>We refer to the <a href="https://en.wikipedia.org/wiki/Gradient"><strong>gradient</strong></a> at a single point as the <strong>local gradient</strong>. We can illustrate this concept by drawing a tangent line, which is a straight line that touches the curve at a particular point</p>
+<p><img alt="" src="../../img/car_speed.gif" /></p>
+<p>In our example, after the initial acceleration, the car's speed reaches a peak and then begins to decelerate again. By recording the slope of these tangent lines at every point, we could plot an entirely new graph which would show us acceleration against time rather than speed against time.</p>
+<p>Before we plot this, let's think about what this acceleration-time graph would look like for a car traveling at constant speed. For constant speed, we get a flat horizontal line on our speed-time graph. It's gradient is therefore 0 and so the acceleration-time graph would also just be a horizontal line.</p>
+<p>Going back to our more complex example, initially, the gradient is positive and fairly constant before it drops to zero at the peak. It then becomes negative for a period before returning to zero. Let's now take a look at the graph for acceleration versus time overlaid onto the speed-time graph</p>
+<p><img alt="" src="../../img/acceleration.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Don't forget the vertical axis for the blue line is speed and will have units of distance per time, whereas the vertical axis for the orange line is acceleration and will have units of distance per time squared. Because they have got different units, we can scale either of these two lines vertically in this block, and the meaning would still be identical. However, these have been scaled just to make the most use of this plot area available.</p>
+</div>
+<p>You can see the points at which the acceleration function is zero, i.e. where it crosses the horizontal axis, coincide with where the speed-time graph is flat and has zero gradient. Although we will be discussing the formal definition of a <a href="https://en.wikipedia.org/wiki/Derivative"><strong>derivative</strong></a> in a later section, what we've just done by eye is the <em>essence of calculus</em>, where we took a continuous function and described its slope at every point by constructing a new function, which is its derivative. We can, in principle, plot the derivative of the acceleration function following the same procedure, where we simply take the slope of the acceleration function at every point. This is the rate of change of acceleration which we can also think of as being the second derivative of the speed, and it's referred to as the <a href="https://en.wikipedia.org/wiki/Jerk_%28physics%29"><strong>jerk</strong></a> of the car</p>
+<p><img alt="" src="../../img/jerk.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Think of the jerky motion of a car as it stops and starts. Now, you may have never heard of this concept before, but hopefully, just by telling you that it's the derivative of the acceleration curve, this should be all you need to know to approximately sketch the jerk.</p>
+</div>
+<p>Also very interesting is the idea of taking our baseline speed function and trying to imagine what function this would have been the gradient of, as in applying the inverse procedure to the one that we have just discussed. We can refer to this as the <a href="https://en.wikipedia.org/wiki/Antiderivative"><strong>anti-derivative</strong></a>, which is closely related to something called the <a href="https://en.wikipedia.org/wiki/Integral"><strong>integral</strong></a>. For the example we are discussing here, it would represent the distance of the car from its starting position. This should make more sense when you consider the change in the distance with respect to time, i.e. the slope of the distance time graph, i.e. how much distance you are covering per unit time, is just the speed.</p>
+<p><img alt="" src="../../img/displacement.png" /></p>
+<h4 id="conclusions">Conclusions</h4>
+<p>This analysis of slopes is all we are going to discuss in the section. Even though we haven't laid out yet the formal definition of calculus, you are already in a very strong position to start thinking about differentiation more formally.</p>
+<h3 id="definition-of-a-derivative">Definition of a derivative</h3>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Watch <a href="https://youtu.be/9vKqVkMQHKk">this</a> video first before reading through this section.</p>
+</div>
+<p>Now that we've explored the relationship between functions and their gradient, we should be ready to lay out the more formal definition of a derivative. All we're going to do, is translate the understanding about gradients that we saw in the previous video, into some mathematical notation that we can write down. Unfortunately, this is the bit that a lot of people seem to find uncomfortable so we will do my best to make it as painless as possible.</p>
+<p>We talked in the last section about horizontal lines having a gradient of zero, whilst upwards and downward sloping lines having positive or negative gradients respectively. We can write down a definition of this concept by taking the example of a linear function, which has the same gradient everywhere. If we start by picking any two points, say here and here, we can then say that the gradient of this line is equal to the amount of that function that increases in this interval, divided by the length of the interval, that we're considering.</p>
+<p><img alt="" src="../../img/linear_function.png" /></p>
+<p>This description is often just condensed to the expression, <em>rise over run</em>, where rise is the increase in the vertical direction, and run is the distance along the horizontal axis. If our function was sloping down, and we pick points at the same horizontal locations, then our run would be the same, but our rise would now be negative. So,</p>
+<div>
+<div class="MathJax_Preview">\text{gradient} = \frac{\text{rise}}{\text{run}}</div>
+<script type="math/tex; mode=display">\text{gradient} = \frac{\text{rise}}{\text{run}}</script>
+</div>
+<p>Fairly straightforward so far; but how does it relate to the more complicated functions we saw previously, where the gradient is different at every point?</p>
+<p>Let's pick a single point on our speed-time graph from earlier where we'd like to know the gradient, which we'll say is at point <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> on the horizontal axis. The value of our function at this point is clearly just <span><span class="MathJax_Preview">f(x)</span><script type="math/tex">f(x)</script></span>. We're going to use the same logic as before. We now need to pick a second point to draw our rise over run triangle. We can call the horizontal distance between our two points, <span><span class="MathJax_Preview">\Delta x</span><script type="math/tex">\Delta x</script></span>, where as usual, a <span><span class="MathJax_Preview">\Delta</span><script type="math/tex">\Delta</script></span> is being used to express a small change in something. Which means our second point must be at position <span><span class="MathJax_Preview">x + \Delta x</span><script type="math/tex">x + \Delta x</script></span>. We can also write down the vertical position of our second point as a function <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> evaluated at our new location <span><span class="MathJax_Preview">x + \Delta x</span><script type="math/tex">x + \Delta x</script></span>, i.e. <span><span class="MathJax_Preview">f(x + \Delta x</span><script type="math/tex">f(x + \Delta x</script></span>. We can now build an expression for the approximate gradient at our point <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>, based on the rise over run gradient between point <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>, and any second point remembering that the run will be our distance <span><span class="MathJax_Preview">\Delta x</span><script type="math/tex">\Delta x</script></span>, and our rise is just a difference in height of the two points.</p>
+<p><img alt="" src="../../img/deriving_the_gradient.png" /></p>
+<p>The last step in this process is simply to notice that for nice smooth continuous functions like the one we're showing here, as <span><span class="MathJax_Preview">\Delta x</span><script type="math/tex">\Delta x</script></span> gets smaller, the line connecting two points becomes a better and better approximation of the actual gradient at our point <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>.</p>
+<p><img alt="" src="../../img/deriving_the_gradient.gif" /></p>
+<p>We can express this concept formally, by using the limit notation scheme, which says that as delta goes to zero. Our expression will give us a function for our gradient at any point we choose, which we write as <span><span class="MathJax_Preview">f'(x)</span><script type="math/tex">f'(x)</script></span> or <span><span class="MathJax_Preview">\frac{d_f}{d_x}</span><script type="math/tex">\frac{d_f}{d_x}</script></span>, depending on which notation scheme you prefer. This is a slightly strange concept as we're not allowing <span><span class="MathJax_Preview">\Delta x = 0</span><script type="math/tex">\Delta x = 0</script></span>, as dividing by zero is not defined. But instead investigating what happens when <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> is extremely close to zero. This, in a nutshell, is the process of differentiation. When you are asked to differentiate a function, this literally just mean, substitute the function into this expression. We could fill up several videos with more robust interpretations of this infinitely small but non-zero <span><span class="MathJax_Preview">\Delta x</span><script type="math/tex">\Delta x</script></span>; but for now, don't worry about it too much. We know more than enough to continue on our journey.</p>
+<p>Let's now put our new derivative expression into practice and see if it works. First, we should try this out on a linear function, once again, as we know that the answer is just going to be a constant. Given the function</p>
+<div>
+<div class="MathJax_Preview">f(x) = 3x + 2</div>
+<script type="math/tex; mode=display">f(x) = 3x + 2</script>
+</div>
+<p>what is its derivative?</p>
+<div>
+<div class="MathJax_Preview">f'(x) = \lim_{\Delta x \rightarrow 0} \Biggl(\frac{3(x + \Delta x) + 2 - (3x + 2)}{\Delta x}\Biggl)</div>
+<script type="math/tex; mode=display">f'(x) = \lim_{\Delta x \rightarrow 0} \Biggl(\frac{3(x + \Delta x) + 2 - (3x + 2)}{\Delta x}\Biggl)</script>
+</div>
+<div>
+<div class="MathJax_Preview"> = \lim_{\Delta x \rightarrow 0}\Biggl(\frac{3x + 3 \Delta x + 2 - 3x - 2}{\Delta x}\Biggl)</div>
+<script type="math/tex; mode=display"> = \lim_{\Delta x \rightarrow 0}\Biggl(\frac{3x + 3 \Delta x + 2 - 3x - 2}{\Delta x}\Biggl)</script>
+</div>
+<div>
+<div class="MathJax_Preview"> = \lim_{\Delta x \rightarrow 0}\Biggl(\frac{3 \Delta x}{\Delta x}\Biggl)</div>
+<script type="math/tex; mode=display"> = \lim_{\Delta x \rightarrow 0}\Biggl(\frac{3 \Delta x}{\Delta x}\Biggl)</script>
+</div>
+<div>
+<div class="MathJax_Preview"> = 3</div>
+<script type="math/tex; mode=display"> = 3</script>
+</div>
+<p>Therefore, the gradient of our linear function is a constant, just as we expected.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We actually differentiated two things at once. A <span><span class="MathJax_Preview">3x</span><script type="math/tex">3x</script></span> term, and a <span><span class="MathJax_Preview">+ 2</span><script type="math/tex">+ 2</script></span> term. We could have differentiated them separately, and then added them together, and still got the same result. This interchangeability of the approach is called the <a href="https://en.wikipedia.org/wiki/Sum_rule_in_differentiation">Sum Rule</a>, and it's pretty handy.</p>
+</div>
+<p>Let's now try a slightly more complicated example</p>
+<div>
+<div class="MathJax_Preview">f(x) = 5x^2</div>
+<script type="math/tex; mode=display">f(x) = 5x^2</script>
+</div>
+<p>All we're going to do is take this thing and put it into the differentiation expression we derived earlier. So,</p>
+<div>
+<div class="MathJax_Preview">f'(x) = \lim_{\Delta x \rightarrow 0} \Biggl(\frac{5(x + \Delta x)^2 - 5x^2}{\Delta x} \Biggl)</div>
+<script type="math/tex; mode=display">f'(x) = \lim_{\Delta x \rightarrow 0} \Biggl(\frac{5(x + \Delta x)^2 - 5x^2}{\Delta x} \Biggl)</script>
+</div>
+<div>
+<div class="MathJax_Preview"> = \lim_{\Delta x \rightarrow 0} \Biggl(\frac{ 5x^2 + 10 x \Delta x + 5 \Delta x^2 - 5x^2}{\Delta x} \Biggl)</div>
+<script type="math/tex; mode=display"> = \lim_{\Delta x \rightarrow 0} \Biggl(\frac{ 5x^2 + 10 x \Delta x + 5 \Delta x^2 - 5x^2}{\Delta x} \Biggl)</script>
+</div>
+<div>
+<div class="MathJax_Preview"> = \lim_{\Delta x \rightarrow 0} \Biggl(10x + 5 \Delta x \Biggl)</div>
+<script type="math/tex; mode=display"> = \lim_{\Delta x \rightarrow 0} \Biggl(10x + 5 \Delta x \Biggl)</script>
+</div>
+<div>
+<div class="MathJax_Preview"> = 10 x</div>
+<script type="math/tex; mode=display"> = 10 x</script>
+</div>
+<p>We can generalize the lesson from this example to a rule for handling functions with powers of <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>. For example, if we take the function</p>
+<div>
+<div class="MathJax_Preview">f(x)= ax^b</div>
+<script type="math/tex; mode=display">f(x)= ax^b</script>
+</div>
+<p>and substitute it into our differentiation expression, we will find that the derivative is always</p>
+<div>
+<div class="MathJax_Preview">f'(x) = abx^{b-1}</div>
+<script type="math/tex; mode=display">f'(x) = abx^{b-1}</script>
+</div>
+<p>The original power gets multiplied by the front and then the new power is just one less than it was before. This is known as the <a href="https://en.wikipedia.org/wiki/Power_rule"><strong>power rule</strong></a>, and you can put this into your calculus toolbox along with <a href="https://en.wikipedia.org/wiki/Sum_rule_in_differentiation"><strong>sum rule</strong></a>, which we saw earlier.</p>
+<h4 id="conclusions_1">Conclusions</h4>
+<p>You've now seen two examples in which we apply the limit of rise over run method, to differentiate two simple functions. As you can probably imagine, if we wanted to differentiate a long complicated expression, this process is going to become quite tedious. What we are going to see in later videos are more rules, like this sum rule and the power rule, which will help us speed up the process. However, before we do that, we're just going to look at some fairly magical special case functions, which differentiate in an interesting way.</p>
+<h3 id="differentiation-examples-special-cases">Differentiation examples &amp; special cases</h3>
+<p>In this video, we're going to run through three <em>special cases</em>: functions which give us interesting results when differentiated.</p>
+<h4 id="special-case-1-discontinuities">Special case 1: discontinuities</h4>
+<p>The first example we're going to work through is the function <span><span class="MathJax_Preview">f(x) = \frac{1}{x}</span><script type="math/tex">f(x) = \frac{1}{x}</script></span>, which you can see plotted here</p>
+<p><img alt="" src="../../img/f_of_1_over_x.png" /></p>
+<p>Take a minute to notice that the gradient of this function is negative everywhere, except at the point <span><span class="MathJax_Preview">x = 0</span><script type="math/tex">x = 0</script></span>, where we can't see what it is. Something quite interesting must be happening at this point. On the negative side, the function drops down, presumably towards negative infinity, but then it somehow reemerges from above on the positive side. This sudden break in our otherwise smooth function is what we refer to as a <a href="https://en.wikipedia.org/wiki/Classification_of_discontinuities#Essential_discontinuity"><strong>discontinuity</strong></a>. We've mentioned already that the operation divide by zero is undefined, which means that this function simply doesn't have a value at the point <span><span class="MathJax_Preview">x=0</span><script type="math/tex">x=0</script></span>. But, what about the gradient at this point? Well, let's sub our function into the differentiation expression to investigate.</p>
+<div>
+<div class="MathJax_Preview">f(x) = \frac{1}{x}</div>
+<script type="math/tex; mode=display">f(x) = \frac{1}{x}</script>
+</div>
+<div>
+<div class="MathJax_Preview">\Rightarrow f'(x) = \lim_{\Delta x \rightarrow 0} \Biggl(\frac{\frac{1}{x + \Delta x} - \frac{1}{x}}{\Delta x} \Biggl)</div>
+<script type="math/tex; mode=display">\Rightarrow f'(x) = \lim_{\Delta x \rightarrow 0} \Biggl(\frac{\frac{1}{x + \Delta x} - \frac{1}{x}}{\Delta x} \Biggl)</script>
+</div>
+<div>
+<div class="MathJax_Preview">\Rightarrow f'(x) = \lim_{\Delta x \rightarrow 0} \Biggl(\frac{\frac{-\Delta x}{x(x + \Delta x)}}{\Delta x} \Biggl)</div>
+<script type="math/tex; mode=display">\Rightarrow f'(x) = \lim_{\Delta x \rightarrow 0} \Biggl(\frac{\frac{-\Delta x}{x(x + \Delta x)}}{\Delta x} \Biggl)</script>
+</div>
+<div>
+<div class="MathJax_Preview">\Rightarrow f'(x) = \lim_{\Delta x \rightarrow 0} \Biggl(\frac{-1}{x^2 + x \Delta x} \Biggl)</div>
+<script type="math/tex; mode=display">\Rightarrow f'(x) = \lim_{\Delta x \rightarrow 0} \Biggl(\frac{-1}{x^2 + x \Delta x} \Biggl)</script>
+</div>
+<div>
+<div class="MathJax_Preview">\Rightarrow f'(x) = \frac{-1}{x^2}</div>
+<script type="math/tex; mode=display">\Rightarrow f'(x) = \frac{-1}{x^2}</script>
+</div>
+<p>So as we realized just by looking, this derivative function is negative everywhere and like our base function, the derivative is also undefined at <span><span class="MathJax_Preview">x = 0</span><script type="math/tex">x = 0</script></span></p>
+<p><img alt="" src="../../img/derivative_f_of_1_over_x.png" /></p>
+<h4 id="special-case-2-exponentials">Special case 2: exponentials</h4>
+<p>For our second function, lets start by describing a few special properties of that function. The first property is that <span><span class="MathJax_Preview">f(x)</span><script type="math/tex">f(x)</script></span> is always equal to the value of its own gradient <span><span class="MathJax_Preview">f'(x)</span><script type="math/tex">f'(x)</script></span>. As it turns out, <span><span class="MathJax_Preview">f(x) = 0</span><script type="math/tex">f(x) = 0</script></span> has this property, but it is not the function we are talking about. This means that our mystery function must always either be positive or negative, as if it ever tried to cross the horizontal axis, then both the function and the gradient would be zero, and we would be back to <span><span class="MathJax_Preview">f(x) = 0</span><script type="math/tex">f(x) = 0</script></span>. Another property of our mystery function is that it is always increasing or always decreasing, i.e. it can never return to the same value again. Plenty of functions could fit these criteria, and focusing on the positive case, they all look something like this</p>
+<p><img alt="" src="../../img/positive_case.png" /></p>
+<p>However, besides the zero function, there is only one function that will satisfy all our demands. This is the exponential function, <span><span class="MathJax_Preview">f(x) = e^x</span><script type="math/tex">f(x) = e^x</script></span>, where <span><span class="MathJax_Preview">e</span><script type="math/tex">e</script></span> is Euler's number, named after the 18th century Mathematician.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The number <span><span class="MathJax_Preview">e</span><script type="math/tex">e</script></span>, which is approximately <span><span class="MathJax_Preview">2.718</span><script type="math/tex">2.718</script></span>, is very important for the study of Calculus. But more than that, <span><span class="MathJax_Preview">e</span><script type="math/tex">e</script></span> like <span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span>, turns up all over mathematics and seems to be written all over the fabric of the universe.</p>
+</div>
+<p>Differentiating <span><span class="MathJax_Preview">e^x</span><script type="math/tex">e^x</script></span> gives us <span><span class="MathJax_Preview">e^x</span><script type="math/tex">e^x</script></span> so, clearly, we can just keep differentiating this thing as many times as we'd like and nothing is going to change. This self similarity is going to come in very handy.</p>
+<h4 id="special-case-3-trigonometric-functions">Special case 3: trigonometric functions</h4>
+<p>The last special case function that we're going to talk about are the trigonometric functions, <a href="https://en.wikipedia.org/wiki/Sine">Sine</a> and <a href="https://en.wikipedia.org/wiki/Sine">Cosine</a>. You may recall that for a right angled triangle, <span><span class="MathJax_Preview">sin(x) \times r</span><script type="math/tex">sin(x) \times r</script></span> gives you the length of the opposite side to the angle</p>
+<p><img alt="" src="../../img/trig_derivatives_1.png" /></p>
+<p>Let's take a look at the function <span><span class="MathJax_Preview">\sin(x)</span><script type="math/tex">\sin(x)</script></span> and see if we can work out what shape its derivative would be by eye. So, <span><span class="MathJax_Preview">\sin(x)</span><script type="math/tex">\sin(x)</script></span>, starts with a positive gradient which gently decreases until at zero at the top of the bump, and then it starts being negative again until it gets to the bottom of the next bump, and so forth and so on</p>
+<p><img alt="" src="../../img/derivative_of_sin.gif" /></p>
+<p>As it turns out, the derivative of <span><span class="MathJax_Preview">\sin(x)</span><script type="math/tex">\sin(x)</script></span> is actually just <span><span class="MathJax_Preview">\cos(x)</span><script type="math/tex">\cos(x)</script></span>! Now what happens when we differentiate <span><span class="MathJax_Preview">\cos(x)</span><script type="math/tex">\cos(x)</script></span>? Well actually, we get <span><span class="MathJax_Preview">-\sin(x)</span><script type="math/tex">-\sin(x)</script></span>. Differentiating a third time gives us <span><span class="MathJax_Preview">-\cos(x)</span><script type="math/tex">-\cos(x)</script></span>. And then amazingly differentiating changing a fourth time brings us all the way back to our original function, <span><span class="MathJax_Preview">\sin x</span><script type="math/tex">\sin x</script></span>.</p>
+<p><img alt="" src="../../img/trig_deriviatives_2.png" /></p>
+<p>And then the pattern of course repeats. This self similarity may remind you of the exponential function we discussed above, and that is because these trigonometric functions are actually just exponentials in disguise, albeit quite a convincing disguise.</p>
+<details class="note"><summary>Note</summary><p>Indeed, <span><span class="MathJax_Preview">\sin(x) = \frac{e^{ix} - e^{ix}}{2i}</span><script type="math/tex">\sin(x) = \frac{e^{ix} - e^{ix}}{2i}</script></span>.</p></details><h4 id="conclusions_2">Conclusions</h4>
+<p>Many of the details of the functions that we've talked about in this video were skimmed over rather quickly. But for the benefit of this particular course, all you need to understand is that differentiation is fundamentally quite a simple concept, even when you might not be able to battle through all the algebra, you're ultimately still just looking for the rise over run gradient at each point. This pragmatic approach to Calculus is going to come up again when we start talking about calculating gradients with computers. Sometimes we really can just find an equation for the gradient as we've been doing for all of our examples so far. However, if instead of a nice smooth function we just have discrete data points than it can seem as if there's nothing for us to differentiate. But as we shall see, rise of a run comes back once again to save the day.</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../course_resources/" title="Course Resources" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Course Resources
+              </span>
+            </div>
+          </a>
+        
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/JohnGiorgi" class="md-footer-social__link fa fa-github"></a>
+    
+  </div>
+
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.583bbe55.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+    
+      
+    
+  </body>
+</html>
