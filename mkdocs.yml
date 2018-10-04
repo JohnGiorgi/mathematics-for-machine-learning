@@ -21,6 +21,9 @@ extra:
     - type: 'github'
       link: 'https://github.com/JohnGiorgi'
 
+extra_css:
+  - 'stylesheets/extra.css'
+
 # Navigation
 nav:
     - About: index.md
