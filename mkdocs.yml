@@ -31,7 +31,9 @@ nav:
         - Week 3: linear_algebra/week_3.md
         - Week 4: linear_algebra/week_4.md
         - Week 5: linear_algebra/week_5.md
-    - Calculus: calculus.md
+    - Multivariate Calculus:
+      - Course Resources: multivariate_calculus/course_resources.md
+      - Week 1: multivariate_calculus/week_1.md
 
 # Add MathJax support
 extra_javascript:
