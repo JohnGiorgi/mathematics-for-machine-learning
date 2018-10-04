@@ -66,6 +66,8 @@
     
     <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
     
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
     
   </head>
   
@@ -533,6 +535,26 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#time-saving-rules" title="Time saving rules" class="md-nav__link">
+    Time saving rules
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#product-rule" title="Product rule" class="md-nav__link">
+    Product rule
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
       
       
       
@@ -682,6 +704,26 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#time-saving-rules" title="Time saving rules" class="md-nav__link">
+    Time saving rules
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#product-rule" title="Product rule" class="md-nav__link">
+    Product rule
+  </a>
   
 </li>
         
@@ -903,6 +945,30 @@
 <p>And then the pattern of course repeats. This self similarity may remind you of the exponential function we discussed above, and that is because these trigonometric functions are actually just exponentials in disguise, albeit quite a convincing disguise.</p>
 <details class="note"><summary>Note</summary><p>Indeed, <span><span class="MathJax_Preview">\sin(x) = \frac{e^{ix} - e^{ix}}{2i}</span><script type="math/tex">\sin(x) = \frac{e^{ix} - e^{ix}}{2i}</script></span>.</p></details><h4 id="conclusions_2">Conclusions</h4>
 <p>Many of the details of the functions that we've talked about in this video were skimmed over rather quickly. But for the benefit of this particular course, all you need to understand is that differentiation is fundamentally quite a simple concept, even when you might not be able to battle through all the algebra, you're ultimately still just looking for the rise over run gradient at each point. This pragmatic approach to Calculus is going to come up again when we start talking about calculating gradients with computers. Sometimes we really can just find an equation for the gradient as we've been doing for all of our examples so far. However, if instead of a nice smooth function we just have discrete data points than it can seem as if there's nothing for us to differentiate. But as we shall see, rise of a run comes back once again to save the day.</p>
+<h2 id="time-saving-rules">Time saving rules</h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Before going through this section, consider watching <a href="https://youtu.be/S0_qX4VJhMQ">this</a> video.</p>
+</div>
+<h3 id="product-rule">Product rule</h3>
+<p>Now that we've defined the differentiation operation in terms of an exact mathematical formula, it's become clear that even for relatively simple functions, calculating derivatives can be quite tedious. However, mathematicians have found a variety of convenient rules that allow us to avoid working through the limit of rise over run operation whenever possible. So far, we've met the <a href="https://en.wikipedia.org/wiki/Sum_rule_in_differentiation">sum Rule</a> and the <a href="https://en.wikipedia.org/wiki/Power_rule"><strong>power rule</strong></a>. In this video, we will cover a convenient shortcut for differentiating the product of two functions, which sensibly enough is called the <a href="https://en.wikipedia.org/wiki/Product_rule"><strong>product rule</strong></a>.</p>
+<p>It is of course possible to derive the product rule purely algebraically but it doesn't really help you to develop much insight into what's going on. Imagine a rectangle where the length of one side is the function <span><span class="MathJax_Preview">f(x)</span><script type="math/tex">f(x)</script></span> and the other side is the function <span><span class="MathJax_Preview">g(x)</span><script type="math/tex">g(x)</script></span>. This means that the product of these two functions must give us the rectangle's area, which we can call <span><span class="MathJax_Preview">A(x)</span><script type="math/tex">A(x)</script></span></p>
+<p><img alt="" src="../../img/geometric_derivation_of_derivatives_1.png" /></p>
+<p>Now, consider that if we differentiate <span><span class="MathJax_Preview">f(x)g(x)</span><script type="math/tex">f(x)g(x)</script></span>, what we're really looking for is the change in area of our rectangle as we vary <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>. So let's see what happens to the area when we increase <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> by some small amount, <span><span class="MathJax_Preview">\Delta x</span><script type="math/tex">\Delta x</script></span>.</p>
+<p><img alt="" src="../../img/geometric_derivation_of_derivatives_2.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A quick footnote here, for the case we've shown, we've picked a particular friendly pair of functions, where they both happen to increase with x. However, this won't necessarily always be the case. But it does just make drawing things a lot easier. And the conclusions would ultimately be the same.</p>
+</div>
+<p>We can now divide up our rectangle into four regions, one of which was our original area, <span><span class="MathJax_Preview">A(x)</span><script type="math/tex">A(x)</script></span>. As the total edge length along the top, is now <span><span class="MathJax_Preview">f(x + \Delta x)</span><script type="math/tex">f(x + \Delta x)</script></span>, this means that the width of the new region must be the difference between the original width and the new width. And of course, the same logic applies to the height.</p>
+<p><img alt="" src="../../img/geometric_derivation_of_derivatives_3.png" /></p>
+<p>We can now write an expression for just the extra area, which we will call <span><span class="MathJax_Preview">\Delta A</span><script type="math/tex">\Delta A</script></span>. This is the sum of the area of the three new rectangles.</p>
+<p><img alt="" src="../../img/geometric_derivation_of_derivatives_4.gif" /></p>
+<p>I want to avoid a drawn out conversation about limits. But fundamentally, I hope you can see that as <span><span class="MathJax_Preview">\Delta x</span><script type="math/tex">\Delta x</script></span> goes to <span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span>, although all of the new rectangles will shrink, it's the smallest rectangle that is going to shrink the fastest.</p>
+<p><img alt="" src="../../img/geometric_derivation_of_derivatives_5.png" /></p>
+<p>This is the intuition that justifies how we can ultimately ignore the small rectangle and leave its contribution to the area out of our differential expression altogether.</p>
+<p><img alt="" src="../../img/geometric_derivation_of_derivatives_6.png" /></p>
+<p>Now that we've got our expression for approximating <span><span class="MathJax_Preview">\Delta x</span><script type="math/tex">\Delta x</script></span>, we return to our original question. What is the derivative of <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> with respect to <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>? So we want the limit of <span><span class="MathJax_Preview">\Delta A</span><script type="math/tex">\Delta A</script></span> divided by <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>, ie rise over run, which means we also need to divide the right hand side by delta x. We are so close at this point, all we need to do is slightly rearrange this equation. So, firstly, by splitting it into two fractions, and then secondly, by moving f(x) and g(x) out of the numerators. What I hope you can see now is that first part contains the definition of the derivative of g(x), and the second part contains the derivative of f(x). Which means that we're now ready to write down our final expression for the derivative of A with respect to x, which has now just been reduced to this. The derivative of A(x) is just f(x) g'(x) + g(x) f'(x). So, we can now add the product rule to the list of tools in our calculus toolbox. If we want to differentiate the product of two functions, f(x) and g(x), we simply find the sum of f(x) g'(x), and g(x), f'(x). This is going to come in really handy in later videos as we start to deal with some more complicated functions. See you then.</p>
                 
                   
                 
