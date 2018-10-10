@@ -12,8 +12,8 @@ theme:
   name: 'material'
   language: 'en'
   palette:
-    primary: 'red'
-    accent: 'teal'
+    primary: 'blue'
+    accent: 'blue'
 
 # Customization
 extra:
@@ -23,6 +23,15 @@ extra:
 
 extra_css:
   - 'stylesheets/extra.css'
+
+extra_javascript:
+  # - 'javascripts/vanilla-tilt.min.js'
+  # Add MathJax support
+
+  - 'javascripts/extra.js'
+  - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
+  - 'https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js'
+  - 'https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.2.1/tilt.jquery.min.js'
 
 # Navigation
 nav:
@@ -38,9 +47,6 @@ nav:
       - Course Resources: multivariate_calculus/course_resources.md
       - Week 1: multivariate_calculus/week_1.md
 
-# Add MathJax support
-extra_javascript:
-  - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
 markdown_extensions:
     - pymdownx.arithmatex
     - pymdownx.details
