@@ -129,3 +129,143 @@ $$\frac{df(x,y,z)}{dt} = \cos(t-1)e$$
 #### Conclusions
 
 Hopefully you are feeling reasonably comfortable with partial differentiation, and maybe you can even see why the total derivative function might be quite handy. We now have all the pieces that for us to the build our partial derivatives into something really useful.
+
+## Jacobians - vectors of derivatives
+
+Previously, we saw that we can differentiate functions of multiple variables and that it isn't much harder than the univariate calculus we met at the start of the course. In this section, we're going to introduce the [**Jacobian**](https://en.wikipedia.org/wiki/Jacobian_matrix_and_determinant), which brings in some of the ideas from linear algebra to build these partial derivatives into something particularly useful.
+
+### The Jacobian
+
+The concept of the **Jacobian** can be applied to a variety of different problems. But in the context of getting started with optimization and machine learning, there is a particular scenario that comes up a lot, which is the Jacobian of a _single function_ of _many variables_. In short, if you have a function of many variables i.e., $f(x1, x2, x3, ...)$ then the Jacobian is simply a vector where each entry is the partial derivative of $f$ with respect to each one of those variables in turn. By convention, we write this as a row vector rather than a column vector, for reasons that will become clear later in the course
+
+$$J = [\frac{\partial f}{x_1}, \frac{\partial f}{x_2}, \frac{\partial f}{x_3}, ...]$$
+
+Let's start by looking at a nice simple function
+
+$$f(x, y, z) = x^2y + 3z$$
+
+to build the Jacobian, we just find each of the partial derivatives of the function one by one
+
+$$\frac{df}{dx} = 2xy$$
+
+$$\frac{df}{dy} = x^2$$
+
+$$\frac{df}{dz} = 3$$
+
+Now bringing all of those together, we end up with a Jacobian $J$
+
+$$J = [2xy, x^2, 3]$$
+
+We now have an algebraic expression for a vector which when we give it a specific $x, y, z$ coordinate, will return a vector pointing in the direction of steepest slope of this function. For example, at the point $(0, 0, 0)$,
+
+$$J(0, 0, 0) = [0, 0, 3]$$
+
+so our Jacobian is a vector of length 3 pointing directly in the $z$ direction.
+
+Some of the numerical methods that we will discuss later in this course require us to calculate Jacobians in hundreds of dimensions. However, even for the 3D example we just solved, graphical representation is already quite difficult. We are now going to drop down to 2 dimensions so that we can actually see what's going on here. To keep things interesting, we're going to look at a particularly complicated but rather attractive function
+
+![](../img/jacobians_1.png)
+
+!!! note
+    Even though it is a bit of a monster, I hope you would agree that with the tools we've seen so far, we really could calculate the partial derivatives of this thing. But you wouldn't really learn anything new from grinding through this. Instead, we will look at the results graphically.
+
+Here is that same function, with the $x$ axis horizontal, the $y$ axis vertical and a color map indicating the value of $z$, with the bright region suggesting high values and the dark region suggesting low values
+
+![](../img/jacobians_2.png)
+
+Although this plot is fairly clear, our intuition about the gradient is a bit lacking in this format. So let's briefly make things 3D, where the values of $z$ and now also represented by the height.
+
+![](../img/jacobian_1.gif)
+
+As we said at the start of the video, the Jacobian is simply a vector that we can calculate for each location on this plot which points in the direction of the _steepest uphill slope_. Furthermore, the _steeper the slope_, the _greater the magnitude of Jacobian at that point_. Hold the image of this 3D space in your mind as we now go back to 2D. Rather than showing all of the grid points I used to plot the graph, lets instead convert to a contour plot, where just like a map of actual mountains, we will draw lines along the regions of the same height (which for us means the same value of $z$).
+
+![](../img/jacobians_3.png)
+
+This removes a lot of the clutter from the plot which is useful for the final step that I'd like to show you, which will be adding lots of Jacobian vectors on top of our contour plot. However, before I do that, let's take a look at these four points and see if your intuition is now in tune by guessing which one will have the Jacobian with the largest magnitude.
+
+![](../img/jacobians_4.png)
+
+Overlaying the Jacobian vector field, we can see that they are clearly all pointing uphill, away from the low dark regions and towards the high bright regions
+
+![](../img/jacobians_5.png)
+
+Also, we see that where the contour lines are tightly packed, this is where we find our largest Jacobian vectors such as at point A. Whereas the peaks of the mountains and in the bottom of the valleys or even out on a wide flat plains, our gradients, and therefore our Jacobians are small.
+
+#### Conclusions
+
+My hope is that this clear two-dimensional example will give you the confidence to trust the maths when we come up against much higher dimensional problems later in the course. See you then.
+
+### Jacobian applied
+
+In this section, we're going to extend the concept of the Jacobian, from vectors up to matrices, which will allow us to describe the rates of change of a vector valued function. However, before we do this, we are first going to recap by applying what we've learned so far about Jacobians, to another simple system.
+
+If we consider the function
+
+$$f(x,y) = e^{-(x^2 + y^2)}$$
+
+then using our knowledge of partial differentiation, it's fairly straightforward to find its Jacobian vector
+
+$$J = [-2xe^{-(x^2+y^2)}, -2ye^{-(x^2+y^2)}]$$
+
+We're now going to do the reverse of our approach from the last section and start by looking at the vector field in the Jacobians, and then see if we can understand how the function must look. Let's start by finding the Jacobian at a few specific points.
+
+Firstly, the point $(-1, 1)$ which we'll highlight on our axis in pink. Substituting these coordinates into our Jacobian expression and simplifying, we can see a vector pointing directly towards the origin. Next, if we move further out to the point $(2, 2)$ and find the Jacobian, we are now going to get a much smaller vector but pointing once again directly at the origin Lastly, before I reveal the whole vector field, let's look at what's going on at the origin itself. Subbing in the point $(0, 0)$ returns the zero vector, suggesting that the function is flat at this point, which must mean one of three things. Either, this point is a maximum, minimum, or something called a saddle, which we'll cover later in this module
+
+![](../img/jacobians_6.png)
+
+However, if we now reveal the rest of the Jacobian vector field, it becomes clear that the origin must be the maximum of this system
+
+![](../img/jacobians_7.png)
+
+Let's now move back to the colour map representation of this function, where the brighter regions represent high values of f. So, finally, we can remove the vector field and observe the function in 3D, which I hope matches up with your expectations.
+
+![](../img/jacobians_2.gif)
+
+Next, we're going to build a Jacobian matrix which describes functions that take a vector as an input, but unlike our previous examples, _also give a vector as the output_. If we consider the two functions,
+
+$$u(x,y) = x - 2y$$
+
+$$v(x,y) = 3y - 2x$$
+
+we can think of these as two vector spaces, one containing vectors with coordinates in $u, v$ and the other with coordinates in $x, y$, i.e., each point in $x, y$ has a corresponding location in $u, v$. As we move around $x, y$ space, we would expect our corresponding path in $u, v$ space to be quite different,
+
+![](../img/jacobians_3.gif)
+
+We can of course, make separate row vector Jacobians for $u$ and $v$. However, as we are considering $u$ and $v$ to be components of a single vector, it makes more sense to extend our Jacobian by stacking these vectors as rows of a matrix like this
+
+$$J_u = \begin{bmatrix} \frac{\partial u}{\partial x} & \frac{\partial u}{\partial y} \end{bmatrix}$$
+
+$$J_v = \begin{bmatrix} \frac{\partial v}{\partial x} & \frac{\partial v}{\partial y} \end{bmatrix}$$
+
+$$J = \begin{bmatrix} \frac{\partial u}{\partial x} & \frac{\partial u}{\partial y} \\ \frac{\partial v}{\partial x} & \frac{\partial v}{\partial y}\end{bmatrix}$$
+
+
+Now that we have the structure and motivation for building a Jacobian matrix for vector valued functions, let's apply this to our example functions and see what we get. We have
+
+$$u(x, y) = x - 2y$$
+
+$$v(x,y) = 3y - 2x$$
+
+We can build the Jacobian from these two, by simply saying well, the Jacobian is going to be,
+
+$$J = \begin{bmatrix} \frac{\partial u}{\partial x} & \frac{\partial u}{\partial y} \\ \frac{\partial v}{\partial x} & \frac{\partial v}{\partial y}\end{bmatrix}$$
+
+$$ = \begin{bmatrix} 1 & -2 \\ -2 & 3\end{bmatrix}$$
+
+Our Jacobian matrix no longer even contains any variables, which is what we should expect when we consider that clearly, both $u$ and $v$ are linear functions of $x$ and $y$. So the gradient must be constant everywhere. Also, this matrix is just the linear transformation from $xy$ space to $uv$ space. So, if we were to apply the $xy$ vector two three, we'd get the following,
+
+$$\begin{bmatrix} 1 & -2 \\ -2 & 3\end{bmatrix}\begin{bmatrix} 2 \\ 3\end{bmatrix} = \begin{bmatrix} -4 \\ 5\end{bmatrix}$$
+
+Now, this is all well and good. But of course, many of the functions that you'll be confronted with, will be highly nonlinear, and generally much more complicated than the simple linear example we've just looked at here. However, often they may still be smooth, which means that if we zoom in close enough, we can consider each little region of space to be approximately linear and therefore, by adding up all the contributions from the Jacobian determinants at each point in space, we can still calculate the change in the size of a region after transformation.
+
+A classic example of this occurs when transforming between cartesian and polar coordinate systems. If we have a vector expressed in terms of a radius $r$, and the angle up from the x-axis is theta, but we'd like them expressed in terms of $x$ and $y$ instead. We can write the following expressions just by thinking about trigonometry
+
+![](../img/jacobians_8.png)
+
+Now, we can build the Jacobian matrix and take its determinant. The fact that the result is simply the radius $r$, and not the function $\theta$, tells us that as we move along $r$, away from the origin, small regions of space will scale as a function of $r$, which I hope will make a lot of sense to you when we look at our little animation here
+
+![](../img/jacobians_4.gif)
+
+#### Conclusions
+
+That's all for this video. I hope you will now be able to build Jacobian vectors and matrices for yourself, with confidence in the exercises. And more importantly, that your intuition on the meaning of this concept, is starting to develop. See you next time.
