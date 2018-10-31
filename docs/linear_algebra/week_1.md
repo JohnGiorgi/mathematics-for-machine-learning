@@ -54,7 +54,7 @@ In this video, we've set up two problems that can be solved with linear algebra.
 
 ### Geometric and Numeric Interpretations
 
-It is helpful to draw a distinction from the **numerical operations** we can perform using linear algebra, and the **geometric intuitions** underlying them (which are frequently not taught in may introductory courses).
+It is helpful to draw a distinction from the **numerical operations** we can perform using linear algebra, and the **geometric intuitions** underlying them (which are frequently not taught in many introductory courses).
 
 Roughly speaking, the _geometric understanding or intuition_ is what lets us judge what tools to use to solve specific problems, feel why they work, and know how to interpret the results. The _numerical understanding_ is what lets us actually carry through the application of those tools.
 
