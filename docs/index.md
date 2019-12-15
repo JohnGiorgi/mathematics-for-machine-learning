@@ -8,10 +8,11 @@ Full credit to the team behind the [Mathematics for Machine Learning Specializat
 
 ## Notebooks
 
-[Notebooks](notebooks) contains [Jupyter](https://github.com/jupyterlab/jupyterlab) notebooks for each course in the [specialization](https://www.coursera.org/learn/linear-algebra-machine-learning), which each contain `python` implementations for many of the discussed concepts.
+[Notebooks](https://github.com/JohnGiorgi/mathematics-for-machine-learning/tree/master/notebooks) contains [Jupyter](https://github.com/jupyterlab/jupyterlab) notebooks for each course in the [specialization](https://www.coursera.org/learn/linear-algebra-machine-learning), which each contain `python` implementations for many of the discussed concepts.
 
 ## Attribution
 
 Just like the [Mathematics for Machine Learning Specialization](https://www.coursera.org/learn/linear-algebra-machine-learning), This work is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).
 
 [![](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-nc-sa/4.0/)
+
