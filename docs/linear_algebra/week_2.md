@@ -217,7 +217,7 @@ $$\hat{e_1} = \begin{bmatrix} 1 \\\ 0 \end{bmatrix}, \; \hat{e_2} = \begin{bmatr
 
 We can then define any other vector in our space in terms of $\hat{e_1}$ and $\hat{e_2}$. For example,
 
-$$r_e = 3\hat{e_1} + 3 \hat{e_2} = \begin{bmatrix} 3 \\\ 4 \end{bmatrix}$$
+$$r_e = 3 \hat{e_1} + 4 \hat{e_2} = \begin{bmatrix} 3 \\\ 4 \end{bmatrix}$$
 
 Here, the instruction is that $r_e$ is going to be equal to doing a vector sum of $3 \hat{e_1}$ and $4 \hat{e_2}$.
 
