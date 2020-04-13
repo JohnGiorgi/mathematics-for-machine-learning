@@ -157,7 +157,7 @@ __Coordinate systems__
 
 At this point, it's convenient to define a **coordinate system**. Imagine we had two dimensions defined by the vectors:
 
-$$\hat i = \begin{bmatrix}1 \\\ 0 \end{bmatrix} \; \hat j = \begin{bmatrix} 1 \\\ 0 \end{bmatrix}$$
+$$\hat i = \begin{bmatrix}1 \\\ 0 \end{bmatrix} \; \hat j = \begin{bmatrix} 0 \\\ 1 \end{bmatrix}$$
 
 !!! note
     These are known as **basis vectors**, and they define the [**basis**](http://www.wikiwand.com/en/Basis_(linear_algebra)).
