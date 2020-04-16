@@ -309,7 +309,7 @@ where $c_1$ and $c_2$ were constants, then we would say that ${b_3}$ is _linearl
 
 ![linear_dependence](../img/linear_dependence.png)
 
-To drive the point home, we note that the following are true if ${b_3}$ is linearly dependent to the vectors ${b_1}$ and ${b_2}$:
+To drive the point home, we note that the following are true if ${b_3}$ is linearly independent to the vectors ${b_1}$ and ${b_2}$:
 
 - ${b_3}$ does __not__ lie in the plane spanned by ${b_1}$ and ${b_2}$
 - ${b_3} \ne c_1  {b_1} + c_2  {b_2}$ for any $c_1$, $c_2 \in \mathbb R$ OR, equivalently,
